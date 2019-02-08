@@ -1,0 +1,10 @@
+#back-to-top {
+    background-color: #1999EC;
+    bottom: 50px;
+    box-shadow: 0 0 5px;
+    color: 
+    padding: 5px 5px;
+    position: fixed;
+    right: 75px;
+    cursor: pointer;
+}
