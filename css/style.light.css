@@ -67,6 +67,7 @@ blockquote {
   border-left: 1px solid #1abc9c;
   padding-left: 1em;
   margin: 1em 3em 1em 2em;
+  font-size:14px;
 }
 
 @media only screen and ( max-width: 640px ) {
@@ -430,7 +431,7 @@ h1, h2, h3, h4, h5, h6 {
   max-width: 100%;
 }
 .highlight pre {
-  font-size: 0.8125rem;
+  font-size: 0.625rem;
 }
 .highlight .gutter {
   width: 5%;
