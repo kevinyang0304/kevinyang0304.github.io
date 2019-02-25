@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+  <!-- Html Head Tag-->
+  <head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Mute">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="深入理解Java虚拟机（二）">
+  <meta property="og:description" content="杨柳潇个人主页">
+  <meta property="og:site_name" content="杨柳潇的博客">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="http://yangliuxiao.top">
+  
+    <link rel="alternate" href="/atom.xml" title="杨柳潇的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+
+  <!-- Site Title -->
+  <title>杨柳潇的博客</title>
+  
+  <!-- 为了增加TOP按钮，新增的CSS文件 -->
+  <link rel="stylesheet" href="/css/TOPButtonStyle.css">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  
+  <link rel="stylesheet" href="/css/style.light.css">
+
+  <!-- Google Analytics -->
+  
+
+</head>
+
+  <body>
+    <!-- Page Header -->
+
+
+<header class="site-header header-background" style="background-image: url(/img/background.jpg)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">深入理解Java虚拟机（二）</p>
+          <p class="subtitle"></p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
+            
+              <li>
+                <a href="/">
+                  
+                  Home
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  
+                  Archives
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://github.com/kevinyang0304">
+                  
+                  Github
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://github.com/kevinyang0304">
+                  
+                  Whoami
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By Mute</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2018-05-25</span>
+           <!-- <span class="time">00:06:18</span> -->
+          </span>
+          
+          <!--  Categories  -->
+            <span class="categories info">Under 
+
+<a href="/categories/笔记/">笔记</a>
+</span>
+          
+        </div>
+        <!-- Tags -->
+        
+          <div class="post-tags text-muted">
+            Tags: 
+
+<a class="tag" href="/tags/笔记/">#笔记</a> <a class="tag" href="/tags/Java/">#Java</a>
+
+
+          </div>
+        
+        <!-- Post Main Content -->
+        <div class="post-content">
+          <hr>
+<h4 id="对象的创建"><a href="#对象的创建" class="headerlink" title="对象的创建"></a>对象的创建</h4><p><strong>步骤</strong>： 类加载检查 —&gt; 分配内存 —&gt; 分配的内存空间初始化为零值 —&gt; 设置对象头 —&gt; 数据初始化</p>
+<p> <strong>1. 类加载检查</strong></p>
+<blockquote>
+<p>虚拟机遇到一条new指令时，首先将去检查这个指令的参数是否能在常量池中定位到一个类的符号引用，并且<strong>检查这个符号引用代表的类</strong>是否已被加载、解析、初始化过。若没有，那必须先执行相应的<strong>类加载</strong>过程。</p>
+</blockquote>
+<p> <strong>2. 分配内存</strong></p>
+<blockquote>
+<p>在类加载检查通过后，接下来虚拟机将<strong>为新生对象分配内存</strong>。选择哪种分配方式由<strong>Java堆是否规整</strong>决定，而Java堆是否规整又由<strong>所采用的垃圾收集器是否带有压缩整理功能</strong>决定。</p>
+<ul>
+<li>内存分配方式</li>
+</ul>
+<blockquote>
+<p>① “<strong>指针碰撞</strong>” ：内存绝对规整，即用过的内存放在一边，空闲内存放在一边，分配内存即把作为分界点的指针向空闲方向挪动与对象大小相等的距离即可。</p>
+<p>② “<strong>空闲列表</strong>”： 内存不规整，已占用的内存和空闲内存交错，VM需维护一个列表，记录可用内存，分配时从内存列表找一块足够大的内存空间。</p>
+</blockquote>
+</blockquote>
+<p> <strong>3. 分配的内存空间初始化为零值</strong></p>
+<blockquote>
+<p>内存分配完成后，虚拟机需将分配到的内存空间都<strong>初始化为零值</strong>（<strong>不包括对象头</strong>）——<strong>保证了对象的实例字段在Java代码中可以不赋初始值就可以直接使用</strong></p>
+</blockquote>
+<p> <strong>4. 设置对象头</strong></p>
+<blockquote>
+<p>VM对对象头中的信息进行必要的设置，例如<strong>这个对象是哪个类的实例、如何找到类的元数据信息、对象的哈希码、对象的GC分代年龄等</strong>。</p>
+</blockquote>
+<p> <strong>5. 数据初始化</strong></p>
+<blockquote>
+<p>执行new指令<strong>之后</strong>会接着执行<strong><init>方法</init></strong>，把对象按照程序员的意愿进行初始化。</p>
+</blockquote>
+<hr>
+<h4 id="对象的内存分布"><a href="#对象的内存分布" class="headerlink" title="对象的内存分布"></a>对象的内存分布</h4><p>对象在内存中的布局可以分为<strong>3块区域</strong>：①对象头（Head）②实例数据（Instance Data）③对齐填充（Padding）</p>
+<p> <strong>1. 对象头</strong>：包括两个部分：</p>
+<blockquote>
+<p>①对象自身的<strong>运行时数据</strong>：哈希码、GC分代年龄、锁状态标志、线程执有的锁、偏向线程ID、偏向时间戳等。</p>
+<p>②<strong>类型指针（不一定有）</strong>：即对象指向它的类元数据的指针。VM通过这个指针来确定这个对象是哪个类的实例。</p>
+</blockquote>
+<p> <strong>2. 实例数据</strong>：对象<strong>真正存储的有效信息</strong></p>
+<blockquote>
+<ul>
+<li><p>HotSpot VM 默认的<strong>分配策略顺序</strong>为long/double、int、short/char、byte/boolean、OOPs（Ordinary Object Points）</p>
+</li>
+<li><p>父类中定义的变量在子类之前</p>
+</li>
+<li><p>若CompactField参数为true，则子类中的较短变量也可能插入到父类变量空隙中。</p>
+</li>
+</ul>
+</blockquote>
+<p> <strong>3. 对齐填充</strong>：<strong>不一定存在</strong>，起占位符作用</p>
+<blockquote>
+<p>由于HotSpot VM的自动内存管理系统要求对象起始地址须是8字节的整数倍，所以需要对齐填充区域补全。</p>
+</blockquote>
+<hr>
+<h4 id="对象的访问定位"><a href="#对象的访问定位" class="headerlink" title="对象的访问定位"></a>对象的访问定位</h4><p>Java程序通过<strong>栈上的reference数据</strong>来操作<strong>堆上的具体对象</strong>。</p>
+<p>由于reference类型在Java VM规范中只规定了一个指向对象的引用，并<strong>没有定义这个引用定位、访问堆中对象的方式</strong>，所以具体的对象访问方式也取决于虚拟机实现而定。</p>
+<p> <strong>1. 使用句柄访问</strong></p>
+<blockquote>
+<p>Java堆中将会划分出一块内存来作为句柄池。</p>
+<p>reference数据中存储的就是对象的句柄地址，而句柄中包含了对象实例数据和类型数据各自的地址。</p>
+<p><strong>优点：</strong>reference中存储的是稳定的句柄地址，在对象被移动时，只改变句柄中的实例指针，不改变reference.</p>
+<p><img src="图片1.png" alt="图片1"></p>
+</blockquote>
+<p> <strong>2. 使用直接指针访问（HotSopt采用）</strong></p>
+<blockquote>
+<p>reference中存储的直接就是对象地址。</p>
+<p>而Java堆对象的布局中必须考虑<strong>如何放置访问类型数据的相关信息</strong>。</p>
+<p><strong>优点：</strong>速度更快，节省了一次指针定位的时间开销。</p>
+<p><img src="图片2.png" alt="图片2"></p>
+</blockquote>
+<hr>
+<h4 id="Java-VM堆栈溢出"><a href="#Java-VM堆栈溢出" class="headerlink" title="Java VM堆栈溢出"></a>Java VM堆栈溢出</h4><p> <strong>1. Java堆溢出</strong>——OutOfMemoryError</p>
+<p><strong>方法</strong>：不断创建对象，并保证GC Roots到对象之间有可达路径，以避免垃圾回收。</p>
+<p>虚拟机参数： —Xms：堆的最小值  —Xmx：堆的最大值</p>
+<p> <strong>2. 虚拟机栈和本地方法栈溢出</strong></p>
+<p>①线程请求的栈深度大于虚拟机所允许的最大深度，抛<strong>StackOverFlowError</strong>.</p>
+<p>②虚拟机扩展栈时无法申请到足够的内存空间，抛<strong>OutOfMemoryError</strong>.</p>
+<p><strong>方法</strong>：</p>
+<blockquote>
+<ol>
+<li><p>减少栈容量</p>
+</li>
+<li><p>定义大量本地变量</p>
+</li>
+<li><p>建立多线程，为每个线程申请栈区</p>
+</li>
+</ol>
+</blockquote>
+<p>虚拟机参数： —Xss：栈的最小值   —Xsx：栈的最大值</p>
+<p><strong>3. 方法区和运行时常量池溢出</strong></p>
+<p>方法区：产生大量的类</p>
+<p>运行时常量池：向常量池添加大量常量（<strong>String.intern()</strong>）</p>
+<ul>
+<li><strong>关于String.intern()方法</strong>：是一个Native方法，作用是如果字符串常量池中已经包含一个等于此String对象的字符串，则返回代表池中这个字符串的String对象。否则，将此对象包含的字符串添加到常量池中，并返回引用。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RuntimeConstantPoolOOM</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">                String str1 = <span class="keyword">new</span> StringBuilder(<span class="string">"计算机"</span>).append(<span class="string">"软件"</span>).toString();</span><br><span class="line">                System.out.println(str1.intern() == str1);</span><br><span class="line"></span><br><span class="line">                String str2 = <span class="keyword">new</span> StringBuilder(<span class="string">"ja"</span>).append(<span class="string">"va"</span>).toString();</span><br><span class="line">                Ststem.out.println(str2.intern() == str2);</span><br><span class="line">            &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="图片3.png" alt="图片3"></p>
+
+        </div>
+      </div>
+    </div>
+	
+	  <span id="back-to-top">
+	  <a href="#top"><img src="/img/top3.png"></a>
+	</span>
+	
+  </div>
+
+</article>
+
+
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+	  <!-- 
+        <p class="copyright text-muted">
+          Theme By <a target="_blank" href="https://github.com/levblanc">Levblanc.</a>
+          Inspired By <a target="_blank" href="https://github.com/klugjo/hexo-theme-clean-blog">Clean Blog.</a>
+        <p class="copyright text-muted">
+          Powered By <a target="_blank" href="https://hexo.io/">Hexo.</a>
+        </p>
+		-->
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- After Footer Scripts -->
+<script src="/js/highlight.pack.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
+
+  </body>
+</html>
+
