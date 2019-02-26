@@ -103,7 +103,7 @@
           <!-- Date -->
           <span class="date-time info">On
             <span class="date">2018-05-25</span>
-           <!-- <span class="time">00:06:18</span> -->
+           <!-- <span class="time">20:40:31</span> -->
           </span>
           
           <!--  Categories  -->
@@ -125,7 +125,11 @@
         
         <!-- Post Main Content -->
         <div class="post-content">
-          <hr>
+          <p><a href="#对象的创建">对象的创建</a></p>
+<p><a href="#对象的内存分布">对象的内存分布</a></p>
+<p><a href="#对象的访问定位">对象的访问定位</a></p>
+<p><a href="#JVM堆栈溢出">JVM堆栈溢出</a></p>
+<hr>
 <h4 id="对象的创建"><a href="#对象的创建" class="headerlink" title="对象的创建"></a>对象的创建</h4><p><strong>步骤</strong>： 类加载检查 —&gt; 分配内存 —&gt; 分配的内存空间初始化为零值 —&gt; 设置对象头 —&gt; 数据初始化</p>
 <p> <strong>1. 类加载检查</strong></p>
 <blockquote>
@@ -152,7 +156,7 @@
 </blockquote>
 <p> <strong>5. 数据初始化</strong></p>
 <blockquote>
-<p>执行new指令<strong>之后</strong>会接着执行<strong><init>方法</init></strong>，把对象按照程序员的意愿进行初始化。</p>
+<p>执行new指令<strong>之后</strong>会接着执行<strong>&lt; init &gt;方法</strong>，把对象按照程序员的意愿进行初始化。</p>
 </blockquote>
 <hr>
 <h4 id="对象的内存分布"><a href="#对象的内存分布" class="headerlink" title="对象的内存分布"></a>对象的内存分布</h4><p>对象在内存中的布局可以分为<strong>3块区域</strong>：①对象头（Head）②实例数据（Instance Data）③对齐填充（Padding）</p>
@@ -194,7 +198,7 @@
 <p><img src="图片2.png" alt="图片2"></p>
 </blockquote>
 <hr>
-<h4 id="Java-VM堆栈溢出"><a href="#Java-VM堆栈溢出" class="headerlink" title="Java VM堆栈溢出"></a>Java VM堆栈溢出</h4><p> <strong>1. Java堆溢出</strong>——OutOfMemoryError</p>
+<h4 id="JVM堆栈溢出"><a href="#JVM堆栈溢出" class="headerlink" title="JVM堆栈溢出"></a>JVM堆栈溢出</h4><p> <strong>1. Java堆溢出</strong>——OutOfMemoryError</p>
 <p><strong>方法</strong>：不断创建对象，并保证GC Roots到对象之间有可达路径，以避免垃圾回收。</p>
 <p>虚拟机参数： —Xms：堆的最小值  —Xmx：堆的最大值</p>
 <p> <strong>2. 虚拟机栈和本地方法栈溢出</strong></p>
