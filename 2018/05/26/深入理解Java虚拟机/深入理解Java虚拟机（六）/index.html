@@ -103,7 +103,7 @@
           <!-- Date -->
           <span class="date-time info">On
             <span class="date">2018-05-26</span>
-           <!-- <span class="time">01:13:36</span> -->
+           <!-- <span class="time">23:47:38</span> -->
           </span>
           
           <!--  Categories  -->
@@ -125,7 +125,9 @@
         
         <!-- Post Main Content -->
         <div class="post-content">
-          <hr>
+          <p><a href="#早期（编译期）优化">早期（编译期）优化</a></p>
+<p><a href="#晚期（运行期）优化">晚期（运行期）优化</a></p>
+<hr>
 <h3 id="早期（编译器）优化"><a href="#早期（编译器）优化" class="headerlink" title="早期（编译器）优化"></a>早期（编译器）优化</h3><hr>
 <p>Java的“编译器”其实是一段“不确定”的过程，因为它可能指以下三种情况：</p>
 <ul>
@@ -173,7 +175,7 @@
 <blockquote>
 <p>直接看代码。</p>
 <p>原始代码：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">&gt;       List&lt;Integer&gt; list = Array.asList(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>);</span><br><span class="line">&gt;       <span class="comment">//如果在JDK1.7中，还有另一颗语法糖</span></span><br><span class="line">&gt;       <span class="comment">//能让上一句代码简写成List&lt;Integer&gt; list = [1,2,3,4];</span></span><br><span class="line">&gt;       <span class="keyword">int</span> sum  = <span class="number">0</span>;</span><br><span class="line">&gt;       <span class="keyword">for</span> (<span class="keyword">int</span> i:list)&#123;</span><br><span class="line">&gt;           sum += <span class="number">1</span>;</span><br><span class="line">&gt;       &#125;</span><br><span class="line">&gt;       System.out.println(sum);</span><br><span class="line">&gt; &#125;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">&gt;       List&lt;Integer&gt; list = Array.asList(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>);</span><br><span class="line">&gt; <span class="comment">/*如果在JDK1.7中，还有另一颗语法糖，可以简写成List&lt;Integer&gt; list = [1,2,3,4]。*/</span></span><br><span class="line">&gt;       <span class="keyword">int</span> sum  = <span class="number">0</span>;</span><br><span class="line">&gt;       <span class="keyword">for</span> (<span class="keyword">int</span> i:list)&#123;</span><br><span class="line">&gt;           sum += <span class="number">1</span>;</span><br><span class="line">&gt;       &#125;</span><br><span class="line">&gt;       System.out.println(sum);</span><br><span class="line">&gt; &#125;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
 <p>编译之后再反编译出的代码：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">&gt;     List list = Array.asList(<span class="keyword">new</span> Integer[]&#123;</span><br><span class="line">&gt;         Integer.valueOf(<span class="number">1</span>),</span><br><span class="line">&gt;         Integer.valueOf(<span class="number">2</span>),</span><br><span class="line">&gt;         Integer.valueOf(<span class="number">3</span>),</span><br><span class="line">&gt;         Integer.valueOf(<span class="number">4</span>),    &#125;)</span><br><span class="line">&gt; </span><br><span class="line">&gt;     <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">&gt;     <span class="keyword">for</span> (Iterator localIterator = list.iterator(); localIterator.hasNext();)&#123;</span><br><span class="line">&gt;         <span class="keyword">int</span> i = ((Integer)localIterator.next()).intValue();</span><br><span class="line">&gt;         sum += <span class="number">1</span>;</span><br><span class="line">&gt;     &#125;</span><br><span class="line">&gt;     System.out.println(sum);</span><br><span class="line">&gt; &#125;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
 <p>以上代码一共包含了<strong>泛型、自动装箱、自动拆箱、遍历循环与变长参数</strong>5种语法糖。</p>
@@ -229,6 +231,38 @@
 </li>
 </ul>
 </blockquote>
+<p> <strong>②编译对象和触发条件</strong></p>
+<blockquote>
+<p>在运行过程中会被即时编译器编译的<strong>“热点代码”</strong>有两类：</p>
+<blockquote>
+<p> <strong>1 . 被多次调用的方法</strong></p>
+<p> <strong>2. 被多次执行的程序体</strong>（仍以整个方法作为编译对象，这种编译方式因为编译发生在方法执行过程中，因此形象地被称为<strong>栈上替换（On Stack Replacement OSR编译）</strong>，即方法栈帧还在栈上，方法就被替换了）</p>
+</blockquote>
+<p>判断是否是热点代码，是否需要即时编译，这样的行为叫做<strong>“热点探测”(Hot Spot Detection)</strong>：</p>
+<blockquote>
+<ol>
+<li><p><strong>基于采样的热点探测</strong>：周期性检查方法栈顶，经常出现的即“热点方法”。</p>
+<p><strong>▶优点：</strong>实现简单，高效，容易获取方法调用关系（将调用堆栈展开即可）。</p>
+<p><strong>▶缺点：</strong>热度确认不精确，容易受到线程阻塞或别的外界因素影响。</p>
+</li>
+<li><p><strong>基于计数器的热点探测</strong>：为每个方法（甚至是代码块）建立计数器，统计方法的执行次数，次数超过一定阈值就认为它是“热点方法”。</p>
+<p><strong>▶优点：</strong>精确、严谨</p>
+<p><strong>▶缺点：</strong>实现麻烦、不能直接获取到方法的调用关系</p>
+</li>
+</ol>
+</blockquote>
+<p>HotSpot虚拟机使用的是第二种——<strong>基于计数器的热点探测</strong>，因此它为每个方法准备了两类计数器：<strong>方法调用计数器（统计多次调用的方法）</strong>和<strong>回边计数器（统计被多次执行的程序体）</strong>，两个计数器都会设置一个阈值，当计数器超过该阈值就会触发编译，对于第一类热点代码采用的是普通的JIT编译，对于循环体采用的是OSR编译</p>
+<ul>
+<li><p>如果不做任何设置，方法调用统计器统计的并不是方法调用的绝对次数，而是一个<strong>相对的执行频率</strong>，也就是超过一段时间限度后，若方法调用器仍未达到规定的阈值，则该数量会减半，这个过程称为<strong>方法调用计数器热度的衰减</strong>。</p>
+</li>
+<li><p><strong>回边计数器的作用是统计一个方法中循环体代码执行的次数，在字节码中遇到控制流向后跳转的指令称为“回边”</strong>。回边计数器的阈值是通过计算公式计算出来的。对于循环体的场景，如果计数器的和超过阈值后，将会提交一个OSR编译请求，并且把回边计数器的值降低一些，以便继续在解释器中执行循环，等待编译器输出编译结果。回边计数器没有热点衰减过程，因此统计的是绝对次数</p>
+</li>
+</ul>
+<p><img src="图片1.png" alt="图片1"></p>
+</blockquote>
+<hr>
+<p> <strong>③ 编译优化技术</strong></p>
+<p>见<a href="/2018/05/26/深入理解Java虚拟机/Java编译优化技术/">《Java编译优化技术》</a>篇</p>
 
         </div>
       </div>
