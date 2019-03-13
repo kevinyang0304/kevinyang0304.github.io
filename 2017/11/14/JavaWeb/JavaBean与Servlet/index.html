@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+  <!-- Html Head Tag-->
+  <head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Mute">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="JavaBean与Servlet">
+  <meta property="og:description" content="杨柳潇个人主页">
+  <meta property="og:site_name" content="杨柳潇的博客">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="http://yangliuxiao.top">
+  
+    <link rel="alternate" href="/atom.xml" title="杨柳潇的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+
+  <!-- Site Title -->
+  <title>杨柳潇的博客</title>
+  
+  <!-- 为了增加TOP按钮，新增的CSS文件 -->
+  <link rel="stylesheet" href="/css/TOPButtonStyle.css">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  
+  <link rel="stylesheet" href="/css/style.light.css">
+
+  <!-- Google Analytics -->
+  
+
+</head>
+
+  <body>
+    <!-- Page Header -->
+
+
+<header class="site-header header-background" style="background-image: url(/img/background.jpg)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">JavaBean与Servlet</p>
+          <p class="subtitle"></p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
+            
+              <li>
+                <a href="/">
+                  
+                  Home
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  
+                  Archives
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://github.com/kevinyang0304">
+                  
+                  Github
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/About/index.html">
+                  
+                  About
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By Mute</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2017-11-14</span>
+           <!-- <span class="time">23:09:41</span> -->
+          </span>
+          
+          <!--  Categories  -->
+            <span class="categories info">Under 
+
+<a href="/categories/JavaWeb开发/">JavaWeb开发</a>
+</span>
+          
+        </div>
+        <!-- Tags -->
+        
+          <div class="post-tags text-muted">
+            Tags: 
+
+<a class="tag" href="/tags/代码/">#代码</a> <a class="tag" href="/tags/Java/">#Java</a> <a class="tag" href="/tags/面试/">#面试</a>
+
+
+          </div>
+        
+        <!-- Post Main Content -->
+        <div class="post-content">
+          <p><a href="#JavaBean">JavaBean</a></p>
+<p><a href="#Servlet">Servlet</a></p>
+<hr>
+<h3 id="JavaBean"><a href="#JavaBean" class="headerlink" title="JavaBean"></a>JavaBean</h3><hr>
+<h4 id="JavaBean概述"><a href="#JavaBean概述" class="headerlink" title="JavaBean概述"></a>JavaBean概述</h4><p>JavaBean是用Java语言描述的软件组件模型，类似于Microsoft中COM组件的概念。</p>
+<p>使用JavaBean可以实现代码的重复利用，因此极大地简化了程序的设计过程。</p>
+<p>JavaBean是一种特殊的Java类，它具有如下的几个语法特征。</p>
+<ul>
+<li><p>JavaBean是一个<strong>public类</strong>，即JavaBean的类访问权限必须是public的。</p>
+</li>
+<li><p>JavaBean应该<strong>包含一个无参的构造方法</strong>。</p>
+</li>
+<li><p>JavaBean中属性的获取和设置需要使用标准格式定义的<strong>getXxx()方法和setXxx()方法</strong>。对于boolean类型的成员变量，即布尔类型的属性，可以使用isXxx()方法来代替getXxx()和setXxx()方法。</p>
+</li>
+<li><p>需要被序列化并且实现了<strong>Serializable</strong>接口。</p>
+</li>
+</ul>
+<h4 id="在JSP中设置JavaBean属性"><a href="#在JSP中设置JavaBean属性" class="headerlink" title="在JSP中设置JavaBean属性"></a>在JSP中设置JavaBean属性</h4><p>使用&lt; jsp:useBean&gt;、&lt; jsp:setProperty&gt;以及&lt; jsp:getProperty&gt;来调用JavaBean</p>
+<p>着重强调以下&lt; jsp:setProperty&gt;设置属性的几种形式：</p>
+<p> <strong>① &lt; jsp:setProperty name=”myBean” property=”*” /&gt;</strong></p>
+<p>property=”<em>“表示<em>*从request对象中将所有与JavaBean属性名字相同的请求参数传递给相应属性的setter方法</em></em>。</p>
+<p> <strong>② &lt; jsp:setProperty name=”myBean” property=”id” /&gt;</strong></p>
+<p>表示将request对象中的参数id传入到JavaBean实例myBean的参数id中。</p>
+<p><strong>③ &lt; jsp:setProperty name=”myBean” property=”id” param=”personid”/&gt;</strong></p>
+<p>表示将request对象中的参数personid传入到JavaBean实例myBean的参数id中。</p>
+<p><strong>④ &lt; jsp:setProperty name=”myBean” property=”id” value=”123”/&gt;</strong></p>
+<p>表示向JavaBean实例myBean的属性id中传入指定的值。</p>
+<h4 id="JavaBean实例"><a href="#JavaBean实例" class="headerlink" title="JavaBean实例"></a>JavaBean实例</h4><p><strong>JavaBean文件（public类、包含无参构造函数、实现Serializable接口、有属性的get、set方法）</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">/* JavaBean实例*/</span></span><br><span class="line"><span class="keyword">package</span> count;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">counter</span> <span class="keyword">implements</span> <span class="title">java</span>.<span class="title">io</span>.<span class="title">Serializable</span></span>&#123;</span><br><span class="line">    <span class="comment">/*count属性，记录请求次数*/</span></span><br><span class="line">    <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/*无参构造方法 */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">counter</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/* count属性的get和set方法 */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getCount</span><span class="params">()</span></span>&#123;</span><br><span class="line">        count ++;</span><br><span class="line">        <span class="keyword">return</span> count;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setCount</span><span class="params">(<span class="keyword">int</span> count)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.count = count;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>JSP中使用JavaBean</strong></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;!-- 指定JavaBean实例，其相应的生存范围及全限定名 --&gt;</span><br><span class="line">    &lt;jsp:useBean id=<span class="string">"countBean"</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">"count.counter"</span> scope=<span class="string">"application"</span>/&gt;</span><br><span class="line">    &lt;!-- 使用jsp:getProperty动作指令获得count属性值 --&gt;</span><br><span class="line">    the number of request is:</span><br><span class="line">    &lt;jsp:getProperty name=<span class="string">"countBean"</span> property=<span class="string">"count"</span>/&gt;&lt;br&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="Servlet"><a href="#Servlet" class="headerlink" title="Servlet"></a>Servlet</h3><hr>
+<h4 id="Servlet概述"><a href="#Servlet概述" class="headerlink" title="Servlet概述"></a>Servlet概述</h4><p>Servlet是在JSP之前推出的，它是一种应用于服务器端的Java程序，可以生成动态的Web页面。事实上，JSP在运行前还需要被编译成Servlet。<br>Servlet运行在服务器端，是由Web服务器负责加载的，是独立于平台和协议的Java应用程序。JSP改变了Servlet提供HTTP服务时候的编程方式。但是内部机制上，<strong>每一个JSP都被处理成一个Servlet。</strong><br>Servlet并不限制所使用的协议，但使用最多的协议是HTTP协议。<strong>HTTP协议的特点是每次连接只完成一个请求，其处理过程为：建立连接、发送请求、提供服务、发送响应，最后关闭连接</strong>。</p>
+<h4 id="Servlet的生命周期"><a href="#Servlet的生命周期" class="headerlink" title="Servlet的生命周期"></a>Servlet的生命周期</h4><p>Servlet运行在Servlet容器中，由容器来管理其生命周期。Servlet的生命周期主要包含4个过程：<br><strong>（1）加载和实例化。</strong>（加载Servlet之后，Servlet容器通过Java反射创建Servlet实例）<br><strong>（2）初始化。</strong>（实例创建后，容器调用Servlet的<strong>init()方法</strong>来初始化该Servlet对象)）<br><strong>（3）执行。</strong><br><strong>（4）清理。</strong>（<strong>destroy()方法</strong>）</p>
+<p>在Servlet的整个生命周期，其初始化和销毁都只发生一次，<strong>service()方法</strong>的执行次数取决于Servlet被客户端所访问的次数。</p>
+
+        </div>
+      </div>
+    </div>
+	
+	  <span id="back-to-top">
+	  <a href="#top"><img src="/img/top3.png"></a>
+	</span>
+	
+  </div>
+
+</article>
+
+
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+	  <!-- 
+        <p class="copyright text-muted">
+          Theme By <a target="_blank" href="https://github.com/levblanc">Levblanc.</a>
+          Inspired By <a target="_blank" href="https://github.com/klugjo/hexo-theme-clean-blog">Clean Blog.</a>
+        <p class="copyright text-muted">
+          Powered By <a target="_blank" href="https://hexo.io/">Hexo.</a>
+        </p>
+		-->
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- After Footer Scripts -->
+<script src="/js/highlight.pack.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
+
+  </body>
+</html>
+
