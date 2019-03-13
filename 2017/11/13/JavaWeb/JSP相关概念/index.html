@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html>
+  <!-- Html Head Tag-->
+  <head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Mute">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="JSP相关概念">
+  <meta property="og:description" content="杨柳潇个人主页">
+  <meta property="og:site_name" content="杨柳潇的博客">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="http://yangliuxiao.top">
+  
+    <link rel="alternate" href="/atom.xml" title="杨柳潇的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+
+  <!-- Site Title -->
+  <title>杨柳潇的博客</title>
+  
+  <!-- 为了增加TOP按钮，新增的CSS文件 -->
+  <link rel="stylesheet" href="/css/TOPButtonStyle.css">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  
+  <link rel="stylesheet" href="/css/style.light.css">
+
+  <!-- Google Analytics -->
+  
+
+</head>
+
+  <body>
+    <!-- Page Header -->
+
+
+<header class="site-header header-background" style="background-image: url(/img/background.jpg)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">JSP相关概念</p>
+          <p class="subtitle"></p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
+            
+              <li>
+                <a href="/">
+                  
+                  Home
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  
+                  Archives
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://github.com/kevinyang0304">
+                  
+                  Github
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/About/index.html">
+                  
+                  Whoami
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By Mute</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2017-11-13</span>
+           <!-- <span class="time">16:16:49</span> -->
+          </span>
+          
+          <!--  Categories  -->
+            <span class="categories info">Under 
+
+<a href="/categories/JavaWeb开发/">JavaWeb开发</a>
+</span>
+          
+        </div>
+        <!-- Tags -->
+        
+          <div class="post-tags text-muted">
+            Tags: 
+
+<a class="tag" href="/tags/代码/">#代码</a> <a class="tag" href="/tags/Java/">#Java</a> <a class="tag" href="/tags/面试/">#面试</a>
+
+
+          </div>
+        
+        <!-- Post Main Content -->
+        <div class="post-content">
+          <p><a href="#JSP概述">JSP概述</a></p>
+<p><a href="#JSP基本语法">JSP基本语法</a></p>
+<blockquote>
+<p><a href="#①JSP注释">① JSP注释</a><br><a href="#②JSP指令">② JSP指令</a><br><a href="#③JSP脚本元素">③ JSP脚本元素</a><br><a href="#④JSP动作元素">④ JSP动作元素</a></p>
+</blockquote>
+<p><a href="#JSP内置对象">JSP内置对象</a></p>
+<hr>
+<h3 id="JSP概述"><a href="#JSP概述" class="headerlink" title="JSP概述"></a>JSP概述</h3><h4 id="1-JSP简介"><a href="#1-JSP简介" class="headerlink" title="1. JSP简介"></a>1. JSP简介</h4><p>JSP指的是<strong>Java Server Pages</strong>，它是由SUN公司在1996年6月发布的用于开发动态Web应用的一项技术。 JSP是基于Java Servlet的Web开发技术，由于其所具有的简单易学和跨平台等的特性，使其在各种动态Web程序设计语言中脱颖而出，它具有一套完整的语法规范，目前已经成为了Web开发中的主流选择，广泛应用于各个领域中。 </p>
+<h4 id="2-JSP的技术特点"><a href="#2-JSP的技术特点" class="headerlink" title="2. JSP的技术特点"></a>2. JSP的技术特点</h4><p>JSP通过在使用HTML编写的静态网页中添加一些专有标签以及脚本程序来实现网页中动态内容的显示。它具有如下特点：</p>
+<ul>
+<li><p><strong>能够在任何Web或应用程序服务器上运行。</strong>（JSP无需重新编译，因为Java字节码是平台无关）</p>
+</li>
+<li><p>将<strong>程序逻辑和页面显示相分离</strong>。</p>
+</li>
+<li><p>采用<strong>标签</strong>简化页面开发。</p>
+</li>
+<li><p>组件可重用。 </p>
+</li>
+</ul>
+<h4 id="3-JSP的运行机制"><a href="#3-JSP的运行机制" class="headerlink" title="3.  JSP的运行机制"></a>3.  JSP的运行机制</h4><p><img src="images\图片1.png" alt="images\图片1"></p>
+<p><strong>当一个JSP文件第一次被请求时，JSP容器会先把该JSP文件转换成一个Servlet。</strong></p>
+<h4 id="4-编写JSP文件"><a href="#4-编写JSP文件" class="headerlink" title="4. 编写JSP文件"></a>4. 编写JSP文件</h4><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line">    &lt;head&gt;</span><br><span class="line">        &lt;title&gt;JSP&lt;/title&gt;</span><br><span class="line">    &lt;/head&gt;</span><br><span class="line">    &lt;body&gt;</span><br><span class="line">        My JSP</span><br><span class="line">    &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<p>如上内容保存为html文件则双击可直接打开；</p>
+<p>若保存为JSP文件，则必须通过发布到JSP容器，如Tomcat中的某个Web应用才能查看显示效果。</p>
+<p>例如将jsp复制到&lt; TOMCAT_HOME&gt;\webapps\jsptest目录下，打开链接http ://localhost:8080/jsptest/myjsp.jsp</p>
+<p>从这个例子可以看出，<strong>HTML语言中的元素都可以被JSP容器所解析</strong>。实际上，JSP只是在原有HTML文件中加入了一些具有Java特点的代码，称为<strong>JSP的语法元素</strong>。</p>
+<hr>
+<h3 id="JSP基本语法"><a href="#JSP基本语法" class="headerlink" title="JSP基本语法"></a>JSP基本语法</h3><p>在传统的HTML页面文件中嵌入脚本语言和JSP标签就构成了一个JSP页面文件。一个JSP页面可由5种元素组合而成：</p>
+<p><strong>① HTML页面内容</strong><br><strong>② JSP注释</strong><br><strong>③ JSP指令</strong><br><strong>④ JSP脚本元素</strong><br><strong>⑤ JSP动作元素</strong></p>
+<hr>
+<h4 id="①JSP注释"><a href="#①JSP注释" class="headerlink" title="①JSP注释"></a>①JSP注释</h4><p>JSP中的注释有两种，一种是<strong>可以在客户端显示的注释</strong>，称为<strong>HTML注释</strong>，一种是<strong>发送到服务器端，在客户端不能显示</strong>的注释，称为<strong>JSP注释</strong>。</p>
+<p>HTML注释以&lt; !—开始，以—&gt;结束，中间包含的内容即为注释部分。其形式为：</p>
+<blockquote>
+<p>&lt; !—注释内容—&gt;</p>
+</blockquote>
+<p>JSP注释以&lt; %—开始，以—%&gt;结束，中间包含的内容即为注释部分。其形式为：</p>
+<blockquote>
+<p>&lt;%—注释内容—%&gt;</p>
+<p><strong>由于在JSP标签&lt;% %&gt;中包含的是符合Java语法规则的Java代码，所以其中可以出现Java形式的注释。同样不会在浏览器端HTML源代码中显示。</strong></p>
+<p>&lt;%   // 注释  %&gt;</p>
+</blockquote>
+<h4 id="②JSP指令"><a href="#②JSP指令" class="headerlink" title="②JSP指令"></a>②JSP指令</h4><p>JSP指令用来向<strong>JSP引擎提供编译信息</strong>。可以设置<strong>全局变量</strong>，如声明类、要实现的方法和输出内容的类型等。一般的，JSP指令在整个页面范围内有效，且并不向客户端产生任何输出。<strong>所有的JSP指令都只在当前的整个页面中有效。</strong></p>
+<p><strong>JSP指令语法格式为：</strong></p>
+<blockquote>
+<p>&lt;%@指令标记 [ 属性=”值” 属性=”值” ]%&gt;</p>
+</blockquote>
+<p>JSP指令有3类，分别为：</p>
+<ul>
+<li><p>page指令</p>
+</li>
+<li><p>include指令</p>
+</li>
+<li><p>taglib指令</p>
+</li>
+</ul>
+<blockquote>
+<p> <strong>1. page指令</strong></p>
+<p>page指令称为页面指令，用来定义JSP页面的全局属性，该配置会作用于整个JSP页面。page指令用来指定所使用的脚本语言、导入指定的类及软件包等。</p>
+<p>page指令的语法格式为：<br>         <strong>&lt;%@ page 属性1=“属性值1” 属性2=“属性值2”……%&gt;</strong></p>
+<p>例如：</p>
+<p>&lt;%@ page contentType=“text/html;charset=GB2312”  import=“java.util.*” %&gt;</p>
+<p>也可以是以下这样<strong>多条page指令</strong>（<strong>page指令中只能给import属性指定多个值，而其他属性只能指定一个值</strong>）</p>
+<p>&lt;%@ page contentType=“text/html;charset=GB2312” %&gt;</p>
+<p>&lt;%@ page import=“java.util.<em> ” , “java.awt.</em>“ %&gt;</p>
+<p><img src="images\图片2.png" alt="images\图片2"></p>
+<p><strong>2. include指令</strong></p>
+<p>include指令是文件加载指令，用于在JSP文件中插入一个包含文本或代码的文件。它把文件插入后与原来的JSP文件合并成一个新的JSP页面。需要注意的是，<strong>如果被插入的文件发生了变化，则包含这个文件的JSP文件需要被重新编译。</strong><br>include指令的语法格式为：<br>            <strong>&lt;%@ include file=”被包含文件的地址”%&gt;</strong><br>include指令只有一个<strong>file属性</strong>，该属性用来指定插入到JSP页面目前位置的文件资源。<br><strong>被插入的文件可以是一个文本文件、一个HTML文件或一个JSP文件，但要保证被插入的文件必须是可访问的</strong></p>
+<p>例如：</p>
+<p><strong>&lt;%@ include file=”a.txt”%&gt;</strong></p>
+<p><strong>&lt;%@ include file=”a.html”%&gt;</strong></p>
+<p><strong>&lt;%@ include file=”a.jsp”%&gt;</strong></p>
+<p> <strong>3. taglib指令</strong></p>
+<p>taglib指令用来<strong>引用标签库并设置标签库的前缀</strong>。这个指令允许JSP页面使用用户自定义的标签，它也可以为标签库命名，标签在这个库中定义。</p>
+<p>taglib指令的语法格式为：<br>            <strong>&lt;%@ taglib uri=</strong>”tagLibraryURI” <strong>prefix=</strong>”tagPrefix”<strong>%&gt;</strong><br>taglib指令包含了两个属性，一个是uri，一个是prefix。其中，<strong>uri属性用来指定标签文件或标签库的存放位置，prefix属性则用来指定该标签库所使用的前缀</strong>。</p>
+<p>比如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&gt; &lt;%@ page contentType=<span class="string">"text/html;charset=GB2312"</span>%&gt;</span><br><span class="line">&gt; &lt;%-- 声明要引用的标签库 --%&gt;</span><br><span class="line">&gt; &lt;%@ taglib prefix=<span class="string">"c"</span> uri=http:<span class="comment">//java.sun.com/jsp/jstl/core  %&gt;</span></span><br><span class="line">&gt; &lt;html&gt;</span><br><span class="line">&gt;      &lt;head&gt;</span><br><span class="line">&gt;          &lt;title&gt;JSP&lt;/title&gt;</span><br><span class="line">&gt;      &lt;/head&gt;</span><br><span class="line">&gt;      &lt;body&gt;</span><br><span class="line">&gt;      &lt;%-- 使用JSTL标签输出 --%&gt;</span><br><span class="line">&gt;      &lt;c:out value=<span class="string">"taglib example! "</span>&gt;</span><br><span class="line">&gt;       &lt;/body&gt;</span><br><span class="line">&gt; &lt;/html&gt;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h4 id="③JSP脚本元素"><a href="#③JSP脚本元素" class="headerlink" title="③JSP脚本元素"></a>③JSP脚本元素</h4><p>脚本元素是JSP中使用最频繁的元素，通过JSP脚本可以将Java代码嵌入到HTML页面中。所有可执行的Java代码，都可以通过JSP脚本来执行。</p>
+<p><strong>JSP脚本元素主要包含如下3种类型：</strong></p>
+<ul>
+<li><p><strong>JSP声明语句</strong></p>
+</li>
+<li><p><strong>JSP表达式</strong></p>
+</li>
+<li><p><strong>JSP Scriptlet</strong></p>
+</li>
+</ul>
+<blockquote>
+<p> <strong>1. JSP声明语句</strong></p>
+<p><strong>JSP声明语句用于声明变量和方法</strong>。JSP声明语句的语法格式为：<br>            <strong>&lt;%! 变量或方法定义 %&gt;</strong><br><strong>注意：变量的类型可以是Java语言中所提供的任意数据类型。使用JSP声明语句声明的变量将来会转换成Servlet类中的成员变量，这些变量在整个JSP页面内都有效，因此也被称为JSP页面的成员变量。</strong><br>下面代码中使用声明语句声明了不同类型的变量：</p>
+<p>&lt;%! int a=1, b;<br>    String str1=null, str2=”JSP”;<br>    Date date;<br>%&gt;</p>
+<p>声明方法时只需将方法定义放置在”&lt;%! “和” %&gt;”之间即可。使用JSP声明语言声明的方法将来会转换成Servlet类中的成员方法。当方法被调用时，方法内定义的变量被分配内存，调用完毕即释放。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&gt; &lt;%@ page contentType=<span class="string">"text/html;charset=GB2312"</span>%&gt;</span><br><span class="line">&gt; </span><br><span class="line">&gt; &lt;html&gt;</span><br><span class="line">&gt;      &lt;head&gt;</span><br><span class="line">&gt;      &lt;title&gt;JSP&lt;/title&gt;</span><br><span class="line">&gt;      &lt;/head&gt;</span><br><span class="line">&gt;      &lt;%!</span><br><span class="line">&gt;          <span class="comment">/* 声明整型变量a */</span></span><br><span class="line">&gt;          <span class="keyword">public</span> <span class="keyword">int</span> a;</span><br><span class="line">&gt;          <span class="comment">/* 声明方法printStr */</span></span><br><span class="line">&gt;          <span class="function"><span class="keyword">public</span> String <span class="title">printStr</span><span class="params">()</span></span></span><br><span class="line"><span class="function">&gt;          </span>&#123;</span><br><span class="line">&gt;              <span class="keyword">return</span> <span class="string">"JSP Method"</span>;</span><br><span class="line">&gt;          &#125;</span><br><span class="line">&gt;       %&gt;</span><br><span class="line">&gt;  &lt;body&gt;</span><br><span class="line">&gt;  &lt;%</span><br><span class="line">&gt;      out.println(<span class="string">"a="</span> + a); <span class="comment">/* 输出a值 */</span></span><br><span class="line">&gt;      a++ <span class="comment">/* a自增 */</span></span><br><span class="line">&gt;  %&gt;</span><br><span class="line">&gt;  &lt;br&gt;</span><br><span class="line">&gt;  &lt;%</span><br><span class="line">&gt;      out.println(printString());  <span class="comment">/* 调用printStr()方法，输出其返回值</span></span><br><span class="line"><span class="comment">&gt;  %&gt;</span></span><br><span class="line"><span class="comment">&gt;  &lt;/body&gt;</span></span><br><span class="line"><span class="comment">&gt; &lt;/html&gt;</span></span><br><span class="line"><span class="comment">&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>JSP页面会被编译成Servlet类，而在容器中只会存在一个Servlet类的实例。在JSP中声明的变量是成员变量，它只在创建Servlet实例时被初始化一次，此后，该变量的值将一直被保存，直到该Servlet实例被销毁。</strong></p>
+<p> <strong>2. JSP表达式</strong></p>
+<p>在JSP中可以在“&lt;%=”和“%&gt;”标记之间插入一个<strong>表达式</strong>，这个表达式必须能够求值，并且<strong>计算结果会以字符串形式</strong>发送到客户端显示出来。JSP表达式的值会作为HTML页面的内容。（”&lt;%=”是一个符号。=前面不能有空格）<br>如果表达式的值是一个字符串，则该表达式的值会直接在页面上显示处理，否则会先将表达式的值转换为字符串，再在页面上显示。<br>JSP表达式的语法格式为：<br>              <strong>&lt;%= 表达式 %&gt;</strong></p>
+<p>例子：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt; &lt;body&gt;</span><br><span class="line">&gt;     &lt;%! </span><br><span class="line">&gt;         String str = <span class="string">"JSP expression"</span>;  <span class="comment">/*声明变量*/</span></span><br><span class="line">&gt;      %&gt;</span><br><span class="line">&gt;      &lt;!-- JSP表达式 --&gt;</span><br><span class="line">&gt;      &lt;%=str%&gt;</span><br><span class="line">&gt; &lt;/body&gt;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>JSP Scriptlet</li>
+</ol>
+<p>JSP Scriptlet是<strong>一段Java代码段</strong>。当需要使用Java实现一些复杂操作或控制时，JSP表达式往往不能满足要求，此时需要用到JSP Scriptlet。<strong>在JSP Scriptlet中声明的变量是JSP页面的局部变量</strong>，调用JSP Scriptlet时，会为局部变量分配内存空间，调用结束后，释放局部变量占有的内存空间。<br>JSP Scriptlet的语法格式为：<br>            <strong>&lt;% Java代码%&gt;</strong><br><strong>JSP Scriptlet中可以包含变量、方法、表达式等内容</strong></p>
+<p>例子：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt; &lt;body&gt;</span><br><span class="line">&gt;  &lt;%</span><br><span class="line">&gt;  String str = <span class="string">"JSP scriptlet"</span>; <span class="comment">/*声明字符串*/</span></span><br><span class="line">&gt;  out.println(str);             <span class="comment">/*输出字符串的值*/</span></span><br><span class="line">&gt;  %&gt;</span><br><span class="line">&gt; &lt;/body&gt;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h4 id="④JSP-动作元素"><a href="#④JSP-动作元素" class="headerlink" title="④JSP 动作元素"></a>④JSP 动作元素</h4><p>JSP动作元素用来<strong>控制JSP的行为</strong>，执行一些常用的JSP页面动作。<strong>通过动作元素可以使用实现多行Java代码能够实现的效果</strong>，如动态插入文件、重用JavaBean组件、自定义标签等。<br>JSP中的动作元素主要包含下面7个：</p>
+<blockquote>
+<p>&lt; jsp:include&gt;<br>&lt; jsp:forward&gt;<br>&lt; jsp:param&gt;<br>&lt; jsp:plugin&gt;<br>&lt; jsp:useBean&gt;<br>&lt; jsp:setProperty&gt;<br>&lt; jsp:getProperty&gt; </p>
+</blockquote>
+<p> <strong>4.1 &lt; jsp:include&gt;</strong></p>
+<blockquote>
+<p>&lt; jsp:include&gt;动作元素提供了一种在JSP中包含页面的方式，既可以包含静态文件，也可以包含动态文件。</p>
+<p>所谓的JSP页面动态包含某个文件，指的是<strong>当JSP页面运行时才会载入该文件</strong>，并不是简单的将被包含文件与JSP页面合并成一个新的JSP页面，JSP与它包含的文件在逻辑上和语法上都是独立的，当被包含的文件变化时，JSP页面运行时可以看到所包含文件变化后的显示结果，无需刷新。<strong>（与前文的JSP指令Include的区别，include指令包含的是静态文件）</strong></p>
+<p>&lt; jsp:include  page=”URL”  flush=”true|false” <strong>/&gt;</strong></p>
+<p>page：被包含文件的URL，是相对路径</p>
+<p>flush：当缓冲区满时，是否将其清空。默认为false</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="comment">/* 例一：包含静态文件 */</span></span><br><span class="line">&gt; &lt;jsp:include page="hello.txt"&gt; &lt;/jsp:include&gt;</span><br><span class="line">&gt; </span><br><span class="line">&gt; <span class="comment">/* 例二：包含动态jsp文件 */</span></span><br><span class="line">&gt; &lt; jsp:include page="hello.jsp"&gt; &lt;/jsp:include&gt;</span><br><span class="line">&gt; <span class="comment">/* hello.jsp 文件如下 */</span></span><br><span class="line">&gt; &lt;%@ page contentType=<span class="string">"text/html;charset=GB2312"</span>%&gt;</span><br><span class="line">&gt;     &lt;%@ page <span class="keyword">import</span>=<span class="string">"java.util.*"</span> %&gt;</span><br><span class="line">&gt;     &lt;%= (<span class="keyword">new</span> Date()).toString() %&gt;   <span class="comment">/*jsp表达式 */</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p> <strong>4.2 &lt; jsp:forward&gt;</strong></p>
+<blockquote>
+<p>&lt; jsp:forward&gt;是一种用于<strong>页面重定向</strong>的动作元素，它的作用是停止当前JSP页面的执行，而将客户端请求转交给另一个JSP页面。<strong>要注意转发与重定向的区别，转发是在服务器端进行的，不会引起客户端的二次请求，因此浏览器的地址栏不会发生任何变化，效率也比重定向要高。</strong></p>
+<p>&lt; jsp:forward&gt;的语法格式为：<br>        <strong>&lt; jsp:forward page=”转向页面的URL地址”/&gt;</strong></p>
+<p>在包含&lt; jsp:forward&gt;动作元素的JSP文件中，在&lt; jsp:forward&gt;之前的代码能够被执行，当执行到&lt; jsp:forward&gt;时转向新页面，浏览器中显示的是新页面的执行效果，原jsp文件中位于&lt; jsp:forward&gt;之后的代码不再执行。</p>
+</blockquote>
+<p> <strong>4.3 &lt; jsp:param&gt;</strong></p>
+<blockquote>
+<p>&lt; jsp:param&gt;是一种<strong>提供参数</strong>的附属动作元素，它以 “名-值”对的形式为其它动作元素提供附加信息，一般与</p>
+<p>&lt; jsp:include &gt;、&lt; jsp:forward&gt;以及&lt; jsp:plugin&gt;联合使用。</p>
+<p>&lt; jsp:param&gt;的语法格式为：<br>        <strong>&lt; jsp:param name= “参数名字” value= “指定给param的参数值”&gt;</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="comment">/* 与&lt;jsp:include&gt;动作元素一起使用 */</span></span><br><span class="line">&gt; &lt;body&gt;</span><br><span class="line">&gt;      &lt;jsp:include page=<span class="string">"sum.jsp"</span>&gt;</span><br><span class="line">&gt;          &lt;jsp:param name=<span class="string">"number"</span> value=<span class="string">"200"</span> /&gt;</span><br><span class="line">&gt;      &lt;/jsp:include&gt;</span><br><span class="line">&gt; &lt;/body&gt;</span><br><span class="line">&gt; </span><br><span class="line">&gt; <span class="comment">/* sum.jsp */</span></span><br><span class="line">&gt; &lt;body&gt;</span><br><span class="line">&gt;      &lt;%</span><br><span class="line">&gt;          String str = request.getParameter(<span class="string">"number"</span>);</span><br><span class="line">&gt;          <span class="keyword">int</span> n = Integer.parseInt(str);</span><br><span class="line">&gt;          <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">&gt;          <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">&gt;              sum +=i;</span><br><span class="line">&gt;          &#125;</span><br><span class="line">&gt;      %&gt;</span><br><span class="line">&gt; &lt;br&gt;</span><br><span class="line">&gt; &lt;%=sum%&gt;</span><br><span class="line">&gt; &lt;/body&gt;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+<p>与&lt; jsp:forward&gt;和&lt; jsp:plugin&gt;一起合用也是这样，可以将&lt; jsp:param&gt;包含在&lt; jsp:forward&gt;和&lt; /jsp:forward&gt; 之间，将参数传递给重定向之后的页面，在重定向页面可以通过<strong>request.getParameter(“paramName”);</strong>获取参数。</p>
+</blockquote>
+<p> <strong>4.4 &lt; jsp:plugin&gt;</strong></p>
+<blockquote>
+<p>&lt; jsp:plugin&gt;动作元素可以将服务器端的JavaBean或Applet下载到客户端执行。<br>其常用属性的说明如下：<br>        type：指定插件类型，是Bean还是Applet。<br>        code：指定执行的Java类名，必须以扩展名.class结尾。<br>        codebase：指定被执行的Java类所在的目录。<br>        name：指定Bean或Applet的名称。<br>        archive：指定在Bean或Applet执行前要预先加载的类的    表。<br>        align：指定Bean或Applet在显示时的对齐方式。<br>        height：指定Bean或Applet显示时的高度。</p>
+</blockquote>
+<p> <strong>4.5 &lt; jsp:useBean&gt;、&lt; jsp:setProperty&gt;、&lt; jsp:getProperty&gt;动作元素</strong></p>
+<blockquote>
+<p>这三个动作元素都是与JavaBean相关的。</p>
+<p> <strong>1. &lt; jsp:useBean&gt;动作元素</strong></p>
+<p>用来装载一个将在JSP页面中使用的JavaBean。这个功能非常有用，它充分发挥了Java组件重用的优势，同时也提高了JSP使用的方便性。</p>
+<p><strong>&lt; jsp:useBean id=”beanInstanceName” class=”classname” scope=”page | request | session | application” /&gt;</strong></p>
+<ul>
+<li><p>page：表示该JavaBean实例在当前页面有效</p>
+</li>
+<li><p>request：表示该JavaBean实例在本次请求有效</p>
+</li>
+<li><p>session：在本次session有效</p>
+</li>
+<li><p>application：在本应用内一直有效</p>
+</li>
+</ul>
+<p>&lt; jsp:useBean&gt;动作元素中常常包含有&lt; jsp:setProperty&gt;，通过&lt; jsp:setProperty&gt;动作元素来设置Bean的属性值。</p>
+<p> <strong>2. &lt; jsp:setProperty&gt;动作元素</strong></p>
+<p>获取到Bean实例之后，便可以利用&lt; jsp:setProperty&gt;动作元素来设置或修改Bean中的属性值。</p>
+<p><strong>&lt; jsp:setProperty name=”<em>beanInstanceName</em>“ property=”<em>propertyName</em>“ value=”<em>value</em>“ /&gt;</strong></p>
+<p>在使用&lt; jsp:setProperty&gt;之前，必须要使用&lt; jsp:useBean&gt;先声明Bean。</p>
+<p> <strong>3. &lt; jsp:getProperty&gt;动作元素</strong></p>
+<p>用来提取指定Bean属性的值，并将其转换成字符串，然后输出。</p>
+<p><strong>&lt; jsp:getProperty name=”<em>beanInstanceName</em>“ property=”<em>propertyName</em>“ /&gt;</strong></p>
+<p>在使用&lt; jsp:getProperty&gt;之前，必须要使用&lt; jsp:useBean&gt;创建它。</p>
+<p><strong>&lt; jsp:useBean&gt;、&lt; jsp:setProperty&gt;、&lt; jsp:getProperty&gt;一起使用实例：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&gt; &lt;body&gt;</span><br><span class="line">&gt; &lt;p&gt;输出用户信息：</span><br><span class="line">&gt;     &lt;br&gt;</span><br><span class="line">&gt;     &lt;!-- 创建jsp.User的实例，实例名为user --&gt;</span><br><span class="line">&gt;     &lt;jsp:useBean id=<span class="string">"user"</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">"jsp.User"</span> scope=<span class="string">"page"</span> /&gt;</span><br><span class="line">&gt;     &lt;!-- 设置user的username属性 --&gt;</span><br><span class="line">&gt;     &lt;jsp:setProperty name=<span class="string">"user"</span> property=<span class="string">"username"</span> value=<span class="string">"jack"</span> /&gt;</span><br><span class="line">&gt;     &lt;!-- 设置user的age属性 --&gt;</span><br><span class="line">&gt;      &lt;jsp:setProperty name=<span class="string">"user"</span> property=<span class="string">"age"</span> value=<span class="string">"27"</span> /&gt;</span><br><span class="line">&gt; </span><br><span class="line">&gt;     &lt;!-- 输出 --&gt;</span><br><span class="line">&gt;     用户名：&lt;jsp:getProperty name=<span class="string">"user"</span> property=<span class="string">"username"</span> /&gt;</span><br><span class="line">&gt;     &lt;br&gt;</span><br><span class="line">&gt;     年龄：&lt;jsp:getProperty name=<span class="string">"user"</span> property=<span class="string">"age"</span> /&gt;</span><br><span class="line">&gt; &lt;/body&gt;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<hr>
+<h3 id="JSP内置对象"><a href="#JSP内置对象" class="headerlink" title="JSP内置对象"></a>JSP内置对象</h3><p>为了简化Web应用程序的开发，在JSP中定义了一些<strong>由JSP容器实现和管理</strong>的内置对象，这些对象<strong>可以直接在JSP页面中使用</strong>，而不需要JSP页面编写者对它们进行实例化。<br>JSP 2.0规范中定义了9种内置对象，<strong>这9个内置对象都是Servlet API接口的实例</strong>，由JSP规范对它们进行了默认初始化，因此，在JSP中它们已经是对象了，可以直接拿来使用。</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>内置对象名称</th>
+<th>相对应的类</th>
+<th>作用域</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>request</td>
+<td>javax.servelet.ServletRequest</td>
+<td>request</td>
+</tr>
+<tr>
+<td>response</td>
+<td>javax.servelet.ServletResponse</td>
+<td>page</td>
+</tr>
+<tr>
+<td>pageContext</td>
+<td>javax.servelet.jsp.pageContext</td>
+<td>session</td>
+</tr>
+<tr>
+<td>session</td>
+<td>javax.servelet.http.HttpSession</td>
+<td>page</td>
+</tr>
+<tr>
+<td>application</td>
+<td>javax.servelet.ServletContext</td>
+<td>application</td>
+</tr>
+<tr>
+<td>out</td>
+<td>javax.servelet.jsp.JspWriter</td>
+<td>page</td>
+</tr>
+<tr>
+<td>config</td>
+<td>javax.servlet.ServletConfig</td>
+<td>page</td>
+</tr>
+<tr>
+<td>page</td>
+<td>java.lang.Object</td>
+<td>page</td>
+</tr>
+<tr>
+<td>exception</td>
+<td>java.langThrowable</td>
+<td>page</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p> <strong>① request对象</strong></p>
+<p>用于获取客户端信息，例如我们在表单中填写的信息等。实际上，JSP容器会将客户端的请求信息封装在request对象中。<strong>在客户端发出请求时会创建request对象，在请求结束后，则会销毁request对象。</strong><br>通常在应用中用的最多的就是客户端请求的参数名称和参数值。在request对象中提供了一系列的方法用来获取客户端的请求参数，这些方法包括getParameter、getParameterNames、getParameterValues和getParameterMap。</p>
+<p> <strong>② response对象</strong></p>
+<p>包含了从JSP页面返回客户端的所有信息，其作用域是它所在的页面page。</p>
+<p>response对象是javax.servlet.ServletResponse类的一个实例，它封装由JSP产生的响应，并返回客户端以响应请求。</p>
+<p> <strong>③ out对象</strong></p>
+<p>out内置对象是一个缓冲的输出流，用来<strong>向客户端返回信息</strong>。它是javax.servlet.jsp.JspWriter的一个实例。由于向客户端输出时要先进行连接，所以总是采用缓冲输出的方式，因此out是<strong>缓冲输出流</strong></p>
+<p> <strong>④ session对象</strong></p>
+<p>session对象是会话对象，用来记录每个客户端的访问状态。<br>所谓会话指的是从一个客户打开浏览器与服务器建立连接，到这个客户关闭浏览器与服务器断开连接的过程。<br>当一个客户访问服务器时，可能会在这个服务器的多个页面之间反复连接、不断刷新一个页面或向一个页面提交信息等，有了session对象，<strong>服务器就可以知道这是同一个客户完成的动作</strong>。session对象有session.isNew()、session.getAttribute()、session.getId()等方法。</p>
+<p>  <strong>⑤ application对象</strong></p>
+<p>application对象用于获取和设置Servlet的相关信息，它的生命周期是从服务器启动直到服务器关闭为止，即<strong>一旦创建一个application对象，该对象将会一直存在，直到服务器关闭</strong>。application中封装了JSP所在的Web应用中的信息。application.getAttribute()、application.setAttribute()</p>
+<p> <strong>⑥ pageContext对象</strong></p>
+<p>pageContext对象是一个比较特殊的对象，<strong>使用它不仅可以设置page范围内的属性，还可以设置其它范围内的属性</strong>。通过pageContext还可以访问本页面中的所有其他对象，如前面介绍的request、response、out等对象。由于request、response等对象本身已经提供给我们一些方法，可以直接调用这些方法来完成特定的操作，因此<strong>在实际JSP开发过程中pageContext对象使用的并不多</strong>。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 设置page范围内的属性 */</span></span><br><span class="line">pageContext.setAttribute(<span class="string">"attributeName"</span>,<span class="string">"page_scope"</span>);</span><br><span class="line"><span class="comment">/* 获得page范围内的属性 */</span></span><br><span class="line">String str = (String)pageContext.getAttribute(<span class="string">"attributeName"</span>,pageContext.PAGE_SCOPE);</span><br></pre></td></tr></table></figure>
+<p> <strong>⑦ page对象</strong></p>
+<p>page对象指的是当前的JSP页面本身，它是java.lang.Object类的对象，通过page对象可以方便的调用Servlet类中定义的方法。<strong>page对象在实际开发过程中并不经常使用。</strong></p>
+<p> <strong>⑧ config对象</strong></p>
+<p>config对象是ServletConfig类的一个实例，在Servlet初始化时，可以通过config向Servlet传递信息。所传递的信息可以是属性名和属性值构成的名值对，也可以是通过ServletContext对象传递的服务器的相关信息。<br>在JSP开发中config对象用的不多，<strong>只有在编写Servlet时当需要重载Servlet的init()方法时才会用到config对象</strong>。</p>
+<p> <strong>⑨ exception对象</strong></p>
+<p>exception对象是java.lang.Throwable类的对象，<strong>用来处理页面的错误和异常</strong>。在使用JSP进行开发时，习<strong>惯的做法是在一个页面中使用page指令的errorPage属性，让该属性指向一个专门用于异常处理的页面</strong>。如果在JSP页面中有未捕获的异常，则会生成exception对象，然后将该exception对象传送到page指令中设置的异常处理页面中，在异常处理页面中对exception对象进行处理。在异常处理页面中需要将其page指令的isErrorPage属性设置为true才可以使用exception对象。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 设置页面的errorPage属性 ，指向一个异常处理页面 */</span></span><br><span class="line">&lt;%@ page contentType=<span class="string">"text/html;charset=GB2312"</span> errorPage=<span class="string">"exceptionObject.jsp"</span>%&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/* 异常处理页面应在page指令中将isErrorPage属性设置为true */</span></span><br><span class="line">&lt;%@ page contentType=<span class="string">"text/html;charset=GB2312"</span> isErrorPage=<span class="string">"true"</span>%&gt;</span><br></pre></td></tr></table></figure>
+
+        </div>
+      </div>
+    </div>
+	
+	  <span id="back-to-top">
+	  <a href="#top"><img src="/img/top3.png"></a>
+	</span>
+	
+  </div>
+
+</article>
+
+
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+	  <!-- 
+        <p class="copyright text-muted">
+          Theme By <a target="_blank" href="https://github.com/levblanc">Levblanc.</a>
+          Inspired By <a target="_blank" href="https://github.com/klugjo/hexo-theme-clean-blog">Clean Blog.</a>
+        <p class="copyright text-muted">
+          Powered By <a target="_blank" href="https://hexo.io/">Hexo.</a>
+        </p>
+		-->
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- After Footer Scripts -->
+<script src="/js/highlight.pack.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
+
+  </body>
+</html>
+
