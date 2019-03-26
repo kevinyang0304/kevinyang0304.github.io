@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+  <!-- Html Head Tag-->
+  <head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Mute">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="TCP协议相关内容">
+  <meta property="og:description" content="杨柳潇个人主页">
+  <meta property="og:site_name" content="杨柳潇的博客">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="http://yangliuxiao.top">
+  
+    <link rel="alternate" href="/atom.xml" title="杨柳潇的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+
+  <!-- Site Title -->
+  <title>杨柳潇的博客</title>
+  
+  <!-- 为了增加TOP按钮，新增的CSS文件 -->
+  <link rel="stylesheet" href="/css/TOPButtonStyle.css">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  
+  <link rel="stylesheet" href="/css/style.light.css">
+
+  <!-- Google Analytics -->
+  
+
+</head>
+
+  <body>
+    <!-- Page Header -->
+
+
+<header class="site-header header-background" style="background-image: url(/img/background.jpg)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">TCP协议相关内容</p>
+          <p class="subtitle"></p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
+            
+              <li>
+                <a href="/">
+                  
+                  Home
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  
+                  Archives
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://github.com/kevinyang0304">
+                  
+                  Github
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/About/index.html">
+                  
+                  About
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By Mute</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2019-03-13</span>
+           <!-- <span class="time">09:51:25</span> -->
+          </span>
+          
+          <!--  Categories  -->
+            <span class="categories info">Under 
+
+<a href="/categories/网络/">网络</a>
+</span>
+          
+        </div>
+        <!-- Tags -->
+        
+          <div class="post-tags text-muted">
+            Tags: 
+
+<a class="tag" href="/tags/网络/">#网络</a>
+
+
+          </div>
+        
+        <!-- Post Main Content -->
+        <div class="post-content">
+          <p><a href="#（1）TCP/IP的分层结构">（1）TCP/IP的分层结构</a></p>
+<p><a href="#（2）各层的主要协议">（2）各层的主要协议</a></p>
+<p><a href="#（3）数据封装">（3）数据封装</a></p>
+<p><a href="#（4）TCP三次握手与四次挥手">（4）TCP三次握手与四次挥手</a></p>
+<hr>
+<h3 id="（1）TCP-IP的分层结构"><a href="#（1）TCP-IP的分层结构" class="headerlink" title="（1）TCP/IP的分层结构"></a>（1）TCP/IP的分层结构</h3><hr>
+<p><img src="图片1.jpg" alt="图片1"></p>
+<p>1）链路层（数据链路层或网络接口层），通常包括操作系统中的设备驱动程序和计算机中对应的网络接口卡。</p>
+<p>2）网络层（互联网层），处理分组在网络中的活动。</p>
+<p>3）运输层，主要负责两台主机上的应用程序提供端到端的同信。（TCP(传输控制协议）UDP（用户数据包协议）。</p>
+<p>4）应用层，主要负责处理特定的应用程序细节。大部分TCP/IP实现都会提供以下通用程序：</p>
+<blockquote>
+<p>Telnet远程登陆</p>
+<p>FTP文件传输协议</p>
+<p>SMTP简单邮件传送协议</p>
+<p>SNMP简单网络管理协议</p>
+</blockquote>
+<hr>
+<h3 id="（2）各层的主要协议"><a href="#（2）各层的主要协议" class="headerlink" title="（2）各层的主要协议"></a>（2）各层的主要协议</h3><hr>
+<p><img src="图片2.png" alt="图片2"></p>
+<ul>
+<li><strong>TCP和UDP</strong>是两种最为著名的运输层协议，二者都使用IP作为网络层协议</li>
+</ul>
+<blockquote>
+<p><strong>TCP</strong>使用不可靠的IP服务，但是却提供一种<strong>可靠的运输层服务</strong></p>
+<p><strong>UDP</strong>为应用程序发送和接收数据报。<strong>UDP是不可靠的</strong>，它不能保证数据报能安全无误的达到目的地。</p>
+</blockquote>
+<ul>
+<li><p><strong>IP（网际协议</strong>）是网络层上的主要协议，同时被TCP和UDP使用。TCP和UDP的每组数据都通过端系统和每个中间路由器中的IP层在互联网中进行传输。</p>
+</li>
+<li><p><strong>ICMP(internet控制报文协议）</strong>是IP协议的附属协议。IP层用它来与其他主机或路由器交换错误报文和其他重要信息。</p>
+</li>
+<li><p><strong>IGMP（internet组管理协议）</strong>它用来把一个UDP数据多播到多个主机。</p>
+</li>
+<li><p><strong>ARP(地址解析协议）和RARP（逆地址解析协议）</strong>是网络接口使用的特殊协议，用来转换IP层和网络接口层使用的地址。</p>
+</li>
+</ul>
+<hr>
+<h3 id="（3）数据封装"><a href="#（3）数据封装" class="headerlink" title="（3）数据封装"></a>（3）数据封装</h3><hr>
+<p><img src="图片3.png" alt="图片3"></p>
+<p> 当应用程序用TCP传送数据时，数据被送入协议栈中，然后逐个通过每一层，直接到当作一串比特流送入网络。其中每一层对收到的数据都要加一些首部信息（有时还要增加尾部信息）</p>
+<ul>
+<li>TCP传给IP的数据单元称作TCP报文段(segment)</li>
+<li>IP传给链路层的数据单元称作IP数据报(IP datagram)</li>
+<li>通过以太网传输的比特流称作帧（Frame)</li>
+</ul>
+<hr>
+<h3 id="（4）TCP三次握手与四次挥手"><a href="#（4）TCP三次握手与四次挥手" class="headerlink" title="（4）TCP三次握手与四次挥手"></a>（4）TCP三次握手与四次挥手</h3><hr>
+<p><strong>两个序号和六个标志位：</strong></p>
+<p>（1）序号：seq序号，占32位，用来标识从TCP源端向目的端发送的字节流，发起方发送数据时对此进行标记。<br>（2）确认序号：ack序号，占32位，只有ACK标志位为1时，确认序号字段才有效，ack=seq+1。<br>（3）标志位：共6个，即URG、ACK、PSH、RST、SYN、FIN等，具体含义如下：</p>
+<blockquote>
+<p>（A）URG：紧急指针（urgent pointer）有效。<br>（B）ACK：确认序号有效。<br>（C）PSH：接收方应该尽快将这个报文交给应用层。<br>（D）RST：重置连接。<br>（E）SYN：发起一个新连接。<br>（F）FIN：释放一个连接。</p>
+</blockquote>
+<p><strong>需要注意的是：</strong><br> （A）不要将确认序号ack与标志位中的ACK搞混了。<br> （B）确认方ack=发起方req+1，两端配对。</p>
+<p><img src="1.png" alt="1"></p>
+<p>① 在第一次消息发送中，A随机选取一个序列号作为自己的初始序号发送给B；</p>
+<p>② 第二次消息B使用ack对A的数据包进行确认，因为已经收到了序列号为x的数据包，准备接收序列号为x+1的包，所以ack=x+1，同时B告诉A自己的初始序列号，就是seq=y；</p>
+<p>③ 第三条消息A告诉B收到了B的确认消息并准备建立连接，A自己此条消息的序列号是x+1，所以seq=x+1，而ack=y+1是表示A正准备接收B序列号为y+1的数据包。</p>
+<p><img src="2.png" alt="2"></p>
+<p><strong>四次挥手：</strong></p>
+<p>由于TCP连接时全双工的，因此，每个方向都必须要单独进行关闭，这一原则是当一方完成数据发送任务后，发送一个FIN来终止这一方向的连接，收到一个FIN只是意味着这一方向上没有数据流动了，即不会再收到数据了，但是在这个TCP连接上仍然能够发送数据，直到这一方向也发送了FIN。</p>
+<p>首先进行关闭的一方将执行主动关闭，而另一方则执行被动关闭，上图描述的即是如此。</p>
+<blockquote>
+<p>（1）第一次挥手：Client发送一个FIN，用来关闭Client到Server的数据传送，Client进入FIN_WAIT_1状态。</p>
+<p>（2）第二次挥手：Server收到FIN后，发送一个ACK给Client，确认序号为收到序号+1（与SYN相同，一个FIN占用一个序号），Server进入CLOSE_WAIT状态。</p>
+<p>（3）第三次挥手：Server发送一个FIN，用来关闭Server到Client的数据传送，Server进入LAST_ACK状态。</p>
+<p>（4）第四次挥手：Client收到FIN后，Client进入TIME_WAIT状态，接着发送一个ACK给Server，确认序号为收到序号+1，Server进入CLOSED状态，完成四次挥手</p>
+</blockquote>
+<p><img src="3.png" alt="3"></p>
+<p><strong>为什么建立连接是三次握手，而关闭连接却是四次挥手呢？</strong></p>
+<p>这是因为服务端在LISTEN状态下，收到建立连接请求的SYN报文后，把ACK和SYN放在一个报文里发送给客户端。而关闭连接时，收到对方的FIN报文时，仅仅表示对方不再发送数据了但是还能接收数据，己方也未必全部数据都发送给对方了，所以己方可以立即close，也可以发送一些数据给对方后，再发送FIN报文给对方来表示同意现在关闭连接，因此，己方ACK和FIN一般都会分开发送。</p>
+<p><strong>为什么TIME_WAIT状态需要经过2MSL(最大报文段生存时间)才能返回到CLOSE状态？</strong></p>
+<p>不应该是为了防止B发送的FIN=1的包的丢失，因为如果A没有收到来自B的释放连接请求，是不会进入TIME-WAIT状态的。所以正确的解释是：A发送的确认释放连接信息B没有收到，这时候B会再次发送一个FIN=1的释放连接请求，而这个时候A还处于TIME-WAIT，所以可以再次发送确认信息</p>
+
+        </div>
+      </div>
+    </div>
+	
+	  <span id="back-to-top">
+	  <a href="#top"><img src="/img/top3.png"></a>
+	</span>
+	
+  </div>
+
+</article>
+
+
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+	  <!-- 
+        <p class="copyright text-muted">
+          Theme By <a target="_blank" href="https://github.com/levblanc">Levblanc.</a>
+          Inspired By <a target="_blank" href="https://github.com/klugjo/hexo-theme-clean-blog">Clean Blog.</a>
+        <p class="copyright text-muted">
+          Powered By <a target="_blank" href="https://hexo.io/">Hexo.</a>
+        </p>
+		-->
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- After Footer Scripts -->
+<script src="/js/highlight.pack.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
+
+  </body>
+</html>
+
