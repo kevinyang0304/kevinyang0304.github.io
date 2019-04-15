@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html>
+  <!-- Html Head Tag-->
+  <head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Mute">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="设计模式（四）">
+  <meta property="og:description" content="杨柳潇个人主页">
+  <meta property="og:site_name" content="杨柳潇的博客">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="http://yangliuxiao.top">
+  
+    <link rel="alternate" href="/atom.xml" title="杨柳潇的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+
+  <!-- Site Title -->
+  <title>杨柳潇的博客</title>
+  
+  <!-- 为了增加TOP按钮，新增的CSS文件 -->
+  <link rel="stylesheet" href="/css/TOPButtonStyle.css">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  
+  <link rel="stylesheet" href="/css/style.light.css">
+
+  <!-- Google Analytics -->
+  
+
+</head>
+
+  <body>
+    <!-- Page Header -->
+
+
+<header class="site-header header-background" style="background-image: url(/img/background.jpg)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">设计模式（四）</p>
+          <p class="subtitle"></p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
+            
+              <li>
+                <a href="/">
+                  
+                  Home
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  
+                  Archives
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://github.com/kevinyang0304">
+                  
+                  Github
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/About/index.html">
+                  
+                  About
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By Mute</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2018-06-05</span>
+           <!-- <span class="time">02:44:07</span> -->
+          </span>
+          
+          <!--  Categories  -->
+            <span class="categories info">Under 
+
+<a href="/categories/笔记/">笔记</a>
+</span>
+          
+        </div>
+        <!-- Tags -->
+        
+          <div class="post-tags text-muted">
+            Tags: 
+
+<a class="tag" href="/tags/笔记/">#笔记</a> <a class="tag" href="/tags/设计模式/">#设计模式</a>
+
+
+          </div>
+        
+        <!-- Post Main Content -->
+        <div class="post-content">
+          <p><a href="#代理模式">代理模式</a></p>
+<p><a href="#模板方法模式">模板方法模式</a></p>
+<p><a href="#适配器模式">适配器模式</a></p>
+<p><a href="#状态模式">状态模式</a></p>
+<p><a href="#组合模式">组合模式</a></p>
+<hr>
+<h4 id="代理模式"><a href="#代理模式" class="headerlink" title="代理模式"></a>代理模式</h4><hr>
+<ul>
+<li><strong>模式定义</strong></li>
+</ul>
+<p><strong>代理模式</strong>(Proxy Pattern) ：给某一个对象提供一个代理，并<strong>由代理对象控制对原对象的引用</strong>。代理模式的英文叫做Proxy或Surrogate，它是一种<strong>对象结构型模式</strong>。</p>
+<ul>
+<li><strong>模式结构</strong></li>
+</ul>
+<p><img src="images\图片1.png" alt="images\图片1"></p>
+<p>代理模式包含如下角色：</p>
+<blockquote>
+<p>Subject: 抽象主题角色<br>Proxy: 代理主题角色<br>RealSubject: 真实主题角色</p>
+</blockquote>
+<p>通过引入一个新的对象（如小图片和远程代理对象）<strong>来实现对真实对象的操作或者将新的对象作为真实对象的一个替身</strong>，这种实现机制即为代理模式，通过<strong>引入代理对象来间接访问一个对象</strong>，这就是代理模式的模式动机。 </p>
+<ul>
+<li><strong>模式优缺点</strong></li>
+</ul>
+<p><strong>优点：</strong></p>
+<blockquote>
+<p>① 代理模式能够<strong>协调调用者和被调用者</strong>，在一定程度上降低了系统的耦合度。<br>② <strong>远程代理使得客户端可以访问在远程机器上的对象</strong>，远程机器可能具有更好的计算性能与处理速度，可以快速响应并处理客户端请求。<br>③ <strong>虚拟代理</strong>通过使用一个小对象来代表一个大对象，可以减少系统资源的消耗，对系统进行优化并提高运行速度。<br>④ 保护代理可以控制对真实对象的<strong>使用权限</strong>。</p>
+</blockquote>
+<p><strong>缺点：</strong></p>
+<blockquote>
+<p>① 由于在客户端和真实主题之间增加了代理对象，因此有些类型的代理模式可能会造成请求的<strong>处理速度变慢</strong>。<br>② 实现代理模式需要额外的工作，有些代理模式的<strong>实现非常复杂</strong>。</p>
+</blockquote>
+<ul>
+<li><strong>模式适用环境</strong></li>
+</ul>
+<p>根据代理模式的使用目的，常见的代理模式有以下几种类型：<br><strong>① 远程(Remote)代理：</strong>为一个位于不同的地址空间的对象提供一个本地的代理对象，这个不同的地址空间可以是在同一台主机中，也可是在另一台主机中，远程代理又叫做大使(Ambassador)。<br><strong>② 虚拟(Virtual)代理：</strong>如果需要创建一个资源消耗较大的对象，先创建一个消耗相对较小的对象来表示，真实对象只在需要时才会被真正创建。<br><strong>③ Copy-on-Write代理：</strong>它是虚拟代理的一种，把复制（克隆）操作延迟到只有在客户端真正需要时才执行。一般来说，对象的深克隆是一个开销较大的操作，Copy-on-Write代理可以让这个操作延迟，只有对象被用到的时候才被克隆。</p>
+<p><strong>④ 保护(Protect or Access)代理：</strong>控制对一个对象的访问，可以给不同的用户提供不同级别的使用权限。<br><strong>⑤ 缓冲(Cache)代理：</strong>为某一个目标操作的结果提供临时的存储空间，以便多个客户端可以共享这些结果。<br><strong>⑥ 防火墙(Firewall)代理：</strong>保护目标不让恶意用户接近。<br><strong>⑦ 同步化(Synchronization)代理：</strong>使几个用户能够同时使用一个对象而没有冲突。<br><strong>⑧ 智能引用(Smart Reference)代理：</strong>当一个对象被引用时，提供一些额外的操作，如将此对象被调用的次数记录下来等。</p>
+<ul>
+<li><strong>模式应用</strong></li>
+</ul>
+<p>(1) <strong>Java RMI</strong> (Remote Method Invocation，远程方法调用)。</p>
+<p>(2) <strong>EJB、Web Service</strong>等分布式技术都是代理模式的应用。在EJB中使用了RMI机制，远程服务器中的企业级Bean在本地有一个桩代理，客户端通过桩来调用远程对象中定义的方法，而无须直接与远程对象交互。在EJB的使用中需要提供一个公共的接口，客户端针对该接口进行编程，无须知道桩以及远程EJB的实现细节。 </p>
+<p>(3) <strong>Spring 框架中的AOP技术</strong>也是代理模式的应用，在Spring AOP中应用了动态代理(Dynamic Proxy)技术。</p>
+<hr>
+<h4 id="模板方法模式"><a href="#模板方法模式" class="headerlink" title="模板方法模式"></a>模板方法模式</h4><hr>
+<ul>
+<li><strong>模式定义</strong></li>
+</ul>
+<p><strong>模板方法模式(Template Method Pattern)</strong>：定义一个操作中算法的<strong>骨架</strong>，而将一些步骤<strong>延迟到子类</strong>中，模板方法使得子类可以不改变一个算法的结构即可重定义该算法的某些特定步骤。<strong>模板方法是一种类行为型模式。</strong></p>
+<ul>
+<li><strong>模式结构</strong></li>
+</ul>
+<p><img src="images\图片2.png" alt="images\图片2"></p>
+<p>模板方法模式包含如下角色：</p>
+<blockquote>
+<p>AbstractClass: 抽象类<br>ConcreteClass:  具体子类 </p>
+</blockquote>
+<p>在模板方法模式的使用过程中，要求开发抽象类和开发具体子类的设计师之间进行协作。<strong>一个设计师负责给出一个算法的轮廓和骨架</strong>，另一些设计师则负责给出这个算法的各个<strong>逻辑步骤</strong>。实现这些具体逻辑步骤的方法称为基本方法(Primitive Method)，而将这些基本法方法汇总起来的方法称为模板方法(Template Method)，模板方法模式的名字从此而来。</p>
+<p><strong>① 模板方法：</strong>一个模板方法是定义在抽象类中的、把基本操作方法组合在一起形成一个总算法或一个总行为的方法。<br><strong>② 基本方法：</strong>基本方法是实现算法各个步骤的方法，是模板方法的组成部分。包括</p>
+<blockquote>
+<p>抽象方法(Abstract Method)<br>具体方法(Concrete Method)<br>钩子方法(Hook Method)：“挂钩”方法和空方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">template</span><span class="params">()</span></span></span><br><span class="line"><span class="function">&gt; </span>&#123;</span><br><span class="line">&gt;     open();</span><br><span class="line">&gt;     display();</span><br><span class="line">&gt;     <span class="keyword">if</span>(isPrint()) <span class="comment">/*钩子方法用以约束*/</span></span><br><span class="line">&gt;     &#123;</span><br><span class="line">&gt;         print();</span><br><span class="line">&gt;     &#125;</span><br><span class="line">&gt; &#125;</span><br><span class="line">&gt; <span class="comment">/*子类的钩子方法将覆盖父类的钩子方法，从而可以通过在子类中实现*/</span></span><br><span class="line">&gt; <span class="comment">/*的钩子方法对父类方法的执行进行约束，实现子类对父类行为的反向控制。*/</span></span><br><span class="line">&gt; <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isPrint</span><span class="params">()</span></span></span><br><span class="line"><span class="function">&gt; </span>&#123;</span><br><span class="line">&gt;     <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">&gt; &#125;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<ul>
+<li><strong>模式优缺点</strong></li>
+</ul>
+<p><strong>优点:</strong></p>
+<blockquote>
+<p>模板方法模式在一个类中<strong>形式化</strong>地定义算法，而由它的<strong>子类实现细节的处理。</strong><br>模板方法模式是一种<strong>代码复用的基本技术</strong>。<br>模板方法模式导致一种<strong>反向的控制</strong>结构，通过一个父类调用其子类的操作，通过对子类的扩展增加新的行为，<strong>符合“开闭原则”。</strong></p>
+</blockquote>
+<p><strong>缺点：</strong></p>
+<blockquote>
+<p>每个不同的实现都需要定义一个子类，这会导致<strong>类的个数增加</strong>，系统更加庞大，设计也更加抽象，但是更加符合“单一职责原则”，使得类的内聚性得以提高。</p>
+</blockquote>
+<ul>
+<li><strong>模式适用环境</strong></li>
+</ul>
+<p>① 一次性实现一个算法的不变的部分，并将可变的行为留给子类来实现。<br>② 各子类中公共的行为应被提取出来并集中到一个公共父类中以避免代码重复。<br>③ 对一些复杂的算法进行分割，将其算法中固定不变的部分设计为模板方法和父类具体方法，而一些可以改变的细节由其子类来实现。<br>④ 控制子类的扩展。</p>
+<ul>
+<li><strong>模式应用</strong></li>
+</ul>
+<p>(1) 模板方法模式广泛应用于框架设计（如Spring，Struts等）中，以确保父类控制处理流程的逻辑顺序（如框架的初始化）。</p>
+<p>(2) Java单元测试工具JUnit中的TestCase类的设计</p>
+<hr>
+<h4 id="适配器模式"><a href="#适配器模式" class="headerlink" title="适配器模式"></a>适配器模式</h4><hr>
+<ul>
+<li><strong>模式定义</strong></li>
+</ul>
+<p><strong>适配器模式(Adapter Pattern) ：</strong>将一个接口转换成客户希望的另一个接口，适配器模式使接口不兼容的那些类可以一起工作，其别名为<strong>包装器(Wrapper)</strong>。适配器模式<strong>既可以作为类结构型模式，也可以作为对象结构型模式。</strong></p>
+<ul>
+<li><p><strong>模式结构</strong></p>
+<p><strong>类适配器：</strong></p>
+</li>
+</ul>
+<p><img src="images\图片3.png" alt="images\图片3"></p>
+<p><strong>对象适配器：</strong></p>
+<p><img src="images\图片4.png" alt="images\图片4"></p>
+<p>适配器模式包含如下角色：</p>
+<blockquote>
+<p>Target：目标抽象类<br>Adapter：适配器类<br>Adaptee：适配者类<br>Client：客户类</p>
+</blockquote>
+<ul>
+<li><strong>模式优缺点</strong></li>
+</ul>
+<p><strong>优点：</strong></p>
+<p>① 将目标类和适配者类<strong>解耦</strong>，通过引入一个适配器类来重用现有的适配者类，而<strong>无须修改原有代码</strong>。<br>② 增加了类的<strong>透明性和复用性</strong>，将具体的实现封装在适配者类中，对于客户端类来说是透明的，而且提高了适配者的复用性。<br>③ 灵活性和扩展性都非常好，通过使用配置文件，可以很方便地更换适配器，也可以在不修改原有代码的基础上增加新的适配器类，<strong>完全符合“开闭原则”。</strong></p>
+<p><strong>类适配器模式还具有如下优点：</strong></p>
+<blockquote>
+<p>由于适配器类是适配者类的子类，因此可以在适配器类中置换一些适配者的方法，使得适配器的<strong>灵活性更强</strong></p>
+</blockquote>
+<p><strong>类适配器模式的缺点如下：</strong></p>
+<blockquote>
+<p>对于Java、C#等不支持多重继承的语言，一次最多只能适配一个适配者类，而且目标抽象类只能为抽象类，不能为具体类，其使用有一定的<strong>局限性</strong>，不能将一个适配者类和它的子类都适配到目标接口。</p>
+</blockquote>
+<p><strong>对象适配器模式还具有如下优点：</strong></p>
+<blockquote>
+<p>一个对象适配器<strong>可以把多个不同的适配者适配到同一个目标</strong>，也就是说，同一个适配器可以把适配者类和它的子类都适配到目标接口。</p>
+</blockquote>
+<p><strong>对象适配器模式的缺点如下：</strong></p>
+<blockquote>
+<p>与类适配器模式相比，要想置换适配者类的方法就不容易。如果一定要置换掉适配者类的一个或多个方法，就只好先做一个适配者类的子类，将适配者类的方法置换掉，然后再把适配者类的子类当做真正的适配者进行适配，实现过程较为复杂。</p>
+</blockquote>
+<ul>
+<li><strong>模式适用环境</strong></li>
+</ul>
+<p>① 系统需要使用现有的类，而这些类的接口不符合系统的需要。<br>② 想要建立一个可以重复使用的类，用于与一些彼此之间没有太大关联的一些类，包括一些可能在将来引进的类一起工作。</p>
+<ul>
+<li><strong>模式应用</strong></li>
+</ul>
+<p>(1) <strong>JDBC</strong>给出一个客户端通用的抽象接口，每一个具体数据库引擎（如SQL Server、Oracle、MySQL等）的JDBC驱动软件都是一个介于JDBC接口和数据库引擎接口之间的适配器软件。抽象的JDBC接口和各个数据库引擎API之间都需要相应的适配器软件，这就是为各个不同数据库引擎准备的驱动程序。</p>
+<p>(2)<strong>在Spring AOP框架</strong>中，对BeforeAdvice、AfterAdvice、ThrowsAdvice三种通知类型借助适配器模式来实现。</p>
+<hr>
+<h4 id="状态模式"><a href="#状态模式" class="headerlink" title="状态模式"></a>状态模式</h4><hr>
+<ul>
+<li><strong>模式定义</strong></li>
+</ul>
+<p><strong>状态模式(State Pattern)</strong> ：允许一个对象<strong>在其内部状态改变时改变它的行为</strong>，对象看起来似乎修改了它的类。其别名为状态对象(Objects for States)，状态模式是一种<strong>对象行为型</strong>模式。</p>
+<ul>
+<li><strong>模式结构</strong></li>
+</ul>
+<p><img src="images\图片5.png" alt="images\图片5"></p>
+<p>状态模式包含如下角色：</p>
+<blockquote>
+<p>Context: 环境类<br>State: 抽象状态类<br>ConcreteState: 具体状态类</p>
+</blockquote>
+<p>状态模式描述了<strong>对象状态的变化</strong>以及<strong>对象如何在每一种状态下表现出不同的行为</strong>。<br>状态模式的关键是引入了一个<strong>抽象类</strong>来专门表示对象的状态，这个类我们叫做<strong>抽象状态类</strong>，而对象的每一种具体状态类都继承了该类，并<strong>在不同具体状态类中实现了不同状态的行为</strong>，包括<strong>各种状态之间的转换</strong>。</p>
+<ul>
+<li><strong>模式优缺点</strong></li>
+</ul>
+<p><strong>优点：</strong></p>
+<blockquote>
+<p>① <strong>封装了转换规则</strong>。<br>② <strong>枚举可能的状态</strong>，在枚举状态之前需要确定状态种类。<br>③ 将所有与某个状态有关的行为放到一个类中（环境类），并且<strong>可以方便地增加新的状态</strong>，只需要改变对象状态即可改变对象的行为。<br>④ <strong>允许状态转换逻辑与状态对象合成一体</strong>，而不是某一个巨大的条件语句块。<br>⑤ 可以让多个环境对象共享一个状态对象，从而减少系统中对象的个数。</p>
+</blockquote>
+<p><strong>缺点：</strong></p>
+<blockquote>
+<p>① 状态模式的使用必然会<strong>增加系统类和对象的个数</strong>。<br>② 状态模式的<strong>结构与实现都较为复杂</strong>，如果使用不当将导致程序结构和代码的混乱。<br>③ 状态模式对“开闭原则”的支持并不太好，对于可以切换状态的状态模式，<strong>增加新的状态类需要修改那些负责状态转换的源代码</strong>，否则无法切换到新增状态；而且<strong>修改某个状态类的行为</strong>也需修改对应类的源代码。</p>
+</blockquote>
+<ul>
+<li><strong>模式适用环境</strong></li>
+</ul>
+<p>① 对象的行为<strong>依赖于它的状态（属性）</strong>并且可以<strong>根据它的状态改变而改变它的相关行为。</strong><br>② 代码中包含大量与对象状态有关的<strong>条件语句</strong>，这些条件语句的出现，会导致代码的可维护性和灵活性变差，不能方便地增加和删除状态，使客户类与类库之间的耦合增强。在这些条件语句中包含了对象的行为，而且这些条件对应于对象的各种状态。</p>
+<ul>
+<li><strong>模式应用</strong></li>
+</ul>
+<p>① 状态模式在<strong>工作流</strong>或<strong>游戏</strong>等类型的软件中得以广泛使用，如在政府OA办公系统中，一个批文的状态有多种：<strong>尚未办理；正在办理；正在批示；正在审核；已经完成</strong>等各种状态，而且批文状态不同时对批文的操作也有所差异。使用状态模式可以描述工作流对象（如批文）的状态转换以及不同状态下它所具有的行为。 </p>
+<p>② 在目前主流的RPG（Role Play Game，角色扮演游戏）中，<strong>使用状态模式可以对游戏角色进行控制</strong>，游戏角色的升级伴随着其状态的变化和行为的变化。对于游戏程序本身也可以通过状态模式进行总控，一个游戏活动包括<strong>开始、运行、结束</strong>等状态，通过对状态的控制可以控制系统的行为，决定游戏的各个方面，因此可以使用状态模式对整个游戏的架构进行设计与实现。</p>
+<hr>
+<h4 id="组合模式"><a href="#组合模式" class="headerlink" title="组合模式"></a>组合模式</h4><hr>
+<ul>
+<li><strong>模式定义</strong></li>
+</ul>
+<p><strong>组合模式(Composite Pattern)</strong>：组合多个对象<strong>形成树形结构</strong>以表示<strong>“整体-部分”</strong>的结构层次。组合模式对单个对象（即叶子对象）和组合对象（即容器对象）的使用具有<strong>一致性</strong>。<br>组合模式又可以称为“整体-部分”(Part-Whole)模式，属于<strong>对象的结构模式</strong>，它将对象组织到树结构中，可以用来描述整体与部分的关系。</p>
+<ul>
+<li><strong>模式结构</strong></li>
+</ul>
+<p><img src="images\图片6.png" alt="images\图片6"></p>
+<p>组合模式包含如下角色：</p>
+<blockquote>
+<p>Component: 抽象构件<br>Leaf: 叶子构件<br>Composite: 容器构件<br>Client: 客户类</p>
+</blockquote>
+<p>组合模式的关键是定义了一个<strong>抽象构件类</strong>，它<strong>既可以代表叶子，又可以代表容器</strong>，而客户端针对该抽象构件类进行编程，无须知道它到底表示的是叶子还是容器，可以对其进行<strong>统一处理</strong>。<br>同时<strong>容器对象与抽象构件类之间还建立一个聚合关联关系</strong>，在容器对象中既可以包含叶子，也可以包含容器，以此<strong>实现递归组合</strong>，形成一个树形结构。</p>
+<p><strong>组合模式根据抽象构件类的定义形式，又可以分为透明组合模式和安全组合模式。</strong></p>
+<p><strong>透明组合模式：</strong></p>
+<p><img src="images\图片8.png" alt="images\图片8"></p>
+<p><strong>安全组合模式：</strong></p>
+<p><img src="images\图片9.png" alt="images\图片9"></p>
+<ul>
+<li><strong>模式优缺点</strong></li>
+</ul>
+<p><strong>优点：</strong></p>
+<blockquote>
+<p>① 可以清楚地定义<strong>分层次的复杂对象</strong>，表示对象的全部或部分层次，使得增加新构件也更容易。<br>② 客户端<strong>调用简单</strong>，客户端可以<strong>一致</strong>的使用组合结构或其中单个对象。<br>③ 定义了包含叶子对象和容器对象的类层次结构，叶子对象可以被组合成更复杂的容器对象，而这个容器对象又可以被组合，这样不断递归下去，<strong>可以形成复杂的树形结构</strong>。<br>④ 更容易在组合体内加入对象构件，客户端不必因为加入了新的对象构件而更改原有代码。</p>
+</blockquote>
+<p><strong>缺点：</strong></p>
+<blockquote>
+<p>① 使设计变得<strong>更加抽象</strong>，对象的业务规则如果很复杂，则实现组合模式具有很大挑战性，而且不是所有的方法都与叶子对象子类都有关联。<br>② 增加新构件时可能会产生一些问题，<strong>很难对容器中的构件类型进行限制</strong>。</p>
+</blockquote>
+<ul>
+<li><strong>模式适用环境</strong></li>
+</ul>
+<p>需要表示一个对象整体或部分层次，在具有整体和部分的<strong>层次结构</strong>中，希望通过一种方式<strong>忽略整体与部分的差异，可以一致地对待它们。</strong><br>让客户能够忽略不同对象层次的变化，客户端可以针对抽象构件编程，无须关心对象层次结构的细节。<strong>对象的结构是动态的并且复杂程度不一样，但客户需要一致地处理它们。</strong></p>
+<ul>
+<li><strong>模式应用</strong></li>
+</ul>
+<p><strong>(1) XML文档解析</strong></p>
+<p><strong>(2) 操作系统中的目录结构</strong>是一个树形结构，因此在对文件和文件夹进行操作时可以应用组合模式，例如杀毒软件在查毒或杀毒时，既可以针对一个具体文件，也可以针对一个目录。如果是对目录查毒或杀毒，将递归处理目录中的每一个子目录和文件。 </p>
+<p><strong>(3) JDK的AWT/Swing</strong>是组合模式在Java类库中的一个典型实际应用。 </p>
+<p><img src="images\图片7.png" alt="images\图片7"></p>
+
+        </div>
+      </div>
+    </div>
+	
+	  <span id="back-to-top">
+	  <a href="#top"><img src="/img/top3.png"></a>
+	</span>
+	
+  </div>
+
+</article>
+
+
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+	  <!-- 
+        <p class="copyright text-muted">
+          Theme By <a target="_blank" href="https://github.com/levblanc">Levblanc.</a>
+          Inspired By <a target="_blank" href="https://github.com/klugjo/hexo-theme-clean-blog">Clean Blog.</a>
+        <p class="copyright text-muted">
+          Powered By <a target="_blank" href="https://hexo.io/">Hexo.</a>
+        </p>
+		-->
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- After Footer Scripts -->
+<script src="/js/highlight.pack.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
+
+  </body>
+</html>
+
