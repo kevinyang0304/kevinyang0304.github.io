@@ -1,0 +1,440 @@
+<!DOCTYPE HTML>
+<html lang="">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="杨柳潇的博客">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="http://yangliuxiao.top">
+    <!--SEO-->
+
+    <meta name="keywords" content="机器学习,笔记,Python">
+
+
+    <meta name="description" content="
+分类：基本概念(basic-classification)
+
+基本概念
+
+（1）分类定义：
+
+ 目标：以前未知的对象应该尽可能准确地被分配一个类。
+评估：使用测试集来确定模型的性能。不同的评估...">
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+
+    <!--Title-->
+
+
+<title>数据挖掘笔记（四） | 杨柳潇的博客</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="杨柳潇的博客" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.jpg">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+
+</head>
+
+</html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header" style="background-image:url(/./img/background.jpg)">
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title="Mute">
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                 <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yangliuxiao.top">杨柳潇的博客</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>Home</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>时间轴</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="数据挖掘笔记（四）">
+            
+	            数据挖掘笔记（四）
+            
+        </h1>
+        <div class="post-meta">
+    
+        <span class="categories-meta fa-wrap">
+            <i class="fa fa-folder-open-o"></i>
+            <a class="category-link" href="/categories/机器学习/">机器学习</a>
+        </span>
+    
+
+    
+        <span class="fa-wrap">
+            <i class="fa fa-tags"></i>
+            <span class="tags-meta">
+                
+                    <a class="tag-link" href="/tags/Python/">Python</a> <a class="tag-link" href="/tags/机器学习/">机器学习</a> <a class="tag-link" href="/tags/笔记/">笔记</a>
+                
+            </span>
+        </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2018/11/15</span>
+        </span>
+        
+            <span class="fa-wrap">
+                <i class="fa fa-eye"></i>
+                <span id="busuanzi_value_page_pv"></span>
+            </span>
+        
+    
+</div>
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <hr>
+<h4 id="分类：基本概念-basic-classification"><a href="#分类：基本概念-basic-classification" class="headerlink" title="分类：基本概念(basic-classification)"></a>分类：基本概念(basic-classification)</h4><hr>
+<ul>
+<li>基本概念</li>
+</ul>
+<p>（1）分类定义：</p>
+<blockquote>
+<p> <strong>目标：</strong>以前未知的对象应该尽可能准确地被分配一个类。</p>
+<p><strong>评估：</strong>使用测试集来确定模型的性能。不同的评估方法包括准确性、召回性、精确性、AUC等。通常，给定的数据集分为训练集和测试集，其中训练集用于建立模型，测试集用于验证模型。</p>
+</blockquote>
+<p>（2）分类任务例子</p>
+<blockquote>
+<p>①　比如预测肿瘤细胞良恶性<br>②　将信用卡交易归类为合法或欺诈<br>③　营销经理需要进行数据分析，以帮助猜测具有给定配置文件的客户是否会购买一台新计算机(类别为购买/不购买)。<br>④　银行贷款官员需要对她的数据进行分析，以了解哪种贷款申请对她的银行是有风险的(课程有风险/没有风险)<br>⑤　将新闻故事归类为金融、天气、娱乐、体育等。</p>
+</blockquote>
+<p>（3）一般分类方法：通常分为两步：学习模型（归纳），应用模型（演绎）</p>
+<blockquote>
+<p>监督学习方法：决策树、朴素贝叶斯、基于规则的方法、神经网络、支持向量机、懒惰学习（K近邻）、集成方法</p>
+</blockquote>
+<hr>
+<ul>
+<li>基础分类技术</li>
+</ul>
+<p>（1）决策树</p>
+<blockquote>
+<p><strong>结构：</strong></p>
+<blockquote>
+<p>①内部节点：对属性的测试<br>②分支：表示测试的结果<br>③叶节点：分类标签</p>
+</blockquote>
+<p><strong>优势：</strong></p>
+<blockquote>
+<p>①　决策树的构造不需要领域知识或参数设置，适用于探索性知识发现<br>②　决策树可以处理多维数据。<br>③　决策树的表示是直观的。<br>④　决策树可以很容易地转换成分类规则</p>
+</blockquote>
+<p><strong>决策树的构建：</strong></p>
+<blockquote>
+<p>①　属性选择方法：如何为树节点选择属性<br>②　剪枝：大型的决策树可能过度拟合，许多树枝反映噪声或离群点，修剪树是为了删除这些分支，以提高对未见数据的分类精度。</p>
+</blockquote>
+<p><strong>决策树算法（都采用贪婪策略）：</strong></p>
+<blockquote>
+<p>①　ID3（信息增益）<br>②　C4.5（信息增益率）<br>③　CART（GINI指数）</p>
+</blockquote>
+</blockquote>
+<p><strong>数据分割方法</strong>：（对属性的类别不同分割不同）（还可分割成二路或者多路）</p>
+<p><img src="images\图片1.png" alt="images\图片1"></p>
+<p><strong>信息熵与信息增益：（ID3）</strong></p>
+<p><img src="images\图片2.png" alt="images\图片2"></p>
+<p><img src="images\图片3.png" alt="images\图片3"></p>
+<p><strong>信息增益率：（C4.5）</strong></p>
+<p><img src="images\图片4.png" alt="images\图片4"></p>
+<p><strong>GINI指数：</strong>GINI反映了从数据集中随机抽取两个样本，其类别标记不一致的概率，因此，Gini越小，则数据集的纯度越高。</p>
+<p><img src="images\图片5.png" alt="images\图片5"></p>
+<p><strong>预剪枝(早停规则)：</strong></p>
+<blockquote>
+<p>①　在算法成为一棵完整的树之前停止它。<br>②　节点的典型停止条件：（1.如果所有实例都属于同一个类，则停止；2.如果所有属性值都是相同的，则停止）<br>③　更严格的停止条件：（1.如果实例数小于用户指定的阈值，则停止。2.如果实例的类分布独立于可用特性(例如使用卡方测试)，则停止。3.如果扩展当前节点不改善杂质度量(GINI或信息增益)，则停止-贪婪）</p>
+</blockquote>
+<p><strong>后剪枝：</strong></p>
+<blockquote>
+<p>①　首先构建一棵完整的树<br>②　以自下而上的方式修剪决策树的节点。<br>③　如果裁剪后泛化误差有所改善，则将子树替换为叶节点。<br>④　叶节点的类标签是从子树中的大多数实例中确定的。</p>
+</blockquote>
+<p><strong>缺失值处理</strong>：（《机器学习》周志华 P87）</p>
+<blockquote>
+<p>①　如何在属性值缺失的情况下进行划分属性的选择（根据没有缺失的值进行划分，信息增益Gain乘以一个无缺失样本比例）<br>②　给定划分属性，若样本在该属性上的值缺失，如何对样本进行划分（将属性值a缺失的样本分入每一个a的分支中，权值调整为w*比例，开始阶段，各样本权值初始化为1）</p>
+</blockquote>
+<hr>
+<p>（2）朴素贝叶斯</p>
+<p><strong>概念：</strong>贝叶斯分类方法是一种以计算出的事情发生的概率大小为分类依据的分类方法。而<strong>朴素贝叶斯</strong>中的<strong>朴素（naive）</strong>一词的来源就是假设各特征之间相互独立。这一假设可以使得朴素贝叶斯算法变得简单，但有时会牺牲一定的分类准确率。</p>
+<blockquote>
+<p><strong>先验概率：</strong>是指根据以往经验和分析得到的概率.如全概率公式。<br><strong>条件概率</strong>：在某条件下事件发生的概率。<br><strong>后验概率：</strong>事情已经发生，要求这件事情发生的原因是由某个因素引起的可能性的大小。后验概率是条件概率的一种。</p>
+<p><strong>贝叶斯公式：</strong></p>
+<p><img src="images\图片6.png" alt="images\图片6"></p>
+</blockquote>
+<hr>
+<ul>
+<li>分类评价</li>
+</ul>
+<p>（1）</p>
+<p>TP：正例分对 </p>
+<p>TN：反例分对 </p>
+<p>FP：反例被分错成正例  </p>
+<p>FN：正例被分错成反例</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>混淆矩阵</th>
+<th style="text-align:center">yes</th>
+<th>no</th>
+<th>Total</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>yes</strong></td>
+<td style="text-align:center">TP</td>
+<td>FN</td>
+<td>P</td>
+</tr>
+<tr>
+<td><strong>no</strong></td>
+<td style="text-align:center">FP</td>
+<td>TN</td>
+<td>N</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td style="text-align:center">P_pred</td>
+<td>N_pred</td>
+<td>P+N</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">名称</th>
+<th style="text-align:left">英文名</th>
+<th>公式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">准确率、识别率</td>
+<td style="text-align:left">accuracy, recognition rate</td>
+<td>TP + TN/P + N</td>
+</tr>
+<tr>
+<td style="text-align:center">错误率</td>
+<td style="text-align:left">error rate, misclassification rate</td>
+<td>FP + FN/P + N</td>
+</tr>
+<tr>
+<td style="text-align:center">召回率（所有P的有多少召回了）</td>
+<td style="text-align:left">sensitivity,true positive rate,recall</td>
+<td>TP/P</td>
+</tr>
+<tr>
+<td style="text-align:center">特异性</td>
+<td style="text-align:left">specificity,teue negative rate</td>
+<td>TN/N</td>
+</tr>
+<tr>
+<td style="text-align:center">精确性</td>
+<td style="text-align:left">precision</td>
+<td>TP/TP + FP</td>
+</tr>
+<tr>
+<td style="text-align:center">精确度与召回率的调和平均数</td>
+<td style="text-align:left">F,F-score</td>
+<td>(2<em> precision </em>recall)/(precision + recall)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>（2）交叉验证</p>
+<p>（3）留一法</p>
+
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/2018/12/28/阿里天池新人赛（工业蒸汽量预测）/" class="pre-post btn btn-default" title="阿里天池新人赛（工业蒸汽量预测）">
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">阿里天池新人赛（工业蒸汽量预测）</span>
+        </a>
+    
+    
+        <a href="/2018/11/13/数据挖掘笔记（三）/" class="next-post btn btn-default" title="数据挖掘笔记（三）">
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">数据挖掘笔记（三）</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">Table of Contents</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#分类：基本概念-basic-classification"><span class="toc-text">分类：基本概念(basic-classification)</span></a></li></ol>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+        Total:
+        <strong id="busuanzi_value_site_pv">
+            <i class="fa fa-spinner fa-spin"></i>
+        </strong>
+        &nbsp; | &nbsp;
+        Visitors:
+        <strong id="busuanzi_value_site_uv">
+            <i class="fa fa-spinner fa-spin"></i>
+        </strong>
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2017
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+</body>
+</html>

@@ -1,0 +1,467 @@
+<!DOCTYPE HTML>
+<html lang="">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="杨柳潇的博客">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="http://yangliuxiao.top">
+    <!--SEO-->
+
+    <meta name="keywords" content="机器学习,笔记,Python">
+
+
+    <meta name="description" content="
+数据挖掘介绍
+
+数据探索
+
+
+
+数据挖掘介绍（intro）
+
+历史
+
+从数据中人工提取模式： Bayes理论（1700s）  回归分析（1800s）
+
+为什么进行数据挖掘
+
+（1）已获得的大量...">
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+
+    <!--Title-->
+
+
+<title>数据挖掘笔记（一） | 杨柳潇的博客</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="杨柳潇的博客" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.jpg">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+
+</head>
+
+</html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header" style="background-image:url(/./img/background.jpg)">
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title="Mute">
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                 <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yangliuxiao.top">杨柳潇的博客</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>Home</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>时间轴</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="数据挖掘笔记（一）">
+            
+	            数据挖掘笔记（一）
+            
+        </h1>
+        <div class="post-meta">
+    
+        <span class="categories-meta fa-wrap">
+            <i class="fa fa-folder-open-o"></i>
+            <a class="category-link" href="/categories/机器学习/">机器学习</a>
+        </span>
+    
+
+    
+        <span class="fa-wrap">
+            <i class="fa fa-tags"></i>
+            <span class="tags-meta">
+                
+                    <a class="tag-link" href="/tags/Python/">Python</a> <a class="tag-link" href="/tags/机器学习/">机器学习</a> <a class="tag-link" href="/tags/笔记/">笔记</a>
+                
+            </span>
+        </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2018/11/02</span>
+        </span>
+        
+            <span class="fa-wrap">
+                <i class="fa fa-eye"></i>
+                <span id="busuanzi_value_page_pv"></span>
+            </span>
+        
+    
+</div>
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <ol>
+<li><p><a href="#数据挖掘介绍（intro）">数据挖掘介绍</a></p>
+</li>
+<li><p><a href="#数据探索（DataExploration）">数据探索</a></p>
+</li>
+</ol>
+<hr>
+<h4 id="数据挖掘介绍（intro）"><a href="#数据挖掘介绍（intro）" class="headerlink" title="数据挖掘介绍（intro）"></a>数据挖掘介绍（intro）</h4><hr>
+<ul>
+<li><strong>历史</strong></li>
+</ul>
+<p>从数据中人工提取模式： Bayes理论（1700s）  回归分析（1800s）</p>
+<ul>
+<li><strong>为什么进行数据挖掘</strong></li>
+</ul>
+<p>（1）已获得的大量数据往往是数据丰富但信息贫乏的<br>（2）计算设备变得廉价且功能强大<br>（3）没有强大的工具的话，数据量已经超过人类的理解能力<br>（4）数据收集存储的速度越来越快<br>（5）传统技术已经不适用于原始数据<br>（6）数据挖掘有助于科学研究</p>
+<ul>
+<li><strong>什么是数据挖掘</strong></li>
+</ul>
+<p>（1）定义：对大量数据进行自动或半自动的探索和分析，以发现有意义的模式。<br>（2）数据挖掘是知识发现的一个步骤</p>
+<ul>
+<li><strong>什么样的数据可以被挖掘</strong></li>
+</ul>
+<p>（1）关系型数据库数据<br>（2）数据仓库<br>（3）事务（transaction）数据  每一个记录（事务transaction）包含一组项集（items）<br>（4）时间-空间数据<br>（5）图以及网状数据（超链接图、社会和信息网络）<br>（6）超文本和多媒体数据（文本、图像、视频和音频数据）<br>（7）时间相关序列数据<br>（8）数据流（监控、传感器）</p>
+<ul>
+<li><strong>可以挖掘出什么样的模式</strong></li>
+</ul>
+<p>（1）类别/概念描述：特征和区分<br>（2）挖掘频繁模式（频繁模式通常是指经常出现在事务性数据集中的一组项，挖掘频繁模式可以发现数据中有趣的关联和相关性）、关联关系<br>（3）使用分类和回归（找到一个描述和区分数据类或概念的模型）进行预测分析<br>（4）聚类分析<br>（5）异常分析（离群点分析）</p>
+<ul>
+<li><strong>挖掘结果的意义</strong></li>
+</ul>
+<p>（1）可能会找到许多无意义的模式<br>（2）什么叫有意义的模式？：有效性、新的（对系统来说是未知的）、有用的（可以对项集采取动作的）、可理解的（人类能解释的）</p>
+<ul>
+<li><strong>使用哪些技术</strong></li>
+</ul>
+<p>机器学习、统计、人工智能、数据库、可视化等</p>
+<ul>
+<li><strong>应用</strong></li>
+</ul>
+<p>（1）确定网页重要性的PageRank算法<br>（2）用于判断（银行是否应该予以贷款……）<br>（3）……</p>
+<ul>
+<li><strong>数据挖掘中的主要问题</strong></li>
+</ul>
+<p>（1）挖掘方法<br>（2）用户交互<br>（3）效率与可扩展性<br>（4）数据库类型的多样性<br>（5）数据挖掘与社会应用</p>
+<ul>
+<li><strong>数据挖掘和机器学习工具</strong></li>
+</ul>
+<p>（1）Weka (java)<br>（2）Scikit-learn (Python)</p>
+<hr>
+<h4 id="数据探索（DataExploration）"><a href="#数据探索（DataExploration）" class="headerlink" title="数据探索（DataExploration）"></a>数据探索（DataExploration）</h4><hr>
+<ul>
+<li><strong>数据对象和属性类型</strong></li>
+</ul>
+<p>（1）数据集由数据对象（也叫样本、实例、数据点等）组成<br>（2）属性表示一个数据对象的特征，属性也可以称为维度、特性<br>（3）属性类型：</p>
+<blockquote>
+<ul>
+<li><p><strong>名词属性（nominal attribute）</strong>：值是事物的符号或名称</p>
+</li>
+<li><p><strong>二值属性（binary attribute）</strong>：只有0或1的取值，其中0常表示不出现，1表示出现。</p>
+</li>
+<li><p><strong>序数属性（ordinal attribute）</strong>：属性值有意义上的排序，例如 A+  A-  B+……</p>
+</li>
+<li><p><strong>数值属性（numerical attribute）</strong>:是可度量的，即以整数或实数表示的可测量的数量，有<strong>区间标度</strong>和<strong>比率标度</strong>两种类型。</p>
+</li>
+</ul>
+</blockquote>
+<p>数值属性又分为：</p>
+<blockquote>
+<ul>
+<li><p><strong>区间标度（interval-scaled）</strong>属性（<strong>没有真正零值，可以计算差值，不可计算倍数、比率</strong>）：区间标度属性用<strong>相等的单位尺度度量</strong>。区间属性的值有序。所以，除了秩评定之外，这种属性允许比较和定量评估值之间的差。</p>
+<p>例如，身高属性是区间标度的。A同学身高170cm比B同学165cm高出5cm。对于摄氏温度和华氏温度，其零值不表示没有温度，零值不表示真正零点。例如，摄氏温度的度量单位是水在标准大气压下沸点温度与冰点温度之差的1/100。尽管可以计算温度之差，但因没有真正的零值，因此不能说10℃比5℃温暖2倍，不能用比率描述这些值。</p>
+</li>
+<li><p><strong>比率标度（ratio-scaled）属性</strong>：比率标度属性的度量是比率的，可以用比率来描述两个值，即一个值是另一个值的倍数，也可以计算值之间的差。例如，不同于摄氏和华氏温度，开氏温度具有绝对零点。在零点，构成物质的粒子具有零动能。比率标度属性的例子还包括字数和工龄等计数属性，以及度量重量、高度、速度的属性。</p>
+</li>
+</ul>
+</blockquote>
+<p>属性的类型取决于它拥有以下属性中的哪一个：</p>
+<p><img src="images\图片1.png" alt="images\图片1"></p>
+<p>（4）离散和连续属性</p>
+<blockquote>
+<ul>
+<li><p><strong>离散属性</strong>：<strong>有限的</strong>或<strong>可数的无限个属性值</strong>（发色，饮料类别），如一个属性可能取值的值集合是无限的，但可以建立一个与自然数的一一对应，则其也是离散属性。</p>
+</li>
+<li><p><strong>连续属性</strong>：不是离散的，就是连续的（在文献中常和数值属性Numeric attribute 交替使用）</p>
+</li>
+</ul>
+</blockquote>
+<ul>
+<li><strong>数据的基本统计描述</strong></li>
+</ul>
+<p>基本统计描述可以用来识别数据的属性（集中趋势的量度、数据的分散性）<br><strong>（1）集中趋势的度量</strong>：平均值(Mean)，中位数(Median)，众数(mode).</p>
+<blockquote>
+<ul>
+<li><p>平均值(Mean)：均值不是鲁棒的测量方法，也就是说，它们对噪声或异常值很敏感。通过去除极值可以得到修整的平均值。而且均值仅可用于数值属性(或连续属性)。</p>
+</li>
+<li><p>中位数(Median)：比均值更鲁棒，可以应用于数值属性，也可以扩展到序数属性。但当有大量的观测数据时，计算中位数代价很高。（大型数据集的近似中位数计算方式如下）</p>
+<p><img src="images\图片2.png" alt="images\图片2"></p>
+</li>
+<li><p>众数(mode)：数据集的众数是数据集合中最常见的值。众数既可用于名词属性，也可用于数字属性。具有一、二或三种众数的数据集分别称为单峰、双峰和三峰模态。</p>
+</li>
+</ul>
+</blockquote>
+<p><strong>（2）度量数据的分散性</strong>：<br>（2.1）<strong>范围、四分位数和四分位距</strong></p>
+<blockquote>
+<ul>
+<li><p>范围（Range）：最大和最小之间的差值</p>
+</li>
+<li><p>分位数：第k个q分位数是指值x，数据集中的k/q的数值比x小，数据集中（q-k）/q的数值比x大。（0&lt;k&lt;q）</p>
+</li>
+<li><p>百分位数（Percentiles）：即100-分位数</p>
+</li>
+<li><p>四分位数（Quartiles）：4-分位数</p>
+</li>
+<li><p>四分位距（Interquartile range （IQR））：IQR = Q3 - Q1（Q3：第三个四分位数，即第75个百分位数；Q1是第一个四分位数，即25%百分位数。）</p>
+<p><img src="images\图片3.png" alt="images\图片3"></p>
+</li>
+</ul>
+</blockquote>
+<p>（2.2）方差：（标准差是方差的开方）</p>
+<p><img src="images\图片4.png" alt="images\图片4"></p>
+<p>（3）数据可视化<br>柱状图（histogram)</p>
+<p><img src="images\图片5.png" alt="images\图片5"></p>
+<p>箱形图（Box Plots）</p>
+<p><img src="images\图片6.png" alt="images\图片6"></p>
+<p>分位图（Quantile Plot）</p>
+<p><img src="images\图片7.png" alt="images\图片7"></p>
+<p>散点图（Scatter Plots）</p>
+<p><img src="images\图片8.png" alt="images\图片8"></p>
+<p>等高线图（Contour plots）</p>
+<p><img src="images\图片9.png" alt="images\图片9"></p>
+<p>平行坐标图（Parallel Coordinates）：一个纵坐标表示一个属性，在查看这样的分组时，<strong>属性的排序</strong>是很重要的。</p>
+<p><img src="images\图片10.png" alt="images\图片10"></p>
+<p>星图（Star Plots）：与平行坐标图相似，但轴从中心点辐射，连接对象值的线是多边形。</p>
+<ul>
+<li><strong>测量数据相似性和差异性</strong></li>
+</ul>
+<p>（1）数据矩阵与相异矩阵<br>具有n个对象，每个对象具有p个属性的数据集可以由n到p的数据矩阵表示：</p>
+<p>相异矩阵：</p>
+<p><img src="images\图片11.png" alt="images\图片11"></p>
+<p>（2）名词属性的相异度测量：具有名词属性的两个对象xi和xj之间的不同可以根据不匹配的属性数比率来计算：（p是属性总数，m是相等的属性数）</p>
+<p><img src="images\图片12.png" alt="images\图片12"></p>
+<p>（3）二元属性的相异度测量：</p>
+<blockquote>
+<ul>
+<li><p><strong>对称二元相异度</strong>：r（s）是i（j）为1，j（i）为0的数量；q是i和j都为1的数目，t是i和j都为0的数目。</p>
+</li>
+<li><p><img src="images\图片13.png" alt="images\图片13"></p>
+</li>
+<li><p><strong>非对称二元相异度</strong>：只关心两者都取1的情况，而认为两者都取0的属性并不意味着两者更相似。例如在根据病情对病人聚类时，如果两个人都患有肺癌，我们认为两个人增强了相似度，但如果两个人都没患肺癌，并不觉得这加强了两人的相似性，如果用1减去非对称二元相异度，则得到非对称二元相似度，也叫Jaccard系数。</p>
+</li>
+<li><p><img src="images\图片14.png" alt="images\图片14"></p>
+</li>
+</ul>
+</blockquote>
+<p>（4）数值属性的相异度测量：</p>
+<blockquote>
+<ul>
+<li><p><strong>欧几里得距离：</strong></p>
+<p><img src="images\图片15.png" alt="images\图片15"></p>
+</li>
+<li><p><strong>曼哈顿距离：</strong></p>
+<p><img src="images\图片16.png" alt="images\图片16"></p>
+</li>
+<li><p><strong>明可夫斯基距离Minkowski distance：h为2时即欧几里得距离，h为1时即曼哈顿距离</strong></p>
+<p><img src="images\图片17.png" alt="images\图片17"></p>
+</li>
+</ul>
+</blockquote>
+<p>（5）有序属性的相异度测量：</p>
+<p>序数变量是具有序数意义的分类变量，通常可以按照一定顺序意义排列，如冠军、亚军和季军。对于序数变量，一般为每个值分配一个数，叫做这个值的秩，然后以秩代替原值当做标量属性计算相异度。（分配1，2，3……然后归一化）</p>
+<p>（6）<strong>混合属性的相异度测量</strong>：i和j之间的相异度，f为属性序号，delta是指示器，当xif或者xjf缺失时或xif=xjf=0并且属性f为非对称二元属性时，为0，否则为1（就是把指示器为0的属性去除之后算了个平均值）</p>
+<p><img src="images\图片18.png" alt="images\图片18"></p>
+<ul>
+<li>文档表示和文档之间的相似性度量</li>
+</ul>
+<p>（1）TF.IDF<br>（2）将term向量化后，使用余弦相似度</p>
+
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/2018/11/05/数据挖掘笔记（二）/" class="pre-post btn btn-default" title="数据挖掘笔记（二）">
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">数据挖掘笔记（二）</span>
+        </a>
+    
+    
+        <a href="/2018/10/25/读人月神话等有感/" class="next-post btn btn-default" title="读《人月神话》等有感">
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">读《人月神话》等有感</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">Table of Contents</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#数据挖掘介绍（intro）"><span class="toc-text">数据挖掘介绍（intro）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#数据探索（DataExploration）"><span class="toc-text">数据探索（DataExploration）</span></a></li></ol>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+        Total:
+        <strong id="busuanzi_value_site_pv">
+            <i class="fa fa-spinner fa-spin"></i>
+        </strong>
+        &nbsp; | &nbsp;
+        Visitors:
+        <strong id="busuanzi_value_site_uv">
+            <i class="fa fa-spinner fa-spin"></i>
+        </strong>
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2017
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+</body>
+</html>

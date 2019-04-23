@@ -1,0 +1,378 @@
+<!DOCTYPE HTML>
+<html lang="">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="杨柳潇的博客">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="http://yangliuxiao.top">
+    <!--SEO-->
+
+    <meta name="keywords" content="机器学习,笔记,Python">
+
+
+    <meta name="description" content="
+数据预处理(data-preprocessing)
+
+数据预处理概论
+
+（1）为什么要对数据进行处理为了数据的质量：
+
+不准确、不完整和不一致的数据在现实世界的数据库和数据仓库中很常见。为了数...">
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+
+    <!--Title-->
+
+
+<title>数据挖掘笔记（二） | 杨柳潇的博客</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="杨柳潇的博客" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.jpg">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+
+</head>
+
+</html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header" style="background-image:url(/./img/background.jpg)">
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title="Mute">
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                 <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yangliuxiao.top">杨柳潇的博客</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>Home</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>时间轴</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="数据挖掘笔记（二）">
+            
+	            数据挖掘笔记（二）
+            
+        </h1>
+        <div class="post-meta">
+    
+        <span class="categories-meta fa-wrap">
+            <i class="fa fa-folder-open-o"></i>
+            <a class="category-link" href="/categories/机器学习/">机器学习</a>
+        </span>
+    
+
+    
+        <span class="fa-wrap">
+            <i class="fa fa-tags"></i>
+            <span class="tags-meta">
+                
+                    <a class="tag-link" href="/tags/Python/">Python</a> <a class="tag-link" href="/tags/机器学习/">机器学习</a> <a class="tag-link" href="/tags/笔记/">笔记</a>
+                
+            </span>
+        </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2018/11/05</span>
+        </span>
+        
+            <span class="fa-wrap">
+                <i class="fa fa-eye"></i>
+                <span id="busuanzi_value_page_pv"></span>
+            </span>
+        
+    
+</div>
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <hr>
+<h4 id="数据预处理-data-preprocessing"><a href="#数据预处理-data-preprocessing" class="headerlink" title="数据预处理(data-preprocessing)"></a>数据预处理(data-preprocessing)</h4><hr>
+<ul>
+<li>数据预处理概论</li>
+</ul>
+<p>（1）为什么要对数据进行处理<br>为了数据的质量：</p>
+<blockquote>
+<p>不准确、不完整和不一致的数据在现实世界的数据库和数据仓库中很常见。<br>为了数据的实时性，实时性也影响数据质量（用户不及时更新数据）。<br>为了数据的可信度，可信度反映了用户对数据的信任程度。<br>为了数据的可解释性，可解释性反映了对数据的理解难易程度。</p>
+</blockquote>
+<p><strong>预处理方法：</strong></p>
+<blockquote>
+<p>（1）数据清洗（Data Cleaning）</p>
+<blockquote>
+<p>（1）处理缺失的值</p>
+<p>（2）处理噪音数据</p>
+</blockquote>
+<p>（2）数据整合（Data Integration）</p>
+<blockquote>
+<p>（1）冗余与相关性分析</p>
+</blockquote>
+<p>（3）数据缩减（Data Reduction）</p>
+<blockquote>
+<p>（1）维度约减</p>
+<p>（2）数度约减</p>
+<p>（3）数据压缩</p>
+</blockquote>
+<p>（4）数据转化和数据离散化（Data Transformation and Data Discretization）</p>
+</blockquote>
+<hr>
+<ul>
+<li>数据清洗（Data Cleaning）</li>
+</ul>
+<p>处理<strong>缺失的值</strong>，平滑<strong>噪音数据</strong>，识别或者移除<strong>极端值</strong>，解决<strong>不一致</strong>问题</p>
+<p>（1）处理缺失的值</p>
+<blockquote>
+<p>1.直接忽略这个元组<br>2.人工填补缺失值<br>3.使用一个全局的常量进行填补（Unknown或者负无穷-∞）<br>4.使用表示数据中心倾向的数值（平均数或者中位数）进行填充<br>5.使用属于同一类的所有值的平均值或者中位数进行填充<br>6.使用最可能的值填充（使用贝叶斯公式得到最可能的值，或根据决策树等基于推理回归的方法）</p>
+</blockquote>
+<p>（2）处理噪音数据：噪声数据是测量变量中的随机误差。</p>
+<blockquote>
+<p>使用平滑技术去除噪音数据，许多平滑方法也用于数据离散化(数据转换的一种形式)和数据约简。<br>（1）分箱<br>使用箱平均数进行平滑<br>使用箱中位数进行平滑<br>使用箱边界进行平滑</p>
+<p><img src="images\图片1.png" alt="images\图片1"></p>
+<p>（2）回归</p>
+<p>（3）极端值分析（聚类）</p>
+</blockquote>
+<hr>
+<ul>
+<li>数据整合（Data Integration）</li>
+</ul>
+<p>当集成来自多个源的数据时，可能会出现<strong>不一致</strong>和<strong>冗余</strong>。<br>（1）元数据（属性名、意义、数据类型、取值范围）可用于帮助避免模式集成中的错误。<br>（2）冗余与相关性分析</p>
+<blockquote>
+<ol>
+<li>对于<strong>名词属性</strong>，（先对名词属性计数）使用卡方检验（卡方检验：检验两个属性之间是否独立）</li>
+</ol>
+<p>卡方检验公式：（实际值） - （两者独立情况下的理论值） 的平方再除以后者，对所有值求和）</p>
+<p><img src="images\图片2.png" alt="images\图片2"></p>
+<ol>
+<li>对于<strong>数值属性</strong>，使用<strong>相关系数</strong>、<strong>协方差</strong></li>
+</ol>
+<p>协方差：协方差是描述随机变量相互关联程度的一个特征数。是X的偏差【X-E(X)】与Y的偏差【Y-E(Y)】的乘积的数学期望。由于偏差可正可负，因此协方差也可正可负。协方差为正时，即X、Y正相关，负为负相关，0为不相关（仅表示没有线性关系，不表示没有其他关系）。协方差仅能进行定性的分析，并不能进行定量的分析，公式如下：（E(X)为分量X的期望，E(Y)为分量Y的期望）</p>
+<p><img src="images\图片3.png" alt="images\图片3"></p>
+<p><img src="images\图片4.png" alt="images\图片4"></p>
+<p><strong>相关系数</strong>：定量分析两个变量之间关系。</p>
+<p><img src="images\图片5.png" alt="images\图片5"></p>
+</blockquote>
+<hr>
+<ul>
+<li>数据缩减（Data Reduction）</li>
+</ul>
+<p>（1）维度约减：</p>
+<blockquote>
+<p>（1）小波变换<br>有N个元素 从S0 至 SN<br>计算两两元素之间的平均值和差值，得到N/2个平均值和差值<img src="images\图片6.png" alt="images\图片6"><br>以平均值为下一次递归计算的输入<br>在仅剩一个平均值和差值时，递归结束<br>最后得到1个平均值和N-1个差值（细节系数）可以逆变换回原数据<br>（2）主成分分析（Principle Component Analysis）<br>（3）属性子集选择</p>
+</blockquote>
+<p>（2）数度约减：</p>
+<blockquote>
+<p>（1）参数化方法：使用统计模型代替实际数据<br>（2）非参数化方法<br>（3）抽样<br>（4）聚类<br>（5）柱状图</p>
+</blockquote>
+<p>（3）数据压缩</p>
+<hr>
+<ul>
+<li>数据转化和数据离散化（Data Transformation and Data Discretization）</li>
+</ul>
+<p>（1）平滑<br>（2）属性构造<br>（3）聚合<br>（4）归一化</p>
+<blockquote>
+<p>（1）Min-Max归一化：将A数据集中的vi映射成新的范围里的vi’（易受离群点影响）</p>
+<p><img src="images\图片7.png" alt="images\图片7"></p>
+<p>（2）Z-score归一化：在z分数规范化（或零均值规范化）中，属性基于均值和标准差规范化。</p>
+<p><img src="images\图片8.png" alt="images\图片8"></p>
+<p>（3）小数定标规范化：移动小数点的位置进行规范化（除以10的次方，使得转化后的vi’绝对值的最大值小于1）</p>
+<p><img src="images\图片9.png" alt="images\图片9"></p>
+</blockquote>
+<p>（5）离散化</p>
+<blockquote>
+<p>（1）使用分桶进行离散化<br>（2）使用直方图分析离散化<br>（3）使用聚类、决策树进行离散化<br>（4）使用ChiMerge离散化</p>
+</blockquote>
+<p>（6）概念层次生成</p>
+
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/2018/11/13/数据挖掘笔记（三）/" class="pre-post btn btn-default" title="数据挖掘笔记（三）">
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">数据挖掘笔记（三）</span>
+        </a>
+    
+    
+        <a href="/2018/11/02/数据挖掘笔记（一）/" class="next-post btn btn-default" title="数据挖掘笔记（一）">
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">数据挖掘笔记（一）</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">Table of Contents</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#数据预处理-data-preprocessing"><span class="toc-text">数据预处理(data-preprocessing)</span></a></li></ol>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+        Total:
+        <strong id="busuanzi_value_site_pv">
+            <i class="fa fa-spinner fa-spin"></i>
+        </strong>
+        &nbsp; | &nbsp;
+        Visitors:
+        <strong id="busuanzi_value_site_uv">
+            <i class="fa fa-spinner fa-spin"></i>
+        </strong>
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2017
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+</body>
+</html>

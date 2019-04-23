@@ -1,0 +1,569 @@
+<!DOCTYPE HTML>
+<html lang="">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="杨柳潇的博客">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="http://yangliuxiao.top">
+    <!--SEO-->
+
+    <meta name="keywords" content="Java,面试">
+
+
+    <meta name="description" content="
+（1）Java有几种基本数据类型
+Java共有八种基本数据类型。
+
+
+
+
+数据类型
+byte
+boolean
+int
+long
+float
+double
+char
+short
+
+
+
+
+字节
+1...">
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+
+    <!--Title-->
+
+
+<title>面试问题（一） | 杨柳潇的博客</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="杨柳潇的博客" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.jpg">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+
+</head>
+
+</html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header" style="background-image:url(/./img/background.jpg)">
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title="Mute">
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                 <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yangliuxiao.top">杨柳潇的博客</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>Home</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>时间轴</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="面试问题（一）">
+            
+	            面试问题（一）
+            
+        </h1>
+        <div class="post-meta">
+    
+        <span class="categories-meta fa-wrap">
+            <i class="fa fa-folder-open-o"></i>
+            <a class="category-link" href="/categories/面试相关/">面试相关</a>
+        </span>
+    
+
+    
+        <span class="fa-wrap">
+            <i class="fa fa-tags"></i>
+            <span class="tags-meta">
+                
+                    <a class="tag-link" href="/tags/Java/">Java</a> <a class="tag-link" href="/tags/面试/">面试</a>
+                
+            </span>
+        </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2019/03/05</span>
+        </span>
+        
+            <span class="fa-wrap">
+                <i class="fa fa-eye"></i>
+                <span id="busuanzi_value_page_pv"></span>
+            </span>
+        
+    
+</div>
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <hr>
+<h4 id="（1）Java有几种基本数据类型"><a href="#（1）Java有几种基本数据类型" class="headerlink" title="（1）Java有几种基本数据类型"></a>（1）Java有几种基本数据类型</h4><hr>
+<p>Java共有<strong>八种基本数据类型</strong>。</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>数据类型</th>
+<th>byte</th>
+<th>boolean</th>
+<th>int</th>
+<th>long</th>
+<th>float</th>
+<th>double</th>
+<th>char</th>
+<th>short</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>字节</strong></td>
+<td>1</td>
+<td>1</td>
+<td>4</td>
+<td>8</td>
+<td>4</td>
+<td>8</td>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr>
+<td><strong>默认值</strong></td>
+<td>0</td>
+<td>false</td>
+<td>0</td>
+<td>0</td>
+<td>0.0f</td>
+<td>0.0d</td>
+<td>‘u0000’</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr>
+<h4 id="（2）Java的自动装箱和拆箱"><a href="#（2）Java的自动装箱和拆箱" class="headerlink" title="（2）Java的自动装箱和拆箱"></a>（2）Java的自动装箱和拆箱</h4><hr>
+<p><strong>装箱就是自动将基本数据类型转换为包装器类型；拆箱就是自动将包装器类型转换为基本数据类型。</strong></p>
+<p>为了<strong>让基本类型也具有对象的特征</strong>，就出现了包装类型（如我们在使用集合类型<code>Collection</code>时就一定要使用包装类型而非基本类型）因为容器都是装object的，这是就需要这些基本类型的包装器类了。</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>int</th>
+<th>byte</th>
+<th>short</th>
+<th>long</th>
+<th>float</th>
+<th>double</th>
+<th>char</th>
+<th>boolean</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Integer</strong></td>
+<td><strong>Byte</strong></td>
+<td><strong>Short</strong></td>
+<td><strong>Long</strong></td>
+<td><strong>Float</strong></td>
+<td><strong>Double</strong></td>
+<td><strong>Character</strong></td>
+<td><strong>Boolean</strong></td>
+</tr>
+</tbody>
+</table>
+</div>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*自动装箱*/</span></span><br><span class="line">Interger i = <span class="number">99</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*自动拆箱*/</span></span><br><span class="line"><span class="keyword">int</span> j = i;</span><br></pre></td></tr></table></figure>
+<p>系统会为我们<strong>自动装箱拆箱</strong>，执行的是如下代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*装箱*/</span></span><br><span class="line">Interger i = Integer.valueOf(<span class="number">99</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">/*拆箱*/</span></span><br><span class="line"><span class="keyword">int</span> j = i.intValue();</span><br></pre></td></tr></table></figure>
+<p>来看一下<strong><code>Interger</code>类的构造函数源码：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">int</span> value;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">Integer</span><span class="params">(<span class="keyword">int</span> value)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.value = value;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">Integer</span><span class="params">(String string)</span> <span class="keyword">throws</span> NumberFormatException </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>(parseInt(string));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以看到两个构造函数，一个由int类型初始化，另一个能将String类型转成int类型。</p>
+<p><strong><code>Integer.valueOf</code>函数：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Integer <span class="title">valueOf</span><span class="params">(<span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span>  i &gt;= <span class="number">128</span> || i &lt; -<span class="number">128</span> ? <span class="keyword">new</span> Integer(i) : SMALL_VALUES[i + <span class="number">128</span>];</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>当(i &gt;= 128 || i &lt;= -128)时，Integer.valueOf()函数会返回一个新建对象；</p>
+<p>当(-128 &lt; i &lt; 128)时，函数返回SMALL_VALUES[i + 128]；</p>
+<p><strong><code>SMALL_VALUES[i + 128]</code>是什么？</strong>（由命名规则可以看出是常量且是个数组）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Integer[] SMALL_VALUES = <span class="keyword">new</span> Integer[<span class="number">256</span>];</span><br></pre></td></tr></table></figure>
+<p>它是一个静态的Integer数组对象，也就是说valueOf(i)，如果i相同的话，返回的都是同一个Integer对象。</p>
+<p><strong><code>Interger.intValue()</code>函数：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">intValue</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> value;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>由此可以引申出另一个常见的面试题如下</strong></p>
+<hr>
+<h4 id="（3）包装类型的比较"><a href="#（3）包装类型的比较" class="headerlink" title="（3）包装类型的比较"></a>（3）包装类型的比较</h4><hr>
+<p><strong>（理由同上，当(-128 &lt; i &lt; 128)时，函数返回<code>SMALL_VALUES[i + 128]</code>，是一个静态的Integer数组对象，返回的都是同一个Integer对象。）：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Integer i1 = <span class="number">100</span>;</span><br><span class="line">Integer i2 = <span class="number">100</span>;</span><br><span class="line"></span><br><span class="line">Integer i3 = <span class="number">200</span>;</span><br><span class="line"></span><br><span class="line">Integer i4 = <span class="number">200</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">System.out.println(i1==i2);  <span class="comment">/*true*/</span></span><br><span class="line"></span><br><span class="line">System.out.println(i3==i4);  <span class="comment">/*false*/</span></span><br></pre></td></tr></table></figure>
+<p>而Double类则不存在这种情况，因为在-128至128间，存在无数个浮点数，所以他俩valueOf函数的实现方法不同，Double是直接新建一个值为i的新对象，并不判断i的范围。所以可以对Java基础数据类型分一个类：</p>
+<p><strong>Integer派别：</strong>Integer、Short、Byte、Character、Long这几个类的valueOf方法的实现是类似的。（都以-128和128为界限，char没有负数所以以0和128为界限）  </p>
+<p><strong>Double派别：</strong>Double、Float的valueOf方法的实现是类似的。每次都返回不同的对象。</p>
+<p>至于Boolean类型的valueOf方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Boolean <span class="title">valueOf</span><span class="params">(<span class="keyword">boolean</span> b)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> b ? Boolean.TRUE : Boolean.FALSE;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以看到它并没有创建对象，因为<strong>在内部已经提前创建好两个对象</strong>，因为它只有两种情况，这样也是为了避免重复创建太多的对象。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Boolean TRUE = <span class="keyword">new</span> Boolean(<span class="keyword">true</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Boolean FALSE = <span class="keyword">new</span> Boolean(<span class="keyword">false</span>);</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="（4）包装类型与基本数据类型之间的比较"><a href="#（4）包装类型与基本数据类型之间的比较" class="headerlink" title="（4）包装类型与基本数据类型之间的比较"></a>（4）包装类型与基本数据类型之间的比较</h4><hr>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Integer num1 = <span class="number">400</span>;  </span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> num2 = <span class="number">400</span>;  </span><br><span class="line"></span><br><span class="line">System.out.println(num1 == num2); <span class="comment">/*true*/</span></span><br></pre></td></tr></table></figure>
+<p>说明<code>num1 == num2</code>进行了拆箱操作</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Integer num3 = <span class="number">100</span>;</span><br><span class="line"><span class="keyword">int</span> num4 = <span class="number">100</span>;</span><br><span class="line">System.out.println(num3.equals(num4)); <span class="comment">/*true*/</span></span><br></pre></td></tr></table></figure>
+<p>说明<code>num3.equals(num4)</code>进行了装箱操作</p>
+<p><strong><code>Integer.equals()</code>方法源码：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object o)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> (o <span class="keyword">instanceof</span> Integer) &amp;&amp; (((Integer) o).value == value);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>再来看下面的代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Integer num1 = <span class="number">100</span>;  </span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> num2 = <span class="number">100</span>;  </span><br><span class="line"></span><br><span class="line">Long num3 = <span class="number">200l</span>;  </span><br><span class="line"></span><br><span class="line">System.out.println(num1 + num2);  <span class="comment">/*200*/</span></span><br><span class="line"></span><br><span class="line">System.out.println(num3 == (num1 + num2));  <span class="comment">/*true*/</span></span><br><span class="line"></span><br><span class="line">System.out.println(num3.equals(num1 + num2));  <span class="comment">/*false*/</span></span><br></pre></td></tr></table></figure>
+<p><strong>当一个基础数据类型与封装类进行<code>==、+、-、*、/</code>运算时，会将封装类进行拆箱，对基础数据类型进行运算。</strong>   </p>
+<p>对于<code>num3.equals(num1 + num2)</code>为false的原因很简单，equal会先判断两个参数的类型，类型不同则返回false</p>
+<p>再看以下代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Integer num1 = <span class="number">100</span>;</span><br><span class="line"></span><br><span class="line">Ingeger num2 = <span class="number">200</span>;</span><br><span class="line"></span><br><span class="line">Long num3 = <span class="number">300l</span>;</span><br><span class="line"></span><br><span class="line">System.out.println(num3 == (num1 + num2)); <span class="comment">/*true*/</span></span><br></pre></td></tr></table></figure>
+<p>当 <code>“==”</code>运算符的两个操作数都是<strong>包装器类型</strong>的引用，则是比较指向的是否是同一个对象，而如果其中<strong>有一个操作数是表达式（即包含算术运算）则比较的是数值（即会触发自动拆箱的过程）。</strong></p>
+<blockquote>
+<p>“==”比较的是内存地址，”equals”比较的是值。（包装类的equal函数都已经重写过）</p>
+</blockquote>
+<hr>
+<h4 id="（5）String池"><a href="#（5）String池" class="headerlink" title="（5）String池"></a>（5）String池</h4><hr>
+<p>(1) <strong><code>String str1 = &quot;abcd&quot;</code>的实现过程</strong>：首先栈区创建<strong>String引用</strong>，<strong>然后在String池（独立于栈和堆而存在，存储不可变量）中寻找其指向的内容为”abcd”的对象，如果String池中没有，则创建一个，然后str指向String池中的对象，如果有，则直接将str1指向”abcd””；</strong></p>
+<p><strong>(2) <code>String str3 = new String(&quot;abcd&quot;)</code>的实现过程</strong>：<strong>直接在堆中创建对象。</strong></p>
+<hr>
+<h4 id="（6）面向对象特性"><a href="#（6）面向对象特性" class="headerlink" title="（6）面向对象特性"></a>（6）面向对象特性</h4><hr>
+<p>面向对象的编程语言有<strong>封装、继承 、抽象、多态等4个主要的特征。</strong></p>
+<p><strong>封装</strong>： 把描述一个对象的属性和行为的代码封装在一个模块中，也就是一个类中，属性用变量定义，行为用方法进行定义，方法可以直接访问同一个对象中的属性。</p>
+<p><strong>抽象</strong>： 把现实生活中的对象抽象为类。分为过程抽象和数据抽象</p>
+<p><strong>继承</strong>：子类继承父类的特征和行为。子类可以有父类的方法，属性（非private）。子类也可以对父类进行扩展，也可以重写父类的方法。缺点就是提高了代码之间的耦合性。</p>
+<p><strong>多态</strong>： 多态是指程序中定义的引用变量所指向的具体类型和通过该引用变量发出的方法调用在编程时并不确定，而是在程序<strong>运行期</strong>间才确定(比如：向上转型，只有运行才能确定其对象属性)。<strong>方法覆盖和重载</strong>体现了多态性</p>
+<blockquote>
+<p><strong>耦合：</strong>简单地说，软件工程中对象之间的耦合度就是<strong>对象之间的依赖性</strong>。指导使用和维护对象的主要问题是对象之间的多重依赖性。对象之间的耦合越高，维护成本越高。因此对象的设计应使类和构件之间的耦合最小。</p>
+<p><strong>内聚</strong>：内聚标志<strong>一个模块内各个元素彼此结合的紧密程度</strong>，它是<strong>信息隐蔽和局部化</strong>概念的自然扩展。内聚是从功能角度来度量模块内的联系，一个好的内聚模块应当恰好做一件事。它描述的是模块内的功能联系。</p>
+</blockquote>
+<hr>
+<h4 id="（7）String、StringBuffer和StringBuilder区别"><a href="#（7）String、StringBuffer和StringBuilder区别" class="headerlink" title="（7）String、StringBuffer和StringBuilder区别"></a>（7）String、StringBuffer和StringBuilder区别</h4><hr>
+<h5 id="1-数据可变和不可变"><a href="#1-数据可变和不可变" class="headerlink" title="1. 数据可变和不可变"></a>1. 数据可变和不可变</h5><ol>
+<li><p><code>String</code>底层使用一个不可变的字符数组<code>private final char value[];</code>所以它内容不可变。</p>
+</li>
+<li><p><code>StringBuffer</code>和<code>StringBuilder</code>都继承了<code>AbstractStringBuilder</code>底层使用的是可变字符数组：<code>char[] value;</code></p>
+</li>
+</ol>
+<h5 id="2-线程安全"><a href="#2-线程安全" class="headerlink" title="2. 线程安全"></a>2. 线程安全</h5><p><code>StringBuilder</code>是线程不安全的，效率较高；而<code>StringBuffer</code>是线程安全的，效率较低。</p>
+<p><code>StringBuffer.append()</code><strong>源码（加了同步锁）</strong>:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> StringBuffer <span class="title">append</span><span class="params">(Object obj)</span> </span>&#123;</span><br><span class="line">    toStringCache = <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">super</span>.append(String.valueOf(obj));</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>StringBuild.append()</code>源码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> StringBuilder <span class="title">append</span><span class="params">(String str)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">super</span>.append(str);</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="3-相同点"><a href="#3-相同点" class="headerlink" title="3. 相同点"></a>3. 相同点</h5><p><strong><code>StringBuilder</code>与<code>StringBuffer</code>有公共父类<code>AbstractStringBuilder</code>。</strong></p>
+<p>最后，操作可变字符串速度：<code>StringBuilder &gt; StringBuffer &gt; String</code>。</p>
+<hr>
+<h4 id="（8）ArrayList和LinkedList区别"><a href="#（8）ArrayList和LinkedList区别" class="headerlink" title="（8）ArrayList和LinkedList区别"></a>（8）ArrayList和LinkedList区别</h4><hr>
+<ol>
+<li><p><code>ArrayList</code>是实现了<strong>基于动态数组</strong>的数据结构，<code>LinkedList</code>是<strong>基于链表</strong>的数据结构（双向链表）。</p>
+</li>
+<li><p>对于随机访问get和set，ArrayList觉得优于LinkedList，因为LinkedList要移动指针。</p>
+</li>
+<li><p>对于新增和删除操作add和remove，LinedList比较占优势，因为ArrayList要移动数据。</p>
+</li>
+</ol>
+<hr>
+<h4 id="（9）HashMap和HashTable、ConcurrentHashMap区别"><a href="#（9）HashMap和HashTable、ConcurrentHashMap区别" class="headerlink" title="（9）HashMap和HashTable、ConcurrentHashMap区别"></a>（9）HashMap和HashTable、ConcurrentHashMap区别</h4><hr>
+<p>相同点:</p>
+<ol>
+<li><p><code>HashMap</code>和<code>Hashtable</code>都实现了Map接口</p>
+</li>
+<li><p>都可以存储key-value数据</p>
+</li>
+</ol>
+<p>不同点：</p>
+<ol>
+<li><p><code>HashMap</code>可以把null作为key或value，<code>HashTable</code>不可以</p>
+</li>
+<li><p><code>HashMap</code>线程不安全，效率高。<code>HashTable</code>线程安全，效率低。</p>
+</li>
+<li><p><code>HashMap</code>的迭代器(Iterator)是fail-fast迭代器，而<code>Hashtable</code>的enumerator迭代器不是fail-fast的。</p>
+</li>
+</ol>
+<blockquote>
+<p> fail-fast：就是最快的时间能把错误抛出而不是让程序执行。</p>
+</blockquote>
+<ul>
+<li><strong>ConcurrentHashMap</strong></li>
+</ul>
+<p><strong>Java 5提供了ConcurrentHashMap，它是HashTable的替代，比HashTable的扩展性更好，效率也更高</strong></p>
+<p>ConcurrentHashMap将整个Map分为N个segment(类似HashTable)，可以提供相同的线程安全，但是效率提升N倍，默认N为16。</p>
+<ul>
+<li><strong>HashMap能否同步</strong></li>
+</ul>
+<p>HashMap可以通过下面的语句进行同步：  </p>
+<p><code>Map m = Collections.synchronizeMap(hashMap);</code></p>
+<hr>
+<h4 id="（10）拷贝文件的工具类使用字节流还是字符流？"><a href="#（10）拷贝文件的工具类使用字节流还是字符流？" class="headerlink" title="（10）拷贝文件的工具类使用字节流还是字符流？"></a>（10）拷贝文件的工具类使用字节流还是字符流？</h4><hr>
+<p>答：用字节流。</p>
+<p><strong>字节流</strong>：传递的是字节（二进制），</p>
+<p><strong>字符流</strong>：传递的是字符</p>
+<p>为什么使用字节流？</p>
+<p>使用字节流的传输的文件，不一定能使用字符流传输，使用字符流传输的文件都可以转成字节流在进行传输。音乐媒体等使用的是字节，使用字符无法传输。需要拷贝的文件不确定只包含字符流，有可能包含字节流（图片，视频，音乐）。考虑到通用性，所以要使用字节流。</p>
+<hr>
+<h4 id="（11）Java有没有goto"><a href="#（11）Java有没有goto" class="headerlink" title="（11）Java有没有goto"></a>（11）Java有没有goto</h4><hr>
+<p>goto属于java中的保留字，但现在没有在java中使用。</p>
+<hr>
+<h4 id="（12）-amp-和-amp-amp-的区别"><a href="#（12）-amp-和-amp-amp-的区别" class="headerlink" title="（12）&amp;和&amp;&amp;的区别"></a>（12）&amp;和&amp;&amp;的区别</h4><hr>
+<p>&amp;和&amp;&amp;都可以用作逻辑与的运算符，表示逻辑与（and），当运算符两边的表达式的结果都为true时，整个运算结果才为true，否则，只要有一方为false，则结果为false。</p>
+<p>&amp;&amp;还具有<strong>短路的功能</strong>，即如果第一个表达式为false，则不再计算第二个表达式，例如，对于if(str!= null&amp;&amp; !str.equals(s))表达式，当str为null时，后面的表达式不会执行，所以不会出现NullPointerException如果将&amp;&amp;改为&amp;，则会抛出NullPointerException异常。If(x==33 &amp;++y&gt;0) y会增长，If(x==33 &amp;&amp; ++y&gt;0)不会增长<br> &amp;还可以用作位运算符，当&amp;操作符两边的表达式不是boolean类型时，&amp;表示按位与操作，我们通常使用0x0f来与一个整数进行&amp;运算，来获取该整数的最低4个bit位，例如，0x31 &amp; 0x0f的结果为0x01。</p>
+<hr>
+<h4 id="（13）在JAVA中如何跳出当前的多重嵌套循环？"><a href="#（13）在JAVA中如何跳出当前的多重嵌套循环？" class="headerlink" title="（13）在JAVA中如何跳出当前的多重嵌套循环？"></a>（13）在JAVA中如何跳出当前的多重嵌套循环？</h4><hr>
+<p><strong>方法一：在外面的循环语句前定义一个标号，然后在里层循环体的代码中使用带有标号的break语句</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ok:</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">10</span>;i++)&#123;</span><br><span class="line">   <span class="keyword">for</span>(intj=<span class="number">0</span>;j&lt;<span class="number">10</span>;j++)&#123;</span><br><span class="line">       System.out.println(“i=” + i + “,j=” + j);</span><br><span class="line">       <span class="keyword">if</span>(j == <span class="number">5</span>) <span class="keyword">break</span> ok;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>方法二：添加一个命名有意义的flag，让外层的循环条件表达式的结果可以受到里层循环体代码的控制</strong>。当循环嵌套多时，这样的程序更易读。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">boolean</span> found = <span class="keyword">false</span>;<span class="comment">/*循环跳出flag*/</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;arr.length&amp;&amp;!found;i++)       &#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(intj=<span class="number">0</span>;j&lt;arr[i].length;j++)&#123;</span><br><span class="line"></span><br><span class="line">              System.out.println(“i=” + i + “,j=” + j);</span><br><span class="line"></span><br><span class="line">              <span class="keyword">if</span>(arr[i][j] ==<span class="number">5</span>) &#123;</span><br><span class="line"></span><br><span class="line">                      found =<span class="keyword">true</span>;</span><br><span class="line"></span><br><span class="line">                      <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">              &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="（14）switch语句可以作用的变量类型"><a href="#（14）switch语句可以作用的变量类型" class="headerlink" title="（14）switch语句可以作用的变量类型"></a>（14）switch语句可以作用的变量类型</h4><hr>
+<p> 在switch（e）中，<strong>e只能是一个整数表达式或者枚举常量</strong>，整数表达式可以是int基本类型或Integer包装类型，由于byte,short,char都<strong>可以隐含转换为int</strong>，所以，这些类型以及这些类型的包装类型也是可以的。<strong>在JDK1.7之后，String类型已经被支持</strong>，可以在switch中使用。</p>
+<p><strong>long，double等是不可以在switch中使用的。</strong></p>
+<hr>
+<h4 id="（15）-运算符的特殊"><a href="#（15）-运算符的特殊" class="headerlink" title="（15）+=运算符的特殊"></a>（15）+=运算符的特殊</h4><hr>
+<p>对于<code>short s1= 1; s1 = s1 + 1;</code>由于s1+1运算时会自动提升表达式的类型，所以结果是int型，再赋值给short类型s1时，编译器将报告需要<strong>强制转换类型</strong>的错误。</p>
+<p>对于<code>short s1= 1; s1 += 1;</code>由于 +=是java语言规定的运算符，java编译器会对它进行特殊处理，因此可以正确编译。</p>
+<hr>
+<h4 id="（16）使用final关键字修饰一个变量时，是引用不能变，还是引用的对象不能变？"><a href="#（16）使用final关键字修饰一个变量时，是引用不能变，还是引用的对象不能变？" class="headerlink" title="（16）使用final关键字修饰一个变量时，是引用不能变，还是引用的对象不能变？"></a>（16）使用final关键字修饰一个变量时，是引用不能变，还是引用的对象不能变？</h4><hr>
+<p> 使用final关键字修饰一个变量时，是指引用变量不能变，引用变量所指向的对象中的内容还是可以改变的。例如，对于如下语句：</p>
+<p><code>final StringBuffer a=new StringBuffer(&quot;immutable&quot;);</code></p>
+<p>执行如下语句将<strong>报告编译期错误</strong>：</p>
+<p><code>a=new StringBuffer(&quot;&quot;);</code></p>
+<p>但是，执行如下语句则可以通过编译：</p>
+<p><code>a.append(&quot;changed&quot;);</code></p>
+<p>有人在定义方法的参数时，可能想采用如下形式来阻止方法内部修改传进来的参数对象：</p>
+<p><code>public void method(final  StringBuffer param){}</code></p>
+<p>实际上，这是办不到的，在该方法内部仍然可以增加如下代码来修改参数对象：</p>
+<p><code>param.append(&quot;a&quot;);</code></p>
+<hr>
+<h4 id="（17）static关键字"><a href="#（17）static关键字" class="headerlink" title="（17）static关键字"></a>（17）static关键字</h4><hr>
+<p>静态变量前要加static关键字，而实例变量前则不加。</p>
+<p><strong>在程序运行时的区别</strong>：实例变量属于某个对象的属性，必须创建了实例对象，其中的实例变量才会被分配空间，才能使用这个实例变量。静态变量不属于某个实例对象，而是属于类，所以也称为<strong>类变量</strong>，<strong>只要程序加载了类的字节码，不用创建任何实例对象，静态变量就会被分配空间，静态变量就可以被使用了</strong>。总之，实例变量必须创建对象后才可以通过这个对象来使用，静态变量则可以直接使用类名来引用。<br>例如，对于下面的程序，无论创建多少个实例对象，永远都只分配了一个staticVar变量，并且每创建一个实例对象，这个staticVar就会加1；但是，每创建一个实例对象，就会分配一个instanceVar，即可能分配多个instanceVar，并且每个instanceVar的值都只自加了1次。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">VariantTest</span></span>&#123;</span><br><span class="line"></span><br><span class="line">        publicstatic <span class="keyword">int</span> staticVar = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        publicint instanceVar = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        publicVariantTest()&#123;</span><br><span class="line">              staticVar++;</span><br><span class="line">              instanceVar++;</span><br><span class="line">              System.out.println(staticVar +instanceVar);</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>① static方法</strong></p>
+<p>static方法一般称作静态方法，由于静态方法不依赖于任何对象就可以进行访问，因此对于静态方法来说，是没有this的，因为它不依附于任何对象，既然都没有对象，就谈不上this了。并且由于这个特性，<strong>在静态方法中不能访问类的非静态成员变量和非静态成员方法</strong>，因为非静态成员方法/变量都是必须依赖具体的对象才能够被调用。</p>
+<p>但是要注意的是，虽然在静态方法中不能访问非静态成员方法和非静态成员变量，但是<strong>在非静态成员方法中是可以访问静态成员方法/变量的</strong>。</p>
+<p><strong>② static变量</strong></p>
+<p>static变量也称作<strong>静态变量、类变量</strong>，静态变量和非静态变量的区别是：<strong>静态变量被所有的对象所共享，在内存中只有一个副本，它当且仅当在类初次加载时会被初始化</strong>。而非静态变量是对象所拥有的，在创建对象的时候被初始化，存在多个副本，各个对象拥有的副本互不影响。</p>
+<p>static成员变量的初始化顺序按照定义的顺序进行初始化。</p>
+<p><strong>③ static代码块</strong></p>
+<p>static关键字还有一个比较关键的作用就是用来形成<strong>静态代码块</strong>以优化程序性能。static块可以置于类中的任何地方，类中可以有多个static块。在类初次被加载的时候，<strong>会按照static块的顺序来执行每个static块</strong>，并且只会执行一次。</p>
+<p>为什么说static块可以用来优化程序性能，是因为它的特性:<strong>只会在类加载的时候执行一次。</strong></p>
+<p><strong>④ static关键字的误区</strong></p>
+<blockquote>
+<p> <strong>1. static关键字会改变类中成员的访问权限吗？</strong></p>
+<p>与C/C++中的static不同，<strong>Java中的static关键字不会影响到变量或者方法的作用域</strong>。在Java中能够影响到访问权限的只有private、public、protected（包括包访问权限）这几个关键字。</p>
+<p> <strong>2.能通过this访问静态成员变量吗？</strong></p>
+<p>可以。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;　　</span><br><span class="line">&gt;     <span class="keyword">static</span> <span class="keyword">int</span> value = <span class="number">33</span>; </span><br><span class="line">&gt; </span><br><span class="line">&gt;     <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception</span>&#123;</span><br><span class="line">&gt;         <span class="keyword">new</span> Main().printValue();</span><br><span class="line">&gt;     &#125;</span><br><span class="line">&gt; </span><br><span class="line">&gt;     <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">printValue</span><span class="params">()</span></span>&#123;</span><br><span class="line">&gt;         <span class="keyword">int</span> value = <span class="number">3</span>;</span><br><span class="line">&gt;         System.out.println(<span class="keyword">this</span>.value);</span><br><span class="line">&gt;     &#125;</span><br><span class="line">&gt; &#125;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>输出结果：33</strong></p>
+<p>this代表什么？<strong>this代表当前对象</strong>，那么通过new Main()来调用printValue的话，当前对象就是通过new Main()生成的对象。而static变量是被对象所享有的，因此在printValue中的this.value的值毫无疑问是33。在printValue方法内部的value是局部变量，根本不可能与this关联，所以输出结果是33。</p>
+<p><strong>静态成员变量虽然独立于对象，但是不代表不可以通过对象去访问，所有的静态方法和静态变量都可以通过对象访问（只要访问权限足够）。</strong></p>
+<p>s</p>
+<p> <strong>3. static能作用于局部变量么？</strong></p>
+<p>在Java中，static是不允许用来修饰局部变量的。</p>
+</blockquote>
+<ul>
+<li>static的题目：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">    Person person = <span class="keyword">new</span> Person(<span class="string">"Test"</span>);</span><br><span class="line">    <span class="keyword">static</span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"test static"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Test</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"test constructor"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">new</span> MyClass();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span></span>&#123;</span><br><span class="line">    <span class="keyword">static</span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"person static"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Person</span><span class="params">(String str)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"person "</span>+str);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyClass</span> <span class="keyword">extends</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">    Person person = <span class="keyword">new</span> Person(<span class="string">"MyClass"</span>);</span><br><span class="line">    <span class="keyword">static</span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"myclass static"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MyClass</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"myclass constructor"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>输出结果：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">test <span class="keyword">static</span></span><br><span class="line">myclass <span class="keyword">static</span></span><br><span class="line">person <span class="keyword">static</span></span><br><span class="line">person Test</span><br><span class="line">test constructor</span><br><span class="line">person MyClass</span><br><span class="line">myclass constructor</span><br></pre></td></tr></table></figure>
+<p><strong>结果解释：</strong>首先要执行main()方法，要先<strong>加载</strong>Test类，所以先执行Test类的静态代码块，然后进入main()方法，执行<code>new MyClass();</code>语句，要先加载MyClass类，发现存在父类Test，但Test类已经进行过加载，所以开始加载MyClass，执行<strong>MyClass的静态语句块</strong>。MyClass类加载完之后，要执行<strong>新建对象操作</strong>，而在生成对象的时候，<strong>必须先初始化父类的成员变量</strong>，因此会执行Test中的Person person = new Person()，而Person类还没有被加载过，因此会先加载Person类并执行Person类中的static块，接着执行父类的构造器，完成了父类的初始化，然后就来初始化自身了，因此会接着执行MyClass中的Person person = new Person()，最后执行MyClass的构造器。</p>
+<p><strong>总结：</strong></p>
+<p><strong>① 新建对象前要先加载类（静态语句）</strong></p>
+<p><strong>② 加载子类之前要先加载父类</strong></p>
+<p><strong>③ 执行构造器之前要先初始化成员变量</strong></p>
+<p><strong>④ 新建子类之前要先执行父类的构造器</strong></p>
+
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/2019/03/13/TCP协议/" class="pre-post btn btn-default" title="TCP协议相关内容">
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">TCP协议相关内容</span>
+        </a>
+    
+    
+        <a href="/2018/12/28/阿里天池新人赛（工业蒸汽量预测）/" class="next-post btn btn-default" title="阿里天池新人赛（工业蒸汽量预测）">
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">阿里天池新人赛（工业蒸汽量预测）</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">Table of Contents</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#（1）Java有几种基本数据类型"><span class="toc-text">（1）Java有几种基本数据类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#（2）Java的自动装箱和拆箱"><span class="toc-text">（2）Java的自动装箱和拆箱</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#（3）包装类型的比较"><span class="toc-text">（3）包装类型的比较</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#（4）包装类型与基本数据类型之间的比较"><span class="toc-text">（4）包装类型与基本数据类型之间的比较</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#（5）String池"><span class="toc-text">（5）String池</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#（6）面向对象特性"><span class="toc-text">（6）面向对象特性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#（7）String、StringBuffer和StringBuilder区别"><span class="toc-text">（7）String、StringBuffer和StringBuilder区别</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-数据可变和不可变"><span class="toc-text">1. 数据可变和不可变</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-线程安全"><span class="toc-text">2. 线程安全</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-相同点"><span class="toc-text">3. 相同点</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#（8）ArrayList和LinkedList区别"><span class="toc-text">（8）ArrayList和LinkedList区别</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#（9）HashMap和HashTable、ConcurrentHashMap区别"><span class="toc-text">（9）HashMap和HashTable、ConcurrentHashMap区别</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#（10）拷贝文件的工具类使用字节流还是字符流？"><span class="toc-text">（10）拷贝文件的工具类使用字节流还是字符流？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#（11）Java有没有goto"><span class="toc-text">（11）Java有没有goto</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#（12）-amp-和-amp-amp-的区别"><span class="toc-text">（12）&amp;和&amp;&amp;的区别</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#（13）在JAVA中如何跳出当前的多重嵌套循环？"><span class="toc-text">（13）在JAVA中如何跳出当前的多重嵌套循环？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#（14）switch语句可以作用的变量类型"><span class="toc-text">（14）switch语句可以作用的变量类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#（15）-运算符的特殊"><span class="toc-text">（15）+=运算符的特殊</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#（16）使用final关键字修饰一个变量时，是引用不能变，还是引用的对象不能变？"><span class="toc-text">（16）使用final关键字修饰一个变量时，是引用不能变，还是引用的对象不能变？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#（17）static关键字"><span class="toc-text">（17）static关键字</span></a></li></ol>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+        Total:
+        <strong id="busuanzi_value_site_pv">
+            <i class="fa fa-spinner fa-spin"></i>
+        </strong>
+        &nbsp; | &nbsp;
+        Visitors:
+        <strong id="busuanzi_value_site_uv">
+            <i class="fa fa-spinner fa-spin"></i>
+        </strong>
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2017
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+</body>
+</html>

@@ -1,0 +1,469 @@
+<!DOCTYPE HTML>
+<html lang="">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="杨柳潇的博客">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="http://yangliuxiao.top">
+    <!--SEO-->
+
+    <meta name="keywords" content="笔记,设计模式">
+
+
+    <meta name="description" content="设计模式概述
+工厂模式（简单工厂、工厂方法、抽象工厂）
+
+设计模式概述 1. 模式
+
+① 起源于建筑业
+② 经典定义：每个模式都描述了一个在我们的环境中不断出现的问题，然后描述了该问题的解决方案...">
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+
+    <!--Title-->
+
+
+<title>设计模式（一） | 杨柳潇的博客</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="杨柳潇的博客" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.jpg">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+
+</head>
+
+</html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header" style="background-image:url(/./img/background.jpg)">
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title="Mute">
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                 <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yangliuxiao.top">杨柳潇的博客</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>Home</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>时间轴</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="设计模式（一）">
+            
+	            设计模式（一）
+            
+        </h1>
+        <div class="post-meta">
+    
+        <span class="categories-meta fa-wrap">
+            <i class="fa fa-folder-open-o"></i>
+            <a class="category-link" href="/categories/设计模式/">设计模式</a>
+        </span>
+    
+
+    
+        <span class="fa-wrap">
+            <i class="fa fa-tags"></i>
+            <span class="tags-meta">
+                
+                    <a class="tag-link" href="/tags/笔记/">笔记</a> <a class="tag-link" href="/tags/设计模式/">设计模式</a>
+                
+            </span>
+        </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2018/06/02</span>
+        </span>
+        
+            <span class="fa-wrap">
+                <i class="fa fa-eye"></i>
+                <span id="busuanzi_value_page_pv"></span>
+            </span>
+        
+    
+</div>
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <p><a href="#设计模式概述">设计模式概述</a></p>
+<p><a href="#工厂模式">工厂模式</a>（<a href="#简单工厂模式">简单工厂</a>、<a href="#工厂方法模式">工厂方法</a>、<a href="#抽象工厂模式">抽象工厂</a>）</p>
+<hr>
+<h3 id="设计模式概述"><a href="#设计模式概述" class="headerlink" title="设计模式概述"></a>设计模式概述</h3><p> <strong>1. 模式</strong></p>
+<blockquote>
+<p>① 起源于建筑业</p>
+<p>② 经典定义：每个模式都描述了一个<strong>在我们的环境中不断出现的问题</strong>，然后描述了该问题的<strong>解决方案</strong>的核心，通过这种方式，我们可以无数次地重用那些已有的解决方案，无需再重复相同的工作。 （模式是在特定环境中解决问题的一种方案 ）</p>
+</blockquote>
+<p> <strong>2. 软件模式</strong></p>
+<p>最早将模式的思想引入软件工程方法学的是1991-1992年以“<strong>四人组</strong>(Gang of Four，<strong>GoF</strong>，分别是Erich Gamma, Richard Helm, Ralph Johnson和John Vlissides)”自称的四位著名软件工程学者，他们在1994年归纳发表了<strong>23种</strong>在软件开发中使用频率较高的设计模式，旨在<strong>用模式来统一沟通面向对象方法在分析、设计和实现间的鸿沟</strong>。</p>
+<ul>
+<li><strong>设计模式的定义</strong></li>
+</ul>
+<blockquote>
+<p><strong>设计模式(Design Pattern)</strong>是一套<strong>被反复使用、多数人知晓的、经过分类编目的、代码设计经验的总结</strong>，使用设计模式是为了可重用代码、让代码更容易被他人理解、保证代码可靠性。</p>
+</blockquote>
+<ul>
+<li><strong>设计模式的基本要素</strong></li>
+</ul>
+<blockquote>
+<p>设计模式一般有如下几个基本要素：<strong>模式名称</strong>、<strong>问题</strong>、目的、<strong>解决方案</strong>、<strong>效果</strong>、实例代码和相关设计模式</p>
+</blockquote>
+<ul>
+<li><strong>设计模式的分类</strong></li>
+</ul>
+<blockquote>
+<p> <strong>① 根据其目的</strong>（模式是用来做什么的）可分为<strong>创建型</strong>(Creational)，<strong>结构型</strong>(Structural)和<strong>行为型</strong>(Behavioral)三种</p>
+<ul>
+<li><p><strong>创建型模式</strong>主要用于<strong>创建对象</strong>。</p>
+</li>
+<li><p><strong>结构型模式</strong>主要用于<strong>处理类或对象的组合</strong>。</p>
+</li>
+<li><p><strong>行为型模式</strong>主要用于描述<strong>对类或对象怎样交互和怎样分配职责</strong>。</p>
+</li>
+</ul>
+<p><strong>② 根据范围</strong>，即模式主要是用于处理<strong>类之间</strong>关系还是处理<strong>对象之间</strong>的关系，可分为<strong>类模式</strong>和<strong>对象模式</strong>两种</p>
+<ul>
+<li><p>类模式：处理<strong>类和子类之间的关系</strong>，这些关系通过继承建立，在编译时刻就被确定下来，是属于<strong>静态</strong>的。 </p>
+</li>
+<li><p>对象模式：处理<strong>对象间的关系</strong>，这些关系在运行时刻变化，更具<strong>动态</strong>性。 </p>
+</li>
+</ul>
+</blockquote>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>范围/目的</th>
+<th>创建型模式</th>
+<th>结构型模式</th>
+<th>行为型模式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>类模式</td>
+<td>工厂方法模式</td>
+<td>（类）适配器模式</td>
+<td>解释器模式、模板方法模式</td>
+</tr>
+<tr>
+<td>对象模式</td>
+<td>抽象工厂模式、建造者模式、原型模式、单例模式</td>
+<td>（对象）适配器模式、桥接模式、组合模式、装饰模式、外观模式、享元模式、代理模式</td>
+<td>职责链模式、命令模式、迭代器模式、中介者模式、备忘录模式、观察者模式、状态模式、策略模式、访问者模式</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li><strong>设计模式的优点</strong></li>
+</ul>
+<blockquote>
+<p> ① 融合了众多专家的经验，提供了一套通用的设计词汇和一种通用的语言以方便开发人员之间沟通和交流，可以降低开发人员理解系统的复杂度。</p>
+<p> ② 更加简单方便地复用成功的设计和体系结构，使得重用成功的设计更加容易，并避免那些导致不可重用的设计方案。</p>
+<p> ③ 使设计方案更加灵活，且易于修改。 </p>
+<p> ④ 提高软件系统的开发效率和软件质量，且在一定程度上节约设计成本。 </p>
+<p> ⑤ 有助于初学者更深入地理解面向对象思想</p>
+</blockquote>
+<hr>
+<h3 id="工厂模式"><a href="#工厂模式" class="headerlink" title="工厂模式"></a>工厂模式</h3><h4 id="（简单工厂、工厂方法、抽象工厂）"><a href="#（简单工厂、工厂方法、抽象工厂）" class="headerlink" title="（简单工厂、工厂方法、抽象工厂）"></a>（简单工厂、工厂方法、抽象工厂）</h4><hr>
+<h4 id="简单工厂模式"><a href="#简单工厂模式" class="headerlink" title="简单工厂模式"></a>简单工厂模式</h4><ul>
+<li><strong>模式定义</strong></li>
+</ul>
+<p><strong>简单工厂模式</strong>又称为<strong>静态工厂方法(Static Factory Method)模式</strong>，它属于类创建型模式。在简单工厂模式中，可以<strong>根据参数的不同返回不同类的实例</strong>。简单工厂模式<strong>专门定义一个类来负责创建其他类的实例</strong>，被创建的实例通常都具有<strong>共同的父类</strong>。 </p>
+<ul>
+<li><strong>模式结构</strong></li>
+</ul>
+<p><img src="images\图片1.png" alt="images\图片1"></p>
+<p>简单工厂模式包含如下角色：<strong>Factory（static的工厂角色）、Product（抽象产品角色）、ConcreteProduct（具体产品角色）</strong></p>
+<ul>
+<li><strong>模式优缺点</strong></li>
+</ul>
+<p><strong>优点：</strong></p>
+<blockquote>
+<p>① 工厂类含有必要的判断逻辑，可以决定在什么时候创建哪一个产品类的实例，客户端可以免除直接创建产品对象的责任，而仅仅“消费”产品；简单工厂模式通过这种做法<strong>实现了对责任的分割</strong>，它提供了专门的工厂类用于创建对象。</p>
+<p>② 客户端无须知道所创建的具体产品类的类名，只需要知道具体产品类所对应的<strong>参数</strong>即可，对于一些复杂的类名，通过简单工厂模式可以减少使用者的记忆量。</p>
+<p>③ 通过引入<strong>配置文件</strong>，可以在不修改任何客户端代码的情况下更换和增加新的具体产品类，在一定程度上<strong>提高了系统的灵活性</strong>。</p>
+</blockquote>
+<p><strong>缺点：</strong></p>
+<blockquote>
+<p>① 由于工厂类<strong>集中了所有产品创建逻辑</strong>，一旦不能正常工作，整个系统都要受到影响。<br>② 使用简单工厂模式将会增加系统中类的个数，在一定程序上<strong>增加了系统的复杂度和理解难度</strong>。<br>③ 系统<strong>扩展困难</strong>，一旦添加新产品就不得不修改工厂逻辑，在产品类型较多时，有可能造成工厂逻辑过于复杂，不利于系统的扩展和维护。（<strong><em>违背开闭原则</em></strong>）<br>④ 简单工厂模式由于使用了静态工厂方法，造成工厂角色<strong>无法形成基于继承的等级结构。（静态方法不能实现多态）</strong></p>
+</blockquote>
+<ul>
+<li><strong>模式适用环境</strong></li>
+</ul>
+<p>① 工厂类<strong>负责创建的对象比较少</strong>：由于创建的对象较少，不会造成工厂方法中的业务逻辑太过复杂。<br>② 客户端只知道传入工厂类的参数，<strong>对于如何创建对象不关心</strong>：客户端既不需要关心创建细节，甚至连类名都不需要记住，只需要知道类型所对应的参数。</p>
+<ul>
+<li><strong>模式应用</strong></li>
+</ul>
+<p>① JDK类库中工具类（<strong>java.text.DateFormat</strong>）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">static</span> DateFormat <span class="title">getDateInstance</span><span class="params">()</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">static</span> DateFormat <span class="title">getDateInstance</span><span class="params">(<span class="keyword">int</span> style)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">static</span> DateFormat <span class="title">getDateInstance</span><span class="params">(<span class="keyword">int</span> style,Locale locale)</span></span>;</span><br></pre></td></tr></table></figure>
+<p>② Java加密（<strong>DESEncrypt.java</strong>）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*获取不同加密算法的密钥生成器*/</span></span><br><span class="line">KeyGenerator keyGen=KeyGenerator.getInstance(<span class="string">"DESede"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">/*创建密码器*/</span></span><br><span class="line">Cipher cp=Cipher.getInstance(<span class="string">"DESede"</span>);</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="工厂方法模式"><a href="#工厂方法模式" class="headerlink" title="工厂方法模式"></a>工厂方法模式</h4><ul>
+<li><strong>模式定义</strong></li>
+</ul>
+<p><strong>工厂方法模式</strong>(Factory Method Pattern)又称为工厂模式，也叫虚拟构造器(Virtual Constructor)模式或者多态工厂(Polymorphic Factory)模式，它属于类创建型模式。<strong>在工厂方法模式中，工厂父类负责定义创建产品对象的公共接口，而工厂子类则负责生成具体的产品对象</strong>，这样做的目的是将产品类的实例化操作延迟到工厂子类中完成，即通过工厂子类来确定究竟应该实例化哪一个具体产品类。</p>
+<ul>
+<li><strong>模式结构</strong></li>
+</ul>
+<p><img src="images\图片2.png" alt="images\图片2"></p>
+<p>工厂方法模式包含如下角色：Product（抽象产品）、ConcreteProduct（具体产品）、Factory（抽象工厂）、ConcreteFactory（具体工厂）</p>
+<p>为了提高系统的可扩展性和灵活性，在定义工厂和产品时都必须使用<strong>抽象层</strong>，如果需要更换产品类，只需要更换对应的工厂即可，其他代码不需要进行任何修改。 </p>
+<blockquote>
+<p>在实际的应用开发中，一般将具体工厂类的实例化过程进行改进，不直接使用new关键字来创建对象，而是<strong>将具体类的类名写入配置文件中</strong>，再通过<strong>Java的反射机制</strong>，读取XML格式的配置文件，<strong>根据存储在XML文件中的类名字符串生成对象</strong>。 </p>
+<ul>
+<li><strong>Java反射</strong>：是指<strong>在程序运行时获取已知名称的类或已有对象的相关信息的一种机制</strong>，包括类的方法、属性、超类等信息，还包括实例的创建和实例类型的判断等。可通过<strong>Class类的forName()</strong>方法返回与带有给定字符串名的类或接口相关联的Class对象，再通过<strong>newInstance()方法</strong>创建此对象所表示的类的一个新实例，即通过一个类名字符串得到类的实例。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="comment">/*创建一个字符串类型的对象*/</span></span><br><span class="line">&gt; Class c = Class.forName(“String”);</span><br><span class="line">&gt; Object obj = c.newInstance();</span><br><span class="line">&gt; <span class="keyword">return</span> obj;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+<p>工具类XMLUtil.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="comment">/*创建DOM文档对象*/</span></span><br><span class="line">&gt; DocumentBuilderFactory dFactory = DocumentBuilderFactory.newInstance();</span><br><span class="line">&gt; DocumentBuilder builder = dFactory.newDocumentBuilder();</span><br><span class="line">&gt; Document doc;                            </span><br><span class="line">&gt; doc = builder.parse(<span class="keyword">new</span> File(<span class="string">"config.xml"</span>)); </span><br><span class="line"></span><br><span class="line"><span class="comment">/*获取包含类名的文本节点*/</span></span><br><span class="line">NodeList nl = doc.getElementsByTagName(<span class="string">"className"</span>);</span><br><span class="line">Node classNode=nl.item(<span class="number">0</span>).getFirstChild();</span><br><span class="line">String cName=classNode.getNodeValue();</span><br><span class="line"></span><br><span class="line"><span class="comment">/*通过类名生成实例对象并将其返回*/</span></span><br><span class="line">Class c=Class.forName(cName);</span><br><span class="line"></span><br><span class="line">&gt; Object obj=c.newInstance();</span><br><span class="line">&gt; <span class="keyword">return</span> obj;</span><br><span class="line">&gt; </span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<ul>
+<li><strong>模式优缺点</strong></li>
+</ul>
+<p><strong>优点：</strong></p>
+<blockquote>
+<p>① 在工厂方法模式中，工厂方法向客户隐藏了哪种具体产品类将被实例化这一细节，用户只需要关心所需产品对应的工厂，无须关心创建细节，甚至无须知道具体产品类的类名。<br>② 基于工厂角色和产品角色的多态性设计是工厂方法模式的关键。工厂方法模式之所以又被称为多态工厂模式，是因为所有的具体工厂类都具有同一抽象父类。<br>③ 使用工厂方法模式的另一个优点是在系统中加入新产品时，<strong>无须修改</strong>抽象工厂和抽象产品提供的接口，无须修改客户端，也无须修改其他的具体工厂和具体产品，而只要添加一个具体工厂和具体产品就可以了。这样，<strong>系统的可扩展性也就变得非常好，完全符合“开闭原则”</strong>。</p>
+</blockquote>
+<p><strong>缺点：</strong></p>
+<blockquote>
+<p>① 在添加新产品时，需要编写新的具体产品类，而且还要提供与之对应的具体工厂类，系统中类的<strong>个数将成对增加</strong>，在一定程度上增加了系统的复杂度，有更多的类需要编译和运行，会给系统带来一些额外的开销。<br>② 由于考虑到系统的可扩展性，需要引入抽象层，在客户端代码中均使用抽象层进行定义，<strong>增加了系统的抽象性和理解难度，且在实现时可能需要用到DOM、反射等技术，增加了系统的实现难度</strong>。</p>
+</blockquote>
+<ul>
+<li><strong>模式适用环境</strong></li>
+</ul>
+<p>① <strong>一个类不知道它所需要的对象的类</strong>：在工厂方法模式中，客户端不需要知道具体产品类的类名，只需要知道所对应的工厂即可，具体的产品对象由具体工厂类创建；客户端需要知道创建具体产品的工厂类。<br>② <strong>一个类通过其子类来指定创建哪个对象</strong>：在工厂方法模式中，对于抽象工厂类只需要提供一个创建产品的接口，而由其子类来确定具体要创建的对象，利用面向对象的多态性和里氏代换原则，在程序运行时，子类对象将覆盖父类对象，从而使得系统更容易扩展。<br>③ 将创建对象的任务委托给多个工厂子类中的某一个，客户端在使用时可以无须关心是哪一个工厂子类创建产品子类，需要时再动态指定，<strong>可将具体工厂类的类名存储在配置文件或数据库中</strong>。</p>
+<ul>
+<li><strong>模式应用</strong></li>
+</ul>
+<p>① java.util.Collection接口的iterator()方法</p>
+<p>② Java消息服务JMS(Java Messaging Service) </p>
+<p>③ JDBC中的工厂方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Connection conn=DriverManager.getConnection(</span><br><span class="line"><span class="string">"jdbc:microsoft:sqlserver://localhost:1433; DatabaseName=DB;user=sa;password="</span>);</span><br><span class="line">Statement statement=conn.createStatement();</span><br><span class="line">ResultSet rs=statement.executeQuery(<span class="string">"select * from UserInfo"</span>);</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="抽象工厂模式"><a href="#抽象工厂模式" class="headerlink" title="抽象工厂模式"></a>抽象工厂模式</h4><ul>
+<li><strong>模式定义</strong></li>
+</ul>
+<p><strong>产品等级结构</strong>：产品等级结构即产品的继承结构，如一个抽象类是电视机，其子类有海尔电视机、海信电视机、TCL电视机，则抽象电视机与具体品牌的电视机之间构成了一个产品等级结构，抽象电视机是父类，而具体品牌的电视机是其子类。<br><strong>产品族</strong>：在抽象工厂模式中，产品族是指由同一个工厂生产的，位于不同产品等级结构中的一组产品，如海尔电器工厂生产的海尔电视机、海尔电冰箱，海尔电视机位于电视机产品等级结构中，海尔电冰箱位于电冰箱产品等级结构中。 </p>
+<p><strong>抽象工厂模式</strong>(Abstract Factory Pattern)：提供一个创建<strong>一系列</strong>相关或相互依赖对象的接口，而无须指定它们具体的类。抽象工厂模式又称为Kit模式，属于<strong>对象创建型</strong>模式。</p>
+<ul>
+<li><strong>模式结构</strong></li>
+</ul>
+<p><img src="images\图片3.png" alt="images\图片3"></p>
+<p>抽象工厂模式包含如下角色：AbstractFactory（抽象工厂）、ConcreteFactory（具体工厂）、AbstractProduct（抽象产品）、Product（具体产品）</p>
+<ul>
+<li><strong>模式优缺点</strong></li>
+</ul>
+<p><strong>优点：</strong></p>
+<blockquote>
+<p>① 抽象工厂模式<strong>隔离了具体类的生成</strong>，使得客户并不需要知道什么被创建。由于这种隔离，更换一个具体工厂就变得相对容易。所有的具体工厂都实现了抽象工厂中定义的那些公共接口，因此<strong>只需改变具体工厂的实例</strong>，就可以在某种程度上改变整个软件系统的行为。另外，应用抽象工厂模式可以实现<strong>高内聚低耦合</strong>的设计目的，因此抽象工厂模式得到了广泛的应用。<br>② 当一个产品族中的多个对象被设计成一起工作时，它能够<strong>保证客户端始终只使用同一个产品族中的对象</strong>。这对一些需要根据当前环境来决定其行为的软件系统来说，是一种非常实用的设计模式。<br>③ 增加新的具体工厂和产品族很方便，无须修改已有系统，<strong>符合“开闭原则”</strong>。</p>
+</blockquote>
+<p><strong>缺点：</strong></p>
+<blockquote>
+<p>① 在添加新的产品对象时，难以扩展抽象工厂来生产新种类的产品，这是因为在抽象工厂角色中规定了所有可能被创建的产品集合，要支持新种类的产品就意味着要对该接口进行扩展，而这将涉及到对抽象工厂角色及其所有子类的修改，显然会带来较大的不便。<br>② <strong>开闭原则的倾斜性</strong>（增加新的工厂和产品族容易，增加新的产品等级结构麻烦）</p>
+</blockquote>
+<ul>
+<li><strong>模式适用环境</strong></li>
+</ul>
+<p>① 一个系统不应当依赖于产品类实例如何被创建、组合和表达的细节，这对于所有类型的工厂模式都是重要的。<br>② 系统中<strong>有多于一个的产品族，而每次只使用其中某一产品族</strong>。<br>③ 属于<strong>同一个产品族的产品将在一起使用</strong>，这一约束必须在系统的设计中体现出来。<br>④ 系统提供一个产品类的库，所有的产品以同样的接口出现，从而使客户端不依赖于具体实现。</p>
+<ul>
+<li><strong>模式应用</strong></li>
+</ul>
+<p>① Java SE AWT（抽象窗口工具包）：在Java语言的AWT（抽象窗口工具包）中就使用了抽象工厂模式，它使用抽象工厂模式来实现在<strong>不同的操作系统</strong>中应用程序呈现与所在操作系统一致的外观界面。 </p>
+<p>② 在很多软件系统中需要更换<strong>界面主题</strong>，要求界面中的按钮、文本框、背景色等一起发生改变时，可以使用抽象工厂模式进行设计。 </p>
+
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/2018/06/02/设计模式（二）/" class="pre-post btn btn-default" title="设计模式（二）">
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">设计模式（二）</span>
+        </a>
+    
+    
+        <a href="/2018/06/02/7个面向对象设计原则/" class="next-post btn btn-default" title="7个面向对象设计原则">
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">7个面向对象设计原则</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">Table of Contents</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#设计模式概述"><span class="toc-text">设计模式概述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#工厂模式"><span class="toc-text">工厂模式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#（简单工厂、工厂方法、抽象工厂）"><span class="toc-text">（简单工厂、工厂方法、抽象工厂）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#简单工厂模式"><span class="toc-text">简单工厂模式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#工厂方法模式"><span class="toc-text">工厂方法模式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#抽象工厂模式"><span class="toc-text">抽象工厂模式</span></a></li></ol></li></ol>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+        Total:
+        <strong id="busuanzi_value_site_pv">
+            <i class="fa fa-spinner fa-spin"></i>
+        </strong>
+        &nbsp; | &nbsp;
+        Visitors:
+        <strong id="busuanzi_value_site_uv">
+            <i class="fa fa-spinner fa-spin"></i>
+        </strong>
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2017
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+</body>
+</html>

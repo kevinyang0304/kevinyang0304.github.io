@@ -1,0 +1,445 @@
+<!DOCTYPE HTML>
+<html lang="">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="杨柳潇的博客">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="http://yangliuxiao.top">
+    <!--SEO-->
+
+    <meta name="keywords" content="代码,Java,Java Web">
+
+
+    <meta name="description" content="Struts配置文件之web.xml
+web.xml的主要作用web.xml是Struts 2框架中一个非常重要的配置文件，对Web应用中一些初始信息进行了配置。Struts 2框架要先依赖于过...">
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+
+    <!--Title-->
+
+
+<title>Struts2配置文件及相关技术 | 杨柳潇的博客</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="杨柳潇的博客" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.jpg">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+
+</head>
+
+</html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header" style="background-image:url(/./img/background.jpg)">
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title="Mute">
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                 <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yangliuxiao.top">杨柳潇的博客</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>Home</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>时间轴</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="Struts2配置文件及相关技术">
+            
+	            Struts2配置文件及相关技术
+            
+        </h1>
+        <div class="post-meta">
+    
+        <span class="categories-meta fa-wrap">
+            <i class="fa fa-folder-open-o"></i>
+            <a class="category-link" href="/categories/Java-Web开发/">Java Web开发</a>
+        </span>
+    
+
+    
+        <span class="fa-wrap">
+            <i class="fa fa-tags"></i>
+            <span class="tags-meta">
+                
+                    <a class="tag-link" href="/tags/Java/">Java</a> <a class="tag-link" href="/tags/Java-Web/">Java Web</a> <a class="tag-link" href="/tags/代码/">代码</a>
+                
+            </span>
+        </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2017/11/18</span>
+        </span>
+        
+            <span class="fa-wrap">
+                <i class="fa fa-eye"></i>
+                <span id="busuanzi_value_page_pv"></span>
+            </span>
+        
+    
+</div>
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <h3 id="Struts配置文件之web-xml"><a href="#Struts配置文件之web-xml" class="headerlink" title="Struts配置文件之web.xml"></a>Struts配置文件之web.xml</h3><hr>
+<h4 id="web-xml的主要作用"><a href="#web-xml的主要作用" class="headerlink" title="web.xml的主要作用"></a>web.xml的主要作用</h4><p>web.xml是Struts 2框架中一个非常重要的配置文件，对Web应用中一些初始信息进行了配置。Struts 2框架要先依赖于<strong>过滤器FilterDispatcher</strong>来截获Web程序的HTTP请求，FilterDispatcher就在web.xml中进行配置。除了过滤器外，web.xml还可以用来配置<strong>&lt; session-config&gt;会话时间、欢迎页、错误页、监听器、控制器</strong>等。</p>
+<p>web.xml文件中包含了大量的<strong>标签元素</strong>，这些元素都对应着各自不同的功能。</p>
+<p>web.xml文件中可以包含哪些元素是由其对应的<strong>Schema文件</strong>来定义的。因此，必须在每个web.xml文件的根元素web-app中指定其Schema文件的版本。web.xml文件的Schema文件由Sun公司定义。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"UTF-8"</span>?&gt;</span><br><span class="line">&lt;web-app xmlns:xsi=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span> </span><br><span class="line">xmlns=<span class="string">"http://java.sun.com/xml/ns/j2ee"</span> </span><br><span class="line">xmlns:javaee=<span class="string">"http://java.sun.com/xml/ns/javaee"</span> </span><br><span class="line">xmlns:web=<span class="string">"http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"</span> xsi:schemaLocation=<span class="string">"http://java.sun.com/xml/ns/j2ee</span></span><br><span class="line"><span class="string">http://java.sum.com/xml/ns/j2ee/web-app_2_4.xsd"</span> id=<span class="string">"WebApp_9"</span> version=<span class="string">"2.4"</span>&gt;</span><br><span class="line"><span class="comment">/* ......其他需要添加的标签*/</span></span><br><span class="line">&lt;/web-app&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="web-xml关键元素分析"><a href="#web-xml关键元素分析" class="headerlink" title="web.xml关键元素分析"></a>web.xml关键元素分析</h4><p><strong>1. welcome-file-list 和welcome-file元素</strong></p>
+<p>在访问一个网站时，用户看到的第一个页面就是<strong>欢迎页面</strong>。通常，欢迎页面都在web.xml中指定。</p>
+<p>在web.xml文件中，welcome-file-list 和welcome-file元素是用来指定欢迎页面的。welcome-file-list元素可以包含多个welcome-file元素，每个welcome-file元素指定一个欢迎页面。Tomcat会<strong>按顺序</strong>查找欢迎页面，a.jsp若不存在则找b.jsp。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;welcome-file-list&gt; </span><br><span class="line">     &lt;!--欢迎页面--&gt;</span><br><span class="line">    &lt;welcome-file&gt;a.jsp&lt;/welcome-file&gt; </span><br><span class="line">    &lt;welcome-file&gt;b.jsp&lt;/welcome-file&gt; </span><br><span class="line">&lt;/welcome-file-list&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>2. filter和filter-mapping元素</strong></p>
+<p>filter**元素用于声明一个过滤器，使用该元素可以同时拦截多个请求的URL。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--定义Filter--&gt;</span><br><span class="line">&lt;filter&gt;</span><br><span class="line">    &lt;filter-name&gt;struts2&lt;/filter-name&gt;    &lt;!--指定Filter的名字，不能为空--&gt;</span><br><span class="line">    &lt;!--指定Filter的实现类，此处使用的是Struts2提供的过滤器类--&gt;</span><br><span class="line">    &lt;filter-<span class="class"><span class="keyword">class</span>&gt;</span></span><br><span class="line"><span class="class">        <span class="title">org</span>.<span class="title">apache</span>.<span class="title">struts2</span>.<span class="title">dispatcher</span>.<span class="title">ng</span>.<span class="title">filter</span>.<span class="title">StrutsPrepareAndExecuteFilter</span></span></span><br><span class="line"><span class="class">    &lt;/<span class="title">filter</span>-<span class="title">class</span>&gt;</span></span><br><span class="line"><span class="class">&lt;/<span class="title">filter</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>filter-mapping</strong>元素用来指定与过滤器关联的URL。上面代码中&lt; url-pattern&gt;&lt; /url-pattern&gt;标签中的<strong>“/*”表明该过滤器可以拦截所有的HTTP请求</strong>。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--定义Filter所拦截的URL地址--&gt;</span><br><span class="line">&lt;filter-mapping&gt; </span><br><span class="line">    &lt;!--Filter的名字，该名字必须是filter元素中已声明过的过滤器名字--&gt;</span><br><span class="line">       &lt;filter-name&gt;struts2&lt;/filter-name&gt;</span><br><span class="line">       &lt;url-pattern&gt;/*&lt;/url-pattern&gt; &lt;!--定义Filter负责拦截的URL地址--&gt;</span><br><span class="line">&lt;/filter-mapping&gt;</span><br></pre></td></tr></table></figure>
+<p> <strong>3. error-page元素</strong><br>error-page元素用来指定<strong>错误处理页面</strong>。可以通过配置<strong>错误码元素error-code</strong>以避免用户直接看到原始错误信息。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--配置异常页--&gt;</span><br><span class="line">&lt;error-page&gt; </span><br><span class="line">&lt;error-code&gt;404&lt;/error-code&gt;        &lt;!--指定错误代码--&gt;</span><br><span class="line">&lt;!--如果发生HTTP <span class="number">404</span>错误，则返回location子元素中指定的文件--&gt;</span><br><span class="line">&lt;location&gt;/error.jsp&lt;/location&gt;        </span><br><span class="line">&lt;/error-page&gt;</span><br></pre></td></tr></table></figure>
+<p> <strong>4. listener元素</strong></p>
+<p> 该元素用来注册<strong>监听器类</strong>，并使用子元素listener-class指定监听程序的完整限定类名，<strong>下面的代码设置了监听器，用于初始化Spring框架。</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--监听器 --&gt;</span><br><span class="line">&lt;listener&gt; </span><br><span class="line">    &lt;listener-<span class="class"><span class="keyword">class</span>&gt;</span></span><br><span class="line"><span class="class">        <span class="title">org</span>.<span class="title">springframework</span>.<span class="title">web</span>.<span class="title">context</span>.<span class="title">ContextLoaderListener</span></span></span><br><span class="line"><span class="class">    &lt;/<span class="title">listener</span>-<span class="title">class</span>&gt; </span></span><br><span class="line"><span class="class">&lt;/<span class="title">listener</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p> <strong>5. session-config元素</strong><br>    该元素用来<strong>指定会话过期时间</strong>。下面代码表示会话时间超过30分钟，session对象里面存放的值会自动失效。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--会话时间配置 --&gt;</span><br><span class="line">&lt;session-config&gt; </span><br><span class="line">&lt;session-timeout&gt;30&lt;/session-timeout&gt; </span><br><span class="line">&lt;/session-config&gt;</span><br></pre></td></tr></table></figure>
+<p> <strong>6. init-param元素</strong><br>该元素用来<strong>定义参数</strong>，在web.xml中可以有多个init-param元素。下面的代码使用init-param元素设置了常量。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--配置常量 --&gt;</span><br><span class="line">&lt;init-param&gt;</span><br><span class="line">&lt;param-name&gt; struts.i18n.encoding &lt;/param-name&gt;</span><br><span class="line">&lt;param-value&gt; UTF-8&lt;/param-value&gt;</span><br><span class="line">&lt;/init-param&gt;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>200：服务器成功返回网页</strong></p>
+<p><strong>404：请求网页不存在</strong></p>
+<p><strong>503：服务不可用</strong></p>
+<p><strong>403：Forbidden，服务器拒绝请求</strong></p>
+<p>408：Request Timeout（请求超时）服务器等候请求时发生超时</p>
+<p>413：Request Entity Too Large（请求实体过大）</p>
+<p>414：Request-URL Too Long（请求URL过长）</p>
+<p>415：Unsupported Media Type（不支持的媒体类型）</p>
+<p>416：Requested Range Not Satisfiable（请求范围不符合要求）</p>
+<p><strong>500：Internal Server Error（服务器内部错误）</strong></p>
+<p>501：Not Implemented（尚未实现）服务器不具备请求的功能。</p>
+<p><strong>502：Bad Gateway（错误网关）</strong></p>
+<p><strong>503：Service Unavailable（服务不可用，由于超载或维护）</strong></p>
+<p><strong>504：Gateway Timeout（网关超时）</strong></p>
+<p>505：HTTP Version Not Supported（HTTP版本不受支持）</p>
+</blockquote>
+<hr>
+<h3 id="Struts配置文件之struts-properties"><a href="#Struts配置文件之struts-properties" class="headerlink" title="Struts配置文件之struts.properties"></a><span id="2">Struts配置文件之struts.properties</span></h3><hr>
+<h4 id="struts-properties的主要作用"><a href="#struts-properties的主要作用" class="headerlink" title="struts.properties的主要作用"></a>struts.properties的主要作用</h4><p>struts.properties是Strus 2框架中一个重要的配置文件，程序员可以<strong>通过它来管理Struts 2 框架中定义的大量常量。</strong><br>struts.properties文件是一个标准的properties文件，其<strong>格式是key-value对</strong>，即每个key对应一个value，key表示的是Struts 2框架中的常量，而value则是其常量值。<br>struts.properties文件<strong>必须放到Web应用下的类加载路径下</strong>才能使用，<strong>即WEB-INF/classes路径下</strong>。</p>
+<p>struts.properties文件的代码片段（key-value对）：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">### 设置默认编码集为UTF-8</span><br><span class="line">struts.i18n.encoding=UTF-<span class="number">8</span></span><br><span class="line">###  设置使用开发模式</span><br><span class="line">struts.devMode=<span class="keyword">true</span></span><br></pre></td></tr></table></figure>
+<h4 id="struts-properties关键元素"><a href="#struts-properties关键元素" class="headerlink" title="struts.properties关键元素"></a>struts.properties关键元素</h4><p><strong>① struts.i18n.encoding</strong>：该常量指定了Web应用中的默认编码集。通常，由于使用中文字符集，将其设置为UTF-8。</p>
+<p><strong>② struts.devMode</strong>：该常量指定Struts 2是否使用开发模式。当值设为true时，表示使用开发模式，可以在应用程序出错时显示更详细的出错提示。其默认值为false。通常，在开发阶段，建议使用开发模式；当产品发布后，则可将该常量设置为false。</p>
+<hr>
+<h3 id="Struts配置文件之struts-xml"><a href="#Struts配置文件之struts-xml" class="headerlink" title="Struts配置文件之struts.xml"></a><span id="3">Struts配置文件之struts.xml</span></h3><hr>
+<h4 id="struts-xml的主要作用"><a href="#struts-xml的主要作用" class="headerlink" title="struts.xml的主要作用"></a>struts.xml的主要作用</h4><p>struts.xml是Struts 2框架中一个重要的配置文件，其<strong>存放路径和struts.properties一样，位于WEB-INF/classes路径下。</strong></p>
+<p>struts.xml文件<strong>主要用来配置Action和HTTP请求的对应关系，以及配置逻辑视图和物理视图资源的对应关系。但除了这些功能之外，struts.xml文件还有一些额外的功能，如配置常量、导入其他配置文件等。</strong></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--必不可少的xml配置--&gt;</span><br><span class="line">&lt;?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"UTF-8"</span> ?&gt;</span><br><span class="line">&lt;!DOCTYPE struts PUBLIC</span><br><span class="line">    <span class="string">"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"</span></span><br><span class="line"><span class="string">"http://struts.apache.org/dtds/struts-2.0.dtd"</span>&gt;</span><br><span class="line">&lt;!--struts根元素--&gt;</span><br><span class="line">&lt;struts&gt;</span><br><span class="line">    &lt;!--配置包<span class="keyword">default</span>，命名空间为“/”--&gt;</span><br><span class="line">            &lt;<span class="keyword">package</span> name=<span class="string">"default"</span> namespace=<span class="string">"/"</span> extends=<span class="string">"struts-default"</span>&gt;</span><br><span class="line">            &lt;!--配置名为NN的Action，实现类为XXXAction--&gt;</span><br><span class="line">                &lt;action name=<span class="string">"NN"</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">" XXXAction"</span>&gt;</span><br><span class="line">                    &lt;result&gt;/YY.jsp&lt;/result&gt;        &lt;!--返回YY.jsp --&gt;</span><br><span class="line">                &lt;/action&gt;</span><br><span class="line">            &lt;/package&gt;</span><br><span class="line">&lt;/struts&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="struts-xml关键元素"><a href="#struts-xml关键元素" class="headerlink" title="struts.xml关键元素"></a>struts.xml关键元素</h4><p> <strong>1. package元素</strong></p>
+<p>package元素用来配置包，在Struts 2框架中，包是一个独立的单位，通过name属性来唯一标识包。 </p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>这是一个必须属性，标识包的名字，以便在其他包中被引用</td>
+</tr>
+<tr>
+<td>extends</td>
+<td>可选属性，指定该包继承自其他包</td>
+</tr>
+<tr>
+<td>namespace</td>
+<td>可选属性，指定命名空间，标识此包下的Action的访问路径</td>
+</tr>
+<tr>
+<td>abstract</td>
+<td>可选属性，指定该包为抽象包</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p> <strong>2. action元素</strong></p>
+<p>Struts 2框架通过<strong>Action对象来处理HTTP请求</strong>，该请求的URL地址对应的Action即配置在action元素中。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;action name=<span class="string">"userAction"</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">" com.action.UserAction"</span>&gt;</span><br><span class="line">     &lt;result&gt;/user.jsp&lt;/result&gt;</span><br><span class="line"> &lt;/action&gt;</span><br></pre></td></tr></table></figure>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>这是一个必须属性，标识Action，指定了该Action所处理请求的URL</td>
+</tr>
+<tr>
+<td>class</td>
+<td>可选属性，指定Action对象对应的实现类</td>
+</tr>
+<tr>
+<td>method</td>
+<td>可选属性，指定请求Action时调用的方法（默认execute方法）</td>
+</tr>
+<tr>
+<td>converter</td>
+<td>可选属性，指定类型转换器的类</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p> <strong>3. result元素</strong></p>
+<p>当调用Action方法处理结束返回后，下一步就是<strong>使用result元素来设置返回给浏览器的视图</strong>。</p>
+<p>配置result元素时常需指定<strong>name和type</strong>两个属性。</p>
+<p><strong>name属性对应从Action方法返回的值，“success”为其默认值。type属性指定结果类型，默认的类型是dispatcher。</strong></p>
+<p> <strong>4. include元素</strong></p>
+<p>该元素用来在一个struts.xml配置文件中<strong>包含其他的配置文件</strong>。<br>通过&lt; include../&gt;标签，可以将Action以模块的方式来加以管理，即将存在相关性的Action放到同一个xml文件中，然后通过在struts.xml文件中配置&lt; include../&gt;标签来将它们组合在一起。使用include元素的struts.xml文件片段如下所示。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;struts&gt;</span><br><span class="line">    &lt;include file=”a.xml”/&gt;</span><br><span class="line">    &lt;include file=”b.xml”/&gt;</span><br><span class="line">&lt;/struts&gt;</span><br></pre></td></tr></table></figure>
+<p>需要注意的是，这些模块化的xml文件也必须是标准的Struts 2配置文件，即必须包含头信息以及根元素等。</p>
+<p> <strong>5. global-results元素</strong></p>
+<p>该元素配置包中的<strong>全局结果</strong>。全局结果的作用范围为包下面所有Action。当一个Action处理用户请求后返回时，会<strong>首先在该Action本身的局部结果中进行搜索，如果局部结果中没有对应的结果，则会查找全局结果</strong></p>
+<hr>
+<h3 id="Action的动态调用（DMI）"><a href="#Action的动态调用（DMI）" class="headerlink" title="Action的动态调用（DMI）"></a>Action的动态调用（DMI）</h3><hr>
+<p>Struts 2中提供了包含多个处理逻辑的Action处理方式，即<strong>DMI（Dynamic Method Invocation，动态方法调用）</strong>。通过动态请求Action对象中的方法，可以实现对某一业务逻辑的处理。<br>DMI处理方式是通过请求Action对象中的一个具体的方法来实现动态的操作。具体说就是，在<strong>请求Action的URL地址后加上请求方法字符串</strong>，与Action对象中的方法进行匹配。其中，<strong>Action对象名称和方法之间用“!”隔开</strong>。即如果在struts.xml文件中配置了名为user的Action，为了请求change（）方法，请求方式应表示为<strong>“/user!change.action”</strong>。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href="user"&gt;hello&lt;/a&gt;&lt;br&gt;  /*请求名为user的Action的execute方法*/ </span><br><span class="line">&lt;a href="user!update.action"&gt;update&lt;/a&gt;/*请求名为user的Action的update方法*/</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="Struts之Action类文件"><a href="#Struts之Action类文件" class="headerlink" title="Struts之Action类文件"></a>Struts之Action类文件</h3><hr>
+<p>Action类文件是<strong>真正实现业务逻辑</strong>的文件。</p>
+<p>一般的，每个Action类都定义在一个单独的文件中，实<strong>现不同的业务逻辑处理可以通过向该Action类中添加不同的方法来实现</strong>。因此，Action类文件是Struts 2框架中非常重要的文件。 </p>
+<h4 id="Action接口和ActionSupport基类"><a href="#Action接口和ActionSupport基类" class="headerlink" title="Action接口和ActionSupport基类"></a>Action接口和ActionSupport基类</h4><p><strong>Struts 2框架提供了一个Action接口，该接口定义了Struts 2的Action类的实现规范。</strong></p>
+<p>在Action接口中定义了<strong>5个字符串常量和一个execute()方法</strong>。每个Action类都必须包含一个execute()方法，该方法返回一个字符串。而Action接口中定义的5个常量用来统一execute()方法返回的值。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Action</span></span>&#123;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String ERROR=”error”;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String SUCCESS=”success”;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String INPUT=”input”;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String LOGIN=”login”;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String NONE=”now”;</span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">execute</span><span class="params">()</span> <span class="keyword">throws</span> Exception</span>;        </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>ActionSupport类</strong>实现了Action接口，它是一个默认的Aciton实现类，<strong>提供了很多默认方法，包括数据校验方法﹑获取国际化信息方法等</strong>。实际应用中，程序员定义的Action类都会继承ActionSupport类而不是实现Action接口，这可以大大简化程序员的编码过程。</p>
+<h4 id="Action与Servlet-API"><a href="#Action与Servlet-API" class="headerlink" title="Action与Servlet API"></a>Action与Servlet API</h4><p>Struts 2框架中的Action与Servlet是<strong>完全松耦合</strong>的，这使得Action类更加方便进行测试。但对于Web应用来说，Servlet API是不可忽略的。 </p>
+<p><strong>在Struts 2框架中访问Servlet API有如下几种方法。</strong></p>
+<blockquote>
+<p><strong>1．通过ActionContext类访问</strong><br><strong>2．通过特定接口访问</strong><br><strong>3．通过ServletActionContext访问</strong></p>
+</blockquote>
+<p> <strong>1．通过ActionContext类访问</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ActionContext context = ActionContext.getContext();</span><br><span class="line"><span class="comment">/*在request域放入键值对*/</span></span><br><span class="line">context.put(<span class="string">"name"</span>,<span class="string">"tom"</span>);</span><br><span class="line"><span class="comment">/*在application域放入键值对*/</span></span><br><span class="line">context.getApplication().put(<span class="string">"name"</span>,<span class="string">"tom"</span>);</span><br><span class="line"><span class="comment">/*在session域放入键值对*/</span></span><br><span class="line">context.getSession().put(<span class="string">"name"</span>,<span class="string">"tom"</span>);</span><br></pre></td></tr></table></figure>
+<p> <strong>2．通过特定接口访问</strong></p>
+<p>ActionContext类虽然可以访问Servlet API，但是无法直接访问到其实例。为了在Action中直接访问Servlet API，可以通过下面几个接口来实现：</p>
+<ul>
+<li><p>ServletRequestAware：实现该接口后，可以直接访问HttpServletRequest实例</p>
+</li>
+<li><p>ServletResponseAware：实现该接口后，可以直接访问HttpServletResponse实例</p>
+</li>
+<li><p>ServletContextAware：实现该接口后，可以直接访问ServletContext实例</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*使用ServletContextAware在Action中访问ServletContext实例*/</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LoginAction</span> <span class="keyword">implements</span> <span class="title">Action</span>, <span class="title">ServletContextAware</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> ServletContext context;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setServletContext</span><span class="params">(ServletContext ctx)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.context = ctx;    </span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">execute</span><span class="params">()</span> <span class="keyword">throws</span> Exception</span>&#123;</span><br><span class="line">        <span class="comment">/*将("user","tom")放入ActionContext中*/</span></span><br><span class="line">        context.setAttribute(<span class="string">"user"</span>,<span class="string">"tom"</span>); </span><br><span class="line">        <span class="keyword">return</span> SUCCESS;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>3．通过ServletActionContext访问</strong></p>
+<p>Struts 2提供了<strong>org.apache.struts2.ServletActionContext</strong>类，常用方法如下：</p>
+<p>① getResponse()：获得HttpServletResponse对象</p>
+<p>② getRequest()：获得HttpServletRequest对象</p>
+<p>③ getServletContext()：获得ServletContext对象</p>
+<hr>
+<h3 id="ModelDriven接口"><a href="#ModelDriven接口" class="headerlink" title="ModelDriven接口"></a>ModelDriven接口</h3><hr>
+<p>用户在提交HTTP请求时，一般有两种方式，即Get和Post。<strong>Get用来获取查询相关信息，即向服务器索取数据，而Post则用来更新信息，即向服务器提交数据。</strong></p>
+<p>当使用Post提交数据量较大的时候如果使用Servlet API的方式一一获取，<strong>代码就会过于臃肿</strong>。Struts 2 提供了<strong>ModelDriven接口</strong>，对于实现了该接口的Action来说，只需定义相应的Model，Struts 2框架就会自动将用户提交的HTTP信息赋给相应的Model。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">XxxAction</span> <span class="keyword">extends</span> <span class="title">ActionSupport</span> <span class="keyword">implements</span> <span class="title">ModelDriven</span></span></span><br><span class="line"><span class="class">&lt;<span class="title">XXModel</span>&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = <span class="number">1L</span>;</span><br><span class="line">    <span class="keyword">private</span> XXModel x = <span class="keyword">new</span> XXModel(); <span class="comment">/*创建要使用的Model对象实例*/</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">/*getter方法，必须实现*/</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> XXmodel <span class="title">getModel</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> x;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">execute</span><span class="params">()</span> <span class="keyword">throws</span> Exception</span>&#123;</span><br><span class="line">        ActionContext ctx = ActionContext.getContext(); <span class="comment">/*得到ActionContext实例*/</span></span><br><span class="line">        ctx.put(<span class="string">"x"</span>,x);<span class="comment">/*将（"x",x)放入ActionContext中，就可以在返回页面使用jsp得到x实例*/</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> SUCCESS;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="异常处理"><a href="#异常处理" class="headerlink" title="异常处理"></a>异常处理</h3><hr>
+<p>在struts.xml文件中配置异常通常有两种方式：全局异常配置&lt; global-exception-mapping../&gt;和局部异常配置&lt; exception-mapping../&gt;。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;struts&gt;</span><br><span class="line">    &lt;<span class="keyword">package</span> name=<span class="string">"default"</span>&gt;</span><br><span class="line">    &lt;!-- 全局结果 --&gt;</span><br><span class="line">    &lt;global-results&gt;</span><br><span class="line">        &lt;result name="Exception"&gt;/Exception.jsp&lt;/result&gt;</span><br><span class="line">    &lt;!-- 返回结果页面Exception.jsp --&gt;</span><br><span class="line">        &lt;result name="SQLException"&gt;/SQLException.jsp&lt;/result&gt;</span><br><span class="line">    &lt;/global-results&gt;</span><br><span class="line">    &lt;!-- 全局异常映射--&gt;</span><br><span class="line">    &lt;global-exception-mappings&gt;</span><br><span class="line">        &lt;!-- SQL异常--&gt;</span><br><span class="line">        &lt;exception-mapping exception=<span class="string">"java.sql,SQLException"</span> result=<span class="string">"SQLException"</span> /&gt;</span><br><span class="line">        &lt;!-- 一般异常 --&gt;</span><br><span class="line">        &lt;exception-mapping exception=<span class="string">"java.lang.Exception"</span> result=<span class="string">"Exception"</span> /&gt;</span><br><span class="line">    &lt;/global-exception-mappings&gt;</span><br><span class="line">    ...</span><br><span class="line">    &lt;action ...&gt;</span><br><span class="line">        &lt;exception-mapping exception=<span class="string">"com.action.SecurityException"</span> result=<span class="string">"login"</span> /&gt;</span><br><span class="line">        &lt;result name="login"&gt;/loginException.jsp&lt;/result&gt;</span><br><span class="line">    &lt;/action&gt;</span><br><span class="line">&lt;/package&gt;</span><br><span class="line">&lt;/struts&gt;</span><br></pre></td></tr></table></figure>
+<p>上面文件配置了三个异常java.sql,SQLException、java.lang.Exception、com.action.SecurityException，其中com.action.SecurityException是<strong>局部异常</strong>，另外两个是<strong>全局异常</strong>。</p>
+
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/2018/05/25/深入理解Java虚拟机（一）/" class="pre-post btn btn-default" title="深入理解Java虚拟机（一）">
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">深入理解Java虚拟机（一）</span>
+        </a>
+    
+    
+        <a href="/2017/11/18/MVC基本概念与Struts2概述/" class="next-post btn btn-default" title="MVC基本概念与Struts2概述">
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">MVC基本概念与Struts2概述</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">Table of Contents</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Struts配置文件之web-xml"><span class="toc-text">Struts配置文件之web.xml</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#web-xml的主要作用"><span class="toc-text">web.xml的主要作用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#web-xml关键元素分析"><span class="toc-text">web.xml关键元素分析</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Struts配置文件之struts-properties"><span class="toc-text">Struts配置文件之struts.properties</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#struts-properties的主要作用"><span class="toc-text">struts.properties的主要作用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#struts-properties关键元素"><span class="toc-text">struts.properties关键元素</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Struts配置文件之struts-xml"><span class="toc-text">Struts配置文件之struts.xml</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#struts-xml的主要作用"><span class="toc-text">struts.xml的主要作用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#struts-xml关键元素"><span class="toc-text">struts.xml关键元素</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Action的动态调用（DMI）"><span class="toc-text">Action的动态调用（DMI）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Struts之Action类文件"><span class="toc-text">Struts之Action类文件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Action接口和ActionSupport基类"><span class="toc-text">Action接口和ActionSupport基类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Action与Servlet-API"><span class="toc-text">Action与Servlet API</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ModelDriven接口"><span class="toc-text">ModelDriven接口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#异常处理"><span class="toc-text">异常处理</span></a></li></ol>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+        Total:
+        <strong id="busuanzi_value_site_pv">
+            <i class="fa fa-spinner fa-spin"></i>
+        </strong>
+        &nbsp; | &nbsp;
+        Visitors:
+        <strong id="busuanzi_value_site_uv">
+            <i class="fa fa-spinner fa-spin"></i>
+        </strong>
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2017
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+</body>
+</html>

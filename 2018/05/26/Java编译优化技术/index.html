@@ -1,0 +1,367 @@
+<!DOCTYPE HTML>
+<html lang="">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="杨柳潇的博客">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="http://yangliuxiao.top">
+    <!--SEO-->
+
+    <meta name="keywords" content="Java,面试,JVM">
+
+
+    <meta name="description" content="Java编译优化技术Java程序员有一个共识，以编译方式执行本地代码比解释方式更快，之所以有这样的共识，除了虚拟机解释执行字节码时额外消耗时间的原因外，还有一个很重要的原因就是——虚拟机设计团队...">
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+
+    <!--Title-->
+
+
+<title>Java编译优化技术 | 杨柳潇的博客</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="杨柳潇的博客" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.jpg">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+
+</head>
+
+</html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header" style="background-image:url(/./img/background.jpg)">
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title="Mute">
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                 <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yangliuxiao.top">杨柳潇的博客</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>Home</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>时间轴</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="Java编译优化技术">
+            
+	            Java编译优化技术
+            
+        </h1>
+        <div class="post-meta">
+    
+        <span class="categories-meta fa-wrap">
+            <i class="fa fa-folder-open-o"></i>
+            <a class="category-link" href="/categories/Java技术/">Java技术</a>
+        </span>
+    
+
+    
+        <span class="fa-wrap">
+            <i class="fa fa-tags"></i>
+            <span class="tags-meta">
+                
+                    <a class="tag-link" href="/tags/JVM/">JVM</a> <a class="tag-link" href="/tags/Java/">Java</a> <a class="tag-link" href="/tags/面试/">面试</a>
+                
+            </span>
+        </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2018/05/26</span>
+        </span>
+        
+            <span class="fa-wrap">
+                <i class="fa fa-eye"></i>
+                <span id="busuanzi_value_page_pv"></span>
+            </span>
+        
+    
+</div>
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <h3 id="Java编译优化技术"><a href="#Java编译优化技术" class="headerlink" title="Java编译优化技术"></a>Java编译优化技术</h3><p>Java程序员有一个共识，以编译方式执行本地代码比解释方式更快，之所以有这样的共识，除了<strong>虚拟机解释执行字节码时额外消耗时间的原因外</strong>，还有一个很重要的原因就是——虚拟机设计团队<strong>把几乎所有的代码优化措施都集中在了即时编译器中</strong>，因此一般来说，即时编译器产生的本地代码会比Javac产生的字节码更优秀。</p>
+<p>以下代码优化变换建立在代码的某种中间或机器码上，绝不是建立在Java源码之上的，为了展示方便，才使用Java语言的语法来表示这些优化技术。</p>
+<p><strong><em>优化前的原始代码：</em></strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">B</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> value;</span><br><span class="line">    <span class="function"><span class="keyword">final</span> <span class="keyword">int</span> <span class="title">get</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> value;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">foo</span><span class="params">()</span></span>&#123;</span><br><span class="line">    y = b.get();</span><br><span class="line">    <span class="comment">/*...do stuff...*/</span></span><br><span class="line">    z = b.get();</span><br><span class="line">    sum = y + z;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p> <strong>1. 方法内联 Method Inlining</strong></p>
+<p>方法内联的重要性要高于其他优化措施。它的<strong>主要目的有两个</strong>：<strong>①</strong>去除方法调用的成本（如建立栈帧等） <strong>②</strong> 为其他优化建立良好基础（方法内联膨胀之后可以便于在更大范围上采取后续的优化手段）</p>
+<p><em>方法内联之后的代码</em></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">foo</span><span class="params">()</span></span>&#123;</span><br><span class="line">    y = b.value;</span><br><span class="line">    <span class="comment">/*...do stuff...*/</span></span><br><span class="line">    z = b.value;</span><br><span class="line">    sum = y + z;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p> <strong>2. 冗余访问消除 Redundant Loads Elimination</strong></p>
+<p>假如代码中do stuff中所代表的操作不会改变b.value和y的值，就可以把“z = b.value”替换为”z = y”，这样就可以不再去访问对象b的局部变量了。</p>
+<p><em>冗余访问消除后的代码</em></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">foo</span><span class="params">()</span></span>&#123;</span><br><span class="line">    y = b.value;</span><br><span class="line">    <span class="comment">/*...do stuff...*/</span></span><br><span class="line">    z = y;</span><br><span class="line">    sum = y + z;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p> <strong>3. 复写传播 Copy Propagation</strong></p>
+<p>在这段代码逻辑中没有必要使用一个额外的变量“z”，它与“y”是完全等价的。</p>
+<p><em>复写传播后的代码</em></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">foo</span><span class="params">()</span></span>&#123;</span><br><span class="line">     y = b.value;</span><br><span class="line">     <span class="comment">/*...do stuff...*/</span></span><br><span class="line">     y = y;</span><br><span class="line">     sum = y + y;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p> <strong>4. 无用代码消除 Dead Code Elimination</strong></p>
+<p>无用代码可能是永远不会被执行的代码，也可能是完全没有意义的代码，也被称为“Dead Code”</p>
+<p><em>无用代码消除后的代码</em></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">foo</span><span class="params">()</span></span>&#123;</span><br><span class="line">     y = b.value;</span><br><span class="line">     <span class="comment">/*...do stuff...*/</span></span><br><span class="line">     sum = y + y;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p>再介绍以下<strong>几项最具代表性的优化技术</strong>：</p>
+<blockquote>
+<p>语言无关的经典优化技术之一：公共子表达式消除</p>
+<p>语言相关的经典优化技术之一：数组范围检查消除</p>
+<p>最重要的优化技术之一：方法内联</p>
+<p>最前沿的优化技术之一：逃逸分析</p>
+</blockquote>
+<p> <strong>5.公共子表达式消除</strong></p>
+<p> <strong>含义</strong>：如果一个表达式E已经计算过了，并且<strong>从先前的计算到现在E中所有变量的值都没有发生变化</strong>，那么E的这次出现就成为了<strong>公共子表达式</strong>，无需再次计算，用之前的结果代替即可。</p>
+<p>举例：</p>
+<p>int d = (c <em> b) </em> 12 + a + (a + b * c);</p>
+<p>⇩（通过JIT编译器，检测到b <em>c 与 c </em>b是一样的表达式，且计算中b与c的值不变）</p>
+<p>int d = E * 12 + a + (a + E);</p>
+<p>⇩（还可能（取决于在哪种VM的编译器上以及具体的上下文而定）进行另一种优化：<strong>代数化简</strong></p>
+<p>int d = E <em> 13 + a </em> 2;</p>
+<p> <strong>6. 数组边界检测擦除</strong></p>
+<p>Java 是一门动态安全的语言，对数组的访问也不像C、C++本质上是裸指针操作。<strong>对开发者来说</strong>，可以避免大部分的溢出攻击（<strong>运行时错误 ArrayIndexOutOfBoundsException</strong>），即使没有编写专门的防御代码。<strong>对VM来说</strong>，每次数组元素的读写都带有一次隐含的条件判定操作，是一种性能负担。</p>
+<p><strong>①数组下标是常量</strong>：编译期根据数据流分析确定length，确定没越界，执行时就无需判断</p>
+<p><strong>②数组访问发生在循环中</strong>：判断循环变量的取值范围在 [0,length )之内，就可以把整个循环中的数组上下界检查消除</p>
+<p>（相当于把“运行期”检查提到了“编译期”完成）</p>
+<ul>
+<li><strong>隐式异常优化：</strong></li>
+</ul>
+<blockquote>
+<p>另外Java中大量的安全检查，如<strong>空指针（NullPointException）、除数为零（ArithmeticException）</strong>，需要Java做大量检查判断——<strong>隐式异常处理</strong>。Java中空指针和除数为零都采用了这种思路。</p>
+<p>比如如下代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="keyword">if</span>(foo != <span class="keyword">null</span>)&#123;</span><br><span class="line">&gt;     <span class="keyword">return</span> foo.value;</span><br><span class="line">&gt; &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">&gt;     <span class="keyword">throw</span> <span class="keyword">new</span> NullPointException();</span><br><span class="line">&gt; &#125;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+<p><strong><em>使用隐式异常优化之后：</em></strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="keyword">try</span>&#123;</span><br><span class="line">&gt;     <span class="keyword">return</span> foo.value;</span><br><span class="line">&gt; &#125;<span class="keyword">catch</span>(segment_fault)&#123;</span><br><span class="line">&gt;     uncommon_trap();</span><br><span class="line">&gt; &#125;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+<p>优点：这样当foo不为空时，对value的访问不会额外消耗一次对foo的判空开销</p>
+<p>缺点：当foo为空的时候，需要转入异常处理器中恢复并抛出NullPointException异常，开销更大。</p>
+</blockquote>
+<p> <strong>7. 逃逸分析</strong></p>
+<p>前沿技术，并不直接优化代码，而是为其他优化手段提供依据的分析技术。</p>
+<p>逃逸分析的基本行为就是<strong>分析对象动态作用域</strong>。</p>
+<ul>
+<li><p>方法逃逸：一个对象在方法中被定义，可能被外部方法所引用，例如作为调用参数传递到其他方法中。</p>
+</li>
+<li><p>线程逃逸：可能被外部线程访问到，例如赋值给类变量或可以在其他线程中访问的实例变量。</p>
+</li>
+</ul>
+<p>若能证明一个对象不会逃逸到方法或线程之外，则可能为这个这个变量进行一些高效的优化。</p>
+<blockquote>
+<p><strong>①栈上分配</strong>：对象分配在栈上，占用的内存可以随栈帧出栈而销毁，减少GC压力。</p>
+<p><strong>②同步消除</strong>：既然对象不会逃逸出线程，无法被其他线程访问，则可消除对其的同步措施。</p>
+<p><strong>③标量替换</strong>：“标量”是指一个数据已经无法再分解成更小的数据来表示（如Java原始数据类型），与之相对的叫“聚合量”（如对象）。“标量替换”是指程序执行时不创建这个对象，而改为直接创建它的若干个被这个方法使用到的成员变量来代替（成员变量则分配再栈上）。</p>
+</blockquote>
+<ul>
+<li>”逃逸分析技术尚未成熟“：仍不能保证逃逸分析的性能收益一定高于它的消耗。</li>
+</ul>
+<hr>
+<h4 id="Java与C-C-的编译器对比"><a href="#Java与C-C-的编译器对比" class="headerlink" title="Java与C/C++的编译器对比"></a>Java与C/C++的编译器对比</h4><ul>
+<li><p>Java：即时编译器（JIT）</p>
+</li>
+<li><p>C/C++：静态编译器</p>
+</li>
+</ul>
+<p><strong>Java即时编译器的劣势：</strong>（这些性能上的劣势都是为了换取开发效率，如“动态安全”、“动态扩展”、“垃圾回收”等）</p>
+<blockquote>
+<p>① JIT占用用户程序的运行时间，具有很大的时间压力，能提供的优化手段也严重受制于编译成本。不敢引入大规模的优化技术，而编译的时间成本在静态优化编译器中并不是主要的关注点。</p>
+<p>②Java是动态的类型安全语言，需由VM确保程序不会违反语言语义 或访问非结构化内存。（需进行空指针检查、数组边界检查……）</p>
+<p>③ 使用虚方法频率远大于C/C++，意味着对方法接收者进行多态选择的频率远大于C/C++。导致“方法内联”难度高。</p>
+<p>④ Java可动态扩展，运行时可改变类的继承关系，进行全局优化难。</p>
+<p>⑤ Java中对象堆上分配，只有方法中局部变量在栈上分配，而C/C++则有多种内存分配方式（栈、堆上都有可能）</p>
+</blockquote>
+<p><strong>Java即时编译器的优势：</strong></p>
+<blockquote>
+<p>① 在C/C++中，“别名分析”难度远高于Java</p>
+<p>② C/C++的所有优化都在编译器，以运行期性能监控为基础的优化，它都无法进行</p>
+</blockquote>
+
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/2018/05/26/深入理解Java虚拟机（七）/" class="pre-post btn btn-default" title="深入理解Java虚拟机（七）">
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">深入理解Java虚拟机（七）</span>
+        </a>
+    
+    
+        <a href="/2018/05/26/深入理解Java虚拟机（六）/" class="next-post btn btn-default" title="深入理解Java虚拟机（六）">
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">深入理解Java虚拟机（六）</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">Table of Contents</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Java编译优化技术"><span class="toc-text">Java编译优化技术</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Java与C-C-的编译器对比"><span class="toc-text">Java与C/C++的编译器对比</span></a></li></ol></li></ol>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+        Total:
+        <strong id="busuanzi_value_site_pv">
+            <i class="fa fa-spinner fa-spin"></i>
+        </strong>
+        &nbsp; | &nbsp;
+        Visitors:
+        <strong id="busuanzi_value_site_uv">
+            <i class="fa fa-spinner fa-spin"></i>
+        </strong>
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2017
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+</body>
+</html>

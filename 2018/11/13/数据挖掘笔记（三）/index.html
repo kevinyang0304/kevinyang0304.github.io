@@ -1,0 +1,367 @@
+<!DOCTYPE HTML>
+<html lang="">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="杨柳潇的博客">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="http://yangliuxiao.top">
+    <!--SEO-->
+
+    <meta name="keywords" content="机器学习,笔记,Python">
+
+
+    <meta name="description" content="
+频繁模式(frequent-itemsets)
+
+基本概念
+
+（1）频繁项集：频繁项集是经常出现在数据集中的模式（2）购物篮分析：频繁项集的挖掘可以发现大数据集中项之间的关联和相关性。这有助于...">
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+
+    <!--Title-->
+
+
+<title>数据挖掘笔记（三） | 杨柳潇的博客</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="杨柳潇的博客" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.jpg">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+
+</head>
+
+</html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header" style="background-image:url(/./img/background.jpg)">
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title="Mute">
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                 <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yangliuxiao.top">杨柳潇的博客</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>Home</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>时间轴</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="数据挖掘笔记（三）">
+            
+	            数据挖掘笔记（三）
+            
+        </h1>
+        <div class="post-meta">
+    
+        <span class="categories-meta fa-wrap">
+            <i class="fa fa-folder-open-o"></i>
+            <a class="category-link" href="/categories/机器学习/">机器学习</a>
+        </span>
+    
+
+    
+        <span class="fa-wrap">
+            <i class="fa fa-tags"></i>
+            <span class="tags-meta">
+                
+                    <a class="tag-link" href="/tags/Python/">Python</a> <a class="tag-link" href="/tags/机器学习/">机器学习</a> <a class="tag-link" href="/tags/笔记/">笔记</a>
+                
+            </span>
+        </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2018/11/13</span>
+        </span>
+        
+            <span class="fa-wrap">
+                <i class="fa fa-eye"></i>
+                <span id="busuanzi_value_page_pv"></span>
+            </span>
+        
+    
+</div>
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <hr>
+<h4 id="频繁模式-frequent-itemsets"><a href="#频繁模式-frequent-itemsets" class="headerlink" title="频繁模式(frequent-itemsets)"></a>频繁模式(frequent-itemsets)</h4><hr>
+<ul>
+<li>基本概念</li>
+</ul>
+<p>（1）<strong>频繁项集</strong>：频繁项集是经常出现在数据集中的模式<br>（2）购物篮分析：频繁项集的挖掘可以发现大数据集中项之间的关联和相关性。这有助于许多业务决策过程，如菜单设计、交叉营销和客户购物行为分析。购物篮分析就是分析客户的购买习惯。</p>
+<blockquote>
+<p>（1）支持度  support(A -&gt; B) = P ( AUB )<br>（2）置信度  confidence(A -&gt; B) = P (A | B) = support(A -&gt; B)/support(A) = support_count( AUB ) /support(A)<br>（3）最小支持阈值<br>（4）最小置信阈值</p>
+</blockquote>
+<p>（4）同时满足<strong>最小支持阈值</strong>和<strong>最小置信度阈值</strong>的关联规则就称为<strong>强关联规则</strong>。<br>（5）k-itemsets （k项集），比如{a，b}就是一个2-itemsets<br>（6）itemsets的出现频率是包含itemsets的transaction数,也称为项目集的 frequency,、support count或 count .<br>（7）如果一个项集满足一个预定义的最小支持阈值，那么它就是一个<strong>频繁项集</strong>。<br>（8）<strong>关联规则挖掘分两步：</strong></p>
+<blockquote>
+<p>（1）查找所有频繁项集(大部分计算成本来自此步骤)<br>（2）从频繁项集中生成关联规则</p>
+</blockquote>
+<p>（9）几个概念：</p>
+<blockquote>
+<p>（1）<strong>超集</strong>：有项集S1={a,b}，那么它是项集{a}{b}的超集；{a}{b}是S1的真子集。<br>（2）<strong>最大频繁项集</strong>：如果频繁项集L的所有超集都是非频繁项集，那么称L为最大频繁项集或称最大频繁模式，记为MFI (Maximal Frequent Itemset)。<br>（3）<strong>闭项集</strong>：称X是数据集D上的闭项集，当且仅当没有合适的超项集Y有与X相同的支持计数。<br>（4）项目集X是D中的<strong>闭频繁项集</strong>，如果X在D中同时是闭的和频繁的。<br>（5）<strong>举例：最大频繁项集和频繁闭项集之间的区别</strong>：假如现在频繁阈值是3。 有10个事例里都有“花生-啤酒”，而且这10个事例没有其它共同项，那么“花生-啤酒”就是一个频繁闭项集，因为它首先是闭项集（没有总是跟它们同时出现的其它项），然后也满足频繁阈值。在10个事例里其中有5个同时也有“饼干”，因此“花生-啤酒-饼干”也是频繁集，因为“花生-啤酒-饼干”是“花生-啤酒”的超集，所以“花生-啤酒”不是最大频繁集。至于“花生-啤酒-饼干”是不是最大频繁集，那要看有没有它的超集满足频繁阈值，没有的话它就是最大频繁集。<br>（比如{a,b,c}出现了10次，没有它的超集等于10次的了，则{a,b,c}为频繁闭项集，但是有{a,b,c,d}出现了5次，最小支持阈值为4，则{a,b,c,d}也是频繁项集，若没有它的超集满足频繁阈值，则它就是最大频繁集）<br>模式的数目：最大频繁集&lt;频繁闭项集&lt;频繁项集，不过最大频繁集丢失了很多信息，比如可能在买“花生-啤酒-饼干”的人群中，还有一部分是买洗发水的，数目也达到了频繁项阈值，那么“花生-啤酒-饼干-洗发水”就是“花生-啤酒-饼干”的一个超集，所以“花生-啤酒-饼干”这个集合的独特性就不会在频繁最大集里体现；而频繁闭项集实际上还保留着频繁项集的信息，可以继续拆分为原来的频繁项集。<br>D为数据集，C为频繁闭项集，M为最大频繁集。</p>
+<p><img src="images\图片1.png" alt="images\图片1"></p>
+</blockquote>
+<hr>
+<ul>
+<li>频繁项集挖掘方法</li>
+</ul>
+<p>（1）Apriori Algorithm</p>
+<blockquote>
+<p>基本概念：该方法在1994年由Agrawal 和Srikant提出<br>（1）找到满足最小支持度的频繁项集<br>                  ①<strong>Apriori 属性</strong>：频繁项集的子集也一定是频繁的，例如{a,b}是频繁的，则{a}和{b}都应该是频繁的。<br>                  ②迭代寻找基数从1到k的频繁项集(Kitemset)<br>（2）使用频繁项集生成关联规则<br>（3）<strong>步骤：</strong></p>
+<p><img src="images\图片2.png" alt="images\图片2"></p>
+<p>例子：给出一个有6个事务组成的数据集，设定最小支持度为2（2/9，22%），最小置信度为70%</p>
+<p> 第一步：构建1-候选项集与最小支持度比较，构建1-频繁项集     </p>
+<p><img src="images\图片3.png" alt="images\图片3"></p>
+<p>第二步：L1自连接形成C2，扫描D获得支持数，获得2-频繁项集（直到2此步还未曾使用先验属性）</p>
+<p><img src="images\图片4.png" alt="images\图片4"></p>
+<p>第三步：L2自连接，使用Apriori属性进行剪枝（比如{l2,l3,l5}的子集{l3,l5}不是L2的成员即不是频繁项集，所以{l2,l3,l5}从C3删去），对D中的事务进行扫描，以确定L3</p>
+<p><img src="images\图片5.png" alt="images\图片5"></p>
+<p>第四步：<strong>根据Apriori属性: 一个频繁项集的所有子集也必须是频繁的</strong>，我们可以确定四个字母候选项不可能是频繁的。</p>
+<p>第五步：从频繁项集生成关联规则</p>
+<blockquote>
+<p>（1）对于每一个频繁项集I，生成I的所有非空子集</p>
+<p>（2）对于I的每一个非空子集S，如果support_count( I ) / support_ count( s ) &gt;= min_confidence</p>
+<p>则输出关联规则S-&gt;(I-S)</p>
+<p><img src="images\图片6.png" alt="images\图片6"></p>
+</blockquote>
+<p>Apriori方法的<strong>效率改进</strong>：</p>
+<p><img src="images\图片7.png" alt="images\图片7"></p>
+</blockquote>
+<hr>
+<p>（2）Pattern Growth Approach</p>
+<p>（1）概念：<strong>无需生成候选集</strong>即可发现频繁项集</p>
+<blockquote>
+<p>2步方法：<br>       （1）构建一个<strong>紧凑的</strong>数据结构，叫做<strong>FP-tree</strong><br>       （2）<strong>直接</strong>从FP-tree中提取频繁项集</p>
+<p><img src="images\图片8.png" alt="images\图片8"></p>
+</blockquote>
+<p>FP-tree的大小：</p>
+<blockquote>
+<p>（1）FP-树通常比未压缩数据的大小更小，因为通常许多事务共享项(<strong>前缀</strong>)。<br>（2）最好的场景：所有事务都包含相同的项集。（fp-树只有1条路径）<br>（3）最坏的情况：每个事务都有一组唯一的项(没有共同的项)。（fp树的存储要求更高，因为需要在节点和计数器之间存储指针。）<br>（4）fp树的大小取决于item的排序方式。根据支持数的降序排序通常是可用的，但不一定生成最小的树（启发式的）</p>
+</blockquote>
+<p>（2）从fp树提取频繁项集</p>
+<blockquote>
+<p>（1）<strong>分而治之</strong>（Divide and conquer）：首先寻找以e结尾的频繁项集，然后寻找de结尾等等，再找以d结尾的，然后cd等等</p>
+<p>（2）首先从生成的FP树中提取以某一个项结尾的子树（比如以e结尾的）</p>
+<p>（3）通过在链接列表(虚线)上添加计数来检查e是否是一个频繁项。如果是的话，就把它提取出来。</p>
+<p>（4）由于e是频繁的，查找以e结尾的频繁项集，即de、ce、be和ae。即构建以e结尾的条件FP树。使用e的条件fp-树查找以de、ce和ae结尾的频繁项集。注意be不被考虑，因为b在e的条件FP树中计数为1，是非频繁的。递归计算e-&gt;de-&gt;ade</p>
+<p><img src="images\图片9.png" alt="images\图片9"></p>
+</blockquote>
+<p>（3）FP-tree的优缺点</p>
+<p>（1）优点：</p>
+<blockquote>
+<p>（1）只在数据集上进行了2步<br>（2）一定程度上压缩了数据集<br>（3）没有候选集生成<br>（4）比Apriori方法要<strong>快得多</strong></p>
+</blockquote>
+<p>（2）缺点：</p>
+<blockquote>
+<p>（1）fp树可能不适合内存存储。<br>（2）fp树的<strong>构建成本很高</strong>。（权衡：构建需要时间，但一旦构建，频繁的项目集就很容易读取；时间是浪费的(特别是如果min_upp很高的话)，因为唯一可以做的剪枝是在单个项目上；只有在将整个数据集添加到fp树后才能计算支持。）</p>
+</blockquote>
+<ul>
+<li>频繁模式的评价方法</li>
+</ul>
+<p>强关联规则<strong>不一定是感兴趣的</strong>。<br>比如，通过分析，我们发现，在10000次交易中，有6000次购买了电脑游戏，7500次购买了视频，4000次两者都买了。</p>
+<p>上述关联规则很强，但购买视频的实际独立的概率为75%，甚至大于60%。事实上，电脑游戏和视频是<strong>负面关联</strong>的，因为购买其中一个项目降低了购买另一个项目的可能性。</p>
+<p><img src="images\图片10.png" alt="images\图片10"></p>
+<p>（1）相关性测量( A -&gt; B [support, confidence, correlation])：</p>
+<blockquote>
+<p>（1）Lift（ lift值=1表示A和B是独立的，&gt;1表示正相关，&lt;1表示负相关 ）</p>
+<p><img src="images\图片11.png" alt="images\图片11"></p>
+<p>（2）Chi-square measure卡方测试</p>
+<p><img src="images\图片12.png" alt="images\图片12"></p>
+<p><img src="images\图片13.png" alt="images\图片13"></p>
+</blockquote>
+
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/2018/11/15/数据挖掘笔记（四）/" class="pre-post btn btn-default" title="数据挖掘笔记（四）">
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">数据挖掘笔记（四）</span>
+        </a>
+    
+    
+        <a href="/2018/11/05/数据挖掘笔记（二）/" class="next-post btn btn-default" title="数据挖掘笔记（二）">
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">数据挖掘笔记（二）</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">Table of Contents</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#频繁模式-frequent-itemsets"><span class="toc-text">频繁模式(frequent-itemsets)</span></a></li></ol>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+        Total:
+        <strong id="busuanzi_value_site_pv">
+            <i class="fa fa-spinner fa-spin"></i>
+        </strong>
+        &nbsp; | &nbsp;
+        Visitors:
+        <strong id="busuanzi_value_site_uv">
+            <i class="fa fa-spinner fa-spin"></i>
+        </strong>
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2017
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+</body>
+</html>

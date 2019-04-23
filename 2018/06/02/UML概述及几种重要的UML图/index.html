@@ -1,0 +1,356 @@
+<!DOCTYPE HTML>
+<html lang="">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="杨柳潇的博客">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="http://yangliuxiao.top">
+    <!--SEO-->
+
+    <meta name="keywords" content="笔记,设计模式,UML">
+
+
+    <meta name="description" content="UML的诞生
+UML的结构
+13种UML图
+类与类图
+
+UML的诞生在一个现代化的工程中，人们要相互沟通和合作，就必须使用标准的工业化设计语言，用这些语言来对待开发的产品进行建模。建模过程把复杂...">
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+
+    <!--Title-->
+
+
+<title>UML概述及类与类图 | 杨柳潇的博客</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="杨柳潇的博客" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.jpg">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+
+</head>
+
+</html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header" style="background-image:url(/./img/background.jpg)">
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title="Mute">
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                 <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yangliuxiao.top">杨柳潇的博客</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>Home</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>时间轴</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="UML概述及类与类图">
+            
+	            UML概述及类与类图
+            
+        </h1>
+        <div class="post-meta">
+    
+        <span class="categories-meta fa-wrap">
+            <i class="fa fa-folder-open-o"></i>
+            <a class="category-link" href="/categories/设计模式/">设计模式</a>
+        </span>
+    
+
+    
+        <span class="fa-wrap">
+            <i class="fa fa-tags"></i>
+            <span class="tags-meta">
+                
+                    <a class="tag-link" href="/tags/UML/">UML</a> <a class="tag-link" href="/tags/笔记/">笔记</a> <a class="tag-link" href="/tags/设计模式/">设计模式</a>
+                
+            </span>
+        </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2018/06/02</span>
+        </span>
+        
+            <span class="fa-wrap">
+                <i class="fa fa-eye"></i>
+                <span id="busuanzi_value_page_pv"></span>
+            </span>
+        
+    
+</div>
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <p><a href="#UML的诞生">UML的诞生</a></p>
+<p><a href="#UML的结构">UML的结构</a></p>
+<p><a href="#13种UML图">13种UML图</a></p>
+<p><a href="#类与类图">类与类图</a></p>
+<hr>
+<h4 id="UML的诞生"><a href="#UML的诞生" class="headerlink" title="UML的诞生"></a>UML的诞生</h4><p>在一个现代化的工程中，人们要相互沟通和合作，就必须使用<strong>标准的工业化设计语言</strong>，用这些语言来对待开发的产品进行建模。建模过程<strong>把复杂的问题分解成为易于理解的小问题</strong>，以达到问题的求解。建模是开发优秀软件的所有活动中核心部分之一，其目的是把所要设计的结构和系统的行为联系起来，并<strong>对系统的结构进行可视化控制</strong>。</p>
+<p>从1994年起，Grady Booch和James Rumbaugh在Rational软件公司开始了UML的创建工作。1995年，OOSE方法和Objectory方法的创建者Ivar Jacobson也加入其中。 </p>
+<p>UML三位创始人正式联手，共同为创建一种标准的建模语言而一起工作，他们将开发出来的产品名称定为<strong>UML（Unified Modeling Language，统一建模语言）</strong>。</p>
+<h4 id="UML的结构"><a href="#UML的结构" class="headerlink" title="UML的结构"></a>UML的结构</h4><p>UML的13种图都可以归结到以下5类结构中。用户视图1个，结构视图4个，行为视图6个，实现视图1个，环境视图1个。</p>
+<p><img src="images\图片1.png" alt="images\图片1"></p>
+<ul>
+<li>视图(View)</li>
+</ul>
+<blockquote>
+<p><strong>用户视图(1)</strong>：<strong>以用户的观点</strong>表示系统的目标，它是所有视图的<strong>核心</strong>，该视图<strong>描述系统的需求</strong>。<br><strong>结构视图(4)</strong>：表示系统的<strong>静态行为</strong>，描述系统的静态元素，如包、类与对象，以及它们之间的关系。<br><strong>行为视图(6)</strong>：表示系统的<strong>动态行为</strong>，描述系统的组成元素如对象在系统运行时的交互关系。<br><strong>实现视图(1)</strong>：表示系统中<strong>逻辑元素的分布</strong>，描述系统中物理文件以及它们之间的关系。<br><strong>环境视图(1)</strong>：表示系统中<strong>物理元素的分布</strong>，描述系统中硬件设备以及它们之间的关系。</p>
+</blockquote>
+<h4 id="13种UML图"><a href="#13种UML图" class="headerlink" title="13种UML图"></a>13种UML图</h4><p><strong>⑴ 用例图(Use Case Diagram)</strong>: 又称为用况图，对应于<strong>用户视图</strong>。在用例图中，使用用例来表示系统的功能需求，用例图用于表示多个外部执行者与系统用例之间以及用例与用例之间的关系。用例图与用例说明文档(Use Case Specification)是常用的需求建模工具，也称之为用例建模。</p>
+<p><strong>⑵ 类图(Class Diagram)</strong>：对应于<strong>结构视图</strong>。类图使用类来描述系统的静态结构，类图包含类和它们之间的关系，它描述系统内所声明的类，但它没有描述系统运行时类的行为。<strong>（用例图与类图是UML 13种图中使用频率最高的两种图。）</strong></p>
+<p><strong>⑶ 对象图(Object Diagram)</strong>：对应于<strong>结构视图</strong>。对象图是类图在某一时刻的一个实例，用于表示类的对象实例之间的关系。</p>
+<p><strong>⑷ 包图(Package Diagram)</strong>：UML2.0新增图，对应于<strong>结构视图</strong>。包图用于描述包与包之间的关系，包是一种把元素组织到一起的通用机制，如可以将多个类组织成一个包。</p>
+<p><strong>⑸ 组合结构图(Composite Structure Diagram)</strong>：UML2.0新增图，对应于<strong>结构视图</strong>。组合结构图将每一个类放在一个整体中，从类的内部结构来审视一个类。组合结构图可用于表示一个类的内部结构，用于描述一些包含复杂成员或内部类的类结构。</p>
+<p><strong>⑹ 状态图(State Diagram)</strong>：对应于<strong>行为视图</strong>。状态图用来描述一个特定对象的所有可能状态及其引起状态转移的事件。一个状态图包括一系列对象的状态及状态之间的转换。 </p>
+<p><strong>⑺ 活动图(Activity Diagram)</strong>：对应于<strong>行为视图</strong>。活动图用来表示系统中各种活动的次序，它的应用非常广泛，既可用来描述用例的工作流程，也可以用来描述类中某个方法的操作行为。</p>
+<p><strong>⑻ 顺序图(Sequence Diagram)</strong>：又称为时序图或序列图，对应于<strong>行为视图</strong>。顺序图用于表示对象之间的交互，重点表示对象之间发送消息的时间顺序。</p>
+<p><strong>⑼ 通信图(Communication Diagram)</strong>：在UML1.x中称为协作图，对应于<strong>行为视图</strong>。通信图展示了一组对象、这些对象间的连接以及它们之间收发的消息。<strong>它与顺序图是同构图</strong>，也就是它们包含了相同的信息，只是表达方式不同而已，通信图与顺序图可以相互转换。</p>
+<p><strong>⑽ 定时图(Timing Diagram)</strong>：UML2.0新增图，对应于<strong>行为视图</strong>。定时图采用一种带数字刻度的时间轴来精确地描述消息的顺序，而不是像顺序图那样只是指定消息的相对顺序，而且它还允许可视化地表示每条生命线的状态变化，当需要对实时事件进行定义时，定时图可以很好地满足要求。</p>
+<p><strong>⑾ 交互概览图(Interaction Overview Diagram)</strong>：UML2.0新增图，对应于<strong>行为视图</strong>。交互概览图是交互图与活动图的混合物，可以把交互概览图理解为细化的活动图，在其中的活动都通过一些小型的顺序图来表示；也可以将其理解为利用标明控制流的活动图分解过的顺序图。</p>
+<p><strong>⑿ 组件图(Component Diagram)</strong>：又称为构件图，对应于<strong>实现视图</strong>。组件图用于描述每个功能所在的组件位置以及它们之间的关系。</p>
+<p><strong>⒀ 部署图(Deployment Diagram)</strong>：又称为实施图，对应于<strong>环境视图</strong>。部署图用于描述软件中各个组件驻留的硬件位置以及这些硬件之间的交互关系。</p>
+<ul>
+<li><p><strong>通用机制(General mechanism)</strong>：UML提供的通用机制为模型元素提供额外的<strong>注释、修饰和语义</strong>等，主要包括规格说明、修饰、公共分类和扩展机制四种。扩展机制允许用户对UML进行扩展，以便一个特定的方法、过程、组织或用户来使用。</p>
+</li>
+<li><p><strong>UML的特点</strong>：工程化、规范化、可视化、系统化、文档化、智能化</p>
+</li>
+</ul>
+<hr>
+<h4 id="类与类图"><a href="#类与类图" class="headerlink" title="类与类图"></a>类与类图</h4><p>在UML类图中，类一般由三部分组成：</p>
+<ul>
+<li><p><strong>类名</strong>：每个类都必须有一个名字，类名是一个字符串。  </p>
+</li>
+<li><p><strong>属性(Attributes)</strong>：属性是指类的性质，即类的成员变量。类可以有任意多个属性，也可以没有属性。</p>
+</li>
+</ul>
+<blockquote>
+<p>可见性 名称:类型[ = 默认值]</p>
+</blockquote>
+<ul>
+<li><strong>操作(Operations)</strong>：操作是类的任意一个实例对象都可以使用的行为，操作是类的成员方法。</li>
+</ul>
+<p><img src="images\图片2.png" alt="images\图片2"></p>
+<ul>
+<li><p>类之间的关系</p>
+<p><strong>① 关联关系</strong></p>
+</li>
+</ul>
+<p><strong>关联关系(Association)</strong>是类与类之间最常用的一种关系，它是一种<strong>结构化关系</strong>，用于<strong>表示一类对象与另一类对象之间有联系</strong>。在UML类图中，用<strong>实线</strong>连接有关联的对象所对应的类，在使用Java、C#和C++等编程语言实现关联关系时，通常将一个类的对象作为另一个类的属性。在使用类图表示关联关系时可以在关联线上标注角色名。</p>
+<p><img src="images\图片3.png" alt="images\图片3"></p>
+<p>（单向关联、双向关联、自关联、多重性关联（1..1、0..*、1..*、0..1、m..n）</p>
+<blockquote>
+<p> <strong>1. 聚合关系(Aggregation)</strong>：表示一个整体与部分的关系。通常在定义一个整体类后，再去分析这个整体类的组成结构，从而找出一些成员类，该整体类和成员类之间就形成了聚合关系。 在聚合关系中，成员类是整体类的一部分，即成员对象是整体对象的一部分，但是<strong>成员对象可以脱离整体对象独立存在</strong>。在UML中，聚合关系用<strong>带空心菱形的直线表示</strong>。 </p>
+<p><img src="images\图片4.png" alt="images\图片4"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Car</span></span></span><br><span class="line"><span class="class">&gt; </span>&#123;</span><br><span class="line">&gt;     <span class="keyword">private</span> Engine engine;</span><br><span class="line">&gt;     <span class="function"><span class="keyword">public</span> <span class="title">Car</span><span class="params">(Engine engine)</span></span></span><br><span class="line"><span class="function">&gt;    </span>&#123;</span><br><span class="line">&gt;         <span class="keyword">this</span>.engine = engine;</span><br><span class="line">&gt;     &#125;</span><br><span class="line">&gt; &#125;</span><br><span class="line">&gt; <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Engine</span></span></span><br><span class="line"><span class="class">&gt; </span>&#123;<span class="comment">/*……*/</span>&#125;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+<p> <strong>2. 组合关系(Composition)</strong>：也表示类之间整体和部分的关系，但是组合关系中部分和整体具有<strong>统一的生存期</strong>。一旦整体对象不存在，部分对象也将不存在，部分对象与整体对象之间具有<strong>同生共死</strong>的关系。在组合关系中，成员类是整体类的一部分，而且整体类可以控制成员类的生命周期，即成员类的存在依赖于整体类。在UML中，组合关系用<strong>带实心菱形的直线表示。</strong></p>
+<p><img src="images\图片5.png" alt="images\图片5"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Head</span></span></span><br><span class="line"><span class="class">&gt; </span>&#123;</span><br><span class="line">&gt;     <span class="keyword">private</span> Mouth mouth;</span><br><span class="line">&gt;     <span class="function"><span class="keyword">public</span> <span class="title">Head</span><span class="params">()</span></span></span><br><span class="line"><span class="function">&gt;     </span>&#123;</span><br><span class="line">&gt;     mouth = <span class="keyword">new</span> Mouth();</span><br><span class="line">&gt;     &#125;</span><br><span class="line">&gt;     <span class="comment">/*……*/</span></span><br><span class="line">&gt; &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Mouth</span></span></span><br><span class="line"><span class="class"></span>&#123;<span class="comment">/*……*/</span>&#125;</span><br><span class="line"></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p> <strong>② 依赖关系</strong></p>
+<p><strong>依赖关系(Dependency)</strong>是一种<strong>使用关系</strong>，特定事物的改变有可能会影响到使用该事物的其他事物，在需要表示一个事物使用另一个事物时使用依赖关系。大多数情况下，依赖关系体现在<strong>某个类的方法使用另一个类的对象作为参数</strong>。在UML中，依赖关系用<strong>带箭头的虚线表示，由依赖的一方指向被依赖的一方。</strong></p>
+<p><img src="images\图片6.png" alt="images\图片6"></p>
+<p> <strong>③ 泛化关系</strong></p>
+<p><strong>泛化关系(Generalization)</strong>也就是继承关系，也称为“is-a-kind-of”关系，泛化关系用于描述<strong>父类与子类之间的关系</strong>，父类又称作基类或超类，子类又称作派生类。在UML中，泛化关系用<strong>带空心三角形的实线</strong>来表示。<br>在代码实现时，使用面向对象的继承机制来实现泛化关系，如在Java语言中使用extends关键字、在C++/C#中使用冒号“：”来实现。 </p>
+<p><img src="images\图片7.png" alt="images\图片7"></p>
+<p> <strong>④ 接口与实现关系</strong></p>
+<p>接口之间也可以有与类之间关系类似的继承关系和依赖关系，但是接口和类之间还存在一种<strong>实现关系(Realization)</strong>，在这种关系中，类实现了接口，类中的操作实现了接口中所声明的操作。在UML中，类与接口之间的实现关系用<strong>带空心三角形的虚线来表示</strong>。     </p>
+<p><img src="images\图片8.png" alt="images\图片8"></p>
+
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/2018/06/02/7个面向对象设计原则/" class="pre-post btn btn-default" title="7个面向对象设计原则">
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">7个面向对象设计原则</span>
+        </a>
+    
+    
+        <a href="/2018/05/26/深入理解Java虚拟机（七）/" class="next-post btn btn-default" title="深入理解Java虚拟机（七）">
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">深入理解Java虚拟机（七）</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">Table of Contents</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#UML的诞生"><span class="toc-text">UML的诞生</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#UML的结构"><span class="toc-text">UML的结构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#13种UML图"><span class="toc-text">13种UML图</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#类与类图"><span class="toc-text">类与类图</span></a></li></ol>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+        Total:
+        <strong id="busuanzi_value_site_pv">
+            <i class="fa fa-spinner fa-spin"></i>
+        </strong>
+        &nbsp; | &nbsp;
+        Visitors:
+        <strong id="busuanzi_value_site_uv">
+            <i class="fa fa-spinner fa-spin"></i>
+        </strong>
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2017
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+</body>
+</html>
