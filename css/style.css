@@ -525,31 +525,31 @@ pre {
 .post-content h1 {
   font-family: "Georgia", "Xin Gothic", "Hiragino Sans GB", "Droid Sans Fallback", "Microsoft YaHei", "SimSun", sans-serif;
   color: #333;
-  font-size: 1.8em;
+  font-size: 2.5em;
   margin: 0.67em 0;
 }
 .post-content h2 {
   font-family: "Georgia", "Xin Gothic", "Hiragino Sans GB", "Droid Sans Fallback", "Microsoft YaHei", "SimSun", sans-serif;
   color: #333;
-  font-size: 1.5em;
+  font-size: 2.3em;
   margin: 0.83em 0;
 }
 .post-content h3 {
   font-family: "Georgia", "Xin Gothic", "Hiragino Sans GB", "Droid Sans Fallback", "Microsoft YaHei", "SimSun", sans-serif;
   color: #333;
-  font-size: 1.17em;
+  font-size: 2em;
   margin: 1em 0;
 }
 .post-content h4 {
   font-family: "Georgia", "Xin Gothic", "Hiragino Sans GB", "Droid Sans Fallback", "Microsoft YaHei", "SimSun", sans-serif;
   color: #333;
-  font-size: 1em;
+  font-size: 1.5em;
   margin: 1.6em 0 1em 0;
 }
 .post-content h5 {
   font-family: "Georgia", "Xin Gothic", "Hiragino Sans GB", "Droid Sans Fallback", "Microsoft YaHei", "SimSun", sans-serif;
   color: #333;
-  font-size: 1em;
+  font-size: 1.3em;
   margin: 1.6em 0 1em 0;
 }
 .post-content h6 {
@@ -631,6 +631,7 @@ pre {
   margin: 0 0 1.64em 0;
   border-left: 3px solid #e67e22;
   padding-left: 12px;
+  font-size: 13px;
   color: #666666;
 }
 .post-content blockquote a {
