@@ -1,0 +1,302 @@
+<!DOCTYPE HTML>
+<html lang="">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="杨柳潇的博客">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="http://yangliuxiao.top">
+    <!--SEO-->
+
+    <meta name="keywords" content="代码,Java,Java Web">
+
+
+    <meta name="description" content="转载自：《SpringMVC框架理解》  by   椰子Tyshawn
+
+JavaEE体系结构包括四层，从上到下分别是应用层、Web层、业务层、持久层。Struts和SpringMVC是Web层...">
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+
+    <!--Title-->
+
+
+<title>SpringMVC | 杨柳潇的博客</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="杨柳潇的博客" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.jpg">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+
+</head>
+
+</html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header" style="background-image:url(/./img/background.jpg)">
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title="Mute">
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                 <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yangliuxiao.top">杨柳潇的博客</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>Home</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>时间轴</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="SpringMVC">
+            
+	            SpringMVC
+            
+        </h1>
+        <div class="post-meta">
+    
+        <span class="categories-meta fa-wrap">
+            <i class="fa fa-folder-open-o"></i>
+            <a class="category-link" href="/categories/Java-Web开发/">Java Web开发</a>
+        </span>
+    
+
+    
+        <span class="fa-wrap">
+            <i class="fa fa-tags"></i>
+            <span class="tags-meta">
+                
+                    <a class="tag-link" href="/tags/Java/">Java</a> <a class="tag-link" href="/tags/Java-Web/">Java Web</a> <a class="tag-link" href="/tags/代码/">代码</a>
+                
+            </span>
+        </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2019/04/26</span>
+        </span>
+        
+            <span class="fa-wrap">
+                <i class="fa fa-eye"></i>
+                <span id="busuanzi_value_page_pv"></span>
+            </span>
+        
+    
+</div>
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <p><strong>转载自：<a href="https://blog.csdn.net/litianxiang_kaola/article/details/79169148" target="_blank" rel="noopener">《SpringMVC框架理解》</a>  by   椰子Tyshawn</strong></p>
+<hr>
+<p>JavaEE体系结构包括四层，从上到下分别是应用层、Web层、业务层、持久层。<strong>Struts</strong>和<strong>SpringMVC</strong>是Web层的框架，<strong>Spring</strong>是业务层的框架，<strong>Hibernate</strong>和<strong>MyBatis</strong>是持久层的框架。</p>
+<hr>
+<h4 id="为什么要使用SpringMVC？"><a href="#为什么要使用SpringMVC？" class="headerlink" title="为什么要使用SpringMVC？"></a>为什么要使用SpringMVC？</h4><p>很多应用程序的问题在于<strong>处理业务数据的对象和显示业务数据的视图之间存在紧密耦合</strong>，通常，更新业务对象的命令都是从视图本身发起的，使视图对任何业务对象更改都有高度敏感性。而且，当多个视图依赖于同一个业务对象时是没有灵活性的。</p>
+<p>SpringMVC是一种基于Java，实现了Web MVC设计模式，请求驱动类型的轻量级Web框架，即使用了MVC架构模式的思想，将<strong>Web层进行职责解耦</strong>。基于请求驱动指的就是<strong>使用请求-响应模型</strong>，框架的目的就是帮助我们简化开发，SpringMVC也是要简化我们日常Web开发。</p>
+<hr>
+<h4 id="MVC设计模式"><a href="#MVC设计模式" class="headerlink" title="MVC设计模式"></a>MVC设计模式</h4><p>MVC设计模式的任务是<strong>将包含业务数据的模块与显示模块的视图解耦</strong>。通过在模型和视图之间引入重定向层，这个重定向层就是控制器（control），控制器将接收请求，执行更新模型的操作，然后通知视图关于模型更改的消息。</p>
+<p><img src="images\images1.png" alt="images\images1"></p>
+<p><img src="images\images2.png" alt="images\images2"></p>
+<hr>
+<h4 id="SpringMVC架构"><a href="#SpringMVC架构" class="headerlink" title="SpringMVC架构"></a>SpringMVC架构</h4><p>SpringMVC是Spring框架的一部分，分属Web层，如下图。</p>
+<p><img src="images\images3.png" alt="images\images3"></p>
+<p><strong>SpringMVC的核心架构图如下。</strong></p>
+<p><img src="images\images4.png" alt="images\images4"></p>
+<p><strong>具体流程说明：</strong></p>
+<p>（1）首先用户发送请求——&gt;DispatcherServlet，前端控制器收到请求后自己不进行处理，而是委托给其他的解析器进行处理，作为统一访问点，进行<strong>全局的流程控制</strong>；</p>
+<p>（2）DispatcherServlet——&gt;HandlerMapping，处理器映射器将会把请求映射为HandlerExecutionChain对象<strong>（包含一个Handler处理器对象、多个HandlerInterceptor拦截器）</strong>对象；</p>
+<p>（3）DispatcherServlet——&gt;HandlerAdapter，处理器适配器将会把处理器包装为适配器，从而支持多种类型的处理，即<strong>适配器设计模式</strong>的应用；</p>
+<p>（4）HandlerAdapter——&gt;调用处理器相应功能处理方法，并返回一个<strong>ModelAndView</strong>对象（一个键值对对象，包含模型数据、逻辑视图名）；</p>
+<p>（5）ModelAndView对象（Model部分是业务对象返回的模型数据，View部分为逻辑视图名）——&gt; ViewResolver，<strong>视图解析器将把逻辑视图名解析为具体的View</strong>；</p>
+<p>（6）View——&gt;渲染，View会根据传进来的Model模型数据进行渲染，此处的Model实际是一个<strong>Map数据结构</strong>；</p>
+<p>（7）返回控制权给DispatcherServlet，由DispatcherServlet返回响应给用户，到此一个流程结束。</p>
+<hr>
+<h4 id="SpringMVC入门程序"><a href="#SpringMVC入门程序" class="headerlink" title="SpringMVC入门程序"></a>SpringMVC入门程序</h4><p><strong>① web.xml</strong></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;web-app&gt;</span><br><span class="line">  &lt;servlet&gt;</span><br><span class="line">  &lt;!-- 加载前端控制器 --&gt;</span><br><span class="line">  &lt;servlet-name&gt;springmvc&lt;/servlet-name&gt;</span><br><span class="line">  &lt;servlet-<span class="class"><span class="keyword">class</span>&gt;<span class="title">org</span>.<span class="title">springframework</span>.<span class="title">web</span>.<span class="title">servlet</span>.<span class="title">DispatcherServlet</span>&lt;/<span class="title">servlet</span>-<span class="title">class</span>&gt;</span></span><br><span class="line"><span class="class">  &lt;!-- </span></span><br><span class="line"><span class="class">  	   加载配置文件</span></span><br><span class="line"><span class="class">  	   默认加载规范：</span></span><br><span class="line">  	   * 文件命名：servlet-name-servlet.xml====springmvc-servlet.xml</span><br><span class="line">  	   * 路径规范：必须在WEB-INF目录下面</span><br><span class="line">  	   修改加载路径：</span><br><span class="line">   --&gt;</span><br><span class="line">   &lt;init-param&gt;</span><br><span class="line">   &lt;param-name&gt;contextConfigLocation&lt;/param-name&gt;</span><br><span class="line">   &lt;param-value&gt;classpath:springmvc.xml&lt;/param-value&gt;   </span><br><span class="line">   &lt;/init-param&gt;</span><br><span class="line">  &lt;/servlet&gt;</span><br><span class="line">  </span><br><span class="line">  &lt;servlet-mapping&gt;</span><br><span class="line">  &lt;servlet-name&gt;springmvc&lt;/servlet-name&gt;</span><br><span class="line">  &lt;url-pattern&gt;/&lt;/url-pattern&gt;</span><br><span class="line"></span><br><span class="line">  &lt;/servlet-mapping&gt;</span><br><span class="line">&lt;/web-app&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>② springmvc.xml</strong></p>
+<p>springMVC配置文件</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;beans&gt;</span><br><span class="line">	&lt;!-- 配置映射处理器：根据bean(自定义Controller)的name属性的url去寻找handler；springmvc默认的映射处理器是</span><br><span class="line">	BeanNameUrlHandlerMapping</span><br><span class="line">	 --&gt;</span><br><span class="line">	&lt;bean class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping"&gt;&lt;/bean&gt;</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	&lt;!-- 配置处理器适配器来执行Controlelr ,springmvc默认的是</span><br><span class="line">	SimpleControllerHandlerAdapter</span><br><span class="line">	--&gt;</span><br><span class="line">	&lt;bean class="org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter"&gt;&lt;/bean&gt;</span><br><span class="line">	</span><br><span class="line">	&lt;!-- 配置自定义Controller --&gt;</span><br><span class="line">	&lt;bean id="myController" name="/hello.do" class="org.controller.MyController"&gt;&lt;/bean&gt;</span><br><span class="line">	</span><br><span class="line">	&lt;!-- 配置sprigmvc视图解析器：解析逻辑试图； </span><br><span class="line">		后台返回逻辑试图：index</span><br><span class="line">		视图解析器解析出真正物理视图：前缀+逻辑试图+后缀====/WEB-INF/jsps/index.jsp</span><br><span class="line">	--&gt;</span><br><span class="line">	&lt;bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"&gt;</span><br><span class="line">		&lt;property name="prefix" value="/WEB-INF/jsps/"&gt;&lt;/property&gt;</span><br><span class="line">		&lt;property name="suffix" value=".jsp"&gt;&lt;/property&gt;		</span><br><span class="line">	&lt;/bean&gt;</span><br><span class="line">&lt;/beans&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>③ 自定义Controller</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/mvc"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">mvcController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Test</span></span><br><span class="line">    <span class="meta">@RequestMapping</span>(<span class="string">"/hello"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">hello</span><span class="params">()</span></span>&#123;      </span><br><span class="line">    	System.out.println(<span class="string">"111"</span>);</span><br><span class="line">    	<span class="keyword">return</span> <span class="string">"hello"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@RequestMapping</span>(<span class="string">"/test1"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ModelAndView <span class="title">handleRequest</span><span class="params">(HttpServletRequest arg0,</span></span></span><br><span class="line"><span class="function"><span class="params">			HttpServletResponse arg1)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">		ModelAndView mv = <span class="keyword">new</span> ModelAndView();</span><br><span class="line">		<span class="comment">/*设置页面回显数据*/</span></span><br><span class="line"></span><br><span class="line">		mv.addObject(<span class="string">"hello"</span>, <span class="string">"欢迎学习springmvc"</span>);</span><br><span class="line">		</span><br><span class="line">		<span class="comment">/*返回物理视图*/</span></span><br><span class="line"></span><br><span class="line">		<span class="comment">/*mv.setViewName("/WEB-INF/jsps/index.jsp");*/</span></span><br><span class="line"></span><br><span class="line">		</span><br><span class="line">		<span class="comment">/*返回逻辑视图*/</span></span><br><span class="line"></span><br><span class="line">		mv.setViewName(<span class="string">"index"</span>);</span><br><span class="line">		<span class="keyword">return</span> mv;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>④ index页面</strong></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;h1&gt;$&#123;hello&#125;&lt;/h1&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<p>测试地址：<a href="http://localhost:8080/springmvc/mvc/test1" target="_blank" rel="noopener">http://localhost:8080/springmvc/mvc/test1</a></p>
+
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+    
+        <a href="/2019/04/12/Python爬虫入门/" class="next-post btn btn-default" title="Python爬虫入门">
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">Python爬虫入门</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">Table of Contents</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#为什么要使用SpringMVC？"><span class="toc-text">为什么要使用SpringMVC？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#MVC设计模式"><span class="toc-text">MVC设计模式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#SpringMVC架构"><span class="toc-text">SpringMVC架构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#SpringMVC入门程序"><span class="toc-text">SpringMVC入门程序</span></a></li></ol>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+        Total:
+        <strong id="busuanzi_value_site_pv">
+            <i class="fa fa-spinner fa-spin"></i>
+        </strong>
+        &nbsp; | &nbsp;
+        Visitors:
+        <strong id="busuanzi_value_site_uv">
+            <i class="fa fa-spinner fa-spin"></i>
+        </strong>
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2017
+                </span>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+</body>
+</html>
