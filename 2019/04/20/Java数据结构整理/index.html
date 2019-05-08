@@ -1,0 +1,443 @@
+<!DOCTYPE HTML>
+<html lang="">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="杨柳潇的博客">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="http://yangliuxiao.top">
+    <!--SEO-->
+
+    <meta name="keywords" content="Java,面试">
+
+
+    <meta name="description" content="
+1.线性表线性结构是最简单，也是最常用的数据结构之一。特点是：在数据元素的有限集中，除第一个元素无直接前驱，最后一个元素无直接后续以外，每个数据元素有且仅有一个直接前驱元素和一个直接后续元素。...">
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+
+    <!--Title-->
+
+
+<title>Java数据结构整理 | 杨柳潇的博客</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="杨柳潇的博客" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.jpg">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+
+</head>
+
+</html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header" style="background-image:url(/./img/background.jpg)">
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title="Mute">
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                 <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yangliuxiao.top">杨柳潇的博客</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>Home</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>时间轴</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="Java数据结构整理">
+            
+	            Java数据结构整理
+            
+        </h1>
+        <div class="post-meta">
+    
+        <span class="categories-meta fa-wrap">
+            <i class="fa fa-folder-open-o"></i>
+            <a class="category-link" href="/categories/Java技术/">Java技术</a>
+        </span>
+    
+
+    
+        <span class="fa-wrap">
+            <i class="fa fa-tags"></i>
+            <span class="tags-meta">
+                
+                    <a class="tag-link" href="/tags/Java/">Java</a> <a class="tag-link" href="/tags/面试/">面试</a>
+                
+            </span>
+        </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2019/04/20</span>
+        </span>
+        
+            <span class="fa-wrap">
+                <i class="fa fa-eye"></i>
+                <span id="busuanzi_value_page_pv"></span>
+            </span>
+        
+    
+</div>
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <hr>
+<h4 id="1-线性表"><a href="#1-线性表" class="headerlink" title="1.线性表"></a>1.线性表</h4><p>线性结构是最简单，也是最常用的数据结构之一。<strong>特点</strong>是：在数据元素的有限集中，除第一个元素无直接前驱，最后一个元素无直接后续以外，<strong>每个数据元素有且仅有一个直接前驱元素和一个直接后续元素</strong>。</p>
+<p>线性表的抽象数据类型基本操作：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>getSize()</th>
+<th>isEmpty()</th>
+<th>insert(i,e)</th>
+<th>contains(e)</th>
+<th>get(i)</th>
+<th>remove(e)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>获取大小</td>
+<td>是否为空</td>
+<td>插入</td>
+<td>是否包含元素e</td>
+<td>获取序号为i的元素</td>
+<td>删除e</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h5 id="1-1-线性表的顺序存储与实现"><a href="#1-1-线性表的顺序存储与实现" class="headerlink" title="1.1 线性表的顺序存储与实现"></a>1.1 线性表的顺序存储与实现</h5><p>线性表的顺序存储是用一组<strong>地址连续</strong>的存储单元依次存储线性表的数据元素。以数据元素在<strong>机内存储地址相邻</strong>来表示线性表中数据元素之间的逻辑关系。</p>
+<p>优点是只要确定了线性表的起始地址，线性表中任意元素都可以做到<strong>随机存取</strong>。缺点是<strong>插入或删除元素时，需要移动后续元素，增加了开销</strong>。</p>
+<p>在抽象数据类型的实现中都是使用<strong>数组</strong>来描述数据结构的顺序存储结构。</p>
+<h5 id="1-2-线性表的链式存储与实现"><a href="#1-2-线性表的链式存储与实现" class="headerlink" title="1.2 线性表的链式存储与实现"></a>1.2 线性表的链式存储与实现</h5><p>实现线性表的另一方法是链式存储，即用<strong>指针将存储线性表中数据元素的那些单元依次串联</strong>在一起。</p>
+<p>这种方法弥补了数组中连续存储的缺点，在<strong>插入或删除元素时，不再需要移动元素</strong>。但需要在每个单元设置指针，<strong>增加了额外的存储开销</strong>，并且在查找元素时需要从头指针开始查询，<strong>无法做到随机存取</strong>。</p>
+<p>链表又可以分为<strong>单链表与双向链表</strong>：</p>
+<blockquote>
+<p><strong>①单链表</strong>：有一个存储数据元素的数据域，一个指向下一个元素地址的指针域（Java中没有显式的指针类型，是使用对象引用来实现的）。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SLNode</span></span>&#123;</span><br><span class="line">&gt;     <span class="comment">/*数据域*/</span></span><br><span class="line">&gt;     <span class="keyword">private</span> Object e;</span><br><span class="line">&gt;     <span class="comment">/*下一个元素的引用*/</span></span><br><span class="line">&gt;     <span class="keyword">private</span> SLNode next;</span><br><span class="line">&gt; &#125;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>优点</strong>：结构简单。</p>
+<p><strong>缺点</strong>：只能通过引用访问后续节点，而无法直接访问其前驱节点。</p>
+<p><strong>②双向链表</strong>：扩展单链表，增加一个指针域存放其<strong>前驱</strong>节点的地址。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DLNode</span> </span>&#123;</span><br><span class="line">&gt;     <span class="keyword">private</span> Object e;</span><br><span class="line">&gt;     <span class="keyword">private</span> DLNode pre;</span><br><span class="line">&gt;     <span class="keyword">private</span> DLNode next;</span><br><span class="line">&gt; &#125;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>优点</strong>：可以直接找点节点的前驱。</p>
+<p><strong>缺点</strong>：增加了一个指针域，增加了存储开销。并且插入、删除元素时更加繁琐。</p>
+</blockquote>
+<h5 id="1-3-两种实现方式的比较"><a href="#1-3-两种实现方式的比较" class="headerlink" title="1.3 两种实现方式的比较"></a>1.3 两种实现方式的比较</h5><h6 id="从时间上进行比较"><a href="#从时间上进行比较" class="headerlink" title="从时间上进行比较"></a>从时间上进行比较</h6><blockquote>
+<p>在<strong>查找操作</strong>上，若<strong>基于序号</strong>，顺序存储有随机存取的特性，而链式存储需要从头结点遍历；若<strong>基于内容</strong>，则两者都需要从头遍历</p>
+<p>而在<strong>插入和删除操作</strong>上，顺序存储需要移动大量数据元素；而链表只需修改几个指针。</p>
+</blockquote>
+<h6 id="从空间上进行比较"><a href="#从空间上进行比较" class="headerlink" title="从空间上进行比较"></a>从空间上进行比较</h6><blockquote>
+<p>顺序存储的存储空间是预先静态分配的，虽然在实现过程中可以动态扩展，但若长度变化较大，会<strong>存在较大的空闲空间</strong>，<strong>空间利用率低</strong>；而链式存储空间是动态分配的。</p>
+<p>当线性表的数据元素简单，并且线性表的长度变化不大时，链式存储需要<strong>额外的指针域空间</strong>，所以可以选择顺序存储。</p>
+</blockquote>
+<hr>
+<h4 id="2-栈与队列"><a href="#2-栈与队列" class="headerlink" title="2.栈与队列"></a>2.栈与队列</h4><h5 id="2-1-栈"><a href="#2-1-栈" class="headerlink" title="2.1 栈"></a>2.1 栈</h5><p>栈（stack）又称堆栈，是一种运算受限的线性表，其限制是仅表的一端进行插入和删除操作，不允许在其他任何位置进行插入、查找、删除等操作。表中进行插入删除操作的一端称为<strong>栈顶（top）</strong>，栈顶保存的元素称为<strong>栈顶元素</strong>。相对地另一端称为<strong>栈底（bottom）</strong>。又把堆栈称为<strong>后进先出表（LIFO）</strong>。</p>
+<p>和线性表类似，堆栈也有两种基本的存储结构：顺序存储结构和链式存储结构。</p>
+<p><strong>递归（recursion）</strong>是指在定义自身的同时又出现了对自己的引用。如果一个算法直接或间接地调用自己，则称这个算法是一个递归算法，由两部分组成：<strong>递归终止条件和递归调用。</strong></p>
+<p>函数调用期间的相关信息的保存<strong>需要使用一个堆栈来实现</strong>。系统将整个程序运行时需要的数据空间安排在一个堆栈中，每当调用一个函数时就为它在栈顶分配一个存储区，<strong>每当一个函数返回时就释放它的存储区。</strong>一个递归算法的实现实际上就是多个相同函数的嵌套调用。</p>
+<h5 id="2-2-队列"><a href="#2-2-队列" class="headerlink" title="2.2 队列"></a>2.2 队列</h5><p><strong>队列（queue）</strong>简称队，他同堆栈一样，也是一种运算受限的线性表，其限制是仅允许在表的一端进行插入，而在表的另一端进行删除。插入数据的一端称为<strong>队尾（rear）</strong>，删除数据元素的一端称为<strong>队首（front）</strong>。队列又称为<strong>先进先出表（FIFO）</strong>。</p>
+<p>和线性表类似，队列也有两种基本的存储结构：顺序存储结构和链式存储结构。</p>
+<p>单元围成一个圆环的队列即为<strong>循环队列</strong>。</p>
+<hr>
+<h4 id="3-树"><a href="#3-树" class="headerlink" title="3. 树"></a>3. 树</h4><p>树是一种非线性结构，数据元素之间的逻辑关系是前驱唯一而后续不唯一的，即数据元素之间是一对多的关系。</p>
+<h5 id="3-0-树的性质"><a href="#3-0-树的性质" class="headerlink" title="3.0 树的性质"></a>3.0 树的性质</h5><h6 id="◆-结点的层次和树的深度"><a href="#◆-结点的层次和树的深度" class="headerlink" title="◆ 结点的层次和树的深度"></a>◆ 结点的层次和树的深度</h6><p>树的结点包含一个数据元素及若干指向其子树的若干分支。</p>
+<p>结点的<strong>层次</strong>从根结点开始定义，层次数为0的结点是根结点。根节点的子树的根的层次数为1。</p>
+<p>结点的<strong>最大层次数</strong>称为<strong>树的深度</strong>或<strong>高度</strong>。树中结点也有高度，其高度是以该结点为根的树的高度。</p>
+<h6 id="◆-结点的度与树的度"><a href="#◆-结点的度与树的度" class="headerlink" title="◆ 结点的度与树的度"></a>◆ 结点的度与树的度</h6><p>结点拥有的子树的数目称为称为结点的<strong>度（Degree）</strong>，度为0的结点称为<strong>叶子（Leaf）</strong>。</p>
+<h6 id="◆-树的边数"><a href="#◆-树的边数" class="headerlink" title="◆ 树的边数"></a>◆ 树的边数</h6><p><strong>树中的结点数等于树的边数加1，也等于所有结点的度数之和加1</strong>。因为除了根结点以外每个结点都与指向它的一条边对应。在对涉及树结构的算法复杂性进行分析时，可以用结点的数目作为规模的度量。</p>
+<h6 id="◆-有序树、m叉树、森林"><a href="#◆-有序树、m叉树、森林" class="headerlink" title="◆ 有序树、m叉树、森林"></a>◆ 有序树、m叉树、森林</h6><p><strong>有序树</strong>：将树中结点的各子树看成是<strong>从左至右有次序</strong>的，则称该树为<strong>有序树</strong>；若不考虑子树的顺序则成为<strong>无序树</strong>。对于有序树，我们可以明确地定义每个结点的第一个孩子、第二个孩子等。</p>
+<p><strong>m叉树</strong>：树中所有结点最大度数为m的有序树。</p>
+<p><strong>森林（forest）</strong>：是m(m&gt;=0)棵互不相交的树的集合。</p>
+<h5 id="3-1-二叉树"><a href="#3-1-二叉树" class="headerlink" title="3.1 二叉树"></a>3.1 二叉树</h5><h6 id="◆-性质"><a href="#◆-性质" class="headerlink" title="◆ 性质"></a>◆ 性质</h6><p>① 在二叉树的第i层上最多有2^i个结点。</p>
+<p>② 高度为h的二叉树至多有2^{h+1}-1个结点。</p>
+<p>③ 对任何一棵二叉树T，如果其叶子结点数为n0，度为2的结点数为n2，则n0 =n2 + 1。</p>
+<h6 id="◆-满二叉树"><a href="#◆-满二叉树" class="headerlink" title="◆ 满二叉树"></a>◆ 满二叉树</h6><p>高度为K并且有2^{k+1}-1个结点的二叉树。在满二叉树中，每层结点都达到最大数，即每层结点都是满的，因此称为满二叉树。</p>
+<h6 id="◆-完全二叉树"><a href="#◆-完全二叉树" class="headerlink" title="◆ 完全二叉树"></a>◆ 完全二叉树</h6><p>若在一棵满二叉树中，在最下层从最右侧起去掉相邻的若干叶子结点，得到的二叉树即为完全二叉树。</p>
+<blockquote>
+<p>可见，满二叉树必为完全二叉树，但完全二叉树不一定为满二叉树。</p>
+</blockquote>
+<p><strong>由完全二叉树的定义可以得到：</strong></p>
+<p>① 有n个结点的完全二叉树的高度为（log n的向下取整）</p>
+<p>② 含有n &gt;= 1个结点的二叉树的高度至多为n - 1；高度至少为（log n的向下取整）</p>
+<p>③ 如果对一棵有n个结点的完全二叉树的结点进行编号，则对任一结点i（ 1 &lt;= i &lt;= n），有</p>
+<blockquote>
+<p>(1) 如果 i = 1，则结点i是二叉树的根，无双亲；如果i &gt; 1，则其双亲结点Pi是（ i / 2 向下取整） 。</p>
+<p>(2) 如果2i &gt; n，则结点i无左孩子；否则其左孩子是结点2i。</p>
+<p>(3) 如果2i + 1 &gt; n，则结点i无右孩子；否则其右孩子是结点2i + 1。</p>
+</blockquote>
+<h5 id="3-2-二叉树的存储结构"><a href="#3-2-二叉树的存储结构" class="headerlink" title="3.2 二叉树的存储结构"></a>3.2 二叉树的存储结构</h5><h6 id="◆-顺序存储结构"><a href="#◆-顺序存储结构" class="headerlink" title="◆ 顺序存储结构"></a>◆ 顺序存储结构</h6><p>对于满二叉树和完全二叉树来说，可以将其数据元素逐层存放到一组连续的存储单元中。</p>
+<p><img src="images\images1.png" alt="images\images1"></p>
+<p>这种方式<strong>对于满二叉树和完全二叉树是非常合适也是高效方便</strong>的。因为满二叉树和完全二叉树采用顺序存储结构既不浪费空间，也可以根据公式很快地确定节点之间的关系。但<strong>对于一般的二叉树而言，必须用“虚节点”将一棵二叉树补成完全二叉树来存储，会造成空间浪费</strong>。</p>
+<h6 id="◆-链式存储结构"><a href="#◆-链式存储结构" class="headerlink" title="◆ 链式存储结构"></a>◆ 链式存储结构</h6><p>设计不同的结点结构可构成不同的链式存储结构。至少应包含三个域：<strong>数据域、左孩子域、右孩子域</strong>，为了方便找到父节点，<strong>可以增加一个指向父节点的指针域</strong>。</p>
+<h5 id="3-3-树的存储结构"><a href="#3-3-树的存储结构" class="headerlink" title="3.3 树的存储结构"></a>3.3 树的存储结构</h5><h6 id="◆-双亲表示法"><a href="#◆-双亲表示法" class="headerlink" title="◆ 双亲表示法"></a>◆ 双亲表示法</h6><p>每个结点中有一个<strong>指向其父亲结点的数组下标的域</strong>。</p>
+<p>找一个结点的父亲结点只需O(1)，但找儿子结点或者兄弟结点可能要遍历整个数组。</p>
+<p><img src="images\images2.png" alt="images\images2"></p>
+<h6 id="◆-孩子链表表示法"><a href="#◆-孩子链表表示法" class="headerlink" title="◆ 孩子链表表示法"></a>◆ 孩子链表表示法</h6><p>用一个<strong>线性表</strong>来存储树的所有结点信息，称为结点表。对每个结点建立一个孩子表。孩子表中只<strong>存储孩子结点的地址信息</strong>，可以是指针，数组下标甚至内存地址。由于每个结点的孩子数目不定，因此孩子表常用<strong>单链表</strong>来实现。</p>
+<p>在孩子链表表示法中，通过某个结点找到其孩子较为容易，遍历其孩子链表即可，但找其父节点麻烦。因此可以<strong>结合孩子链表表示法和双亲表示法</strong>，在每个结点再设置一个指示双亲结点的域。</p>
+<p><img src="images\images3.png" alt="images\images3"></p>
+<h6 id="◆-孩子兄弟表示法"><a href="#◆-孩子兄弟表示法" class="headerlink" title="◆ 孩子兄弟表示法"></a>◆ 孩子兄弟表示法</h6><p>树的孩子兄弟表示法又称为二叉树表示法。每个结点除了data域外，还含有<strong>两个指针域，分别指向该结点的第一个孩子和右邻兄弟。</strong></p>
+<p><img src="images\images4.png" alt="images\images4"></p>
+<h5 id="3-4-Huffman树"><a href="#3-4-Huffman树" class="headerlink" title="3.4 Huffman树"></a>3.4 Huffman树</h5><p>在计算机系统中，符号需要进行二进制编码。而为了缩短数据编码长度，可以采用<strong>不定长编码</strong>。其基本思想是：<strong>给使用频度较高的字符编较短的编码</strong>，这是数据压缩的最基本思想。</p>
+<p><strong>前缀码：在一个编码系统中，任何一个编码都不是其他编码的前缀，则称该编码系统的编码是前缀码。</strong>当一个编码系统中采用定长编码时，可以不用分隔符；如果<strong>采用不定长编码，必须使用前缀码或分隔符</strong>，否则会在解码时产生歧义。而使用分隔符就又增加了编码长度，所以一般采用前缀编码。</p>
+<p><strong>Huffman树</strong>：它是由n个带权叶子结点构成的所有二叉树中带权路径长度最小的二叉树，Huffman树又称<strong>最优二叉树</strong>。</p>
+<p><strong>构造Huffman树的算法</strong>步骤如下：</p>
+<p>① 根据给定的n个权值，构造n棵只有一个根节点的二叉树，n个权值分别是这些二叉树根节点的权，F是由这n棵二叉树构成的集合。</p>
+<p>② 在F中选取两棵根节点树值最小的树作为左、右子树，构造一棵新的二叉树，置新二叉树根的权值 = 左右子树根节点权值之和。</p>
+<p>③ 从F中删除这两棵树，并将新树加入F。</p>
+<p>④ 重复②、③，直到F中只含一棵树为止。</p>
+<p><img src="images\images5.png" alt="images\images5"></p>
+<hr>
+<h4 id="4-图"><a href="#4-图" class="headerlink" title="4. 图"></a>4. 图</h4><p>图（graph）是一种网状数据结构，是由<strong>非空的顶点集合</strong>和<strong>一个描述顶点之间关系的集合</strong>组成。</p>
+<h5 id="4-1-图及基本术语"><a href="#4-1-图及基本术语" class="headerlink" title="4.1 图及基本术语"></a>4.1 图及基本术语</h5><h6 id="简单图："><a href="#简单图：" class="headerlink" title="简单图："></a>简单图：</h6><blockquote>
+<p>对简单图而言，图中中所有的边自然构成一个集合,并且每条边的两个顶点均不相同.</p>
+</blockquote>
+<h6 id="顶点的度、入度、出度："><a href="#顶点的度、入度、出度：" class="headerlink" title="顶点的度、入度、出度："></a>顶点的度、入度、出度：</h6><blockquote>
+<p>顶点的度(degree)是指依附于某顶点 v 的边数,通常记为 TD (v).顶点 v 的<strong>入度(in degree)</strong>是指以顶点 为终点的边的数目,记为 ID (v)；顶点 v <strong>出度(out degree)</strong>是指以顶点 v 为起始点的边的 数目,记为 OD (v).</p>
+</blockquote>
+<h6 id="完全图、稠密图、稀疏图"><a href="#完全图、稠密图、稀疏图" class="headerlink" title="完全图、稠密图、稀疏图"></a>完全图、稠密图、稀疏图</h6><blockquote>
+<p>假设在图 G = ( V , E )中有 n 个顶点和 m 条边.</p>
+<p>1) 若 G 是无向图,则有 0 ≤ m ≤ n(n-1)/2.</p>
+<p>2) 若 G 是有向图,则有 0 ≤ m ≤ n(n-1). </p>
+<p>由此,在具有n个顶点的图中,边的数目为<strong>Ο(n2)</strong>.有n(n-1)/2 条边的无向图称为<strong>无向完全图</strong>；有 n(n-1)条边的有向图称为<strong>有向完全图</strong>.有 很少边(如 m &lt; n log n)的图称为<strong>稀疏图</strong>,反之边较多的图称为<strong>稠密图.</strong></p>
+</blockquote>
+<h6 id="路径、环路及可达分量"><a href="#路径、环路及可达分量" class="headerlink" title="路径、环路及可达分量"></a>路径、环路及可达分量</h6><blockquote>
+<p>所谓图中的一条<strong>通路或路径(path)</strong>,就是由m+1 个顶点与m条边交替构成的一个序列ρ = { v0, e1 , v1 , e2 , v2 , … , em , vm},m ≥ 0,且ei = (vi-1 , vi),1 ≤ i ≤ m.路径上边的数目称为路径长度,计作|ρ|.</p>
+<p>长度|ρ| ≥ 1 的路径,若路径的第一个顶点与最后一个顶点相同,则称之为<strong>环路或环 (cycle)</strong>.</p>
+<p>在有向图 G 中,若从顶点 s 到顶点 v 有一条通路,则称 v 是从 s 可达的.对于顶点 s, 从 s 可达的所有顶点所组成的集合,称作 s 在 G 中对应的<strong>可达分量</strong>.</p>
+</blockquote>
+<h6 id="连通性与连通分量"><a href="#连通性与连通分量" class="headerlink" title="连通性与连通分量"></a>连通性与连通分量</h6><blockquote>
+<p>在无向图中,如果从一个顶点vi到另一个顶点vj(i≠j)有路径,则称顶点vi和vj是<strong>连通</strong>的. 如果图中任意两顶点vi,vj∈V,vi和vj都是连通的,则称该图是<strong>连通图(connected graph).</strong></p>
+<p>所谓<strong>连通分量(connected component)</strong>,是指<strong>无向图</strong>的极大连通子图.显然任何连通图的连通分量只有一个,即本身.而非连通图有多个连通分量,各个连通分量之间是分离的, 没有任何边相连.</p>
+<p>在<strong>有向图</strong>中,若图中任意一对顶点vi和vj (i≠j)均有一条从顶点vi到另一个顶点vj的路径, 也有从vj到vi的路径,则称该有向图是<strong>强连通图</strong>.有向图的极大强连通子图称为<strong>强连通分量</strong>.</p>
+</blockquote>
+<h6 id="权与网"><a href="#权与网" class="headerlink" title="权与网"></a>权与网</h6><blockquote>
+<p>在实际应用中,图不但需要表示元素之间是否存在某种关系,而且图的边往往与具有一 定实际意义的数有关,即每条边都有与它相关的实数,称为<strong>权</strong>.这些权值可以表示从一个顶点到另一个顶点的距离或消耗等信息,在本章中假设边的权均为正数.这种边上具有权值的图称为<strong>带权图(weighted graph)或网(network)</strong>.</p>
+</blockquote>
+<h5 id="4-2-图的存储方法"><a href="#4-2-图的存储方法" class="headerlink" title="4.2 图的存储方法"></a>4.2 图的存储方法</h5><h6 id="4-2-1-邻接矩阵"><a href="#4-2-1-邻接矩阵" class="headerlink" title="4.2.1 邻接矩阵"></a>4.2.1 邻接矩阵</h6><p><strong>图的邻接矩阵(adjacent matrix)表示法</strong>是使用数组来存储图结构的方法,也被称为数组表示法.它采用两个数组来表示图：一个是用于<strong>存储所有顶点信息的一维数组</strong>,另一个是 用于<strong>存储图中顶点之间关联关系的二维数组</strong>,这个关联关系数组也被称为邻接矩阵.</p>
+<p>假设图G＝(V , E)有n个顶点,即V＝{v0,v1,…,vn-1},则表示G中各顶点关联关系的为一个n×n的矩阵A,若&lt; u,v &gt;之间存在直接连线，那么对应矩阵元素为1，否则为∞.</p>
+<p><img src="images\images6.png" alt="images\images6"></p>
+<p><strong>邻接矩阵存储存在以下特点：</strong></p>
+<blockquote>
+<p>① 首先,无向图的邻接矩阵一定是一个对称矩阵.因此,在具体存放邻接矩阵时只需存放上(或下)三角矩阵的元素即可.</p>
+<p>② 其次,对于无向图, 邻接矩阵的第i行(或第i列)非∞元素的个数正好是第i个顶点的度TD(vi).</p>
+<p>③ 再次,对于有向 图,邻接矩阵的第i行(第i列)非∞元素的个数正好是第i个顶点的出度OD(vi)(入度ID(vi)). </p>
+<p>④ 最后,通过邻接矩阵很容易确定图中任意两个顶点之间是否有边相连；但是,要确定图中有多少条边,则必须按行,按列对每个元素进行检测,所花费的时间代价很大.</p>
+</blockquote>
+<p><strong>邻接矩阵存储的缺点：</strong></p>
+<blockquote>
+<p>① 尽管由n个顶点构成的图中最多可以有n的2次方条边,但是在大多数情况下,边的数目远远达不到这个量级,因此,在邻接矩阵中大多数单元 都是闲置的.<strong>空间利用率较低。</strong></p>
+<p>② <strong>矩阵结构是静态的</strong>,其大小N需要预先估计,然后创建N×N的矩阵.然而,<strong>图的规模往往是动态变化的</strong>,N的估计过大会造成更多的空间浪费,如果估计过小则经 常会出现空间不够用的情况.</p>
+</blockquote>
+<h6 id="4-2-2-邻接表"><a href="#4-2-2-邻接表" class="headerlink" title="4.2.2 邻接表"></a>4.2.2 邻接表</h6><p><strong>邻接表(adjacency list)</strong>是图的一种链式存储方法,邻接表表示法类似于树的孩子链表表示法.在邻接表中对于图G中的每个顶点vi建立一个单链表,将所有邻接于vi的顶点vj链成 一个单链表,并在表头附设一个表头结点,这个<strong>单链表就称为顶点vi的邻接表.</strong></p>
+<p>在邻接表中共有两种结点结构,分别是<strong>边表结点和表头结点</strong>.每个边表结点由 3 个域组成,其中邻接点域(adjvex)指示与顶点vi邻接的顶点在图中的位置, 链域(nextedge)指向下一条边所在的结点,数据域(info)存储和边有关的信息,如权值等信息.在头结点中,除了设有链域(firstedge)指向链表中的第 一个结点之外,还有用于存储顶点vi相关信息的数据域(data).</p>
+<p><img src="images\images7.png" alt="images\images7"></p>
+<p>就存储空间而言,对于 n 个顶点,m 条边的无向图,若采用邻接表作为存储结构,则需 要 n 个表头结点和 2m 个边表结点.显然<strong>在边稀疏(m&lt;&lt;n(n-1)/2)的情况下,用邻接表存储 要比使用邻接矩阵节省空间.</strong></p>
+<h5 id="4-3-最小生成树"><a href="#4-3-最小生成树" class="headerlink" title="4.3 最小生成树"></a>4.3 最小生成树</h5><p>我们看到对于连通图而言从图中不同顶点出发或从同一顶点 出发按照不同的优先搜索过程可以得到<strong>不同的生成树</strong>.如此,对于一个连通网(连通带权图)来说,生成树不同,每棵树的代价(树中每条边 上权值之和)也可能不同,我们把代价最小的生成树称为<strong>图的最小生成树(minimum  spanning tree).</strong></p>
+<h6 id="4-3-1-Prim算法"><a href="#4-3-1-Prim算法" class="headerlink" title="4.3.1 Prim算法"></a>4.3.1 Prim算法</h6><p>从某个点开始，找到不在树集合但与树集合相连的最短权值的点，将其加入树集合，重复这一步，直到整个图所有点都加入树集合。</p>
+<p><img src="images\images8.png" alt="images\images8"></p>
+<h6 id="4-3-2-Kruskal算法（克鲁斯卡尔算法）"><a href="#4-3-2-Kruskal算法（克鲁斯卡尔算法）" class="headerlink" title="4.3.2 Kruskal算法（克鲁斯卡尔算法）"></a>4.3.2 Kruskal算法（克鲁斯卡尔算法）</h6><p>找到权值最小，且两边端点至少有一个不在树集合内，不断找最小权值的边，直到所有点都加入树集合。</p>
+<p><img src="images\images9.png" alt="images\images9"></p>
+<h5 id="4-4-单源最短路径"><a href="#4-4-单源最短路径" class="headerlink" title="4.4 单源最短路径"></a>4.4 单源最短路径</h5><h6 id="4-4-1-Dijkstra算法"><a href="#4-4-1-Dijkstra算法" class="headerlink" title="4.4.1 Dijkstra算法"></a>4.4.1 Dijkstra算法</h6><p>参考博客：<a href="https://www.jianshu.com/p/ff6db00ad866" target="_blank" rel="noopener">深入理解 Dijkstra 算法实现原理</a></p>
+<blockquote>
+<p>迪杰斯特拉(<strong>Dijkstra</strong>)算法是典型最短路径算法，用于计算一个节点到其他节点的最短路径。<br>它的主要特点是<strong>以起始点为中心向外层层扩展(广度优先搜索思想)，直到扩展到终点为止</strong>。</p>
+</blockquote>
+<p>这样一个有权图，<strong>Dijkstra</strong>算法可以计算<strong>任意节点</strong>到<strong>其他节点</strong>的最短路径.</p>
+<p><img src="images\images10.png" alt="images\images10"></p>
+<p><strong>算法思路：</strong></p>
+<p>① 指定一个节点，例如我们要计算 ‘A’ 到其他节点的最短路径</p>
+<p>② 引入两个集合（S、U），<strong>S集合</strong>包含已求出的最短路径的点（以及相应的最短长度），<strong>U集合</strong>包含未求出最短路径的点（以及A到该点的路径，<strong>注意 如上图所示，<code>A-&gt;C</code>由于没有直接相连 初始时为∞</strong>）</p>
+<p>③ 初始化两个集合，S集合初始时 只有当前要计算的节点，<code>A-&gt;A = 0</code>，  U集合初始时为<code>A-&gt;B = 4, A-&gt;C = ∞, A-&gt;D = 2, A-&gt;E = ∞</code>.</p>
+<p>④ 从<strong>U集合</strong>中找出路径最短的点，加入S集合，例如<code>A-&gt;D = 2</code></p>
+<p>⑤ <strong>更新U集合路径</strong>，<code>若( &#39;D 到 B,C,E 的距离&#39; + &#39;AD 距离&#39; &lt; &#39;A 到 B,C,E 的距离&#39; )</code>则更新U</p>
+<p>⑥ <strong>循环执行 4、5 两步骤，直至遍历结束，得到A 到其他节点的最短路径</strong></p>
+
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/2019/04/26/SpringMVC/" class="pre-post btn btn-default" title="SpringMVC">
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">SpringMVC</span>
+        </a>
+    
+    
+        <a href="/2019/04/12/Python爬虫入门/" class="next-post btn btn-default" title="Python爬虫入门">
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">Python爬虫入门</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">Table of Contents</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-线性表"><span class="toc-text">1.线性表</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-1-线性表的顺序存储与实现"><span class="toc-text">1.1 线性表的顺序存储与实现</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-2-线性表的链式存储与实现"><span class="toc-text">1.2 线性表的链式存储与实现</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-3-两种实现方式的比较"><span class="toc-text">1.3 两种实现方式的比较</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#从时间上进行比较"><span class="toc-text">从时间上进行比较</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#从空间上进行比较"><span class="toc-text">从空间上进行比较</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-栈与队列"><span class="toc-text">2.栈与队列</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#2-1-栈"><span class="toc-text">2.1 栈</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-2-队列"><span class="toc-text">2.2 队列</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-树"><span class="toc-text">3. 树</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#3-0-树的性质"><span class="toc-text">3.0 树的性质</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#◆-结点的层次和树的深度"><span class="toc-text">◆ 结点的层次和树的深度</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#◆-结点的度与树的度"><span class="toc-text">◆ 结点的度与树的度</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#◆-树的边数"><span class="toc-text">◆ 树的边数</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#◆-有序树、m叉树、森林"><span class="toc-text">◆ 有序树、m叉树、森林</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-1-二叉树"><span class="toc-text">3.1 二叉树</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#◆-性质"><span class="toc-text">◆ 性质</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#◆-满二叉树"><span class="toc-text">◆ 满二叉树</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#◆-完全二叉树"><span class="toc-text">◆ 完全二叉树</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-2-二叉树的存储结构"><span class="toc-text">3.2 二叉树的存储结构</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#◆-顺序存储结构"><span class="toc-text">◆ 顺序存储结构</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#◆-链式存储结构"><span class="toc-text">◆ 链式存储结构</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-3-树的存储结构"><span class="toc-text">3.3 树的存储结构</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#◆-双亲表示法"><span class="toc-text">◆ 双亲表示法</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#◆-孩子链表表示法"><span class="toc-text">◆ 孩子链表表示法</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#◆-孩子兄弟表示法"><span class="toc-text">◆ 孩子兄弟表示法</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-4-Huffman树"><span class="toc-text">3.4 Huffman树</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-图"><span class="toc-text">4. 图</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#4-1-图及基本术语"><span class="toc-text">4.1 图及基本术语</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#简单图："><span class="toc-text">简单图：</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#顶点的度、入度、出度："><span class="toc-text">顶点的度、入度、出度：</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#完全图、稠密图、稀疏图"><span class="toc-text">完全图、稠密图、稀疏图</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#路径、环路及可达分量"><span class="toc-text">路径、环路及可达分量</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#连通性与连通分量"><span class="toc-text">连通性与连通分量</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#权与网"><span class="toc-text">权与网</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-2-图的存储方法"><span class="toc-text">4.2 图的存储方法</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#4-2-1-邻接矩阵"><span class="toc-text">4.2.1 邻接矩阵</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#4-2-2-邻接表"><span class="toc-text">4.2.2 邻接表</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-3-最小生成树"><span class="toc-text">4.3 最小生成树</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#4-3-1-Prim算法"><span class="toc-text">4.3.1 Prim算法</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#4-3-2-Kruskal算法（克鲁斯卡尔算法）"><span class="toc-text">4.3.2 Kruskal算法（克鲁斯卡尔算法）</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-4-单源最短路径"><span class="toc-text">4.4 单源最短路径</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#4-4-1-Dijkstra算法"><span class="toc-text">4.4.1 Dijkstra算法</span></a></li></ol></li></ol></li></ol>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+        Total:
+        <strong id="busuanzi_value_site_pv">
+            <i class="fa fa-spinner fa-spin"></i>
+        </strong>
+        &nbsp; | &nbsp;
+        Visitors:
+        <strong id="busuanzi_value_site_uv">
+            <i class="fa fa-spinner fa-spin"></i>
+        </strong>
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2017
+                </span>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+</body>
+</html>
