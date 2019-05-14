@@ -1,0 +1,365 @@
+<!DOCTYPE HTML>
+<html lang="">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="杨柳潇的博客">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="http://yangliuxiao.top">
+    <!--SEO-->
+
+    <meta name="keywords" content="Java,面试,笔记">
+
+
+    <meta name="description" content="1. 二叉查找树参考：深入学习理解二叉搜索树（附详细讲解与实例分析）
+1.1 基本概念二叉查找树，也称二叉搜索树，或二叉排序树。其要么是一颗空树，要么就是具有如下性质的二叉树：
+（1）若任意节点...">
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+
+    <!--Title-->
+
+
+<title>数据结构进阶 | 杨柳潇的博客</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="杨柳潇的博客" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.jpg">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+
+</head>
+
+</html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header" style="background-image:url(/./img/background.jpg)">
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title="Mute">
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                 <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yangliuxiao.top">杨柳潇的博客</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>Home</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>时间轴</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="数据结构进阶">
+            
+	            数据结构进阶
+            
+        </h1>
+        <div class="post-meta">
+    
+        <span class="categories-meta fa-wrap">
+            <i class="fa fa-folder-open-o"></i>
+            <a class="category-link" href="/categories/面试相关/">面试相关</a>
+        </span>
+    
+
+    
+        <span class="fa-wrap">
+            <i class="fa fa-tags"></i>
+            <span class="tags-meta">
+                
+                    <a class="tag-link" href="/tags/Java/">Java</a> <a class="tag-link" href="/tags/笔记/">笔记</a> <a class="tag-link" href="/tags/面试/">面试</a>
+                
+            </span>
+        </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2019/04/23</span>
+        </span>
+        
+            <span class="fa-wrap">
+                <i class="fa fa-eye"></i>
+                <span id="busuanzi_value_page_pv"></span>
+            </span>
+        
+    
+</div>
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <h3 id="1-二叉查找树"><a href="#1-二叉查找树" class="headerlink" title="1. 二叉查找树"></a>1. 二叉查找树</h3><p>参考：<a href="https://blog.csdn.net/qq_21396469/article/details/78419609" target="_blank" rel="noopener">深入学习理解二叉搜索树（附详细讲解与实例分析）</a></p>
+<h4 id="1-1-基本概念"><a href="#1-1-基本概念" class="headerlink" title="1.1 基本概念"></a>1.1 基本概念</h4><p>二叉查找树，也称二叉搜索树，或二叉排序树。其要么是一颗空树，要么就是具有如下性质的二叉树：</p>
+<p>（1）若任意节点的左子树不空，则左子树上所有结点的值<strong>均不大于</strong>它的根结点的值；</p>
+<p>（2）若任意节点的右子树不空，则右子树上所有结点的值<strong>均不小于</strong>它的根结点的值；</p>
+<p>（3）任意节点的左、右子树也分别为二叉查找树；</p>
+<p><img src="images\image1.png" alt="images\image1"></p>
+<h4 id="1-2-基本操作"><a href="#1-2-基本操作" class="headerlink" title="1.2 基本操作"></a>1.2 基本操作</h4><p>对于一棵二叉搜索树来说，它支持许多动态集合操作，包括<strong>WALK（遍历）、SEARCH（查找）、MINIMUM（最小关键字）、MAXIMUM（最大关键字）、SUCCESSOR（后继）、PREDECESSOR（前驱）、INSERT（插入）、DELETE（删除）</strong>等。下面将依次讲解这些操作。</p>
+<h5 id="1-2-1-Walk（遍历）"><a href="#1-2-1-Walk（遍历）" class="headerlink" title="1.2.1 Walk（遍历）"></a>1.2.1 Walk（遍历）</h5><p>得益于二叉搜索树的性质，当使用<strong>中序遍历来访问一棵二叉搜索树上的所有结点时，最后得到的访问序列恰好是所有结点关键字的升序序列。</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 中序遍历 */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">inOrder_Tree_Walk</span><span class="params">(BSTNode x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (x != NULL)</span><br><span class="line">    &#123;</span><br><span class="line">        inOrder_Tree_Walk(x.lchild);</span><br><span class="line">        System.out.println(x.getKey())</span><br><span class="line">        inOrder_Tree_Walk(x.rchild);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>树的<strong>先序遍历和后序遍历</strong>也类似。</p>
+<h5 id="1-2-2-Search（查找）"><a href="#1-2-2-Search（查找）" class="headerlink" title="1.2.2 Search（查找）"></a>1.2.2 Search（查找）</h5><p> 在二叉搜索树中查找一个具有给定关键字key的结点，需要输入一个指向树根的指针x和一个关键字k，如果这个结点存在，则TREE-SEARCH返回一个指向关键字为k的结点的指针；否则返回NULL。</p>
+<p>具体查找过程为：<br> ① 从树根开始查找，并沿着这棵树中的一条简单路径向下进行；<br> ② 若树为空树，则查找失败，返回NULL；<br> ③ 对于遇到的每个结点x，若关键字k等于结点x的关键字，查找终止，返回指向结点x的指针；<br> ④ 若关键字k小于结点x的关键字，则查找在x的左子树中继续（根据二叉搜索树的性质，k此时不可能在右子树中）；<br> ⑤ 对称地，若关键字k大于结点x的关键字，则查找在x的右子树中继续（k此时不可能在左子树中）；<br> ⑥ 若查找至叶子结点后仍未匹配到相等的关键字，则关键字为k的结点不存在，返回NULL。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 查找（递归实现）</span></span><br><span class="line"><span class="comment"> * 输入：一个指向根节点的指针x，和待查找的关键字k</span></span><br><span class="line"><span class="comment"> * 输出：指向关键字为k的节点的指针（若存在，否则输出NULL）</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function">BSTNode <span class="title">tree_Search</span><span class="params">(BSTNode x, <span class="keyword">double</span> k)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (x == NULL || k == x.getKey())       <span class="comment">/* 如果找不着就返回NULL，找到了则返回对应节点的指针 */</span></span><br><span class="line">        <span class="keyword">return</span> x;</span><br><span class="line">    <span class="keyword">if</span> (k &lt; x.getKey())                       <span class="comment">/* 关键字小于当前节点的关键字，查找就在左子树中继续 */</span></span><br><span class="line">        <span class="keyword">return</span> tree_Search(x.lchild, k);</span><br><span class="line">    <span class="keyword">else</span>                                   <span class="comment">/* 关键字大于当前节点的关键字，查找就在右子树中继续 */</span></span><br><span class="line">        <span class="keyword">return</span> tree_Search(x.rchild, k);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>或者不使用递归，采用<strong>迭代实现</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 查找（迭代实现）</span></span><br><span class="line"><span class="comment"> * 输入：一个指向根节点的指针x，和待查找的关键字k</span></span><br><span class="line"><span class="comment"> * 输出：指向关键字为k的节点的指针（若存在，否则输出NIL）</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function">BSTNode <span class="title">iterative_Tree_Search</span><span class="params">(BSTNode x, <span class="keyword">double</span> k)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">while</span> (x != NULL &amp;&amp; k != x.getKey())</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (k &lt; x.getKey())               <span class="comment">/* 关键字小于当前节点的关键字，查找就在左子树中继续 */</span></span><br><span class="line">            x = x.lchild;</span><br><span class="line">        <span class="keyword">else</span>                           <span class="comment">/* 关键字大于当前节点的关键字，查找就在右子树中继续 */</span></span><br><span class="line">            x = x.rchild;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> x;                           <span class="comment">/* 如果找不着就返回NULL，找到了则返回对应节点的指针 */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>二叉搜索树的查找的时间复杂度为O(h)，其中h为二叉搜索树的高度。</p>
+<h5 id="1-2-3-Minimum（最小关键字）"><a href="#1-2-3-Minimum（最小关键字）" class="headerlink" title="1.2.3 Minimum（最小关键字）"></a>1.2.3 Minimum（最小关键字）</h5><p>根据二叉搜索树的性质，对于非叶子结点来说，<strong>其左子树的关键字总是不大于该结点的关键字</strong>。从一棵子树的树根开始，沿着lchild指针直到遇到一个NULL，我们总能在一棵二叉搜索树中找到一个指针，<strong>这个指针指向该子树中的最小元素。</strong></p>
+<p>查询二叉搜索树的最小关键字的<strong>时间复杂度为O(h)，其中h为二叉搜索树的高度。</strong></p>
+<h5 id="1-2-4-Maximum（最大关键字）"><a href="#1-2-4-Maximum（最大关键字）" class="headerlink" title="1.2.4 Maximum（最大关键字）"></a>1.2.4 Maximum（最大关键字）</h5><p>最大关键字的查询过程与最小关键字的十分类似。根据二叉搜索树的性质，对于非叶子结点来说，<strong>其右子树的关键字总是不小于该结点的关键字</strong>。从一棵子树的树根开始，沿着rchild指针直到遇到一个NULL，我们总能在一棵二叉搜索树中找到一个指针，<strong>这个指针指向该子树中的最大元素。</strong></p>
+<p>查询二叉搜索树的最大关键字的<strong>时间复杂度为O(h)，其中h为二叉搜索树的高度。</strong></p>
+<h5 id="1-2-5-Successor（后继）"><a href="#1-2-5-Successor（后继）" class="headerlink" title="1.2.5 Successor（后继）"></a>1.2.5 Successor（后继）</h5><p>给定一棵二叉搜索树中的一个结点，有时候需要<strong>按中序遍历的次序查找它的后继，即中序遍历顺序下的后面一位</strong>。一棵二叉搜索树的结构允许我们通过没有任何关键字的比较来确定一个结点的后继。如果后继存在，则返回指向结点x的后继的指针。倘若结点x的关键字是这棵树的最大关键字，则说明它没有后继了，返回NULL。</p>
+<p>求后继的过程可以分以下两种情况讨论：</p>
+<p>① 如果结点x的右子树非空，那么x的后继恰是x右子树中的最左结点（右子树中的最小关键字）；</p>
+<p>② 如果结点x的右子树为空，则有以下两种可能：</p>
+<p>a. 结点x是其父结点的左孩子，则结点x的后继结点为它的父结点； </p>
+<p>b. 结点x是其父结点的右孩子，则结点x的后继结点为x的最底层祖先，同时满足“这个最底层祖先的左孩子也是结点x的祖先”的条件。</p>
+<p>举个例子：</p>
+<blockquote>
+<p><img src="images\image2.png" alt="images\image2"></p>
+<p><strong>对于情况①</strong>，假设我们要求结点5的后继。因为结点5的右子树非空，所以5的后继就是它的右子树中的最小关键字，即为6。</p>
+<p><strong>对于情况②a</strong>，假设我们要求结点2的后继。因为结点2的右子树为空，且结点2是其父结点3的左孩子，所以2的后继就是它的父结点，即为3。</p>
+<p><strong>对于情况②b</strong>，假设我们要求结点4的后继。因为结点4的右子树为空，且结点4是其父结点3的右孩子。此时我们要找的后继是4的最底层祖先，而且这个最底层祖先的左孩子也是结点4的祖先之一。我们可以这样看，首先结点4的祖先有3、5；按理说最底层结点应该是3。但是我们需要注意，这个最底层是有前提条件的。前提条件就是这个祖先要有左孩子，并且这个左孩子也是结点4的祖先之一。在祖先3、5中，有左孩子的有3和5，但是结点3左孩子2并不是结点4的祖先之一；结点5的左孩子3正是结点4的另一个祖先。因此，符合前提条件的最底层祖先为5。所以4的后继就是5。</p>
+</blockquote>
+<h5 id="1-2-6-Predecessor（前驱）"><a href="#1-2-6-Predecessor（前驱）" class="headerlink" title="1.2.6 Predecessor（前驱）"></a>1.2.6 Predecessor（前驱）</h5><p>给定一棵二叉搜索树中的一个结点查找它的前驱的情况跟求后继的情况是对称的。一棵二叉搜索树的结构也允许我们通过没有任何关键字的比较来<strong>确定一个结点的前驱</strong>。如果前驱存在，则返回指向结点x的前驱的指针。倘若结点x的关键字是这棵树的最小关键字，则说明它没有前驱了，返回NULL。</p>
+<p>求前驱的过程同样可以分以下两种情况讨论：</p>
+<p>① 如果结点x的左子树非空，那么x的前驱恰是x左子树中的最右结点（左子树中的最大关键字）；</p>
+<p>② 如果结点x的左子树为空，则有以下两种可能：</p>
+<p>a. 结点x是其父结点的右孩子，则结点x的前驱结点为它的父结点；<br>b. 结点x是其父结点的左孩子，则结点x的前驱结点为x的最底层祖先，同时满足“这个最底层祖先的右孩子也是结点x的祖先”的条件。</p>
+<p>举个例子：</p>
+<blockquote>
+<p><img src="images\image2.png" alt="images\image2"></p>
+<p><strong>对于情况①</strong>，假设我们要求结点5的前驱。因为结点5的左子树非空，所以5的前驱就是它的左子树中的最大关键字，即为4。         </p>
+<p><strong>对于情况②a</strong>，假设我们要求结点7的前驱。因为结点7的左子树为空，且结点4是其父结点3的右孩子，所以4的前驱就是它的父结点，即为3。</p>
+<p><strong>对于情况②b</strong>，假设我们要求结点6的前驱。因为结点6的左子树为空，且结点6是其父结点7的左孩子。此时我们要找的前驱是6的最底层祖先，而且这个最底层祖先的右孩子也是结点6的祖先之一。</p>
+<p>我们可以这样看，首先结点6的祖先有7、5,；按理说最底层结点应该是7。但是我们需要注意，这个最底层是有前提条件的。前提条件就是这个祖先要有右孩子，并且这个右孩子也是结点17的祖先之一。在祖先7、5中，结点5的右孩子7正是结点6的另一个祖先。因此，符合前提条件的最底层祖先为5。所以6的前驱就是5。</p>
+</blockquote>
+<h5 id="1-2-7-Insert（插入）"><a href="#1-2-7-Insert（插入）" class="headerlink" title="1.2.7 Insert（插入）"></a>1.2.7 Insert（插入）</h5><p>插入操作会引起由二叉搜索树表示的动态集合的变化。我们需要修改数据结构来反映这个变化，但要保证修改后二叉搜索树的性质不被破坏。<br>插入的过程首先从树根开始遍历，沿树向下移动。指针x记录了一条向下的简单路径，并查找要替换的输入项z的NIL。同时，保持遍历指针y指向x的双亲。两个指针沿树向下移动时，通过比较当前结点x的关键字与待插入结点z的关键字大小，来决定向左或向右移动。直到x指向NIL时，这个NIL占据的位置就是输入项z要放置的位置。前面我们提到在x移动过程中还需要保持y指向x的父结点，原因是当我们找到可插入的NIL位置时，我们需要知道z属于哪个结点。</p>
+<h5 id="1-2-8-Delete（删除）"><a href="#1-2-8-Delete（删除）" class="headerlink" title="1.2.8 Delete（删除）"></a>1.2.8 Delete（删除）</h5><p>相对于插入操作，删除操作会更加复杂一些。从一棵二叉搜索树中删除某个特定结点z可以分为以下三种情况，其中前两种情况较为简单，最后一种情况则复杂一点。</p>
+<p><strong>①</strong> 如果z没有孩子结点，那么只是简单地将它删除，并修改它的父结点，用NIL作为孩子来替换z；</p>
+<p><strong>②</strong> 如果z只有一个孩子，那么将这个孩子提升到树中z的位置上，并修改z的父结点，用z的孩子来替换z；</p>
+<p><strong>③</strong> 如果z有两个孩子，那么找z的后继y，并让y占据树中z的位置。z的原来右子树部分成为y的新的右子树，z的原来左子树部分成为y新的左子树。这里要注意，z的后继y一定在z的右子树中，并且没有左孩子（详情见上文2.7前的证明）。利用z的后继y替换z，又细分为以下两种情况：</p>
+<p><strong>a.</strong> 如果y是z的右孩子，那么直接用y替换z，并保留y的右子树（y没有左子树）； </p>
+<p><img src="images\image3.png" alt="images\image3"></p>
+<p><strong>b.</strong> 如果y不是z的右孩子，那么先用y的右孩子替换y（y没有左孩子），然后再用y替换z。</p>
+<p><img src="images\image4.png" alt="images\image4"></p>
+<hr>
+<h3 id="2-AVL树（二叉平衡树）"><a href="#2-AVL树（二叉平衡树）" class="headerlink" title="2. AVL树（二叉平衡树）"></a>2. AVL树（二叉平衡树）</h3><h4 id="2-1-AVL树概述"><a href="#2-1-AVL树概述" class="headerlink" title="2.1 AVL树概述"></a>2.1 AVL树概述</h4><p>参考：<a href="https://www.cnblogs.com/skywang12345/p/3576969.html" target="_blank" rel="noopener">AVL树(一)之 图文解析 和 C语言的实现</a></p>
+<p>AVL树是根据它的发明者G.M.<strong>A</strong>delson-<strong>V</strong>elsky和E.M.<strong>L</strong>andis命名的。 </p>
+<p>二叉查找树在不断插入的情况下，有可能出现一侧不断生长，最后退化成线性结构的情形，查找插入等操作的效率就会退化为线性查找的效率。 </p>
+<p>而AVL树是最先发明的<strong>自平衡</strong>二叉查找树，也被称为<strong>高度平衡树</strong>。相比于”二叉查找树”，它的特点是：<strong>AVL树中任何节点的两个子树的高度最大差别为1。</strong></p>
+<p><strong>AVL树的查找、插入和删除在平均和最坏情况下都是O(logn)。</strong></p>
+<p>如果在AVL树中插入或删除节点后，使得高度之差大于1。此时，AVL树的平衡状态就被破坏，它就不再是一棵二叉树；为了让它重新维持在一个平衡状态，就需要对其进行<strong>旋转处理</strong>。学AVL树，重点的地方也就是它的旋转算法。</p>
+<p>树的高度为最大层次。即空的二叉树的高度是0，<strong>非空树的高度等于它的最大层次(根的层次为1，根的子节点为第2层，依次类推)</strong>。</p>
+<h4 id="2-2-AVL树失去平衡的四种情况"><a href="#2-2-AVL树失去平衡的四种情况" class="headerlink" title="2.2 AVL树失去平衡的四种情况"></a>2.2 AVL树失去平衡的四种情况</h4><p>如果在AVL树中进行插入或删除节点后，可能导致AVL树失去平衡。这种失去平衡的可以概括为4种姿态：<strong>LL(左左)，LR(左右)，RR(右右)和RL(右左)</strong>。</p>
+<p><img src="images\image5.jpg" alt="images\image5"></p>
+<p><img src="images\image6.jpg" alt="images\image6"></p>
+<p><strong>① LL：LeftLeft，也称为”左左”</strong>。插入或删除一个节点后，根节点的左子树的左子树还有非空子节点，导致”根的左子树的高度”比”根的右子树的高度”大2，导致AVL树失去了平衡。  </p>
+<blockquote>
+<p>例如，在上面LL情况中，由于”根节点(8)的左子树(4)的左子树(2)还有非空子节点”，而”根节点(8)的右子树(12)没有子节点”；导致”根节点(8)的左子树(4)高度”比”根节点(8)的右子树(12)”高2。</p>
+</blockquote>
+<p><strong>② LR：LeftRight，也称为”左右”</strong>。插入或删除一个节点后，根节点的左子树的右子树还有非空子节点，导致”根的左子树的高度”比”根的右子树的高度”大2，导致AVL树失去了平衡。  </p>
+<blockquote>
+<p>例如，在上面LR情况中，由于”根节点(8)的左子树(4)的左子树(6)还有非空子节点”，而”根节点(8)的右子树(12)没有子节点”；导致”根节点(8)的左子树(4)高度”比”根节点(8)的右子树(12)”高2。</p>
+</blockquote>
+<p>③ <strong>RL：RightLeft，称为”右左”</strong>。插入或删除一个节点后，根节点的右子树的左子树还有非空子节点，导致”根的右子树的高度”比”根的左子树的高度”大2，导致AVL树失去了平衡。  </p>
+<blockquote>
+<p>例如，在上面RL情况中，由于”根节点(8)的右子树(12)的左子树(10)还有非空子节点”，而”根节点(8)的左子树(4)没有子节点”；导致”根节点(8)的右子树(12)高度”比”根节点(8)的左子树(4)”高2。</p>
+</blockquote>
+<p>(4)<strong>RR：RightRight，称为”右右”</strong>。插入或删除一个节点后，根节点的右子树的右子树还有非空子节点，导致”根的右子树的高度”比”根的左子树的高度”大2，导致AVL树失去了平衡。  </p>
+<blockquote>
+<p>例如，在上面RR情况中，由于”根节点(8)的右子树(12)的右子树(14)还有非空子节点”，而”根节点(8)的左子树(4)没有子节点”；导致”根节点(8)的右子树(12)高度”比”根节点(8)的左子树(4)”高2。</p>
+</blockquote>
+<h4 id="2-3-AVL树的旋转"><a href="#2-3-AVL树的旋转" class="headerlink" title="2.3 AVL树的旋转"></a>2.3 AVL树的旋转</h4><h5 id="2-3-1-LL的旋转"><a href="#2-3-1-LL的旋转" class="headerlink" title="2.3.1 LL的旋转"></a>2.3.1 LL的旋转</h5><p><img src="images\image7.jpg" alt="images\image7"></p>
+<p>图中左边是旋转之前的树，右边是旋转之后的树。从中可以发现，旋转之后的树又变成了AVL树，而且该旋转只需要一次即可完成。  </p>
+<p>k2结点不一定是整棵AVL树的根结点，而是<strong>开始失去平衡的那个根结点</strong>，至于<strong>k1则是高度过高的那棵子树的根结点</strong>。将k1变成根节点，k2变成k1的右子树，”k1的右子树”变成”k2的左子树”。</p>
+<h5 id="2-3-2-RR的旋转"><a href="#2-3-2-RR的旋转" class="headerlink" title="2.3.2 RR的旋转"></a>2.3.2 RR的旋转</h5><p><img src="images\image8.jpg" alt="images\image8"></p>
+<p>图中左边是旋转之前的树，右边是旋转之后的树。RR旋转也只需要一次即可完成。</p>
+<p>RR旋转操作即LL旋转的镜像操作。</p>
+<h5 id="2-3-3-LR的旋转"><a href="#2-3-3-LR的旋转" class="headerlink" title="2.3.3 LR的旋转"></a>2.3.3 LR的旋转</h5><p><img src="images\image9.jpg" alt="images\image9"></p>
+<p>LR失去平衡的情况，需要经过两次旋转才能让AVL树恢复平衡。第一次旋转是围绕”k1”进行的”RR旋转”，第二次是围绕”k3”进行的”LL旋转”。</p>
+<h5 id="2-3-4-RL的旋转"><a href="#2-3-4-RL的旋转" class="headerlink" title="2.3.4 RL的旋转"></a>2.3.4 RL的旋转</h5><p><img src="images\image10.jpg" alt="images\image10"></p>
+<p>RL是LR的镜像操作。第一次旋转是围绕”k3”进行的”LL旋转”，第二次是围绕”k1”进行的”RR旋转”。</p>
+
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/2019/04/26/SpringMVC/" class="pre-post btn btn-default" title="SpringMVC">
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">SpringMVC</span>
+        </a>
+    
+    
+        <a href="/2019/04/20/数据结构整理/" class="next-post btn btn-default" title="数据结构整理">
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">数据结构整理</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">Table of Contents</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-二叉查找树"><span class="toc-text">1. 二叉查找树</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-基本概念"><span class="toc-text">1.1 基本概念</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-基本操作"><span class="toc-text">1.2 基本操作</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-2-1-Walk（遍历）"><span class="toc-text">1.2.1 Walk（遍历）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-2-2-Search（查找）"><span class="toc-text">1.2.2 Search（查找）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-2-3-Minimum（最小关键字）"><span class="toc-text">1.2.3 Minimum（最小关键字）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-2-4-Maximum（最大关键字）"><span class="toc-text">1.2.4 Maximum（最大关键字）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-2-5-Successor（后继）"><span class="toc-text">1.2.5 Successor（后继）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-2-6-Predecessor（前驱）"><span class="toc-text">1.2.6 Predecessor（前驱）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-2-7-Insert（插入）"><span class="toc-text">1.2.7 Insert（插入）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-2-8-Delete（删除）"><span class="toc-text">1.2.8 Delete（删除）</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-AVL树（二叉平衡树）"><span class="toc-text">2. AVL树（二叉平衡树）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-AVL树概述"><span class="toc-text">2.1 AVL树概述</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-AVL树失去平衡的四种情况"><span class="toc-text">2.2 AVL树失去平衡的四种情况</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-AVL树的旋转"><span class="toc-text">2.3 AVL树的旋转</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#2-3-1-LL的旋转"><span class="toc-text">2.3.1 LL的旋转</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-3-2-RR的旋转"><span class="toc-text">2.3.2 RR的旋转</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-3-3-LR的旋转"><span class="toc-text">2.3.3 LR的旋转</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-3-4-RL的旋转"><span class="toc-text">2.3.4 RL的旋转</span></a></li></ol></li></ol></li></ol>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+        Total:
+        <strong id="busuanzi_value_site_pv">
+            <i class="fa fa-spinner fa-spin"></i>
+        </strong>
+        &nbsp; | &nbsp;
+        Visitors:
+        <strong id="busuanzi_value_site_uv">
+            <i class="fa fa-spinner fa-spin"></i>
+        </strong>
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2017
+                </span>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+</body>
+</html>
