@@ -157,11 +157,6 @@
             <span class="date-meta">2019/04/23</span>
         </span>
         
-            <span class="fa-wrap">
-                <i class="fa fa-eye"></i>
-                <span id="busuanzi_value_page_pv"></span>
-            </span>
-        
     
 </div>
             
@@ -261,7 +256,21 @@
 <p>LR失去平衡的情况，需要经过两次旋转才能让AVL树恢复平衡。第一次旋转是围绕”k1”进行的”RR旋转”，第二次是围绕”k3”进行的”LL旋转”。</p>
 <h5 id="2-3-4-RL的旋转"><a href="#2-3-4-RL的旋转" class="headerlink" title="2.3.4 RL的旋转"></a>2.3.4 RL的旋转</h5><p><img src="images\image10.jpg" alt="images\image10"></p>
 <p>RL是LR的镜像操作。第一次旋转是围绕”k3”进行的”LL旋转”，第二次是围绕”k1”进行的”RR旋转”。</p>
+<hr>
+<h3 id="3-B树、B-树和B-树"><a href="#3-B树、B-树和B-树" class="headerlink" title="3. B树、B+树和B*树"></a>3. B树、B+树和B*树</h3><h4 id="3-1-B树"><a href="#3-1-B树" class="headerlink" title="3.1 B树"></a>3.1 B树</h4><h5 id="3-1-1-概述"><a href="#3-1-1-概述" class="headerlink" title="3.1.1 概述"></a>3.1.1 概述</h5><pre><code>在现代计算机中通常采用分级存储系统,以最简单的二级分级存储策略为例,就是由内存储器与外存储器(磁盘)组成二级存储系统.这一策略的思想是：**将最常用的数据副本存放于内存中,而大量的数据存放于外存中,借助有效的算法可以将外存的大存储量与内存高速度的优点结合起来**。一般的,在分级存储系统中,各级存储器的速度有着巨大的差异,仍然以磁盘和内存为 例,前者的平均访问速度为 10ms左右,而内存储器的平均访问时间为ns级,通常在 10~100ns 左右,二者之间差异大约为 10的6次方.因此,**为了节省一次外存储器的访问,我们宁愿多访问内存储器一百次,一千次甚至一万次.** 当问题规模太大时,以至于内存储器无法容纳时,即使是前面介绍的 AVL 树,在时间上也会大打折扣。
 
+B树是对二叉查找树的改进。它的设计思想是，**将相关数据尽量集中在一起，以便一次读取多个数据，减少硬盘操作次数。**B树为系统最优化大块数据的读和写操作。B树算法**减少定位记录时所经历的中间过程**，从而加快存取速度。**普遍运用在数据库和文件系统。**
+</code></pre><p>  假定一个节点可以容纳100个值，那么<strong>3层</strong>的B树可以容纳100万个数据，如果换成二叉查找树，则需要<strong>20层</strong>！假定操作系统一次读取一个节点，并且根节点保留在内存中，那么B树在100万个数据中查找目标值，只需要读取两次硬盘，相对于平衡二叉树，查询比较的次数可能没有减少，但是磁盘IO次数会大大减少。</p>
+<h5 id="3-1-2-B树的结构"><a href="#3-1-2-B树的结构" class="headerlink" title="3.1.2 B树的结构"></a>3.1.2 B树的结构</h5><p>所谓 m 阶B-树或为空树，或为满足下列特性的 m叉树：</p>
+<blockquote>
+<p>① 树中每个结点至多有 m 棵子树；</p>
+<p>② 若根结点不是叶子结点,则至少有两棵子树； </p>
+<p>③ 除根结点之外的所有非终端结点至少有 ⎡m/2⎤ 棵子树； </p>
+<p>④ 所有的非终端结点的结构为：(n , A0 , K1 , A1 , K2 , … , Kn , An) 其中： Ki(i=1,2,…,n)为关键字,且Ki&lt;Ki+1,Ai为指向子树根结点的指针(i=0,1,…,n), 且指针A(i-1)所指子树中所有结点的关键字均小于Ki (i=1,2,…,n),An所指子树中所有结点的关键字均大于Kn ，n为关键码的个数，⎡m/2⎤ −1≤ n ≤ m −1；</p>
+<p>⑤ 所有的叶子结点都出现在同一层次上,并且不带信息(可以看作是外部结点或查找 失败的结点,实际上这些结点不存在,指向这些结点的指针为空)；</p>
+</blockquote>
+<p><img src="images\image11.png" alt="images\image11"></p>
+<h5 id="3-1-3-B树的查找"><a href="#3-1-3-B树的查找" class="headerlink" title="3.1.3 B树的查找"></a>3.1.3 B树的查找</h5>
     </div>
     
     <div class="post-footer">
@@ -300,7 +309,7 @@
     <div class="widget">
         <h3 class="title">Table of Contents</h3>
         
-            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-二叉查找树"><span class="toc-text">1. 二叉查找树</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-基本概念"><span class="toc-text">1.1 基本概念</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-基本操作"><span class="toc-text">1.2 基本操作</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-2-1-Walk（遍历）"><span class="toc-text">1.2.1 Walk（遍历）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-2-2-Search（查找）"><span class="toc-text">1.2.2 Search（查找）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-2-3-Minimum（最小关键字）"><span class="toc-text">1.2.3 Minimum（最小关键字）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-2-4-Maximum（最大关键字）"><span class="toc-text">1.2.4 Maximum（最大关键字）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-2-5-Successor（后继）"><span class="toc-text">1.2.5 Successor（后继）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-2-6-Predecessor（前驱）"><span class="toc-text">1.2.6 Predecessor（前驱）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-2-7-Insert（插入）"><span class="toc-text">1.2.7 Insert（插入）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-2-8-Delete（删除）"><span class="toc-text">1.2.8 Delete（删除）</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-AVL树（二叉平衡树）"><span class="toc-text">2. AVL树（二叉平衡树）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-AVL树概述"><span class="toc-text">2.1 AVL树概述</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-AVL树失去平衡的四种情况"><span class="toc-text">2.2 AVL树失去平衡的四种情况</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-AVL树的旋转"><span class="toc-text">2.3 AVL树的旋转</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#2-3-1-LL的旋转"><span class="toc-text">2.3.1 LL的旋转</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-3-2-RR的旋转"><span class="toc-text">2.3.2 RR的旋转</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-3-3-LR的旋转"><span class="toc-text">2.3.3 LR的旋转</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-3-4-RL的旋转"><span class="toc-text">2.3.4 RL的旋转</span></a></li></ol></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-二叉查找树"><span class="toc-text">1. 二叉查找树</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-基本概念"><span class="toc-text">1.1 基本概念</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-基本操作"><span class="toc-text">1.2 基本操作</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-2-1-Walk（遍历）"><span class="toc-text">1.2.1 Walk（遍历）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-2-2-Search（查找）"><span class="toc-text">1.2.2 Search（查找）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-2-3-Minimum（最小关键字）"><span class="toc-text">1.2.3 Minimum（最小关键字）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-2-4-Maximum（最大关键字）"><span class="toc-text">1.2.4 Maximum（最大关键字）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-2-5-Successor（后继）"><span class="toc-text">1.2.5 Successor（后继）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-2-6-Predecessor（前驱）"><span class="toc-text">1.2.6 Predecessor（前驱）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-2-7-Insert（插入）"><span class="toc-text">1.2.7 Insert（插入）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-2-8-Delete（删除）"><span class="toc-text">1.2.8 Delete（删除）</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-AVL树（二叉平衡树）"><span class="toc-text">2. AVL树（二叉平衡树）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-AVL树概述"><span class="toc-text">2.1 AVL树概述</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-AVL树失去平衡的四种情况"><span class="toc-text">2.2 AVL树失去平衡的四种情况</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-AVL树的旋转"><span class="toc-text">2.3 AVL树的旋转</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#2-3-1-LL的旋转"><span class="toc-text">2.3.1 LL的旋转</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-3-2-RR的旋转"><span class="toc-text">2.3.2 RR的旋转</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-3-3-LR的旋转"><span class="toc-text">2.3.3 LR的旋转</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-3-4-RL的旋转"><span class="toc-text">2.3.4 RL的旋转</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-B树、B-树和B-树"><span class="toc-text">3. B树、B+树和B*树</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-B树"><span class="toc-text">3.1 B树</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#3-1-1-概述"><span class="toc-text">3.1.1 概述</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-1-2-B树的结构"><span class="toc-text">3.1.2 B树的结构</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-1-3-B树的查找"><span class="toc-text">3.1.3 B树的查找</span></a></li></ol></li></ol></li></ol>
         
     </div>
 </aside>
@@ -329,16 +338,6 @@
             <div class="col-sm-12">
                 <div class="busuanzi">
     
-        Total:
-        <strong id="busuanzi_value_site_pv">
-            <i class="fa fa-spinner fa-spin"></i>
-        </strong>
-        &nbsp; | &nbsp;
-        Visitors:
-        <strong id="busuanzi_value_site_uv">
-            <i class="fa fa-spinner fa-spin"></i>
-        </strong>
-    
 </div>
 
             </div>
@@ -355,8 +354,6 @@
 
 
 
-
-    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
 <script src="/js/app.js?rev=@@hash"></script>
