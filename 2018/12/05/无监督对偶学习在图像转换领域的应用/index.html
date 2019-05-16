@@ -1,0 +1,297 @@
+<!DOCTYPE HTML>
+<html lang="">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="杨柳潇的博客">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="http://yangliuxiao.top">
+    <!--SEO-->
+
+    <meta name="keywords" content="机器学习,阅读">
+
+
+    <meta name="description" content="论文阅读：
+DualGAN: Unsupervised Dual Learning for Image-to-Image Translation
+作者将原本应用于自然语言处理领域的对偶学习应用到...">
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+
+    <!--Title-->
+
+
+<title>无监督对偶学习在图像转换领域的应用 | 杨柳潇的博客</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="杨柳潇的博客" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.jpg">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+
+</head>
+
+</html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header" style="background-image:url(/./img/background01.png)">
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title="Mute">
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                 <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yangliuxiao.top">杨柳潇的博客</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>Home</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>时间轴</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="无监督对偶学习在图像转换领域的应用">
+            
+	            无监督对偶学习在图像转换领域的应用
+            
+        </h1>
+        <div class="post-meta">
+    
+        <span class="categories-meta fa-wrap">
+            <i class="fa fa-folder-open-o"></i>
+            <a class="category-link" href="/categories/机器学习/">机器学习</a>
+        </span>
+    
+
+    
+        <span class="fa-wrap">
+            <i class="fa fa-tags"></i>
+            <span class="tags-meta">
+                
+                    <a class="tag-link" href="/tags/机器学习/">机器学习</a> <a class="tag-link" href="/tags/阅读/">阅读</a>
+                
+            </span>
+        </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2018/12/05</span>
+        </span>
+        
+    
+</div>
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <p>论文阅读：</p>
+<p><a href="https://ieeexplore.ieee.org/document/8237572" target="_blank" rel="noopener">DualGAN: Unsupervised Dual Learning for Image-to-Image Translation</a></p>
+<p>作者将原本应用于自然语言处理领域的对偶学习应用到了图像转换领域，提出了一种通用的图像到图像转换的无监督学习框架，该框架仅依赖于未标注的图像数据。</p>
+<p>读完这篇文章，收获是了解了对偶学习这个概念。</p>
+<h4 id="1-问题定义"><a href="#1-问题定义" class="headerlink" title="1. 问题定义"></a>1. 问题定义</h4><p>用于跨域图像转换的条件生成对抗性网络(GANS)最近取得了很大进展。但根据任务的复杂性，需要成千上万的标记图像对来训练条件GAN模型。然而，人工标记是昂贵的，甚至是不切实际的，大量的数据并不总是可得的。</p>
+<p>例如，虽然有大量的照片或草图可用，但是对<strong>同一个人在相同姿势下</strong>的图片和素描对很少。再比如，将白天场景转换为夜间场景，即使使用固定的摄像机可以获得标记和匹配的图像对，场景中的移动对象也常常会导致不同程度的内容差异。</p>
+<p><img src="images\image1.png" alt="images\image1"></p>
+<h4 id="2-解决方案"><a href="#2-解决方案" class="headerlink" title="2. 解决方案"></a>2. 解决方案</h4><p>文章介绍了一种通用的图像到图像转换的无监督学习框架，该框架<strong>仅依赖于未标注的图像数据</strong>。显而易见的技术挑战是如何在没有任何数据描述正确转换的情况下对转换器进行训练。</p>
+<p>受自然语言处理（NLP）中的<strong>对偶学习启发</strong>，在<strong>无监督的图像转换中应用对偶学习</strong>。</p>
+<p><strong>◆ 对偶学习：</strong></p>
+<p>关于对偶学习，可以看一下这篇文章：<a href="https://www.leiphone.com/news/201705/eE3cOaHMpW6xyrHu.html" target="_blank" rel="noopener">微软亚洲研究院秦涛：对偶学习的对称之美</a></p>
+<p>总结来说，就是利用 AI 任务的<strong>对称属性（primal-dual）</strong>使其获得<strong>更有效的反馈/正则化</strong>，从而引导、加强学习过程（特别是在数据量少的情况下）。</p>
+<p>对称结构不仅存在于自然界，在 AI 的任务中也广泛存在。比如：</p>
+<blockquote>
+<p>机器翻译，有英翻中和中翻英的对称；</p>
+<p>语音处理，需要语音转文字（语音识别），也有文本转语音（语音合成）的任务；</p>
+<p>图像理解，图像描述（image captioning）与图像生成 （image generation）也是一个对称的过程。</p>
+<p>对话任务：问题回答（Question answering）与问题生成（Question generation）</p>
+<p>搜索引擎：文本匹配查询（Query-document matching）与广告关键词推荐服务（Query/keyword suggestion）</p>
+</blockquote>
+<p>由此，本文提出了基于对偶学习的图像转换：</p>
+<p><img src="images\image2.png" alt="images\image2"></p>
+<p>将两种不同的图像相互转换，比如将素描转换为一个照片（生成器 A），或是反过来，将照片转换为素描（生成器 B）。通过生成器 A 和生成器 B 的两次生成，我们希望原始素描与最后生成的素描越相似越好。或是反过来，通过生成器 B 和生成器 A 的先后两次生成，我们希望原始照片与最后生成的照片的重构误差越小越好。对偶学习和GAN相结合，可以得到很好的结果。</p>
+<h4 id="3-实验设计"><a href="#3-实验设计" class="headerlink" title="3. 实验设计"></a>3. 实验设计</h4><h5 id="3-1-数据"><a href="#3-1-数据" class="headerlink" title="3.1 数据"></a>3.1 数据</h5><p>为了评价DualGAN在通用图像转换中的效果，针对多方面的任务进行了实验，包括照片-素描转换、标签-图像转换和艺术风格转换。</p>
+<p>为了比较DualGAN与GAN和cGAN，使用了4个数据集： PHOTO-SKETCH ,DAY-NIGHT , LABEL-FACADES , AERIAL-MAPS,这些数据集由两个域之间的对应图像组成。它们作为ground truth(GT)，也可以用于监督学习。然而，这些数据集都不能保证像素级的精确特征对齐。这在一定程度上突出了获得高质量匹配图像对的困难。</p>
+<p><img src="images\image3.png" alt="images\image3"></p>
+<p>还测试了两个未标记和配对的数据集MATERIAL dataset 、OIL-CHINESE painting dataset。<br>材料数据集最初被用于材质识别，但在本实验中用于材质转换，有石头、金属、塑料、织物和木材等材质。<br>油画-中国画数据集包含两种风格的画作，所有图像都是从搜索引擎中爬取的，它们包含的图像的质量、格式和大小各不相同。我们重新格式化、裁剪和调整图像了大小。<br>在这两个数据集中，来自不同域的图像之间没有对应关系。</p>
+<p><img src="images\image4.png" alt="images\image4"></p>
+<h5 id="3-2-实验结果"><a href="#3-2-实验结果" class="headerlink" title="3.2 实验结果"></a>3.2 实验结果</h5><p>首先在四个有标记和配对的数据集上，比较DualGAN、GAN和cGAN的区别。<br>这三个模型都是在相同的训练数据集上进行训练，并在不与训练数据重叠的新数据上进行测试。所有的训练都是在一个GeForce GTX Titan X GPU上进行的。在这个GPU上，所有模型都运行良好，时间都不到一秒。</p>
+<p><img src="images\image5.png" alt="images\image5"></p>
+<p><strong>日景-夜景转换：</strong><br>cGAN是用标记数据训练的，而DualGAN和GAN是以无监督的方式训练的。DualGAN成功地模拟了夜间场景并且保留了输入中的纹理，例如，查看DualGAN和GT在云区域上的差异。相比之下，cGAN和GAN的结果包含的细节要少得多。</p>
+<p><img src="images\image6.png" alt="images\image6"></p>
+<p><strong>标记-外观转换：</strong><br>DualGAN忠实地保存标签图像中的结构，即使一些标签在更精细的细节上与相应的照片不匹配。相比之下，GAN和cGAN的结果包含许多伪影。在标签照片不对齐的区域，cGAN经常产生模糊的输出(例如，第二行的屋顶和第三排的入口)。</p>
+<p><img src="images\image7.png" alt="images\image7"></p>
+<p><strong>素描-照片转换：</strong><br>DualGAN的结果通常比cGAN的结果更清晰，尽管前者使用未配对数据进行训练，而后者则使用图像对应。</p>
+<p><strong>照片-素描转换：</strong><br>GAN和cGAN产生的结果比DualGAN显示出更多的伪影和模糊。</p>
+<h5 id="3-3-结果分析"><a href="#3-3-结果分析" class="headerlink" title="3.3 结果分析"></a>3.3 结果分析</h5><p><strong>与GAN相比</strong>，在几乎所有情况下，DualGAN产生的结果都较清晰，包含较少的伪影，并且更好地保存了输入的内容结构和目标域中捕获的特征(例如纹理、颜色、样式)。我们将改进归因于<strong>重构损失函数</strong>，重构损失迫使对偶生成器的输入需要根据输出进行重构，并增强了有利于目标分布编码的反馈信号。</p>
+<p><strong>与cGAN相比</strong>，在许多情况下，在输出的清晰度和对输入图像的准确反映性方面，DualGAN表现得更优秀。这是值得鼓舞的，因为cGAN使用了标记配对的图像对进行训练。然而，在图像和基于语义的标签之间进行转换时，例如地图-航拍图和标签-外观，通常不可能仅根据目标分布推断像素颜色和标签之间的对应关系。因此，DualGAN可能会将像素映射到错误的标签(如航拍图-地图、外观-标签），或者将标签映射到错误的颜色/纹理（地图-航拍图、标签-外观）。</p>
+<h4 id="4-总结与展望"><a href="#4-总结与展望" class="headerlink" title="4. 总结与展望"></a>4. 总结与展望</h4><p>本文提出了一种新的无监督对偶学习通用图像转换框架DualGAN，DualGAN的无监督特性使许多实际应用成为可能。</p>
+<p>实验结果表明，DualGAN机制可以显著提高GAN在各种图像到图像转换任务中的输出。只使用未标记的数据，DualGAN甚至可以产生比使用标记数据的cGAN更好的结果。<br>但另一方面，在某些涉及基于语义标签的任务中，cGAN要由于GualGAN。这是由于缺乏像素和标签对应信息，而这些信息不能仅从目标分布中推断。</p>
+<p>在未来工作中，我们将研究这个缺陷是否可以通过使用少量的标记数据来去除。</p>
+
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/2018/12/28/阿里天池新人赛（工业蒸汽量预测）/" class="pre-post btn btn-default" title="阿里天池新人赛（工业蒸汽量预测）">
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">阿里天池新人赛（工业蒸汽量预测）</span>
+        </a>
+    
+    
+        <a href="/2018/11/15/数据挖掘笔记（四）/" class="next-post btn btn-default" title="数据挖掘笔记（四）">
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">数据挖掘笔记（四）</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">Table of Contents</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-问题定义"><span class="toc-text">1. 问题定义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-解决方案"><span class="toc-text">2. 解决方案</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-实验设计"><span class="toc-text">3. 实验设计</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#3-1-数据"><span class="toc-text">3.1 数据</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-2-实验结果"><span class="toc-text">3.2 实验结果</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-3-结果分析"><span class="toc-text">3.3 结果分析</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-总结与展望"><span class="toc-text">4. 总结与展望</span></a></li></ol>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2017
+                </span>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+</body>
+</html>
