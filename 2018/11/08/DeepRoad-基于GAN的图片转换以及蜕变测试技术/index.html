@@ -1,0 +1,333 @@
+<!DOCTYPE HTML>
+<html lang="">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="杨柳潇的博客">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="http://yangliuxiao.top">
+    <!--SEO-->
+
+    <meta name="keywords" content="机器学习,阅读">
+
+
+    <meta name="description" content="论文阅读：
+DeepRoad: GAN-based metamorphic testing and input validation framework for autonomous drivi...">
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+
+    <!--Title-->
+
+
+<title>DeepRoad:基于GAN的图片转换以及蜕变测试技术 | 杨柳潇的博客</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="杨柳潇的博客" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.jpg">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+
+</head>
+
+</html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header" style="background-image:url(/./img/background01.png)">
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title="Mute">
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                 <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yangliuxiao.top">杨柳潇的博客</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>Home</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>时间轴</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="DeepRoad:基于GAN的图片转换以及蜕变测试技术">
+            
+	            DeepRoad:基于GAN的图片转换以及蜕变测试技术
+            
+        </h1>
+        <div class="post-meta">
+    
+        <span class="categories-meta fa-wrap">
+            <i class="fa fa-folder-open-o"></i>
+            <a class="category-link" href="/categories/机器学习/">机器学习</a>
+        </span>
+    
+
+    
+        <span class="fa-wrap">
+            <i class="fa fa-tags"></i>
+            <span class="tags-meta">
+                
+                    <a class="tag-link" href="/tags/机器学习/">机器学习</a> <a class="tag-link" href="/tags/阅读/">阅读</a>
+                
+            </span>
+        </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2018/11/08</span>
+        </span>
+        
+    
+</div>
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <p>论文阅读：</p>
+<p><a href="https://dl.acm.org/citation.cfm?doid=3238147.3238187" target="_blank" rel="noopener">DeepRoad: GAN-based metamorphic testing and input validation framework for autonomous driving systems</a></p>
+<p>作者提出了一种针对自动驾驶系统的基于GAN的蜕变测试以及输入验证框架。主要是为了解决自动驾驶领域的安全问题，具体点说就是当进行自动驾驶系统的测试的时候，很难获取到匹配的图像数据。比如说，你给自动驾驶系统一段路的晴天图像时，系统运行良好，然而此时你想测试雪天场景下系统的鲁棒性，但没有同一段路的雪天场景数据，若给到另一段路的雪天图像，又难以进行对比测试（涉及蜕变测试概念）。基于此，作者提出了解决方案。</p>
+<p>读完论文之后，比较有收获的是了解了蜕变测试概念，关于图像转换技术，作者貌似也只是使用了别人给出的已有方法，而且有点语焉不详（也可能就是我没看懂而已……）。</p>
+<h4 id="1-问题定义"><a href="#1-问题定义" class="headerlink" title="1. 问题定义"></a>1. 问题定义</h4><p>基于DNN的自动驾驶系统发生错误可能致命，为了解决基于DNN的自动驾驶系统的安全问题，最近出现了一些测试技术，可以从原始图像自动生成驾驶场景来增加测试用例，然而由于以下局限，这些测试技术是不够的。</p>
+<h5 id="1-1-这些技术合成的图像缺乏真实世界的多样性"><a href="#1-1-这些技术合成的图像缺乏真实世界的多样性" class="headerlink" title="1.1 这些技术合成的图像缺乏真实世界的多样性"></a>1.1 这些技术合成的图像缺乏真实世界的多样性</h5><p>作者给出了已有的一些测试技术，分析了<strong>其缺陷</strong>所在。</p>
+<p><strong>① <a href="https://www.sohu.com/a/142539796_465975" target="_blank" rel="noopener">DeepXplore</a></strong></p>
+<p>◆ 一种深度学习系统的自动白箱测试方法</p>
+<p>◆ 通过“哄骗”系统犯错，以暴露神经网络中的缺陷</p>
+<p><strong>② DeepTest</strong></p>
+<p>◆ 通过简单的仿射变换和模糊化/雾/雨等各种效果滤波器对原始图像进行变换</p>
+<p><img src="images\image1.png" alt="images\image1"></p>
+<p>上图是从论文中引用的合成图像，a存在彩色补丁，b存在多个黑洞，c存在黑色边线，都影响了图像质量。此外，对于图d，它似乎是通过简单地调暗原始图像并将其与加扰的“烟雾”效应混合而得到的，它违背了<strong>雾气密度变化的事实</strong>。类似地，在图e中，DeepTest只是通过在原始图像上添加一组线条来模拟雨。</p>
+<p>这些事实表明，很难确定错误驾驶行为是由基于DNN的模型的缺陷引起的，还是由于<strong>测试技术本身的不足</strong>造成的。这些图像转换技术只能生成相似的图像，而不能<strong>复杂地合成不同风格的图像</strong>，从而<strong>限制了测试用例的多样性</strong>。</p>
+<h5 id="1-2-自动驾驶系统基于机器学习，所以当训练数据和应用领域数据不匹配的时候会大幅度降低系统精度"><a href="#1-2-自动驾驶系统基于机器学习，所以当训练数据和应用领域数据不匹配的时候会大幅度降低系统精度" class="headerlink" title="1.2 自动驾驶系统基于机器学习，所以当训练数据和应用领域数据不匹配的时候会大幅度降低系统精度"></a>1.2 自动驾驶系统基于机器学习，所以当训练数据和应用领域数据不匹配的时候会大幅度降低系统精度</h5><p>传统软件往往需要验证输入，比如<strong>Web应用需要检查和过滤非法和恶意的输入</strong>。</p>
+<p>但据我们所知，目前基于DNN的系统<strong>缺乏验证输入</strong>(例如驱动场景的图像)，因而容易造成系统脆弱性。具体来说，无效的输入，如驾驶场景中的异常图像，会严重降低预测精度，大大增加基于DNN的系统的风险。</p>
+<p>例如，假设一个基于DNN的自动驾驶系统被训练在一个数据集上，该数据集<strong>只包含阳光下驾驶场景的图像。对于系统没有经过训练的领域外输入(例如驾驶场景的雨天图像)</strong>，很有可能导致系统输出错误的控制信号，从而给司机和乘客带来危险。</p>
+<h4 id="2-解决方案"><a href="#2-解决方案" class="headerlink" title="2. 解决方案"></a>2. 解决方案</h4><p>文章提出了DeepRoad框架，主要包括两个模块：蜕变测试模块（DeepRoadMT）和输入验证模块（DeepRoadIV）。</p>
+<h5 id="2-1-蜕变测试模块"><a href="#2-1-蜕变测试模块" class="headerlink" title="2.1 蜕变测试模块"></a>2.1 蜕变测试模块</h5><p>采用了一种基于生成对抗性网络(GAN)的技术来合成各种天气条件下的驾驶场景，并开发了基于DNN的自动驾驶系统的蜕变测试（Metamorphic Testing）系统。</p>
+<h6 id="①-蜕变测试"><a href="#①-蜕变测试" class="headerlink" title="① 蜕变测试"></a>① 蜕变测试</h6><p><strong>蜕变测试</strong>：是一种用来缓解<strong>“测试准则问题”</strong>的软件测试技术。当测试人员对于所选择的测试用例<strong>难以确定预期的正确结果，或无法判定程序输出是否满足预期的结果时</strong>，便认为存在“测试准则问题”。</p>
+<p><strong>蜕变关系</strong>：假设p是程序输入映射到程序输出的程序数学表示，也就是有p[i] = o时，那么假设fi和 fo代表对输入和输出域进行特定转换的函数，满足下列关系：</p>
+<p><img src="images\image2.png" alt="images\image2"></p>
+<p>一个或多个用来验证系统或待实现函数的<strong>必要属性（称为蜕变关系）</strong>的后续测试用例可以被构造出来，然后判断源测试用例和后续测试用例产生的输出<strong>是否在蜕变关系下一致</strong>。<strong>任何不一致的输出表示了程序的实现中存在缺陷</strong>。</p>
+<p>◆ 举例蜕变测试</p>
+<blockquote>
+<p>拿正弦函数举例，正弦函数存在如下蜕变关系：</p>
+<p><img src="images\image3.png" alt="images\image3"></p>
+<p>那么，根据这两个变换关系，可以根据一个测试用例，构造出两个蜕变测试用例：</p>
+<p><img src="images\image4.png" alt="images\image4"></p>
+</blockquote>
+<p>由以上蜕变测试的定义，文章给出了<strong>基于DNN的自动驾驶系统的蜕变关系</strong>：</p>
+<p><img src="images\image5.png" alt="images\image5"></p>
+<p><strong>公式含义：对于任一输入图像i，做某种图像变换τ，经过DNN预测的转向角应该相同。</strong></p>
+<h6 id="②-图像变换"><a href="#②-图像变换" class="headerlink" title="② 图像变换"></a>② 图像变换</h6><p>使用UNIT （Unsupervised image-to-image translation network）</p>
+<p><img src="images\image6.png" alt="images\image6"></p>
+<p>上图显示了UNIT的结构，S1和S2表示两个不同的区域(例如晴天和雨天驾驶场景)，E1和E2表示两个自动编码器，它们将从s1和s2的图像投影到共享的潜在空间Z。</p>
+<p>假设x1和x2是一对图像，它们共享相同的内容。理想情况下，E1和E2将它们编码到相同的潜在向量z，并且可以由两个结构域特异的生成器G1和G2分别将其翻译回S1和S2。</p>
+<p>D1和D2是检测图像是否分别属于S1和S2的两个鉴别器。具体来说，它们被期望区分输入图像是从目标域(例如真实图像)取样还是由训练有素的生成器(例如合成图像)产生。</p>
+<p>基于自动编码器和生成器，UNIT可以用于两个域之间的图像转换。例如，图像x1可以通过G2(E1(X1)转换为S2。</p>
+<p><img src="images\image7.png" alt="images\image7"></p>
+<p>在图5中，DeepRoadMT首先从两个目标域(例如，晴天和大雪天气下驾驶场景的数据集)获取未配对的训练图像，并通过优化损失函数，利用UNIT将两个域投影到相同的潜空间。训练结束后，DeepRoadmt使用经过良好训练的模型，将整个晴天驾驶场景的数据集转换为多雪天气。具体来说，给出阳光天气I下的任何图像，DeepRoadMT通过E1将其编码为矢量Zi，并使用G2合成在大雪天气下的相应版本τ(I)。DeepRoadMT将每一对真实和合成的驾驶场景图像提供给被测试的自主驾驶系统，即DNN，并比较它们的预测结果DNN⟦τ(I)⟧和DNN⟦I⟧来检测任何不一致的行为。</p>
+<h5 id="2-2-输入验证模块"><a href="#2-2-输入验证模块" class="headerlink" title="2.2 输入验证模块"></a>2.2 输入验证模块</h5><p>我们可以定义一个输入验证（Input Validation）标准，比如输入数据应该是任何大小为640*480的RGB图像，或者任何输入数据应该存在于训练数据集中，以保证其正确性。但是，第一条准则太弱，无法提高系统的鲁棒性，而第二条准则太强，使得系统缺乏通用性。</p>
+<p>文章提到<strong>Probably Approximately Correct (PAC)学习理论</strong>，即不要求进行零误差的预测，而要求误差在一定范围内；不要求对所有样本都能预测成功，而要求预测误差在一定范围内。</p>
+<p>根据PAC学习理论，文章给出输入验证标准：<strong>输入数据I应该从训练数据D中取值（从D中采样输入I的概率应该大于预定义的阈值θ）</strong>。</p>
+<p><img src="images\image8.png" alt="images\image8"></p>
+<p>使用VGGNet提取其内容和风格特征<br>选择卷积层conv 4_2和conv 5_3分别提取内容和样式特征。成为彩色网格F 4_2和 F 5_3，表示从VGGNet中提取的内容特征，样式特征G 5_3由Gram matrix计算</p>
+<p>注意，这些彩色网格只是用来可视化的。它们的尺寸与实际输出不匹配</p>
+<p>然后，矩阵F 4_2和G 5_3转换到特征向量V，对所有的图像都进行这样的处理，然后进行PCA主成分分析进行降维。在图6中，我们将目标维度设置为2。所处理的数据Y是在二维平面上给出的，蓝色和红色节点分别表示训练和在线驾驶图像。最后，DeepRoadIV<strong>计算训练数据与每个在线I之间的最小距离。拒绝对距离大于某一阈值的图像进行预测</strong>。</p>
+<h4 id="3-实验设计"><a href="#3-实验设计" class="headerlink" title="3. 实验设计"></a>3. 实验设计</h4><h5 id="3-1-数据准备"><a href="#3-1-数据准备" class="headerlink" title="3.1 数据准备"></a>3.1 数据准备</h5><p><strong>◆ 图像数据</strong></p>
+<blockquote>
+<p>1.使用Udacity发布的真实世界数据集作为基线。<br>2.选择了两集高速驾驶视频，视频中可以观察到不同帧间照明和道路状况的明显变化。<br>3.为了训练UNIT模型，从YouTube收集极端场景的图像。在实验中，我们选择了大雪和大雨这两种极端的天气条件。<br>4.为了使采集到的图像的差别比较大，我们只搜索超过20分钟的视频。<br>5.在大雨的情况下，视频记录了雨刷刮过挡风玻璃，这可能会降低合成图像的质量。因此，在数据预处理阶段，手动检查和过滤这些图像。<br>6.在实验中使用的所有图像都被裁剪并调整为320*240。<br>7.对YouTube视频进行了低采样，以跳过内容接近的连续帧。</p>
+</blockquote>
+<p><strong>◆ 自动驾驶系统</strong></p>
+<blockquote>
+<p>选择 Udacity 社区中的Autumn、Chauffeur和Rwightman三种基于DNN的自动驾驶模型进行测试，其中Rwightman的模型细节并不公开，但是，类似于黑匣子测试，我们的方法旨在检测模型的不一致性，因此，Rwightman仍用于测试。</p>
+</blockquote>
+<h5 id="3-2-实验度量"><a href="#3-2-实验度量" class="headerlink" title="3.2 实验度量"></a>3.2 实验度量</h5><p><strong>◆ 一致性度量：</strong></p>
+<p><img src="images\image9.png" alt="images\image9"></p>
+<p>如果<strong>其转向角预测值在修正后的某一误差范围内</strong>，则该系统的行为是一致的。<br>其中DNN表示自动驾驶模型，I表示真实的驾驶数据集，i表示I中的第i个图像，τ表示能够改变天气状况的图像生成器/转换器。f是一个指示函数，当输入是true的时候返回1，false的时候返回0，而ϵ是错误阈值。</p>
+<p><strong>◆ 输入验证度量：</strong></p>
+<p><img src="images\image10.png" alt="images\image10"></p>
+<p>首先，为了平衡输入数据和训练数据，我们从在线驾驶场景中收集M个图像作为输入数据，从训练数据集中随机选取M个图像作为训练数据。第二，为了估计出更稳定的距离，我们<strong>平均每幅图像的最小k个距离来表示它们的相似之处</strong>。同时使用L2范数来改善过拟合。</p>
+<h4 id="4-实验结果"><a href="#4-实验结果" class="headerlink" title="4. 实验结果"></a>4. 实验结果</h4><p><img src="images\image11.png" alt="images\image11"></p>
+<p>从上图可以看出，从质量上讲，GAN生成的图像在视觉上与从YouTube视频中收集的图像相似，它们还可以保存原始图像的主要语义信息(如树和道路的形状)。雪天天空相对较暗，雨天清晰度相对较低，与DeepTest有明显对比。</p>
+<p><img src="images\image12.png" alt="images\image12"></p>
+<p>在上图中，每一行分别显示雪和雨的场景。在每个子图中蓝色标题表示模型名称，而红色和绿色曲线分别表示真实图像和合成图像上预测的转向角。这些曲线将预测结果可视化。</p>
+<p>从图中我们可以看到，模型Autumn(前两列)在两个场景中都有最高的不一致数；相比之下，模型Rwightman(最后2列)是不同场景下最稳定的模型。这表明，DeepRoadmt能够在不同的道路场景下发现真实世界中的自动驾驶不一致的行为。例如，像Autumn或Chauffeur 这样的模型(它们在Udacity挑战中的排名都高于Rwightman)可能在阳光明媚的日子里工作得很好，但在雨天或下雪的日子里，可能撞到路边或者更糟糕的——迎面而来的汽车。</p>
+<p><img src="images\image13.png" alt="images\image13"></p>
+<p>图10显示了DeepRoadIV关于晴天、多雨的结果还有雪景。具体来说，图10的前三张图分别显示了晴天、雨天和雪景的结果。橙色和蓝色点表示取样t雨和相应的输入图像。<br>结果表明，晴天和训练图像的分布比较接近，而雨雪图像则远离聚类，和训练图像线性可分，阳光下的图像较分散，而雨雪图像较紧凑。究其原因，可能是由于雨雪图像的纹理统一，内容相对贫乏，使得图像之间的距离较小。。然而，阳光图像的光照条件和内容比较多样，因此距离很远。此外，从图10d中，我们发现晴天图像分布的距离主要在0~3之间，而几乎所有雨雪图像的距离都大于2。那么取阈值为2.5时，DeepRoadIV可以检测到100%的降雨，85%的降雪图像和21%的晴天图像中的离群点作为无效输入，有效地提高了系统的鲁棒性。</p>
+<h4 id="4-可信性威胁"><a href="#4-可信性威胁" class="headerlink" title="4. 可信性威胁"></a>4. 可信性威胁</h4><p><strong>内部有效性威胁：</strong>在本工作中，对内部有效性的主要威胁是我们的技术实现中的潜在缺陷。为了减少这些威胁，在实现DeepRoadMT时，我们使用了UNIT的原始实现以确保DeepRoadMT的性能。此外，在DeepRoadIV的实现中，我们从PyTorch网站下载了经过预先培训的VGGNet权重，而不是在ImageNet上进行培训。</p>
+<p><strong>外部有效性威胁：</strong>外部有效性的威胁主要来自于图像质量、数据集和自动驾驶模型。</p>
+<blockquote>
+<p>1.我们缺乏评价图像质量(即真实性)的良好标准。在本文中，我们将让读者检查他们的质量。这种方法相当直截了当，但不那么客观。Salimans等人建议的 Inception 评分法来评价合成图像的质量，然而，经过证明，在比较生成模型(如GANs)时，Inception 评分不能提供有用的指导。</p>
+<p>2.Udacity上的数据集相对较小，自动驾驶模型比较简单。假如数据集足够大，则可以训练一个更复杂、更健壮的模型，从而显著地减少不一致行为。</p>
+<p>3.自动驾驶系统是非常复杂的，而在这项工作中，我们只关注了转向角的准确性。</p>
+</blockquote>
+<h4 id="5-总结"><a href="#5-总结" class="headerlink" title="5. 总结"></a>5. 总结</h4><p>本文提出了一种无监督学习框架DeepRoad，用于合成真实的驾驶场景来测试基于DNN的自动驾驶系统的不一致行为（DeepRoadMT），并对在线输入图像进行验证（DeepRoadIV）。</p>
+<p>在三个真实的Udacity自动驾驶模型上的实验结果表明，DeepRoad能够成功地检测出数千种不一致行为。此外，结果还表明DeepRoad可以有效地验证输入图像，从而提高系统的鲁棒性。</p>
+
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/2018/11/13/数据挖掘笔记（三）/" class="pre-post btn btn-default" title="数据挖掘笔记（三）">
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">数据挖掘笔记（三）</span>
+        </a>
+    
+    
+        <a href="/2018/11/05/数据挖掘笔记（二）/" class="next-post btn btn-default" title="数据挖掘笔记（二）">
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">数据挖掘笔记（二）</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">Table of Contents</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-问题定义"><span class="toc-text">1. 问题定义</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-1-这些技术合成的图像缺乏真实世界的多样性"><span class="toc-text">1.1 这些技术合成的图像缺乏真实世界的多样性</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-2-自动驾驶系统基于机器学习，所以当训练数据和应用领域数据不匹配的时候会大幅度降低系统精度"><span class="toc-text">1.2 自动驾驶系统基于机器学习，所以当训练数据和应用领域数据不匹配的时候会大幅度降低系统精度</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-解决方案"><span class="toc-text">2. 解决方案</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#2-1-蜕变测试模块"><span class="toc-text">2.1 蜕变测试模块</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#①-蜕变测试"><span class="toc-text">① 蜕变测试</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#②-图像变换"><span class="toc-text">② 图像变换</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-2-输入验证模块"><span class="toc-text">2.2 输入验证模块</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-实验设计"><span class="toc-text">3. 实验设计</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#3-1-数据准备"><span class="toc-text">3.1 数据准备</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-2-实验度量"><span class="toc-text">3.2 实验度量</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-实验结果"><span class="toc-text">4. 实验结果</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-可信性威胁"><span class="toc-text">4. 可信性威胁</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-总结"><span class="toc-text">5. 总结</span></a></li></ol>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2017
+                </span>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+</body>
+</html>

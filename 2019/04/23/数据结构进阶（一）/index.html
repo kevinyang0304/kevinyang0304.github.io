@@ -33,7 +33,7 @@
     <!--Title-->
 
 
-<title>数据结构进阶 | 杨柳潇的博客</title>
+<title>数据结构进阶（一） | 杨柳潇的博客</title>
 
 
     <link rel="alternate" href="/atom.xml" title="杨柳潇的博客" type="application/atom+xml">
@@ -126,16 +126,16 @@
                     <p id="process"></p>
 <article class="post">
     <div class="post-head">
-        <h1 id="数据结构进阶">
+        <h1 id="数据结构进阶（一）">
             
-	            数据结构进阶
+	            数据结构进阶（一）
             
         </h1>
         <div class="post-meta">
     
         <span class="categories-meta fa-wrap">
             <i class="fa fa-folder-open-o"></i>
-            <a class="category-link" href="/categories/面试相关/">面试相关</a>
+            <a class="category-link" href="/categories/数据结构/">数据结构</a>
         </span>
     
 
@@ -257,28 +257,24 @@
 <h5 id="2-3-4-RL的旋转"><a href="#2-3-4-RL的旋转" class="headerlink" title="2.3.4 RL的旋转"></a>2.3.4 RL的旋转</h5><p><img src="images\image10.jpg" alt="images\image10"></p>
 <p>RL是LR的镜像操作。第一次旋转是围绕”k3”进行的”LL旋转”，第二次是围绕”k1”进行的”RR旋转”。</p>
 <hr>
-<h3 id="3-B树、B-树和B-树"><a href="#3-B树、B-树和B-树" class="headerlink" title="3. B树、B+树和B*树"></a>3. B树、B+树和B*树</h3><h4 id="3-1-B树"><a href="#3-1-B树" class="headerlink" title="3.1 B树"></a>3.1 B树</h4><h5 id="3-1-1-概述"><a href="#3-1-1-概述" class="headerlink" title="3.1.1 概述"></a>3.1.1 概述</h5><pre><code>在现代计算机中通常采用分级存储系统,以最简单的二级分级存储策略为例,就是由内存储器与外存储器(磁盘)组成二级存储系统.这一策略的思想是：**将最常用的数据副本存放于内存中,而大量的数据存放于外存中,借助有效的算法可以将外存的大存储量与内存高速度的优点结合起来**。一般的,在分级存储系统中,各级存储器的速度有着巨大的差异,仍然以磁盘和内存为 例,前者的平均访问速度为 10ms左右,而内存储器的平均访问时间为ns级,通常在 10~100ns 左右,二者之间差异大约为 10的6次方.因此,**为了节省一次外存储器的访问,我们宁愿多访问内存储器一百次,一千次甚至一万次.** 当问题规模太大时,以至于内存储器无法容纳时,即使是前面介绍的 AVL 树,在时间上也会大打折扣。
-
-B树是对二叉查找树的改进。它的设计思想是，**将相关数据尽量集中在一起，以便一次读取多个数据，减少硬盘操作次数。**B树为系统最优化大块数据的读和写操作。B树算法**减少定位记录时所经历的中间过程**，从而加快存取速度。**普遍运用在数据库和文件系统。**
-
-假定一个节点可以容纳100个值，那么**3层**的B树可以容纳100万个数据，如果换成二叉查找树，则需要**20层**！假定操作系统一次读取一个节点，并且根节点保留在内存中，那么B树在100万个数据中查找目标值，只需要读取两次硬盘，相对于平衡二叉树，查询比较的次数可能没有减少，但是磁盘IO次数会大大减少。
-</code></pre><h5 id="3-1-2-B树的结构"><a href="#3-1-2-B树的结构" class="headerlink" title="3.1.2 B树的结构"></a>3.1.2 B树的结构</h5><p>所谓 m 阶B-树或为空树，或为满足下列特性的 m叉树：</p>
+<h3 id="3-B树、B-树和B-树"><a href="#3-B树、B-树和B-树" class="headerlink" title="3. B树、B+树和B*树"></a>3. B树、B+树和B*树</h3><h4 id="3-1-B树"><a href="#3-1-B树" class="headerlink" title="3.1 B树"></a>3.1 B树</h4><h5 id="3-1-1-概述"><a href="#3-1-1-概述" class="headerlink" title="3.1.1 概述"></a>3.1.1 概述</h5><p>在现代计算机中通常采用分级存储系统,以最简单的二级分级存储策略为例,就是由内存储器与外存储器(磁盘)组成二级存储系统.这一策略的思想是：<strong>将最常用的数据副本存放于内存中,而大量的数据存放于外存中,借助有效的算法可以将外存的大存储量与内存高速度的优点结合起来</strong>。</p>
+<p>一般的,在分级存储系统中,各级存储器的速度有着巨大的差异,仍然以磁盘和内存为 例,前者的平均访问速度为 10ms左右,而内存储器的平均访问时间为ns级,通常在 10~100ns 左右,二者之间差异大约为 10的6次方.因此,<strong>为了节省一次外存储器的访问,我们宁愿多访问内存储器一百次,一千次甚至一万次.</strong> 当问题规模太大时,以至于内存储器无法容纳时,即使是前面介绍的 AVL 树,在时间上也会大打折扣。</p>
+<p>B树是对二叉查找树的改进。它的设计思想是，<strong>将相关数据尽量集中在一起，以便一次读取多个数据，减少硬盘操作次数。</strong>B树为系统最优化大块数据的读和写操作。B树算法<strong>减少定位记录时所经历的中间过程</strong>，从而加快存取速度。<strong>普遍运用在数据库和文件系统。</strong></p>
+<p>假定一个节点可以容纳100个值，那么<strong>3层</strong>的B树可以容纳100万个数据，如果换成二叉查找树，则需要<strong>20层</strong>！假定操作系统一次读取一个节点，并且根节点保留在内存中，那么B树在100万个数据中查找目标值，只需要读取两次硬盘，相对于平衡二叉树，查询比较的次数可能没有减少，但是磁盘IO次数会大大减少。</p>
+<h5 id="3-1-2-B树的结构"><a href="#3-1-2-B树的结构" class="headerlink" title="3.1.2 B树的结构"></a>3.1.2 B树的结构</h5><p>所谓 m 阶B-树或为空树，或为满足下列特性的 m叉树：</p>
 <blockquote>
 <p>① 树中每个结点至多有 m 棵子树；</p>
 <p>② 若根结点不是叶子结点,则至少有两棵子树； </p>
 <p>③ 除根结点之外的所有非终端结点至少有 ⎡m/2⎤ 棵子树； </p>
-<p>④ 所有的非终端结点的结构为：(n , A0 , K1 , A1 , K2 , … , Kn , An) 其中： Ki(i=1,2,…,n)为关键字,且Ki&lt;Ki+1,Ai为指向子树根结点的指针(i=0,1,…,n), 且指针A(i-1)所指子树中所有结点的关键字均小于Ki (i=1,2,…,n),An所指子树中所有结点的关键字均大于Kn ，n为关键码的个数，⎡m/2⎤ −1≤ n ≤ m −1；</p>
+<p>④ 所有的非终端结点的结构为：(n , A0 , K1 , A1 , K2 , … , Kn , An) 其中： Ki(i=1,2,…,n)为关键字,且Ki&lt;Ki+1,Ai为指向子树根结点的指针(i=0,1,…,n), 且指针A(i-1)所指子树中所有结点的关键字均小于Ki (i=1,2,…,n),<strong>An所指子树中所有结点的关键字均大于Kn</strong>，n为关键码的个数，<strong>⎡m/2⎤ −1≤ n ≤ m −1</strong>；</p>
 <p>⑤ 所有的叶子结点都出现在同一层次上,并且不带信息(可以看作是外部结点或查找 失败的结点,实际上这些结点不存在,指向这些结点的指针为空)；</p>
 </blockquote>
 <p><img src="images\image11.png" alt="images\image11"></p>
-<h5 id="3-1-3-B树的查找操作"><a href="#3-1-3-B树的查找操作" class="headerlink" title="3.1.3 B树的查找操作"></a>3.1.3 B树的查找操作</h5><pre><code>B-树的查找类似二叉排序树的查找,所不同的是**B-树每个结点上是多关键码的有序表**, 在到达某个结点时,先在有序表中查找,若找到,则查找成功；否则,到按照对应的指针信 息指向的子树中去查找,当到达叶子结点时,则说明树中没有对应的关键码,查找失败.即**在 B-树上的查找过程是一个顺指针查找结点和在结点中查找关键码交叉进行的过程.**
-
-正如前面所指出的,B-树的查找适合于大规模的数据.实际的做法是**将大量数据组织为一棵 B-树,并存于外存储器,B-树的根结点常驻内存.**一旦需要查找,则按照上述过程, 首先将根结点作为当前结点,在当前结点中顺序查找；如果当前结点不存在需要查找的关键 字,则根据相应的引用,找到外存中的某一个下层结点,将其读入内存,作为新的当前结点继续查找.如此进行下去,直到找到相应关键字或查找失败. 
-
-由此可见,**在B-树中进行查找所需的时间,无外乎两类操作的时间消耗：一种是在 B-树上找结点,即将外存中的结点读入内存；另一种是,在结点中找关键字.**在前面曾经提 到,内外存储器的平均访问时间存在巨大的差异,所以在这两部分时间中,前者必然是主要部分,后一部分时间则可以忽略.因此,**B-树的查找效率取决于外存的访问次数.**
-
-**由推导可知，对于具有N个关键字的m阶B-树的每次查找操作,都可以在Ο(logm N)时间内完成.**
-</code></pre><h5 id="3-1-4-B树的插入操作"><a href="#3-1-4-B树的插入操作" class="headerlink" title="3.1.4 B树的插入操作"></a>3.1.4 B树的插入操作</h5><p>为了在 m 阶B-树中插入一个新关键字 key,首先要找到该关键字应该插入的位置,<strong>该过程实际是在B-树中查找关键字的过程.</strong>倘若<strong>查找成功,则不再插入重复的关键字</strong>,若查找不成功,则在此查找过程中遇到的最后一个非叶子结点p,即为关键字 key 的插入位置.然后,在结点 p 中,按照关键字有序的顺序将 key 插入.<strong>若插入后结点 p 上关键字个数不超过 m−1个,则可直接插入到该结点上；否则,要进行调整,即结点的“分裂”.</strong></p>
+<h5 id="3-1-3-B树的查找操作"><a href="#3-1-3-B树的查找操作" class="headerlink" title="3.1.3 B树的查找操作"></a>3.1.3 B树的查找操作</h5><p>B-树的查找类似二叉排序树的查找,所不同的是<strong>B-树每个结点上是多关键码的有序表</strong>, 在到达某个结点时,先在有序表中查找,若找到,则查找成功；否则,到按照对应的指针信 息指向的子树中去查找,当到达叶子结点时,则说明树中没有对应的关键码,查找失败.即<strong>在 B-树上的查找过程是一个顺指针查找结点和在结点中查找关键码交叉进行的过程.</strong></p>
+<p>正如前面所指出的,B-树的查找适合于大规模的数据.实际的做法是<strong>将大量数据组织为一棵 B-树,并存于外存储器,B-树的根结点常驻内存.</strong>一旦需要查找,则按照上述过程, 首先将根结点作为当前结点,在当前结点中顺序查找；如果当前结点不存在需要查找的关键 字,则根据相应的引用,找到外存中的某一个下层结点,将其读入内存,作为新的当前结点继续查找.如此进行下去,直到找到相应关键字或查找失败.</p>
+<p> 由此可见,<strong>在B-树中进行查找所需的时间,无外乎两类操作的时间消耗：一种是在 B-树上找结点,即将外存中的结点读入内存；另一种是,在结点中找关键字.</strong>在前面曾经提 到,内外存储器的平均访问时间存在巨大的差异,所以在这两部分时间中,前者必然是主要部分,后一部分时间则可以忽略.因此,<strong>B-树的查找效率取决于外存的访问次数.</strong></p>
+<p><strong>由推导可知，对于具有N个关键字的m阶B-树的每次查找操作,都可以在Ο(logm N)时间内完成.</strong></p>
+<h5 id="3-1-4-B树的插入操作"><a href="#3-1-4-B树的插入操作" class="headerlink" title="3.1.4 B树的插入操作"></a>3.1.4 B树的插入操作</h5><p>为了在 m 阶B-树中插入一个新关键字 key,首先要找到该关键字应该插入的位置,<strong>该过程实际是在B-树中查找关键字的过程.</strong>倘若<strong>查找成功,则不再插入重复的关键字</strong>,若查找不成功,则在此查找过程中遇到的最后一个非叶子结点p,即为关键字 key 的插入位置.然后,在结点 p 中,按照关键字有序的顺序将 key 插入.<strong>若插入后结点 p 上关键字个数不超过 m−1个,则可直接插入到该结点上；否则,要进行调整,即结点的“分裂”.</strong></p>
 <p>分裂操作按如下规则进行：</p>
 <blockquote>
 <p>① 假设结点 p 中已有 m-1 个关键字,当插入一个关键字之后,结点中包含的信息为：(m , A0 , K1 , A1 , K2 , … , Km , Am)</p>
@@ -293,7 +289,28 @@ B树是对二叉查找树的改进。它的设计思想是，**将相关数据�
 <p><img src="images\image13.png" alt="images\image13"></p>
 <p><strong>③ 插入 38</strong></p>
 <p><img src="images\image14.png" alt="images\image14"></p>
-<h5 id="3-1-5-B树的删除操作"><a href="#3-1-5-B树的删除操作" class="headerlink" title="3.1.5 B树的删除操作"></a>3.1.5 B树的删除操作</h5>
+<h5 id="3-1-5-B树的删除操作"><a href="#3-1-5-B树的删除操作" class="headerlink" title="3.1.5 B树的删除操作"></a>3.1.5 B树的删除操作</h5><p>与插入关键字相反,若在 B-树上删除一个关键字,则首先应该<strong>找到该关键字所在的结点u</strong>,并从中删除。<strong>B-树的删除操作可以分为以下三种情况：</strong></p>
+<p><strong>一、若待删关键字所在结点并非最下层的非终端结点</strong></p>
+<p>假设待删关键字为Ki,此时,可以用Ai所指子树中的最小关键字X替代,然后问题转换成了删除关键字X，若关键字X仍不是最下层的非终端结点，则继续向下，直到问题转换为删除最下层结点。</p>
+<p><strong>二、 若该结点 u 为最下层的非终端结点,且其中关键字的数目不少于 ⎡m/2⎤</strong></p>
+<p>直接删除即可。</p>
+<p><strong>三、 若该结点 u 为最下层的非终端结点,且其中关键字的数目少于 ⎡m/2⎤（即关键字数目为⎡m/2⎤-1）</strong></p>
+<p>在u中删除关键字后需要进行“合并”结点的操作。</p>
+<p><strong>“合并”操作</strong>可以分成以下三种情况分别进行处理：</p>
+<blockquote>
+<p><strong>① 结点 u 的左兄弟 v 包含至少 ⎡m/2⎤ 个关键字</strong></p>
+<p>如下图所示,可以从结点v中取出最大的关键字kmax,将u的父结点p中介于v 和u之间的关键字kmid替换为kmax,然后将kmid插至u的最左侧.（即从结点u中删除一个关键字之后，从左兄弟取出最右关键字放入父节点，将父节点关键字放入结点u）</p>
+<p><img src="images\image15.png" alt="images\image15"></p>
+<p><strong>② 结点 u 的右兄弟 v 包含至少 ⎡m/2⎤ 个关键字</strong></p>
+<p>与第一种情况类似，如下图所示,可以从结点v中取出最小的关键字kmin,将u的父结点p中介于v 和u之间的关键字kmid替换为kmin,然后将kmid插至u的最右侧.</p>
+<p><img src="images\image16.png" alt="images\image16"></p>
+<p><strong>③ 结点 u 没有一个兄弟包含至少 ⎡m/2⎤ 个关键字</strong></p>
+<p>此时,结点u和其相邻的兄弟结点中的关键字数目<strong>均等于 ⎡m/2⎤ −1</strong>,但是结点u至少会有一个兄弟结点.如下图所示,设u有右兄弟v,这时可以取出父结点p中介于u,v之间 的关键字kmid,然后<strong>将kmid与u,v中关键字合并为一个结点</strong>.</p>
+<p><img src="images\image17.png" alt="images\image17"></p>
+</blockquote>
+<p>综合以上三种情况,在“合并”结点之后,<strong>结点 u 的父结点中关键字有可能会减少</strong>,若“合并”操作之后，<strong>父结点关键字数目小于 ⎡m/2⎤ −1,则需要对父结点进行修复</strong>（即对父节点进行以上的合并操作）,该过程一直进行下去,直到 u 的某个祖先结点 g,g 的关键字数目不少于 ⎡m/2⎤ −1,或直到根结点为止.</p>
+<hr>
+<h4 id="3-2-B-树"><a href="#3-2-B-树" class="headerlink" title="3.2 B+树"></a>3.2 B+树</h4>
     </div>
     
     <div class="post-footer">
@@ -332,7 +349,7 @@ B树是对二叉查找树的改进。它的设计思想是，**将相关数据�
     <div class="widget">
         <h3 class="title">Table of Contents</h3>
         
-            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-二叉查找树"><span class="toc-text">1. 二叉查找树</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-基本概念"><span class="toc-text">1.1 基本概念</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-基本操作"><span class="toc-text">1.2 基本操作</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-2-1-Walk（遍历）"><span class="toc-text">1.2.1 Walk（遍历）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-2-2-Search（查找）"><span class="toc-text">1.2.2 Search（查找）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-2-3-Minimum（最小关键字）"><span class="toc-text">1.2.3 Minimum（最小关键字）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-2-4-Maximum（最大关键字）"><span class="toc-text">1.2.4 Maximum（最大关键字）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-2-5-Successor（后继）"><span class="toc-text">1.2.5 Successor（后继）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-2-6-Predecessor（前驱）"><span class="toc-text">1.2.6 Predecessor（前驱）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-2-7-Insert（插入）"><span class="toc-text">1.2.7 Insert（插入）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-2-8-Delete（删除）"><span class="toc-text">1.2.8 Delete（删除）</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-AVL树（二叉平衡树）"><span class="toc-text">2. AVL树（二叉平衡树）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-AVL树概述"><span class="toc-text">2.1 AVL树概述</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-AVL树失去平衡的四种情况"><span class="toc-text">2.2 AVL树失去平衡的四种情况</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-AVL树的旋转"><span class="toc-text">2.3 AVL树的旋转</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#2-3-1-LL的旋转"><span class="toc-text">2.3.1 LL的旋转</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-3-2-RR的旋转"><span class="toc-text">2.3.2 RR的旋转</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-3-3-LR的旋转"><span class="toc-text">2.3.3 LR的旋转</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-3-4-RL的旋转"><span class="toc-text">2.3.4 RL的旋转</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-B树、B-树和B-树"><span class="toc-text">3. B树、B+树和B*树</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-B树"><span class="toc-text">3.1 B树</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#3-1-1-概述"><span class="toc-text">3.1.1 概述</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-1-2-B树的结构"><span class="toc-text">3.1.2 B树的结构</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-1-3-B树的查找操作"><span class="toc-text">3.1.3 B树的查找操作</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-1-4-B树的插入操作"><span class="toc-text">3.1.4 B树的插入操作</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-1-5-B树的删除操作"><span class="toc-text">3.1.5 B树的删除操作</span></a></li></ol></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-二叉查找树"><span class="toc-text">1. 二叉查找树</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-基本概念"><span class="toc-text">1.1 基本概念</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-基本操作"><span class="toc-text">1.2 基本操作</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-2-1-Walk（遍历）"><span class="toc-text">1.2.1 Walk（遍历）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-2-2-Search（查找）"><span class="toc-text">1.2.2 Search（查找）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-2-3-Minimum（最小关键字）"><span class="toc-text">1.2.3 Minimum（最小关键字）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-2-4-Maximum（最大关键字）"><span class="toc-text">1.2.4 Maximum（最大关键字）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-2-5-Successor（后继）"><span class="toc-text">1.2.5 Successor（后继）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-2-6-Predecessor（前驱）"><span class="toc-text">1.2.6 Predecessor（前驱）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-2-7-Insert（插入）"><span class="toc-text">1.2.7 Insert（插入）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-2-8-Delete（删除）"><span class="toc-text">1.2.8 Delete（删除）</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-AVL树（二叉平衡树）"><span class="toc-text">2. AVL树（二叉平衡树）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-AVL树概述"><span class="toc-text">2.1 AVL树概述</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-AVL树失去平衡的四种情况"><span class="toc-text">2.2 AVL树失去平衡的四种情况</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-AVL树的旋转"><span class="toc-text">2.3 AVL树的旋转</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#2-3-1-LL的旋转"><span class="toc-text">2.3.1 LL的旋转</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-3-2-RR的旋转"><span class="toc-text">2.3.2 RR的旋转</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-3-3-LR的旋转"><span class="toc-text">2.3.3 LR的旋转</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-3-4-RL的旋转"><span class="toc-text">2.3.4 RL的旋转</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-B树、B-树和B-树"><span class="toc-text">3. B树、B+树和B*树</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-B树"><span class="toc-text">3.1 B树</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#3-1-1-概述"><span class="toc-text">3.1.1 概述</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-1-2-B树的结构"><span class="toc-text">3.1.2 B树的结构</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-1-3-B树的查找操作"><span class="toc-text">3.1.3 B树的查找操作</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-1-4-B树的插入操作"><span class="toc-text">3.1.4 B树的插入操作</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-1-5-B树的删除操作"><span class="toc-text">3.1.5 B树的删除操作</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-B-树"><span class="toc-text">3.2 B+树</span></a></li></ol></li></ol>
         
     </div>
 </aside>
