@@ -310,7 +310,15 @@
 </blockquote>
 <p>综合以上三种情况,在“合并”结点之后,<strong>结点 u 的父结点中关键字有可能会减少</strong>,若“合并”操作之后，<strong>父结点关键字数目小于 ⎡m/2⎤ −1,则需要对父结点进行修复</strong>（即对父节点进行以上的合并操作）,该过程一直进行下去,直到 u 的某个祖先结点 g,g 的关键字数目不少于 ⎡m/2⎤ −1,或直到根结点为止.</p>
 <hr>
-<h4 id="3-2-B-树"><a href="#3-2-B-树" class="headerlink" title="3.2 B+树"></a>3.2 B+树</h4>
+<h4 id="3-2-B-树"><a href="#3-2-B-树" class="headerlink" title="3.2 B+树"></a>3.2 B+树</h4><p>B+树是B-树的变体，也是一种多路搜索树，其定义基本与B树相同，除了：</p>
+<blockquote>
+<p>① 非叶子结点的子树指针与关键字个数相同；</p>
+<p>② <strong>非叶子结点的子树指针P[i]，指向关键字值属于(K[i], K[i+1])的子树（B-树是开区间）；</strong></p>
+<p>③ 为所有叶子结点增加一个链指针；</p>
+<p>④ <strong>所有关键字都在叶子结点出现；</strong></p>
+</blockquote>
+<p><img src="C:\Users\YLX\Desktop\images\image3.png" alt="C:\Users\YLX\Desktop\images\image3"></p>
+
     </div>
     
     <div class="post-footer">

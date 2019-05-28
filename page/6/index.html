@@ -124,16 +124,7 @@
                     
 
 
-
-
 <article class="post">
-    
-        <div class="post-media">
-            <a href="/2018/05/26/深入理解Java虚拟机（六）/">
-                <img class="img-ajax" src="/img/loading.gif" data-src="/2018\05\26\深入理解Java虚拟机（六）\图片1.png" alt="深入理解Java虚拟机（六）">
-            </a>
-        </div>
-    
     <div class="post-content">
         <div class="post-head home-post-head">
             <h1 class="post-title">
@@ -153,7 +144,9 @@
 早期（编译器）优化
 Java的“编译器”其实是一段“不确定”的过程，因为它可能指以下三种情况：
 
-前端编译器：把.java转变成 .class字节码文件的过程（包括Javac编译器、Eclip...
+前端编译器：把.java转变成 .class字节码文件的过程（包括Javac编译器、Eclipse JDT中的增量式编译器（ECJ）
+
+后端运行期编译器（...
             
         </p>
     </div>
@@ -182,7 +175,6 @@ Java的“编译器”其实是一段“不确定”的过程，因为它可能�
     
 </div>
             </div>
-
             <div class="post-permalink">
                 <a href="/2018/05/26/深入理解Java虚拟机（六）/" class="btn btn-default">Read</a>
             </div>
@@ -192,13 +184,6 @@ Java的“编译器”其实是一段“不确定”的过程，因为它可能�
 
 
 <article class="post">
-    
-        <div class="post-media">
-            <a href="/2018/05/25/深入理解Java虚拟机（五）/">
-                <img class="img-ajax" src="/img/loading.gif" data-src="/2018\05\25\深入理解Java虚拟机（五）\图片1.png" alt="深入理解Java虚拟机（五）">
-            </a>
-        </div>
-    
     <div class="post-content">
         <div class="post-head home-post-head">
             <h1 class="post-title">
@@ -216,7 +201,8 @@ Java的“编译器”其实是一段“不确定”的过程，因为它可能�
 方法调用
 
 虚拟机字节码执行引擎执行引擎是Java虚拟机最核心的组成部分之一，“虚拟机”是一个相对于“物理机”的概念，这两种机器都有代码执行能力，其区别在于：
-①物理机：执行引擎直接建立在处理器、硬件、指令集和操作系统...
+①物理机：执行引擎直接建立在处理器、硬件、指令集和操作系统层面上的
+②虚拟机：执行引擎由自己实现，可以自行制定指令集与...
             
         </p>
     </div>
@@ -245,7 +231,6 @@ Java的“编译器”其实是一段“不确定”的过程，因为它可能�
     
 </div>
             </div>
-
             <div class="post-permalink">
                 <a href="/2018/05/25/深入理解Java虚拟机（五）/" class="btn btn-default">Read</a>
             </div>
@@ -255,13 +240,6 @@ Java的“编译器”其实是一段“不确定”的过程，因为它可能�
 
 
 <article class="post">
-    
-        <div class="post-media">
-            <a href="/2018/05/25/深入理解Java虚拟机（四）/">
-                <img class="img-ajax" src="/img/loading.gif" data-src="/2018\05\25\深入理解Java虚拟机（四）\图片1.png" alt="深入理解Java虚拟机（四）">
-            </a>
-        </div>
-    
     <div class="post-content">
         <div class="post-head home-post-head">
             <h1 class="post-title">
@@ -289,7 +267,7 @@ Java的“编译器”其实是一段“不确定”的过程，因为它可能�
 
 
 无关性的基石
-Sun公司以及其他VM提供商发布了许多可以运行在各种不同平台上的虚拟机，这些虚拟机都...
+Sun公司以及其他VM提供商发布了许多可以运行在各种不同平台上的虚拟机，这些虚拟机都可以载入和执行同一种平台无关的字节码，实现了程序的“一次编写...
             
         </p>
     </div>
@@ -318,7 +296,6 @@ Sun公司以及其他VM提供商发布了许多可以运行在各种不同平台
     
 </div>
             </div>
-
             <div class="post-permalink">
                 <a href="/2018/05/25/深入理解Java虚拟机（四）/" class="btn btn-default">Read</a>
             </div>
@@ -328,13 +305,6 @@ Sun公司以及其他VM提供商发布了许多可以运行在各种不同平台
 
 
 <article class="post">
-    
-        <div class="post-media">
-            <a href="/2018/05/25/深入理解Java虚拟机（三）/">
-                <img class="img-ajax" src="/img/loading.gif" data-src="/2018\05\25\深入理解Java虚拟机（三）\图片1.png" alt="深入理解Java虚拟机（三）">
-            </a>
-        </div>
-    
     <div class="post-content">
         <div class="post-head home-post-head">
             <h1 class="post-title">
@@ -356,7 +326,7 @@ Sun公司以及其他VM提供商发布了许多可以运行在各种不同平台
 
 垃圾回收简单介绍 1. 程序计数器、虚拟机栈、本地方法栈的垃圾回收
 
-程序计数器、VM栈、本地方法栈3个区域随线程而生，随线程而灭，内存分...
+程序计数器、VM栈、本地方法栈3个区域随线程而生，随线程而灭，内存分配和回收都具备确定性，不需过多考虑回收的问题。因为方法结束或...
             
         </p>
     </div>
@@ -385,7 +355,6 @@ Sun公司以及其他VM提供商发布了许多可以运行在各种不同平台
     
 </div>
             </div>
-
             <div class="post-permalink">
                 <a href="/2018/05/25/深入理解Java虚拟机（三）/" class="btn btn-default">Read</a>
             </div>
@@ -395,13 +364,6 @@ Sun公司以及其他VM提供商发布了许多可以运行在各种不同平台
 
 
 <article class="post">
-    
-        <div class="post-media">
-            <a href="/2018/05/25/深入理解Java虚拟机（二）/">
-                <img class="img-ajax" src="/img/loading.gif" data-src="/2018\05\25\深入理解Java虚拟机（二）\图片1.png" alt="深入理解Java虚拟机（二）">
-            </a>
-        </div>
-    
     <div class="post-content">
         <div class="post-head home-post-head">
             <h1 class="post-title">
@@ -423,7 +385,7 @@ JVM堆栈溢出
 对象的创建步骤： 类加载检查 —&amp;gt; 分配内存 —&amp;gt; 分配的内存空间初始化为零值 —&amp;gt; 设置对象头 —&amp;gt; 数据初始化
  1. 类加载检查
 
-虚拟机遇到...
+虚拟机遇到一条new指令时，首先将去检查这个指令的参数是否能在常量池中...
             
         </p>
     </div>
@@ -452,7 +414,6 @@ JVM堆栈溢出
     
 </div>
             </div>
-
             <div class="post-permalink">
                 <a href="/2018/05/25/深入理解Java虚拟机（二）/" class="btn btn-default">Read</a>
             </div>
@@ -518,24 +479,6 @@ JVM堆栈溢出
         
         
     <div class="widget">
-      <h3 class="title">Social</h3> 
-        <div class="content social">
-            
-	            <a href="https://github.com/kevinyang0304" rel="external nofollow" title="Github" target="_blank">
-			    	<i class="git fa fa-git"></i>
-			    </a>
-            
-	            <a href="/" rel="external nofollow" title="QQ:349606723" target="_blank">
-			    	<i class="envelope-o fa fa-envelope-o"></i>
-			    </a>
-            
-        </div>
-    </div>
-
-
-        
-        
-    <div class="widget">
         <h3 class="title">Categories</h3>
         <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/JVM/"><i class="fa" aria-hidden="true">JVM</i></a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java-Web开发/"><i class="fa" aria-hidden="true">Java Web开发</i></a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java技术/"><i class="fa" aria-hidden="true">Java技术</i></a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python技术/"><i class="fa" aria-hidden="true">Python技术</i></a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构/"><i class="fa" aria-hidden="true">数据结构</i></a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/机器学习/"><i class="fa" aria-hidden="true">机器学习</i></a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/网络/"><i class="fa" aria-hidden="true">网络</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/设计模式/"><i class="fa" aria-hidden="true">设计模式</i></a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/阅读/"><i class="fa" aria-hidden="true">阅读</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/面试相关/"><i class="fa" aria-hidden="true">面试相关</i></a><span class="category-list-count">1</span></li></ul>
     </div>
@@ -559,6 +502,24 @@ JVM堆栈溢出
         
     </div>
   </div>
+
+
+        
+        
+    <div class="widget">
+      <h3 class="title">Social</h3> 
+        <div class="content social">
+            
+	            <a href="https://github.com/kevinyang0304" rel="external nofollow" title="Github" target="_blank">
+			    	<i class="github fa fa-github"></i>
+			    </a>
+            
+	            <a href="/" rel="external nofollow" title="QQ:349606723" target="_blank">
+			    	<i class="envelope-o fa fa-envelope-o"></i>
+			    </a>
+            
+        </div>
+    </div>
 
 
         
