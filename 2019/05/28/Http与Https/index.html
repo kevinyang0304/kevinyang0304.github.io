@@ -170,12 +170,7 @@
 <p><a href="https://blog.csdn.net/howgod/article/details/89596638" target="_blank" rel="noopener">为什么HTTPS比HTTP更安全? ——浪里行舟</a></p>
 <p><a href="https://github.com/ljianshu/Blog/issues/22" target="_blank" rel="noopener">关于Http协议，你必须要知道的——ljianshu</a></p>
 <hr>
-<h4 id="一、HTTP"><a href="#一、HTTP" class="headerlink" title="一、HTTP"></a>一、HTTP</h4><p>HTTP与HTTPS都是应用层协议。HTTP协议是<strong>Hyper Text Transfer Protocol（超文本传输协议）</strong>的缩写,是用于从万维网服务器传输超文本到本地浏览器的传送协议。HTTP 是<strong>基于 TCP/IP 协议</strong>通信协议来传递数据（HTML 文件, 图片文件, 查询结果等）。它<strong>不涉及数据包（packet）传输，主要规定了客户端和服务器之间的通信格式，默认使用80端口</strong>。</p>
-<p>!HTTPS是在HTTP上建立SSL加密层，并对传输数据进行加密，是HTTP协议的安全版。现在它被广泛用于万维网上安全敏感的通讯，例如交易支付方面。</p>
-<p>HTTPS主要作用是：</p>
-<p>（1）对数据进行加密，并建立一个信息安全通道，来保证传输过程中的数据安全;</p>
-<p>（2）对网站服务器进行真实身份认证。</p>
-<p>我们经常会在Web的登录页面和购物结算界面等使用HTTPS通信。使用HTTPS通信时，不再用<code>http://</code>，而是改用<code>https://</code>。另外，当浏览器访问HTTPS通信有效的Web网站时，浏览器的地址栏内会出现一个带锁的标记。对HTTPS的显示方式会因浏览器的不同而有所改变。<a href="images\image1.png">images\image1</a></p>
+<h4 id="一、HTTP"><a href="#一、HTTP" class="headerlink" title="一、HTTP"></a>一、HTTP</h4><p>HTTP与HTTPS都是应用层协议。HTTP协议是<strong>Hyper Text Transfer Protocol（超文本传输协议）</strong>的缩写,是用于从万维网服务器传输超文本到本地浏览器的传送协议。HTTP <strong>基于 TCP/IP 协议</strong>通信协议来传递数据（HTML 文件, 图片文件, 查询结果等）。它<strong>不涉及数据包（packet）传输，主要规定了客户端和服务器之间的通信格式，默认使用80端口</strong>。</p>
 <h5 id="1-1-Http的特点"><a href="#1-1-Http的特点" class="headerlink" title="1.1 Http的特点"></a>1.1 Http的特点</h5><p>1.<strong>简单快速</strong>：客户向服务器请求服务时，只需传送请求方法和路径。请求方法常用的有GET、HEAD、PUT、DELETE、POST。每种方法规定了客户与服务器联系的类型不同。由于HTTP协议简单，使得HTTP服务器的程序规模小，因而通信速度很快。</p>
 <p>2.<strong>灵活</strong>：HTTP允许传输任意类型的数据对象。</p>
 <p>3.<strong>无连接</strong>：无连接的含义是限制每次连接只处理一个请求。服务器处理完客户的请求，并收到客户的应答后，即断开连接。采用这种方式可以节省传输时间。（随着时代发展，文档中包含大量图片的情况多了起来，Http1.1以及部分1.0开始使用持久连接）</p>
@@ -221,6 +216,7 @@
 <p>（1）对数据进行加密，并建立一个信息安全通道，来保证传输过程中的数据安全;</p>
 <p>（2）对网站服务器进行真实身份认证。</p>
 <p>我们经常会在Web的登录页面和购物结算界面等使用HTTPS通信。使用HTTPS通信时，不再用<code>http://</code>，而是改用<code>https://</code>。另外，当浏览器访问HTTPS通信有效的Web网站时，浏览器的地址栏内会出现一个带锁的标记。对HTTPS的显示方式会因浏览器的不同而有所改变。</p>
+<p><img src="images\image1.png" alt="images\image1"></p>
 <h5 id="2-1-为什么需要Https（Http的缺陷）"><a href="#2-1-为什么需要Https（Http的缺陷）" class="headerlink" title="2.1 为什么需要Https（Http的缺陷）"></a>2.1 为什么需要Https（Http的缺陷）</h5><p><strong>Http存在以下缺陷：</strong></p>
 <blockquote>
 <p><strong>① 通信使用明文（不加密），内容可能被窃听；</strong></p>
