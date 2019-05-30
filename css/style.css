@@ -31,14 +31,14 @@ html {
   line-height: 1.75em;
   background: #ebebeb;
   position: relative;
-  font-family: "Helvetica Neue", Helvetica, Arial, "Hiragino Sans GB", "Hiragino Sans GB W3", "WenQuanYi Micro Hei", "Microsoft YaHei UI", "Microsoft YaHei", sans-serif;
+  font-family: Microsoft YaHei, Helvetica, Arial;
 }
 body {
   color: #505050;
   line-height: 1.75em;
   background: #ebebeb;
   position: relative;
-  font-family: "Helvetica Neue", Helvetica, Arial, "Hiragino Sans GB", "Hiragino Sans GB W3", "WenQuanYi Micro Hei", "Microsoft YaHei UI", "Microsoft YaHei", sans-serif;
+  font-family: Microsoft YaHei, Helvetica, Arial;
 }
 h1,
 h2,
@@ -268,7 +268,7 @@ pre {
   padding-top: 15px;
 }
 .main-header .main-header-box .branding h2 {
-  font-family: "KaiTi", "Microsoft YaHei";
+  font-family: Microsoft YaHei, Helvetica, Arial;
   width: 320px;
   margin: 0 auto;
   letter-spacing: 3px;
@@ -523,37 +523,37 @@ pre {
   color: #333;
 }
 .post-content h1 {
-  font-family: "Microsoft YaHei","Georgia", "Xin Gothic", "Hiragino Sans GB", "Droid Sans Fallback", "SimSun", sans-serif;
+  font-family: Microsoft YaHei, Helvetica, Arial;
   color: #333;
   font-size: 2.5em;
   margin: 0.67em 0;
 }
 .post-content h2 {
-  font-family: "Microsoft YaHei","Georgia", "Xin Gothic", "Hiragino Sans GB", "Droid Sans Fallback", "SimSun", sans-serif;
+  font-family: Microsoft YaHei, Helvetica, Arial;
   color: #333;
   font-size: 2.3em;
   margin: 0.83em 0;
 }
 .post-content h3 {
-  font-family: "Microsoft YaHei", "Georgia", "Xin Gothic", "Hiragino Sans GB", "Droid Sans Fallback", "SimSun", sans-serif;
+  font-family: Microsoft YaHei, Helvetica, Arial;
   color: #333;
   font-size: 2em;
   margin: 1em 0;
 }
 .post-content h4 {
-  font-family: "Microsoft YaHei", "Georgia", "Xin Gothic", "Hiragino Sans GB", "Droid Sans Fallback", "SimSun", sans-serif;
+  font-family: Microsoft YaHei, Helvetica, Arial;
   color: #333;
   font-size: 1.5em;
   margin: 1.6em 0 1em 0;
 }
 .post-content h5 {
-  font-family: "Microsoft YaHei", "Georgia", "Xin Gothic", "Hiragino Sans GB", "Droid Sans Fallback", "SimSun", sans-serif;
+  font-family: Microsoft YaHei, Helvetica, Arial;
   color: #333;
   font-size: 1.3em;
   margin: 1.6em 0 1em 0;
 }
 .post-content h6 {
-  font-family: "Microsoft YaHei", "Georgia", "Xin Gothic", "Hiragino Sans GB", "Droid Sans Fallback", "SimSun", sans-serif;
+  font-family: Microsoft YaHei, Helvetica, Arial;
   color: #333;
   font-size: 1em;
   margin: 1.6em 0 1em 0;
@@ -681,7 +681,7 @@ pre {
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
   border-radius: 2px;
-  font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+  font-family: Microsoft YaHei, Helvetica, Arial;
   word-wrap: break-word;
 }
 .post-content tt {
@@ -693,7 +693,7 @@ pre {
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
   border-radius: 2px;
-  font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+  font-family: Microsoft YaHei, Helvetica, Arial;
   word-wrap: break-word;
 }
 .post-content pre {
@@ -703,7 +703,7 @@ pre {
   padding-left: 10px;
   overflow: auto;
   line-height: 1.5;
-  font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+  font-family: Microsoft YaHei, Helvetica, Arial;
   color: #808080;
   background-color: #f9f9f9;
 }
@@ -751,7 +751,7 @@ pre {
 }
 .windows .post-content {
   font-size: 16px;
-  font-family: "Georgia", "SimSun", sans-serif;
+  font-family: Microsoft YaHei, Helvetica, Arial;
 }
 /*====================================================
     pagination

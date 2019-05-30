@@ -1,0 +1,333 @@
+<!DOCTYPE HTML>
+<html lang="">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="杨柳潇的博客">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="http://yangliuxiao.top">
+    <!--SEO-->
+
+    <meta name="keywords" content="代码,Java,Java Web,面试">
+
+
+    <meta name="description" content="参考文章：
+构建微服务：Spring boot 入门篇
+Spring Boot 2.x 系列教程
+SpringMVC和Springboot的区别（网摘）
+Spring-Spring、Spring...">
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+
+    <!--Title-->
+
+
+<title>SpringBoot简述 | 杨柳潇的博客</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="杨柳潇的博客" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.jpg">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+
+</head>
+
+</html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header" style="background-image:url(/./img/background01.png)">
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title="Mute">
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                 <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yangliuxiao.top">杨柳潇的博客</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>Home</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>时间轴</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/about/"><i class="fa "></i>关于</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="SpringBoot简述">
+            
+	            SpringBoot简述
+            
+        </h1>
+        <div class="post-meta">
+    
+        <span class="categories-meta fa-wrap">
+            <i class="fa fa-folder-open-o"></i>
+            <a class="category-link" href="/categories/Java-Web开发/">Java Web开发</a>
+        </span>
+    
+
+    
+        <span class="fa-wrap">
+            <i class="fa fa-tags"></i>
+            <span class="tags-meta">
+                
+                    <a class="tag-link" href="/tags/Java/">Java</a> <a class="tag-link" href="/tags/Java-Web/">Java Web</a> <a class="tag-link" href="/tags/代码/">代码</a> <a class="tag-link" href="/tags/面试/">面试</a>
+                
+            </span>
+        </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2019/05/27</span>
+        </span>
+        
+    
+</div>
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <p><strong>参考文章</strong>：</p>
+<p><a href="https://www.cnblogs.com/ityouknow/p/5662753.html" target="_blank" rel="noopener"><strong>构建微服务：Spring boot 入门篇</strong></a></p>
+<p><a href="https://www.bysocket.com/springboot" target="_blank" rel="noopener"><strong>Spring Boot 2.x 系列教程</strong></a></p>
+<p><a href="https://www.cnblogs.com/kouryoushine/p/7872880.html" target="_blank" rel="noopener"><strong>SpringMVC和Springboot的区别（网摘）</strong></a></p>
+<p><a href="https://www.jianshu.com/p/447a2de60ffc" target="_blank" rel="noopener"><strong>Spring-Spring、SpringMVC与SpringBoot三者的关系</strong></a></p>
+<h3 id="Spring、SpringMVC、SpringBoot"><a href="#Spring、SpringMVC、SpringBoot" class="headerlink" title="Spring、SpringMVC、SpringBoot"></a>Spring、SpringMVC、SpringBoot</h3><h5 id="1-Spring"><a href="#1-Spring" class="headerlink" title="1. Spring"></a>1. Spring</h5><blockquote>
+<p>总的来说Spring是使用基本的JavaBean代替EJB，通过<strong>容器管理JavaBean的配置和声明周期</strong>，在此基础上实现了<strong>Spring的核心功能：AOP、IOC</strong>，其他web框架组件在AOP、IOC的基础上工作，将JavaBean交给Spring来管理。<strong>简单来说，Spring是一个轻量级的控制反转（IoC）和面向切面（AOP）的容器框架。</strong></p>
+</blockquote>
+<h5 id="2-SpringMVC"><a href="#2-SpringMVC" class="headerlink" title="2. SpringMVC"></a>2. SpringMVC</h5><blockquote>
+<p><strong>①</strong> Spring MVC就是一个类似于Strust2的一个MVC开发框架，<strong>是Spring开源项目的其中一个，Spring MVC需要有Spring的架包作为支撑才能跑起来</strong>。Spring MVC annotation式的开发比Struts2方便，可以直接代替SSH中的Struts（当然Struts的做为一个非常成熟的MVC，功能上感觉还是比Spring MVC强一点，不过Spring MVC已经足够用了）。<strong>SpringMVC的执行效率比Struts高，因为Struts的值栈影响效率。</strong></p>
+<p><strong>②</strong> Spring可以说是一个管理bean的容器，也可以说是包括很多开源项目的总称，Spring MVC是其中一个开源项目，<strong>③</strong> <strong>SpringMVC的处理流程</strong>：接收到http请求后，由容器（如：tomact）解析http封装成一个request，通过映射关系（路径，方法，参数……），由Spring MVC的一个分发器在tomcat里的由Spring管理的bean的一个池子（bean容器）里面找到可以处理这个请求的bean，处理完了就返回响应。</p>
+<p><img src="images\image1.png" alt="images\image1"></p>
+</blockquote>
+<h5 id="3-Spring-Boot"><a href="#3-Spring-Boot" class="headerlink" title="3. Spring Boot"></a>3. Spring Boot</h5><p>Spring Boot不是一门新技术。从本质上来说，Spring Boot就是Spring，它只是做了一些对Spring Bean的默认配置。</p>
+<p><strong>核心理念：开箱即用，快速启动</strong></p>
+<blockquote>
+<p>它使用“约定优于配置”（项目中存在大量的配置，此外还内置了一个习惯性的配置，让你无需手动进行配置）的理念让你的项目快速运行起来。使用Spring Boot很容易创建一个独立运行（运行jar,内嵌Servlet容器）、准生产级别的基于Spring框架的项目，使用Spring Boot你可以不用或者只需要很少的Spring配置。</p>
+</blockquote>
+<p><strong>约定优于配置</strong>（convention over configuration）:</p>
+<blockquote>
+<p>也称作<strong>按约定编程，是一种软件设计范式</strong>，旨在减少软件开发人员需做决定的数量，获得简单的好处，而又不失灵活性。本质是说，<strong>开发人员仅需规定应用中不符约定的部分。</strong>例如，如果模型中有个名为Sale的类，那么数据库中对应的表就会默认命名为sales。<strong>只有在偏离这一约定时</strong>，例如将该表命名为”products_sold”，才需写有关这个名字的配置。<strong>如果所用工具的约定与你的期待相符，便可省去配置；反之，你可以配置来达到你所期待的方式。</strong></p>
+</blockquote>
+<hr>
+<h3 id="Spring-Boot概述"><a href="#Spring-Boot概述" class="headerlink" title="Spring Boot概述"></a>Spring Boot概述</h3><p>Spring Boot 是由 Pivotal 团队提供的全新框架，其设计目的是用来<strong>简化</strong>新 Spring 应用的初始搭建以及开发过程。该框架使用了特定的方式来进行配置，从而使开发人员不再需要编写样板化的配置。</p>
+<p>Spring 家族发展到今天，已经很庞大了，作为一个开发者，如果想要使用 Spring 家族一系列的技术，需要一个一个地配置，还需要关心版本兼容性问题，<strong>繁琐且影响开发进度</strong>， Spring Boot 就是来解决这个问题，可以先不关心如何配置，快速地启动开发，进行业务逻辑编写，其他各种需要的技术，加入对应的 starter 就配置好了，直接使用。</p>
+<p>Spring Boot 一些常用的基础框架组合起来，提供默认的配置，提供可插拔的设计（starter）来方便开发者使用这一系列的技术。</p>
+<h4 id="Spring-Boot的优点"><a href="#Spring-Boot的优点" class="headerlink" title="Spring Boot的优点"></a>Spring Boot的优点</h4><p>Spring Boot最重要的是以下四个核心：</p>
+<p><strong>① 自动配置</strong>：针对很多Spring应用程序常见的应用功能，Spring Boot能自动提供相关配置</p>
+<p><strong>② 起步依赖</strong>：告诉Spring Boot需要什么功能，它就能引入需要的库。</p>
+<p><strong>③ 命令行界面</strong>：这是Spring Boot的可选特性，借此你只需写代码就能完成完整的应用程序，无需传统项目构建。</p>
+<p><strong>④ Actuator</strong>：让你能够深入运行中的Spring Boot应用程序，一套究竟。</p>
+<h5 id="①-自动配置"><a href="#①-自动配置" class="headerlink" title="① 自动配置"></a>① 自动配置</h5><p>在任何Spring应用程序的源代码里，你都会找到Java配置或XML配置（抑或两者皆有），它们为应用程序开启了特定的特性和功能。举个例子，如果你写过用JDBC访问关系型数据库的应用程序，那你一定在Spring应用程序上下文里配置过JdbcTemplate这个Bean。那段配置看起来会是这样的：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Bean</span> </span><br><span class="line"><span class="function"><span class="keyword">public</span> JdbcTemplate <span class="title">jdbcTemplate</span><span class="params">(DataSource dataSource)</span> </span>&#123; </span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> JdbcTemplate(dataSource); </span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这段非常简单的Bean声明创建了一个JdbcTemplate的实例，注入了一个DataSource依赖。当然，这意味着你还需要配置一个DataSource的Bean，这样才能满足依赖。假设你将配置一个嵌入式H2数据库作为DataSource Bean，完成这个配置场景的代码大概是这样的：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Bean</span> </span><br><span class="line"><span class="function"><span class="keyword">public</span> DataSource <span class="title">dataSource</span><span class="params">()</span> </span>&#123; </span><br><span class="line">     <span class="keyword">return</span> <span class="keyword">new</span> EmbeddedDatabaseBuilder() </span><br><span class="line">     .setType(EmbeddedDatabaseType.H2) </span><br><span class="line">     .addScripts(<span class="string">'schema.sql'</span>, <span class="string">'data.sql'</span>) </span><br><span class="line"></span><br><span class="line">     .build(); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这个Bean配置方法创建了一个嵌入式数据库，并指定在该数据库上执行两段SQL脚本。build()方法返回了一个指向该数据库的引用。</p>
+<p>这两个Bean配置方法都不复杂，也不是很长，但它们<strong>只是典型Spring应用程序配置的一小部分。除此之外，还有无数Spring应用程序有着完全相同的方法。</strong>所有需要用到嵌入式数据库和JdbcTemplate的应用程序都会用到那些方法。<strong>简而言之，这就是一个样板配置。既然它如此常见，那为什么还要你去写呢？</strong></p>
+<p><strong>Spring Boot会为这些常见配置场景进行自动配置。</strong>如果Spring Boot在应用程序的Classpath里发现H2数据库的库，那么它就自动配置一个嵌入式H2数据库。如果在Classpath里发现JdbcTemplate，那么它还会为你配置一个JdbcTemplate的Bean。你无需操心那些Bean的配置，Spring Boot会做好准备，随时都能将其注入到你的Bean里。Spring Boot的自动配置远不止嵌入式数据库和JdbcTemplate，它有大把的办法帮你减轻配置负担，这些自动配置涉及Java持久化API（Java Persistence API，JPA）、Thymeleaf模板、安全和Spring MVC。</p>
+<h5 id="②-起步依赖"><a href="#②-起步依赖" class="headerlink" title="② 起步依赖"></a>② 起步依赖</h5><p>向项目中添加依赖是件富有挑战的事。你需要什么库？它的Group和Artifact是什么？你<strong>需要哪个版本？哪个版本不会和项目中的其他依赖发生冲突？</strong>Spring Boot通过起步依赖为项目的依赖管理提供帮助。起步依赖其实就是特殊的Maven依赖和Gradle依赖，利用了<strong>传递依赖解析，把常用库聚合在一起，组成了几个为特定功能而定制的依赖。</strong></p>
+<p>举个例子，假设你正在用Spring MVC构造一个REST API，并将JSON（JavaScript ObjectNotation）作为资源表述。此外，你还想运用遵循JSR-303规范的声明式校验，并使用嵌入式的Tomcat服务器来提供服务。要实现以上目标，你在Maven或Gradle里至少需要以下8个依赖：</p>
+<blockquote>
+<p> org.springframework:spring-core</p>
+<p> org.springframework:spring-web</p>
+<p> org.springframework:spring-webmvc</p>
+<p> com.fasterxml.jackson.core:jackson-databind</p>
+<p> org.hibernate:hibernate-validator</p>
+<p> org.apache.tomcat.embed:tomcat-embed-core</p>
+<p> org.apache.tomcat.embed:tomcat-embed-el</p>
+<p> org.apache.tomcat.embed:tomcat-embed-logging-juli</p>
+</blockquote>
+<p>不过，如果打算利用Spring Boot的起步依赖，你只需添加Spring Boot的<strong>Web起步依赖（即不同的starter）</strong></p>
+<p><strong>（org.springframework.boot:spring-boot-starter-web）</strong>，仅此一个。它会根据依赖传递把其他所需依赖引入项目里，你都不用考虑它们。比起减少依赖数量，起步依赖还引入了一些微妙的变化。<strong>向项目中添加了Web起步依赖，实际上指定了应用程序所需的一类功能。</strong>因为应用是个Web应用程序，所以加入了Web起步依赖。与之类似，如果应用程序要用到JPA持久化，那么就可以加入jpa起步依赖。如果需要安全功能，那就加入security起步依赖。简而言之，你不再需要考虑支持某种功能要用什么库了，引入相关起步依赖就行。</p>
+<p>此外，Spring Boot的起步依赖还把你从“需要这些库的哪些版本”这个问题里解放了出来。<strong>起步依赖引入的库的版本都是经过测试的，因此你可以完全放心，它们之间不会出现不兼容的情况。</strong></p>
+<h5 id="③-命令行界面"><a href="#③-命令行界面" class="headerlink" title="③ 命令行界面"></a>③ 命令行界面</h5><p>除了自动配置和起步依赖，Spring Boot还提供了一种很有意思的新方法，可以快速开发Spring应用程序。正如之前在1.1节里看到的那样，Spring Boot CLI让<strong>只写命令行代码即可实现应用程序成为可能。</strong></p>
+<p>Spring Boot CLI<strong>利用了起步依赖和自动配置</strong>，让你专注于代码本身。不仅如此，你是否注意到代码清单1-1里没有import？CLI如何知道RequestMapping和RestController来自哪个包呢？说到这个问题，那些类最终又是怎么跑到Classpath里的呢？</p>
+<p>说得简单一点，CLI能检测到你使用了哪些类，<strong>它知道要向Classpath中添加哪些起步依赖才能让它运转起来。一旦那些依赖出现在Classpath中，一系列自动配置就会接踵而来</strong>，确保启用DispatcherServlet和Spring MVC，这样控制器就能响应HTTP请求了。</p>
+<p>Spring Boot CLI是Spring Boot的<strong>非必要组成部分</strong>。虽然它为Spring带来了惊人的力量，大大简化了开发，但也引入了一套不太常规的开发模型。要是这种开发模型与你的口味相去甚远，那也没关系，抛开CLI，你还是可以利用Spring Boot提供的其他东西。</p>
+<h5 id="④-Actuator"><a href="#④-Actuator" class="headerlink" title="④ Actuator"></a>④ Actuator</h5><p>Spring Boot的最后一块“拼图”是Actuator，<strong>其他几个部分旨在简化Spring开发</strong>，而<strong>Actuator则要提供在运行时检视应用程序内部情况的能力。</strong>安装了Actuator就能窥探应用程序的内部情况了，包括如下细节：</p>
+<blockquote>
+<p> Spring应用程序上下文里配置的Bean</p>
+<p> Spring Boot的自动配置做的决策</p>
+<p> 应用程序取到的环境变量、系统属性、配置属性和命令行参数</p>
+<p> 应用程序里线程的当前状态</p>
+<p> 应用程序最近处理过的HTTP请求的追踪情况</p>
+<p> 各种和内存用量、垃圾回收、Web请求以及数据源用量相关的指标</p>
+</blockquote>
+<p>Actuator通过Web端点和shell界面向外界提供信息。如果要借助shell界面，你可以打开SSH（Secure Shell），登入运行中的应用程序，发送指令查看它的情况。</p>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>Spring Boot没有引入任何形式的代码生成，而是利用了Spring 4的条件化配置特性，以及Maven和Gradle提供的传递依赖解析，以此实现Spring应用程序上下文里的自动配置。</p>
+<p>简而言之，从本质上来说，Spring Boot就是Spring，它只是做了那些没有它你自己也会去做的SpringBean配置，有了Spring，你就不用再写这些样板配置了，可以专注于应用程序的逻辑。</p>
+<p>所以，<strong>Spring Boot的项目其实只是普通的Spring项目</strong>，只是它们正好用到了Spring Boot的起步依赖和自动配置而已。因此，那些你早已熟悉的从头创建Spring项目的技术或工具，都能用于Spring Boot项目。</p>
+<p><strong>自动配置</strong>消除了传统Spring应用程序里的很多样板配置；<strong>Spring Boot起步依赖</strong>让你能通过库所提供的功能而非名称与版本号来指定构建依赖；<strong>Spring Boot CLI</strong>将Spring Boot的无阻碍开发模型提升到了一个崭新的高度，在命令行里就能简单快速地用Groovy进行开发；<strong>Actuator</strong>让你能深入运行中的应用程序，了解Spring Boot做了什么，是怎么做的。</p>
+
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/2019/05/28/Http与Https/" class="pre-post btn btn-default" title="Http与Https">
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">Http与Https</span>
+        </a>
+    
+    
+        <a href="/2019/05/05/Java注解/" class="next-post btn btn-default" title="Java注解">
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">Java注解</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">Table of Contents</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Spring、SpringMVC、SpringBoot"><span class="toc-text">Spring、SpringMVC、SpringBoot</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-Spring"><span class="toc-text">1. Spring</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-SpringMVC"><span class="toc-text">2. SpringMVC</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-Spring-Boot"><span class="toc-text">3. Spring Boot</span></a></li></ol></li></ol><li class="toc-item toc-level-3"><a class="toc-link" href="#Spring-Boot概述"><span class="toc-text">Spring Boot概述</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Spring-Boot的优点"><span class="toc-text">Spring Boot的优点</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#①-自动配置"><span class="toc-text">① 自动配置</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#②-起步依赖"><span class="toc-text">② 起步依赖</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#③-命令行界面"><span class="toc-text">③ 命令行界面</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#④-Actuator"><span class="toc-text">④ Actuator</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#总结"><span class="toc-text">总结</span></a></li></ol></li>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2017
+                </span>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"log":false});</script></body>
+</html>
