@@ -8,7 +8,7 @@
     <meta http-equiv="Cache-Control" content="no-siteapp">
     <meta http-equiv="Cache-Control" content="no-transform">
     <meta name="renderer" content="webkit|ie-comp|ie-stand">
-    <meta name="apple-mobile-web-app-capable" content="杨柳潇的博客">
+    <meta name="apple-mobile-web-app-capable" content="Mute的博客">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="format-detection" content="telephone=no,email=no,adress=no">
     <meta name="browsermode" content="application">
@@ -34,10 +34,10 @@ vue-cli的webpack模...">
     <!--Title-->
 
 
-<title>Vue的简单使用 | 杨柳潇的博客</title>
+<title>Vue的简单使用 | Mute的博客</title>
 
 
-    <link rel="alternate" href="/atom.xml" title="杨柳潇的博客" type="application/atom+xml">
+    <link rel="alternate" href="/atom.xml" title="Mute的博客" type="application/atom+xml">
 
 
     <link rel="icon" href="/favicon.jpg">
@@ -101,7 +101,7 @@ vue-cli的webpack模...">
                     <span class="sr-only"></span>
                         <i class="fa fa-bars"></i>
                     </span>
-                    <a class="navbar-brand" href="http://yangliuxiao.top">杨柳潇的博客</a>
+                    <a class="navbar-brand" href="http://yangliuxiao.top">Mute的博客</a>
                 </div>
                 <div class="collapse navbar-collapse" id="main-menu">
                     <ul class="menu">
@@ -173,7 +173,7 @@ vue-cli的webpack模...">
 <p><a href="https://cn.vuejs.org/v2/guide/" target="_blank" rel="noopener">《Vue官方文档》</a></p>
 <p><a href="https://cli.vuejs.org/zh/guide/" target="_blank" rel="noopener">《Vue CLI官方文档》</a></p>
 <p><a href="https://www.cnblogs.com/chendc/p/7380641.html" target="_blank" rel="noopener">vue-cli的webpack模板项目配置文件说明</a></p>
-<h5 id="1-Node-js"><a href="#1-Node-js" class="headerlink" title="1. Node.js"></a>1. Node.js</h5><p>Node.js是一个<strong>能够在服务器端运行JavaScript的开放源代码、跨平台JavaScript运行环境</strong>。Node.js由Node.js基金会持有和维护，并与Linux基金会有合作关系。Node.js<strong>采用Google开发的V8运行代码</strong>，使用<strong>事件驱动</strong>、<strong>非阻塞和异步输入输出模型</strong>等技术来提高性能，可优化应用程序的传输量和规模。这些技术通常用于数据密集的即时应用程序。</p>
+<h5 id="1-Node-js"><a href="#1-Node-js" class="headerlink" title="1. Node.js"></a>1. Node.js</h5><p>Node.js是一个<strong>能够在服务器端运行JavaScript的开放源代码、跨平台JavaScript运行环境</strong>。Node.js<strong>采用Google开发的V8运行代码</strong>，使用<strong>事件驱动</strong>、<strong>非阻塞和异步输入输出模型</strong>等技术来提高性能，可优化应用程序的传输量和规模。这些技术通常用于数据密集的即时应用程序。</p>
 <p>Node.js大部分基本模块都用JavaScript语言编写。在Node.js出现之前，JavaScript通常作为客户端程序设计语言使用，以JavaScript写出的程序常在用户的浏览器上运行。Node.js的出现使JavaScript也能用于服务端编程。Node.js含有一系列内置模块，使得程序可以脱离Apache HTTP Server或IIS，作为独立服务器运行。</p>
 <p>使用Vue之前要先安装Node.js</p>
 <p>在<a href="https://nodejs.org/zh-cn/" target="_blank" rel="noopener">Node.js官网</a>下载安装即可</p>
@@ -185,13 +185,13 @@ vue-cli的webpack模...">
 <p><img src="images\image2.png" alt="images\image2"></p>
 <h5 id="2-Vue安装"><a href="#2-Vue安装" class="headerlink" title="2. Vue安装"></a>2. Vue安装</h5><p>使用npm进行安装</p>
 <blockquote>
-<p>NPM是随同NodeJS一起安装的包管理工具，能解决NodeJS代码部署上的很多问题，常见的使用场景有以下几种：</p>
+<p><strong>npm是随同NodeJS一起安装的包管理工具，能解决NodeJS代码部署上的很多问题</strong>，常见的使用场景有以下几种：</p>
 <p><strong>①</strong> 允许用户从NPM服务器<strong>下载别人编写的第三方包</strong>到本地使用。</p>
 <p><strong>②</strong> 允许用户从NPM服务器<strong>下载并安装别人编写的命令行程序</strong>到本地使用。</p>
 <p><strong>③</strong> 允许用户将自己编写的包或命令行程序<strong>上传</strong>到NPM服务器供别人使用。</p>
 <p>由于新版的nodejs已经集成了npm，所以之前npm也一并安装好了。同样可以通过输入<strong>“npm -v”</strong>来测试是否成功安装。出现版本提示表示安装成功。</p>
-<p><strong>可能出现下载网速非常慢的情况，是npm下载服务器架设在国外的缘故；</strong></p>
-<p><strong>可以选择安装cnpm命令，使用淘宝的npm镜像,安装命令为：</strong></p>
+<p><strong>由于npm下载服务器架设在国外，可能出现下载网速非常慢的情况，</strong></p>
+<p><strong>所以可以选择安装cnpm命令，使用cnpm命令来下载淘宝的npm镜像,安装命令为：</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; npm install -g cnpm --registry=https://registry.npm.taobao.org</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
 <p>安装完成后，使用cnpm代替npm命令即可</p>
 </blockquote>
@@ -234,21 +234,21 @@ vue-cli的webpack模...">
 <p><img src="images\image9.png" alt="images\image9"></p>
 <p>build文件夹：存放一些构建及配置信息；</p>
 <p>config文件夹：存放一些配置信息；</p>
-<p>node_modules文件夹：类似Java的lib，存放的是插件的源代码，如果需要改变插件，直接点开对应源代码修改即可；</p>
+<p><strong>node_modules文件夹：</strong>类似Java的lib，存放的是插件的源代码，如果需要改变插件，直接点开对应源代码修改即可；</p>
 <p>src文件夹：存放项目代码，包含三个文件夹；</p>
 <blockquote>
 <p>assets：存放资源文件</p>
-<p>components：存放编写的组件（页面）</p>
-<p>router：包含一个index.js，可以设置路由信息（页面跳转）</p>
+<p><strong>components：</strong>存放编写的页面组件（Vue文件）</p>
+<p><strong>router：</strong>包含一个index.js，可以设置路由信息（页面跳转）</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></span><br><span class="line">&gt; <span class="keyword">import</span> Router <span class="keyword">from</span> <span class="string">'vue-router'</span></span><br><span class="line">&gt; <span class="keyword">import</span> HelloWorld <span class="keyword">from</span> <span class="string">'@/components/HelloWorld'</span></span><br><span class="line">&gt; </span><br><span class="line">&gt; Vue.use(Router)</span><br><span class="line">&gt; </span><br><span class="line">&gt; <span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">new</span> Router(&#123;</span><br><span class="line">&gt;   routes: [</span><br><span class="line">&gt;     &#123;</span><br><span class="line">&gt;       path: <span class="string">'/'</span>,</span><br><span class="line">&gt;       name: <span class="string">'HelloWorld'</span>,</span><br><span class="line">&gt;       component: HelloWorld</span><br><span class="line">&gt;     &#125;</span><br><span class="line">&gt;   ]</span><br><span class="line">&gt; &#125;)</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
 </blockquote>
 <p>static：存放静态文件；</p>
 <p>package.json：存放一些插件依赖信息；</p>
-<h5 id="6-vue文件结构"><a href="#6-vue文件结构" class="headerlink" title="6. vue文件结构"></a>6. vue文件结构</h5><p>一个典型的vue文件有如下3部分结构组成。</p>
+<h5 id="6-vue文件结构"><a href="#6-vue文件结构" class="headerlink" title="6. vue文件结构"></a>6. vue文件结构</h5><p>一个典型的vue文件有如下<strong>3部分</strong>结构组成。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div id=<span class="string">"app"</span>&gt;</span><br><span class="line">    &lt;img src=<span class="string">"./assets/logo.png"</span>&gt;</span><br><span class="line">    &lt;router-view/&gt;</span><br><span class="line">  &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  name: <span class="string">'App'</span></span><br><span class="line">&#125;</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">&lt;style&gt;</span></span><br><span class="line"><span class="regexp">#app &#123;</span></span><br><span class="line"><span class="regexp">  font-family: 'Avenir', Helvetica, Arial, sans-serif;</span></span><br><span class="line"><span class="regexp">  -webkit-font-smoothing: antialiased;</span></span><br><span class="line"><span class="regexp">  -moz-osx-font-smoothing: grayscale;</span></span><br><span class="line"><span class="regexp">  text-align: center;</span></span><br><span class="line"><span class="regexp">  color: #2c3e50;</span></span><br><span class="line"><span class="regexp">  margin-top: 60px;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp">&lt;/</span>style&gt;</span><br></pre></td></tr></table></figure>
-<p>&lt; template/ &gt;标识中存放html代码，设置页面结构。</p>
-<p>&lt; script /&gt;标识中存放js代码，用到的一些方法和数据。</p>
-<p>&lt; style /&gt;标识中存放CSS代码，设置样式。</p>
+<p><strong>&lt; template/&gt;</strong> 标识中存放html代码，设计页面结构。</p>
+<p><strong>&lt; script/&gt;</strong> 标识中存放js代码，用到的一些方法和数据。</p>
+<p><strong>&lt; style/&gt;</strong> 标识中存放CSS，设置样式。</p>
 
     </div>
     
@@ -263,6 +263,11 @@ vue-cli的webpack模...">
 </article>
 
 <div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/2019/06/10/一个简单的前后端分离项目/" class="pre-post btn btn-default" title="一个简单的前后端分离项目">
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">一个简单的前后端分离项目</span>
+        </a>
     
     
         <a href="/2019/06/01/萧瑟秋风今又是换了人间/" class="next-post btn btn-default" title="萧瑟秋风今又是换了人间">
@@ -312,6 +317,16 @@ vue-cli的webpack模...">
             <div class="col-sm-12">
                 <div class="busuanzi">
     
+        Total:
+        <strong id="busuanzi_value_site_pv">
+            <i class="fa fa-spinner fa-spin"></i>
+        </strong>
+        &nbsp; | &nbsp;
+        Visitors:
+        <strong id="busuanzi_value_site_uv">
+            <i class="fa fa-spinner fa-spin"></i>
+        </strong>
+    
 </div>
 
             </div>
@@ -328,6 +343,8 @@ vue-cli的webpack模...">
 
 
 
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
 <script src="/js/app.js?rev=@@hash"></script>
