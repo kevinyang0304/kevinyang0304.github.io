@@ -1,0 +1,333 @@
+<!DOCTYPE HTML>
+<html lang="">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="Mute的博客">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="http://yangliuxiao.top">
+    <!--SEO-->
+
+    <meta name="keywords" content="代码,Java,Python,工作">
+
+
+    <meta name="description" content="
+问题：在原来测试版本的项目中，专业人员使用Mathematics编写算法，项目组使用JavaWeb项目直接调用Mathematics程序执行Mathematics脚本获取算法结果，极大地影响了...">
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+
+    <!--Title-->
+
+
+<title>Java调用Python的几种方法 | Mute的博客</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="Mute的博客" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.jpg">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+
+</head>
+
+</html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header" style="background-image:url(/./img/background01.png)">
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title="Mute">
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                 <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yangliuxiao.top">Mute的博客</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>Home</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>时间轴</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/about/"><i class="fa "></i>关于</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="Java调用Python的几种方法">
+            
+	            Java调用Python的几种方法
+            
+        </h1>
+        <div class="post-meta">
+    
+        <span class="categories-meta fa-wrap">
+            <i class="fa fa-folder-open-o"></i>
+            <a class="category-link" href="/categories/Java技术/">Java技术</a> <a class="category-link" href="/categories/Java技术/Python技术/">Python技术</a>
+        </span>
+    
+
+    
+        <span class="fa-wrap">
+            <i class="fa fa-tags"></i>
+            <span class="tags-meta">
+                
+                    <a class="tag-link" href="/tags/Java/">Java</a> <a class="tag-link" href="/tags/Python/">Python</a> <a class="tag-link" href="/tags/代码/">代码</a> <a class="tag-link" href="/tags/工作/">工作</a>
+                
+            </span>
+        </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2019/08/10</span>
+        </span>
+        
+    
+</div>
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <blockquote>
+<p><strong>问题</strong>：在原来测试版本的项目中，专业人员使用<em>Mathematics</em>编写算法，项目组使用JavaWeb项目直接调用<em>Mathematics</em>程序执行<em>Mathematics</em>脚本获取算法结果，极大地影响了系统的性能，同时占用服务器资源，难以应付多并发的情况</p>
+<p><strong>解决方案</strong>：将原本使用<em>Mathematics</em>编写的算法代码使用Python实现（涉及矩阵、线性拟合等操作，使用Python实现方便），再在原本的JavaWeb项目中调用这个算法。</p>
+</blockquote>
+<p>本篇博客主要介绍几种在<strong>Java中调用Python程序</strong>的方法。</p>
+<h4 id="1-Jython方式调用"><a href="#1-Jython方式调用" class="headerlink" title="1. Jython方式调用"></a>1. Jython方式调用</h4><p>Jython是一个Python语言在Java中的<strong>完全实现</strong>（详细解释看另一篇博客<a href="https://yangliuxiao.top/2019/04/10/Python%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%80/">Python语法基础</a>的第一部分）。Jython也有很多从CPython中继承的模块库。最有趣的事情是Jython不像CPython或其他任何高级语言，它提供了对其实现语言的一切存取。所以Jython不仅给你提供了Python的库，同时也提供了所有的Java类（反射使Jython能无缝地使用任何Java类。）。这使其有一个巨大的资源库。</p>
+<p>虽然上述网络上对Jython的描述看似很美好，但在实际使用的过程中会遇到很多的问题。最大的问题就是Jython在2015年停止更新，目前最新的是 <strong>Jython 2.7.0 Final Released</strong>(May 2015)。这就会导致Jython<strong>无法使用一些新的CPython库</strong>。当你只是想要使用Jython编写一些与Java程序混合的、简单的代码时是比较简单的——但是<strong>当你的程序需要导入很多外部库时，Jython总会出现问题。</strong>而且Jython的运行效率也不快。种种原因，最终没有使用Jython。</p>
+<ul>
+<li><strong>在Java中使用Jython调用Python中的方法</strong>：</li>
+</ul>
+<p>首先加入Jython包，这里就有第一个坑，要注意添加的是<a href="https://repo1.maven.org/maven2/org/python/jython/2.7-b1/jython-2.7-b1.jar" target="_blank" rel="noopener"><strong>jython-2.7-b1.jar</strong></a>而不是jython.jar。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.python.core.Py;</span><br><span class="line"><span class="keyword">import</span> org.python.core.PyFunction;</span><br><span class="line"><span class="keyword">import</span> org.python.core.PyObject;</span><br><span class="line"><span class="keyword">import</span> org.python.core.PySystemState;</span><br><span class="line"><span class="keyword">import</span> org.python.util.PythonInterpreter;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JythonMethod</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        PySystemState sys = Py.getSystemState();</span><br><span class="line">        System.out.println(sys.path.toString());</span><br><span class="line">        <span class="comment">//由于Jython和JVM的ClassPath不一样，所以需要手动加入项目所需的库文件路径</span></span><br><span class="line"></span><br><span class="line">        sys.path.add(<span class="string">"xxx\\libs"</span>);<span class="comment">//项目库文件</span></span><br><span class="line"></span><br><span class="line">        sys.path.add(<span class="string">"xxx\\Lib"</span>);<span class="comment">//Python自带库文件</span></span><br><span class="line"></span><br><span class="line">        System.out.println(sys.path.toString());</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 1. Python面向函数式编程: 在Java中调用Python函数</span></span><br><span class="line">        String pythonFunc = <span class="string">"./xxx/xxx.py"</span>;<span class="comment">//Python文件路径</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="comment">//在JVM中创建一个“Python解释器”对象</span></span><br><span class="line">        PythonInterpreter pi1 = <span class="keyword">new</span> PythonInterpreter();</span><br><span class="line">        <span class="comment">// 加载python程序</span></span><br><span class="line">        pi1.execfile(pythonFunc);</span><br><span class="line">        <span class="comment">// 调用Python程序中的函数</span></span><br><span class="line">        PyFunction pyf = pi1.get(<span class="string">"methodName"</span>, PyFunction.class);</span><br><span class="line">        <span class="comment">//写入方法所需的参数，注意要转换为Python的相应类型</span></span><br><span class="line"></span><br><span class="line">        PyObject Res = pyf.__call__(Py.newString(<span class="string">"xxx1"</span>),Py.newString(<span class="string">"xxx2"</span>));</span><br><span class="line"></span><br><span class="line">        System.out.println(Res);</span><br><span class="line">        pi1.cleanup();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="2-终端（命令行）调用"><a href="#2-终端（命令行）调用" class="headerlink" title="2. 终端（命令行）调用"></a>2. 终端（命令行）调用</h4><p>终端（命令行）调用就是老生常谈的东西了，直接使用Java代码执行一段终端（命令行）命令来调用Python文件，简单粗暴。</p>
+<p>但这种方式也存在以下问题：</p>
+<blockquote>
+<ol>
+<li><p>对多线程的支持不好，在部署到服务器的情况下，每次运行都会开启一个终端，消耗资源。</p>
+</li>
+<li><p>这种方法无法像调用一个方法一样随意传参，毕竟是命令行执行，参数选择无法像内置方法一样随意选择。</p>
+</li>
+</ol>
+</blockquote>
+<ul>
+<li><strong>使用命令行运行Python脚本：</strong></li>
+</ul>
+<p>在以下代码中，我开启了3个线程执行一个Python脚本，脚本耗时3秒，在任务管理器里可以看到程序会<strong>开启三个终端</strong>。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.BufferedReader;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.io.InputStreamReader;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">RunnableDemo</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</span><br><span class="line">    String name = <span class="keyword">null</span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">RunnableDemo</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">//命令行参数（注意先把Python加入环境变量）</span></span><br><span class="line"></span><br><span class="line">        String[] arguments = <span class="keyword">new</span> String[] &#123; <span class="string">"python"</span>, <span class="string">"C:/xxx/xxx.py"</span>, <span class="string">"arg1"</span>, <span class="string">"arg2"</span>&#125;;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            Process process = Runtime.getRuntime().exec(arguments);</span><br><span class="line">            BufferedReader in = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(process.getInputStream()));</span><br><span class="line">            String line = <span class="keyword">null</span>;</span><br><span class="line">            <span class="keyword">while</span> ((line = in.readLine()) != <span class="keyword">null</span>) &#123;</span><br><span class="line">                System.out.println(line);</span><br><span class="line">            &#125;</span><br><span class="line">            in.close();</span><br><span class="line">            <span class="keyword">int</span> re = process.waitFor();</span><br><span class="line">            System.out.println(re);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RuntimeMethod</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException, InterruptedException </span>&#123;</span><br><span class="line">          RunnableDemo r1 = <span class="keyword">new</span> RunnableDemo( <span class="string">"Thread1"</span>);</span><br><span class="line">          Thread t1 = <span class="keyword">new</span> Thread(r1);</span><br><span class="line">          t1.start();</span><br><span class="line"></span><br><span class="line">          RunnableDemo r2 = <span class="keyword">new</span> RunnableDemo( <span class="string">"Thread2"</span>);</span><br><span class="line">          Thread t2 = <span class="keyword">new</span> Thread(r2);</span><br><span class="line">          t2.start();</span><br><span class="line">          RunnableDemo r3 = <span class="keyword">new</span> RunnableDemo( <span class="string">"Thread3"</span>);</span><br><span class="line">          Thread t3 = <span class="keyword">new</span> Thread(r3);</span><br><span class="line">          t3.start();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="3-Python的WebService"><a href="#3-Python的WebService" class="headerlink" title="3. Python的WebService"></a>3. Python的WebService</h4><p>最后选择的是这种方法，虽然繁琐了一点，但是这种方法至少是上述三个方法中，部署到项目里最优雅的一种方式了。具体就是将Python算法写成一个WebService发布出去，在JavaWeb项目中使用HttpURLConnection进行调用。</p>
+<p>优点：</p>
+<blockquote>
+<ol>
+<li><p>多线程的事不用调用方头疼了，而是交给了WebService服务器</p>
+</li>
+<li><p>以soap格式传参，相对来说参数格式选择还算自由</p>
+</li>
+</ol>
+</blockquote>
+<p>缺点：</p>
+<blockquote>
+<ol>
+<li><p>又需要多部署一个WebService服务器</p>
+</li>
+<li><p>以WebService方式调用，又多走了一步，性能可想而知不会很快。</p>
+</li>
+</ol>
+</blockquote>
+<ul>
+<li><strong>实现</strong></li>
+</ul>
+<p>参考 <a href="https://www.cnblogs.com/412013cl/p/9262519.html" target="_blank" rel="noopener">一个简单的webservice spyne和suds简单使用</a></p>
+<p><strong>1. Python使用spyne发布WebService</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> spyne <span class="keyword">import</span> ServiceBase, Iterable, Unicode, Integer, Application, rpc</span><br><span class="line"><span class="keyword">from</span> spyne.protocol.soap <span class="keyword">import</span> Soap11</span><br><span class="line"><span class="keyword">from</span> spyne.server.wsgi <span class="keyword">import</span> WsgiApplication</span><br><span class="line"><span class="keyword">from</span> wsgiref.simple_server <span class="keyword">import</span> make_server</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">HelloWorldService</span><span class="params">(ServiceBase)</span>:</span></span><br><span class="line"><span class="meta">    @rpc(Unicode, _returns=Unicode)</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">say_hello</span><span class="params">(self, name)</span>:</span></span><br><span class="line">        strArg = <span class="string">'Hello'</span> + name</span><br><span class="line">        <span class="keyword">return</span> strArg</span><br><span class="line"></span><br><span class="line">application = Application([HelloWorldService],</span><br><span class="line">                          tns=<span class="string">'spyne.examples.hello'</span>,             <span class="comment">#设置NameSpace，需要在soap中用到</span></span><br><span class="line"></span><br><span class="line">                          in_protocol=Soap11(validator=<span class="string">'lxml'</span>),</span><br><span class="line">                          out_protocol=Soap11())</span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line"></span><br><span class="line">    wsgi_app = WsgiApplication(application)</span><br><span class="line">    server = make_server(<span class="string">'0.0.0.0'</span>, <span class="number">8000</span>, wsgi_app)</span><br><span class="line">    server.serve_forever()</span><br></pre></td></tr></table></figure>
+<p><strong>2. Java使用HttpURLConnection调用WebService</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.net.HttpURLConnection;</span><br><span class="line"><span class="keyword">import</span> java.net.URL;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PyWSclient</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        String urlString = <span class="string">"http://localhost:8000/?wsdl"</span>;<span class="comment">//wsdl文档的地址</span></span><br><span class="line">        URL url = <span class="keyword">new</span> URL(urlString);</span><br><span class="line">        HttpURLConnection httpConn = (HttpURLConnection) url.openConnection();<span class="comment">//打开连接</span></span><br><span class="line"></span><br><span class="line">        String xmlFile = <span class="string">"./soapXML/soap.xml"</span>;<span class="comment">//要发送的soap格式文件</span></span><br><span class="line">        File fileToSend = <span class="keyword">new</span> File(xmlFile);</span><br><span class="line">        <span class="keyword">byte</span>[] buf = <span class="keyword">new</span> <span class="keyword">byte</span>[(<span class="keyword">int</span>) fileToSend.length()];<span class="comment">// 用于存放文件数据的数组</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">new</span> FileInputStream(xmlFile).read(buf);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//Content-Length长度会自动进行计算</span></span><br><span class="line">        httpConn.setRequestProperty(<span class="string">"Content-Type"</span>, <span class="string">"text/xml; charset=utf-8"</span>);</span><br><span class="line">        httpConn.setRequestMethod(<span class="string">"POST"</span>);</span><br><span class="line">        httpConn.setDoOutput(<span class="keyword">true</span>);</span><br><span class="line">        httpConn.setDoInput(<span class="keyword">true</span>);</span><br><span class="line"></span><br><span class="line">        OutputStream out = httpConn.getOutputStream();</span><br><span class="line"></span><br><span class="line">        out.write(buf);</span><br><span class="line">        out.close();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (httpConn.getResponseCode() == HttpURLConnection.HTTP_OK)</span><br><span class="line">        &#123;</span><br><span class="line">            InputStreamReader is = <span class="keyword">new</span> InputStreamReader(httpConn.getInputStream());</span><br><span class="line">            BufferedReader in = <span class="keyword">new</span> BufferedReader(is);</span><br><span class="line">            String inputLine;</span><br><span class="line">            BufferedWriter bw = <span class="keyword">new</span> BufferedWriter(<span class="keyword">new</span> OutputStreamWriter(</span><br><span class="line">                    <span class="keyword">new</span> FileOutputStream(<span class="string">"result.xml"</span>)));<span class="comment">// 将结果存放的位置</span></span><br><span class="line">            <span class="keyword">while</span> ((inputLine = in.readLine()) != <span class="keyword">null</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                System.out.println(inputLine);</span><br><span class="line">                System.out.print(inputLine);</span><br><span class="line">                bw.write(inputLine);</span><br><span class="line">                bw.newLine();</span><br><span class="line">            &#125;</span><br><span class="line">            bw.close();</span><br><span class="line">            in.close();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="comment">//如果服务器返回的HTTP状态不是HTTP_OK，则表示发生了错误，此时可以通过如下方法了解错误原因。</span></span><br><span class="line">            InputStream is = httpConn.getErrorStream();    <span class="comment">//通过getErrorStream了解错误的详情，因为错误详情也以XML格式返回，因此也可以用JDOM来获取。</span></span><br><span class="line">            InputStreamReader isr = <span class="keyword">new</span> InputStreamReader(is,<span class="string">"utf-8"</span>);</span><br><span class="line">            BufferedReader in = <span class="keyword">new</span> BufferedReader(isr);</span><br><span class="line">            String inputLine;</span><br><span class="line">            BufferedWriter bw = <span class="keyword">new</span> BufferedWriter(<span class="keyword">new</span> OutputStreamWriter(</span><br><span class="line">                    <span class="keyword">new</span> FileOutputStream(<span class="string">"result.xml"</span>)));<span class="comment">// 将结果存放的位置</span></span><br><span class="line">            <span class="keyword">while</span> ((inputLine = in.readLine()) != <span class="keyword">null</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                System.out.println(inputLine);</span><br><span class="line">                bw.write(inputLine);</span><br><span class="line">                bw.newLine();</span><br><span class="line">                bw.close();</span><br><span class="line">            &#125;</span><br><span class="line">            in.close();</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        httpConn.disconnect();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>soap.xml文件（也可以在Java程序中拼接）</strong>：</p>
+<blockquote>
+<p>&lt;?xml version=”1.0” encoding=”utf-8”?&gt;</p>
+<p>&lt; soap:Envelope xmlns:soap=”<a href="http://schemas.xmlsoap.org/soap/envelope/" target="_blank" rel="noopener">http://schemas.xmlsoap.org/soap/envelope/</a>“ &gt;<br>    &lt; soap:Body &gt;<br>        &lt; m:say_hello xmlns:m=”spyne.examples.hello” &gt;<br>            &lt; m:name&gt;<br>                asdadsad<br>            &lt; /m:name&gt;<br>        &lt;/ m:say_hello&gt;<br>    &lt;/ soap:Body&gt;<br>&lt;/ soap:Envelope&gt;</p>
+</blockquote>
+<p>主要注意需要更改的地方有：&lt; m:say_hello xmlns:m=”spyne.examples.hello” &gt;中的say_hello是想调用的Python  WebService的函数名，后面双引号中的是Python WebService中定义的NameSpace名字。中间元素&lt; m:name &gt;的name是WebService的对应方法参数名，元素内容是参数值。</p>
+<p><strong>返回的rusult.xml文件：</strong></p>
+<blockquote>
+<p>&lt;?xml version=’1.0’ encoding=’UTF-8’?&gt;</p>
+<p>&lt; soap11env:Envelope xmlns:soap11env=”<a href="http://schemas.xmlsoap.org/soap/envelope/" target="_blank" rel="noopener">http://schemas.xmlsoap.org/soap/envelope/</a>“ xmlns:tns=”pwtpfxNamespace”&gt;&lt; soap11env:Body&gt;&lt; tns:say_helloResponse&gt;</p>
+<p>&lt; tns:say_helloResult&gt;Hello<br>                asdadsad<br>            &lt;/ tns:say_helloResult&gt;&lt;/ tns:say_helloResponse&gt;</p>
+<p>&lt;/ soap11env:Body&gt;&lt;/ soap11env:Envelope&gt;</p>
+</blockquote>
+
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+    
+        <a href="/2019/06/10/一个简单的前后端分离项目/" class="next-post btn btn-default" title="使用SpringBoot和Vue开发的一个简单前后端分离项目">
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">使用SpringBoot和Vue开发的一个简单前后端分离项目</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">Table of Contents</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-Jython方式调用"><span class="toc-text">1. Jython方式调用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-终端（命令行）调用"><span class="toc-text">2. 终端（命令行）调用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-Python的WebService"><span class="toc-text">3. Python的WebService</span></a></li></ol>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+        Total:
+        <strong id="busuanzi_value_site_pv">
+            <i class="fa fa-spinner fa-spin"></i>
+        </strong>
+        &nbsp; | &nbsp;
+        Visitors:
+        <strong id="busuanzi_value_site_uv">
+            <i class="fa fa-spinner fa-spin"></i>
+        </strong>
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2017
+                </span>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"log":false});</script></body>
+</html>
