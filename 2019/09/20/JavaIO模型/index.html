@@ -1,0 +1,338 @@
+<!DOCTYPE HTML>
+<html lang="">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="Mute的博客">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="http://yangliuxiao.top">
+    <!--SEO-->
+
+    <meta name="keywords" content="面试,Java">
+
+
+    <meta name="description" content="聊聊BIO，NIO和AIO (1)
+
+1. 什么是“IO Block”所谓“Block”是指操作系统可以预见这个Block会发生才会主动Block。例如当读取TCP连接的数据时，如果发现Sock...">
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+
+    <!--Title-->
+
+
+<title>Java IO模型 | Mute的博客</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="Mute的博客" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.jpg">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+
+</head>
+
+</html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header" style="background-image:url(/./img/background01.png)">
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title="Mute">
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                 <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yangliuxiao.top">Mute的博客</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>Home</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>时间轴</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/about/"><i class="fa "></i>关于</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="Java IO模型">
+            
+	            Java IO模型
+            
+        </h1>
+        <div class="post-meta">
+    
+        <span class="categories-meta fa-wrap">
+            <i class="fa fa-folder-open-o"></i>
+            <a class="category-link" href="/categories/Java技术/">Java技术</a>
+        </span>
+    
+
+    
+        <span class="fa-wrap">
+            <i class="fa fa-tags"></i>
+            <span class="tags-meta">
+                
+                    <a class="tag-link" href="/tags/Java/">Java</a> <a class="tag-link" href="/tags/面试/">面试</a>
+                
+            </span>
+        </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2019/09/20</span>
+        </span>
+        
+    
+</div>
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <p><a href="https://www.jianshu.com/p/ef418ccf2f7d" target="_blank" rel="noopener">聊聊BIO，NIO和AIO (1)</a></p>
+<hr>
+<h4 id="1-什么是“IO-Block”"><a href="#1-什么是“IO-Block”" class="headerlink" title="1. 什么是“IO Block”"></a>1. 什么是“IO Block”</h4><p>所谓“Block”是指操作系统可以预见这个Block会发生才会主动Block。例如当读取TCP连接的数据时，如果发现Socket buffer里没有数据就可以确定定对方还没有发过来，于是Block；而对于普通磁盘文件的读写，也许磁盘运作期间会抖动，会短暂暂停，但是操作系统无法预见这种情况，只能视作不会Block，照样执行。</p>
+<p>基于这个基本的设定，在讨论IO时，一定要严格区分网络IO和磁盘文件IO。NIO和后文讲到的IO多路复用只对网络IO有意义。</p>
+<hr>
+<h4 id="2-BIO（阻塞IO）"><a href="#2-BIO（阻塞IO）" class="headerlink" title="2. BIO（阻塞IO）"></a>2. BIO（阻塞IO）</h4><p>有了Block的定义，就可以讨论BIO和NIO了。BIO是Blocking IO的意思。在类似于网络中进行<code>read</code>,<code>write</code>,<code>connect</code>一类的系统调用时会被卡住。</p>
+<p><strong>阻塞 I/O 模型（BIO）：</strong>最常用的 I/O 模型，缺省情况下，所有的文件操作都是阻塞的。以套接字接口为例，进程从调用 recvfrom 开始到它返回的整段时间内都是被阻塞的，因此成为<strong>阻塞模型</strong>。</p>
+<p>举个例子，当用<code>read</code>去读取网络的数据时，是无法预知对方是否已经发送数据的。因此在收到数据之前，能做的只有<strong>等待</strong>，直到对方把数据发过来，或者等到网络超时。</p>
+<p>对于单线程的网络服务，这样做就会有卡死的问题。因为当等待时，整个线程会被挂起，无法执行，也无法做其他的工作。这种Block是不会影响同时运行的其他程序（进程）的，因为现代操作系统都是多任务的，任务之间的切换是抢占式的。这里Block只是指Block当前的进程。</p>
+<p>于是，<strong>网络服务为了同时响应多个并发的网络请求，必须实现为多线程的</strong>。每个线程处理一个网络请求。线程数随着并发连接数线性增长。这的确能奏效。实际上2000年之前很多网络服务器就是这么实现的。但这带来两个问题：</p>
+<ul>
+<li><strong>线程越多，Context Switch就越多，而Context Switch是一个比较重的操作，会无谓浪费大量的CPU。</strong></li>
+<li><strong>每个线程会占用一定的内存作为线程的栈。比如有1000个线程同时运行，每个占用1MB内存，就占用了1个G的内存。</strong></li>
+</ul>
+<p><strong>问题的关键在于，当调用<code>read</code>接受网络请求时，有数据到了就用，没数据到时，实际上是可以干别的。</strong></p>
+<p>当然你可能会说，是不是可以弄个线程池呢？这样既能并发的处理请求，又不会产生大量线程。但这样会限制最大并发的连接数。比如你弄4个线程，那么最大4个线程都Block了就没法响应更多请求了。</p>
+<p><strong>要是操作IO接口时，操作系统能够总是直接告诉有没有数据，而不是Block去等就好了。于是，NIO登场。</strong></p>
+<h4 id="3-NIO（非阻塞IO）"><a href="#3-NIO（非阻塞IO）" class="headerlink" title="3. NIO（非阻塞IO）"></a>3. NIO（非阻塞IO）</h4><p>NIO是指将IO模式设为“Non-Blocking”模式。</p>
+<p>非阻塞 I/O 模型（NIO）：recvfrom 从应用层到内核的时候，如果该缓冲区没有数据的话，就直接返回一个 EWOULDBLOCK 错误，一般都对非阻塞 I/O模型进行<strong>轮询检查</strong>这个状态，看内核是否返回了数据。</p>
+<blockquote>
+<p>再强调一下，以上操作只对socket对应的文件描述符有意义；对磁盘文件的文件描述符做此设置总会成功，但是会直接被忽略。</p>
+</blockquote>
+<p><strong>这时，BIO和NIO的区别是什么呢？</strong></p>
+<p><strong>在BIO模式下，调用read，如果发现没数据已经到达，就会Block住。</strong></p>
+<p><strong>在NIO模式下，调用read，如果发现没数据已经到达，就会立刻返回-1, 并且errno被设为<code>EAGAIN</code>。</strong></p>
+<blockquote>
+<p><strong>在有些文档中写的是会返回<code>EWOULDBLOCK</code>。实际上，在Linux下<code>EAGAIN</code>和<code>EWOULDBLOCK</code>是一样的，即<code>#define EWOULDBLOCK EAGAIN</code></strong></p>
+</blockquote>
+<p>于是，一段NIO的代码，大概就可以写成这个样子。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">struct timespec sleep_interval&#123;.tv_sec = <span class="number">0</span>, .tv_nsec = <span class="number">1000</span>&#125;;</span><br><span class="line">ssize_t nbytes;</span><br><span class="line"><span class="keyword">while</span> (<span class="number">1</span>) &#123;</span><br><span class="line">    <span class="comment">/* 尝试读取 */</span></span><br><span class="line">    <span class="keyword">if</span> ((nbytes = read(fd, buf, sizeof(buf))) &lt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (errno == EAGAIN) &#123; <span class="comment">// 没数据到</span></span><br><span class="line">            perror(<span class="string">"nothing can be read"</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            perror(<span class="string">"fatal error"</span>);</span><br><span class="line">            exit(EXIT_FAILURE);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123; <span class="comment">// 有数据</span></span><br><span class="line">        process_data(buf, nbytes);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 处理其他事情，做完了就等一会，再尝试</span></span><br><span class="line">    nanosleep(sleep_interval, NULL);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这段代码很容易理解，就是<strong>轮询</strong>，不断的尝试有没有数据到达，有了就处理，没有(得到<code>EWOULDBLOCK</code>或者<code>EAGAIN</code>)就等一小会再试。这比之前BIO好多了，起码程序不会被卡死了。</p>
+<p>但这样会带来两个新问题：</p>
+<blockquote>
+<ul>
+<li><p>如果有大量文件描述符都要等，那么就得一个一个的read。这会带来大量的Context Switch（<code>read</code>是系统调用，每调用一次就得在用户态和核心态切换一次）</p>
+</li>
+<li><p>休息一会的时间不好把握。这里是要猜多久之后数据才能到。等待时间设的太长，程序响应延迟就过大；设的太短，就会造成过于频繁的重试，干耗CPU而已。</p>
+</li>
+</ul>
+</blockquote>
+<p><strong>要是操作系统能一口气告诉程序，哪些数据到了就好了。于是IO多路复用被搞出来解决这个问题。</strong></p>
+<hr>
+<h4 id="4-IO多路复用"><a href="#4-IO多路复用" class="headerlink" title="4. IO多路复用"></a>4. IO多路复用</h4><p><strong>IO多路复用（IO Multiplexing) 是这么一种机制：程序注册一组socket文件描述符给操作系统，表示“我要监视这些fd是否有IO事件发生，有了就告诉程序处理”。</strong></p>
+<p><strong>IO多路复用是要和NIO一起使用的</strong>。尽管在操作系统级别，NIO和IO多路复用是两个相对独立的事情。NIO仅仅是指IO API总是能立刻返回，不会被Blocking；而IO多路复用仅仅是操作系统提供的一种便利的通知机制。操作系统并不会强制这俩必须得一起用——你可以用NIO，但不用IO多路复用，就像上一节中的代码；也可以只用IO多路复用 + BIO，这时效果还是当前线程被卡住。但是，<strong>IO多路复用和NIO是要配合一起使用才有实际意义</strong>。因此，在使用IO多路复用之前，请总是先把fd设为<code>O_NONBLOCK</code>。</p>
+<p>对IO多路复用，还存在一些常见的误解，比如：</p>
+<ul>
+<li><p><strong>❌IO多路复用是指多个数据流共享同一个Socket</strong>。其实IO多路复用说的是多个Socket，只不过操作系统是一起监听他们的事件而已。</p>
+<blockquote>
+<p>多个数据流共享同一个TCP连接的场景的确是有，比如Http2 Multiplexing就是指Http2通讯中中多个逻辑的数据流共享同一个TCP连接。但这与IO多路复用是完全不同的问题。</p>
+</blockquote>
+</li>
+<li><p><strong>❌IO多路复用是NIO，所以总是不Block的</strong>。其实IO多路复用的关键API调用(<code>select</code>，<code>poll</code>，<code>epoll_wait</code>）总是Block的，正如下文的例子所讲。</p>
+</li>
+<li><p>❌<strong>IO多路复用和NIO一起减少了IO</strong>。实际上，IO本身（网络数据的收发）无论用不用IO多路复用和NIO，都没有变化。请求的数据该是多少还是多少；网络上该传输多少数据还是多少数据。IO多路复用和NIO一起仅仅是解决了调度的问题，避免CPU在这个过程中的浪费，使系统的瓶颈更容易触达到网络带宽，而非CPU或者内存。要提高IO吞吐，还是提高硬件的容量（例如，用支持更大带宽的网线、网卡和交换机）和依靠并发传输（例如HDFS的数据多副本并发传输）。</p>
+</li>
+</ul>
+<p>操作系统级别提供了一些接口来支持IO多路复用，最老掉牙的是<code>select</code>和<code>poll</code>。Linux 提供 <code>select/poll</code>，进程通过将一个或多个 fd 传递给 select或 poll 系统调用，阻塞在 select 操作上，这样 select/poll 可以帮我们侦测多个 fd 是否处于就绪状态。</p>
+<h4 id="5-信号驱动-I-O-模型"><a href="#5-信号驱动-I-O-模型" class="headerlink" title="5. 信号驱动 I/O 模型"></a>5. 信号驱动 I/O 模型</h4><p><strong>信号驱动 I/O 模型</strong>：首先开启套接字接口信号驱动 I/O 功能，并通过系统调用 sigaction 执行一个信号处理函数（此系统调用立即返回，进程继续工作，它是非阻塞的）。当数据准备就绪时，就为该进程生成一个 SIGIO 信号，通过信号回调通知应用程序调用 recvfrom 来读取数据，并通知主循环函数处理数据。</p>
+<h4 id="6-AIO（异步-I-O）"><a href="#6-AIO（异步-I-O）" class="headerlink" title="6. AIO（异步 I/O）"></a>6. AIO（异步 I/O）</h4><p><strong>异步 I/O（AIO）</strong>：告知内核启动某个操作，并让内核在整个操作完成后（包括将数据从内核赋值到用户自己的缓冲区）通知我们。这种模型与信号驱动模型的主要区别是：信号驱动 I/O 由内核通知我们合适可以开始一个 I/O操作；异步 I/O 模型则有内核通知我们 I/O 操作何时已经完成。</p>
+<p><strong>同步与异步的区别：</strong></p>
+<blockquote>
+<p><strong>（1） 同步：发送一个请求，等待返回，再发送下一个请求，同步可以避免出现死锁，脏读的发生。</strong></p>
+<p><strong>（2） 异步：发送一个请求，不等待返回，随时可以再发送下一个请求，可以提高效率，保证并发。</strong></p>
+</blockquote>
+<h4 id="7-总结"><a href="#7-总结" class="headerlink" title="7. 总结"></a>7. 总结</h4><ul>
+<li>对于socket的文件描述符才有所谓BIO和NIO。</li>
+<li>BIO需要配合多线程使用（单线程的话整个程序就被Block住了），但上下文切换以及大量线程会带来大量的资源浪费</li>
+<li>NIO无需Block，而是使用轮询的方式检查是否有数据到达，但也有缺陷：1. 每次轮询调用<code>read</code>会在核心态和用户态切换，造成大量Context Switch；2. 无法确定每次轮询应该等待的时间。</li>
+<li>NIO+IO多路复用可以解决上述问题。<strong>IO多路复用（IO Multiplexing) 是这么一种机制：程序注册一组socket文件描述符给操作系统，表示“我要监视这些fd是否有IO事件发生，有了就告诉程序处理”。</strong></li>
+<li>在Linux下，基于epoll的IO多路复用是解决这个问题的最佳方案；epoll相比<code>select</code>和<code>poll</code>有很大的性能优势和功能优势，适合实现高性能网络服务。</li>
+</ul>
+
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+    
+        <a href="/2019/09/12/Redis初学/" class="next-post btn btn-default" title="Redis初学">
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">Redis初学</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">Table of Contents</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-什么是“IO-Block”"><span class="toc-text">1. 什么是“IO Block”</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-BIO（阻塞IO）"><span class="toc-text">2. BIO（阻塞IO）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-NIO（非阻塞IO）"><span class="toc-text">3. NIO（非阻塞IO）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-IO多路复用"><span class="toc-text">4. IO多路复用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-信号驱动-I-O-模型"><span class="toc-text">5. 信号驱动 I/O 模型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-AIO（异步-I-O）"><span class="toc-text">6. AIO（异步 I/O）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-总结"><span class="toc-text">7. 总结</span></a></li></ol>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+        Total:
+        <strong id="busuanzi_value_site_pv">
+            <i class="fa fa-spinner fa-spin"></i>
+        </strong>
+        &nbsp; | &nbsp;
+        Visitors:
+        <strong id="busuanzi_value_site_uv">
+            <i class="fa fa-spinner fa-spin"></i>
+        </strong>
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2017
+                </span>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"log":false});</script></body>
+</html>
